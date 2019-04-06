@@ -10,6 +10,6 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
      features = "src/main/resources/",
-     glue = {"src/test/java/stepDefinitions"})
+     glue = {"stepDefinitions"})
 public class CucumberTest {
 } 
