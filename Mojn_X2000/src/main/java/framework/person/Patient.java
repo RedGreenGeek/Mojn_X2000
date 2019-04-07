@@ -9,7 +9,7 @@ public class Patient extends Person {
 	    return this.getPatientID();
 	}
 	
-	private Patient(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
+	Patient(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
 
 	    this.setFirstName(firstName);
 	    this.setLastName(lastName);
@@ -20,4 +20,12 @@ public class Patient extends Person {
 	    this.patientID = ++Patient.counter;
 
 	}
+	
+	protected boolean isValidPatientData(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
+		
+		return isValidPersonData(firstName, lastName, day, month, year, adress, tribe, alive);
+		
+	}
+
+	
 }
