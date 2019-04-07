@@ -21,7 +21,6 @@ import cucumber.api.java.en.When;
 public class M1_RegisterPatients {
 	
 	Hospital h;
-	Patient p;
 	
 	// Background 
 	
@@ -51,8 +50,8 @@ public class M1_RegisterPatients {
 		staff_set.add(nurse);
 		
 		// patient
-		Patient p1 = new Patient("p1_first", "p1_last", "p1_street", "p1_tribe", 01, 01, 1111, true);
-		Patient p2 = new Patient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
+		Patient p1 = Patient.newPatient("p1_first", "p1_last", "p1_street", "p1_tribe", 01, 01, 1111, true);
+		Patient p2 = Patient.newPatient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
 		
 		patient_set.add(p1);
 		patient_set.add(p2);
@@ -88,7 +87,7 @@ public class M1_RegisterPatients {
 	@Given("^I am entering sufficient patient data$")
 	public void i_am_entering_sufficient_patient_data() throws Throwable {
 		
-		p  = new Patient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
+		Patient p  = Patient.newPatient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
 		
 		assertTrue(p != null);
 
@@ -101,6 +100,7 @@ public class M1_RegisterPatients {
 		try {
 			
 			p  = new Patient("", "p2_last", "p2_street", "p2_tribe", 02, 02,1999, true);
+			Patient k = new Patient("Firstname", "", "p2_street", "p2_tribe", 02, 02,1999, true);
 			
 		} catch (Exception e) {}
 		
