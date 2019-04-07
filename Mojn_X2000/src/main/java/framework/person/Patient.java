@@ -9,15 +9,35 @@ public class Patient extends Person {
 	    return this.getPatientID();
 	}
 	
-	private Patient(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
-
-	    this.setFirstName(firstName);
-	    this.setLastName(lastName);
-	    this.setAlive(alive);
-	    this.setBirthDay(day, month, year);
-	    this.setTribe(tribe);
-	    this.setAdress(adress);
-	    this.patientID = ++Patient.counter;
+	public Patient(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
+		
+		if (isValidPatientData(firstName, lastName, adress, tribe, day, month, year, alive)) {
+			
+		    this.setFirstName(firstName);
+		    this.setLastName(lastName);
+		    this.setAlive(alive);
+		    this.setBirthDay(day, month, year);
+		    this.setTribe(tribe);
+		    this.setAdress(adress);
+		    this.setPatientID(++Patient.counter);
+			
+		} else {
+			
+			throw new IllegalArgumentException ("Patient data is wrong!");
+			
+		}
 
 	}
+	
+	public static boolean isValidPatientData(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
+		
+		return isValidPersonData(firstName, lastName, day, month, year, adress, tribe, alive);
+		
+	}
+
+	public void setPatientID(int patientID) {
+		this.patientID = patientID;
+	}
+
+	
 }

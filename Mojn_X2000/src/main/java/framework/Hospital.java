@@ -4,12 +4,15 @@ import java.util.*;
 
 import framework.department.Department;
 import framework.department.hc.HCDepart;
+import framework.person.Patient;
 import framework.person.Person;
 
 public class Hospital {
-	private HashSet<Department> departSet = new HashSet<Department>();
 	
-	public Hospital(){
+	private HashSet<Department> departSet = new HashSet<Department>();
+	private HashSet<Patient> patientRegistery = new HashSet<Patient>(); // temporary
+	
+	public Hospital() {
 		
 	}
 	

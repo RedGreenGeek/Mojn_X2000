@@ -13,6 +13,8 @@ public class ChangeReg {
 		departSet.add(d);
 		h.setDepartSet(departSet);
 	}
+
+	
 	protected void remove(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.remove(d);
@@ -24,6 +26,7 @@ public class ChangeReg {
 		staffSet.add(s);
 		d.setStaff(staffSet);
 	}
+	
 	protected void remove(Department d, Staff s) {
 		HashSet<Person> staffSet = d.getStaff();
 		staffSet.remove(s);
