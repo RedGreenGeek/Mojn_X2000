@@ -16,24 +16,20 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 @tag
 Feature: Register Patient
 
-	Background:
-		Given that we are on a Hospital
-		And with sufficient departments
+  Background:
+	Given that we are on a Hospital
+	And with a Patient Registery
+	And I am on the patient registration page
 
   Scenario: Succesful Registration
-    Given I am on the patient registration page
-    And I am entering sufficient patient data
-    When I hit "register"
+    When I am entering sufficient patient data
     Then I get a message that the patient was registered succesfully
     
   Scenario: Insufficient Data Provided
-    Given I am on the patient registration page
-    And I am entering insufficient patient data
-    When I hit "register"
+    When I am entering insufficient patient data
     Then I get a message that additional information is needed
     
   
