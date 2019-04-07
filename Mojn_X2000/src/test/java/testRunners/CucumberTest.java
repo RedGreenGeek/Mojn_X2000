@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
  
 @RunWith(Cucumber.class)
 @CucumberOptions(
-     features = "src/main/resources/M3_BedsAvailable.feature",
+     features = "src/main/resources/",
      glue = {"stepDefinitions"})
 public class CucumberTest {
 } 
