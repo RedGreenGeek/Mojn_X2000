@@ -36,14 +36,6 @@ public class Hospital {
 //		this.departSet = departSet;
 //	}
 	 
-	public HashSet<Patient> getPatientRegistery() {
-		return patientRegistery;
-	}
-
-	public void setPatientRegistery(Patient p) {
-		this.patientRegistery.add(p);
-	}
-
 	public void setDepartSet(HashSet<Department> departSet) {
 		this.departSet = departSet;
 	}

@@ -1,20 +1,13 @@
-
-
-		
 package framework;
 
-import framework.person.*;
-import framework.Hospital;
-
-import java.util.HashSet;
 import java.util.LinkedList;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 import framework.department.Department;
 import framework.department.hc.InPatientDepart;
-import framework.*;
 import framework.person.*;
+import framework.*;
 
 public class UI_API {
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   PATIENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -22,32 +15,24 @@ public class UI_API {
 	public String RegisterPatient(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
 		
 		try {
-			
-			ChangeReg cr = new ChangeReg(); // Used to modify attributes of Hospital
 			Patient patient = new Patient(firstName, lastName, adress, tribe, day, month, year, alive);
-			cr.add(Hospital.getHospital(), patient);
 
+	
 			return String.format("%s %s registered succesfully!", firstName, lastName);
-			
 		} catch (IllegalArgumentException e) {
 			
 		}
 			return "Illegal Argument!";
 		
 	}
-	
-	public HashSet<Patient> GetPatientRegister() {
 		
-		return Hospital.getHospital().getPatientRegistery();
-		
-	}
-	
+
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   STAFF   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	
 	public String RegisterStaff(String FirstName, String LastName, String Adress, String Tribe, int bDay, int bMonth, int bYear) {
 		
-		return "The patient has been registered succesfully!";
 		
+		
+		return "The patient has been registered succesfully!";
 	}
 	/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DEPARTMENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 	

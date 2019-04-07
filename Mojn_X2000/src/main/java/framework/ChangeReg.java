@@ -8,10 +8,6 @@ import framework.person.*;
 
 public class ChangeReg {
 	
-	protected void add(Hospital h, Patient p) {	
-		h.setPatientRegistery(p);	
-	}
-	
 	protected void add(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.add(d);
