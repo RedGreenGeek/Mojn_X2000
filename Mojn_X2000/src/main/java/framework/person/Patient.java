@@ -2,15 +2,11 @@ package framework.person;
 
 public class Patient extends Person {
 	
-	static int counter;
+	private static int counter;
 	private int patientID; // Static variables are common to all instances of the patient class
 	
-	public int getPatientID() {
+	protected int getPatientID() {
 	    return this.getPatientID();
-	}
-	
-	public void setPatientID(int patientID) {
-	    this.patientID = patientID;
 	}
 	
 	private Patient(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
