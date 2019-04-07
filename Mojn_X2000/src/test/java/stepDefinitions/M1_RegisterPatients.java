@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.HashSet;
 
 import framework.*;
@@ -13,6 +15,8 @@ import framework.person.staff.Doctor;
 import framework.person.staff.ICTOfficer;
 import framework.person.staff.Nurse;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class M1_RegisterPatients {
 	
@@ -21,13 +25,13 @@ public class M1_RegisterPatients {
 	// Background 
 	
 	@Given("^that we are on a Hospital$")
-	public void that_we_are_on_a_Hospital() throws Throwable {
+	public void that_we_are_on_a_Hospital() {
 	    // Write code here that turns the phrase above into concrete actions
 	    h = new Hospital();
 	}
 
 	@Given("^with sufficient departments$")
-	public void with_sufficient_departments() throws Throwable {
+	public void with_sufficient_departments() {
 
 		// Staff set and patient set
 		HashSet<Person> staff_set = new HashSet<Person>();
@@ -46,8 +50,8 @@ public class M1_RegisterPatients {
 		staff_set.add(nurse);
 		
 		// patient
-		Patient p1 = new Patient("p1_first", "p1_last", "p1_street", "p1_tribe", 01, 01, 1111, true);
-		Patient p2 = new Patient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
+		Patient p1 = Patient.newPatient("p1_first", "p1_last", "p1_street", "p1_tribe", 01, 01, 1111, true);
+		Patient p2 = Patient.newPatient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
 		
 		patient_set.add(p1);
 		patient_set.add(p2);
@@ -66,7 +70,7 @@ public class M1_RegisterPatients {
 		
 		h.setDepartSet(depart_set);
 		
-		
+		assertTrue(h.getDepartSet() != null);
 		
 
 	}
@@ -74,21 +78,41 @@ public class M1_RegisterPatients {
 	// Scenarios
 
 	@Given("^I am on the patient registration page$")
-	public void i_am_on_the_patient_registration_page() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	public void i_am_on_the_patient_registration_page() {
+		
+		// Go to registration page
+
 	}
 
 	@Given("^I am entering sufficient patient data$")
 	public void i_am_entering_sufficient_patient_data() throws Throwable {
+		
+		Patient p  = Patient.newPatient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
+		
+		assertTrue(p != null);
+
+	}
+	
+	@Given("^I am entering insufficient patient data$")
+	public void i_am_entering_insufficient_patient_data() {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    
+		try {
+			
+			p  = new Patient("", "p2_last", "p2_street", "p2_tribe", 02, 02,1999, true);
+			Patient k = new Patient("Firstname", "", "p2_street", "p2_tribe", 02, 02,1999, true);
+			
+		} catch (Exception e) {}
+		
+		assertTrue(p == null);
+		
 	}
 
 	@When("^I hit \"([^\"]*)\"$")
 	public void i_hit(String arg1) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+		
+		// Hit enter
+		
 	}
 
 	@Then("^I get a message that the patient was registered succesfully$")
@@ -97,11 +121,6 @@ public class M1_RegisterPatients {
 	    throw new PendingException();
 	}
 
-	@Given("^I am entering insufficient patient data$")
-	public void i_am_entering_insufficient_patient_data() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
 
 	@Then("^I get a message that additional information is needed$")
 	public void i_get_a_message_that_additional_information_is_needed() throws Throwable {
