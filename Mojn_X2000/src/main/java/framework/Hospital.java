@@ -13,7 +13,6 @@ public class Hospital {
 	protected static HashSet<Patient> patientRegistery = new HashSet<Patient>(); // temporary
 	
 	
-	
 	public Hospital() {
 		
 	}
