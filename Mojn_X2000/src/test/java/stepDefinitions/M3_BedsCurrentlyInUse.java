@@ -45,12 +45,12 @@ public class M3_BedsCurrentlyInUse {
 		staff_set.add(doctor);
 		staff_set.add(nurse);
 		
-		// patient
-//		Patient p1 = new Patient("p1_first", "p1_last", "p1_street", "p1_tribe", 01, 01, 1111, true);
-//		Patient p2 = new Patient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
-//		
-//		patient_set.add(p1);
-//		patient_set.add(p2);
+//		 patient
+		Patient p1 = new Patient("p1_first", "p1_last", "p1_street", "p1_tribe", 01, 01, 1111, true);
+		Patient p2 = new Patient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
+		
+		patient_set.add(p1);
+		patient_set.add(p2);
 		
 		
 		// Departments
@@ -74,8 +74,8 @@ public class M3_BedsCurrentlyInUse {
 	@Given("^I am on the In-Patient Department page$")
 	public void i_am_on_the_In_Patient_Department_page() throws Throwable {
 	    ChangeReg k = new ChangeReg();
-	    Patient p =
-	    k.add(in_depart, 13);
+	    Patient p = new Patient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
+	    k.add(in_depart,p , 13);
 	}
 
 	@When("^I ask for the number of beds in use$")
