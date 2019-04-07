@@ -25,11 +25,20 @@ public class UI_API {
 		
 
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   STAFF   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public String RegisterStaff(String FirstName, String LastName, String Adress, String Tribe, int bDay, int bMonth, int bYear) {
+	
+	public static String RegisterStaff(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive, String JobType) {
 		
+		try {
+			Staff staff = new Staff(firstName, lastName, adress, tribe, day, month, year, alive, JobType);
+			ChangeReg C = new ChangeReg();
+			C.add(Hospital.getHospital(),staff);
+	
+			return String.format("%s %s registered succesfully!", firstName, lastName);
+		} catch (IllegalArgumentException e) {
+			
+		}
+			return "Insufficient data: Please fill all fields with correct data.";
 		
-		
-		return "The patient has been registered succesfully!";
 	}
 	/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DEPARTMENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 	

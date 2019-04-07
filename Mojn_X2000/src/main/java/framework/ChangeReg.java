@@ -12,6 +12,12 @@ public class ChangeReg {
 		Hospital.getHospital().setPatientRegistery(patientReg);
 	}
 	
+	protected void add(Hospital h, Staff s) {
+		HashSet<Staff> staffReg = Hospital.getHospital().getStaffRegistery();
+		staffReg.add(s);
+		Hospital.getHospital().setStaffRegistery(staffReg);
+	}
+	
 //	protected void add(Hospital h, Department d) {
 //		HashSet<Department> departSet = h.getDepartSet();
 //		departSet.add(d);
