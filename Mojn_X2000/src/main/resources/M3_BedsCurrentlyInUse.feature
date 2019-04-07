@@ -16,26 +16,17 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 @tag
-Feature: Register Patient
-
-	Background:
-		Given that we are on a Hospital
-		And with sufficient departments
-
-  Scenario: Succesful Registration
-    Given I am on the patient registration page
-    And I am entering sufficient patient data
-    When I hit "register"
-    Then I get a message that the patient was registered succesfully
-    
-  Scenario: Insufficient Data Provided
-    Given I am on the patient registration page
-    And I am entering insufficient patient data
-    When I hit "register"
-    Then I get a message that additional information is needed
-    
+Feature: DepartmentStaff
+  This feature makes it possible to add staff to a Department.
   
+  Background:
+  Given we have a Hospital
+  And with IP_department
 
+  @tag1
+  Scenario: BedsCurrentlyInUse reported successfully.
+    Given I am on the In-Patient Department page
+    When I ask for the number of beds in use
+    Then the number of beds in use is returned.
     
