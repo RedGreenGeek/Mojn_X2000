@@ -23,7 +23,7 @@ public class M3_BedsCurrentlyInUse {
 	@Given("^we have a Hospital$")
 	public void that_we_are_on_a_Hospital_with_Departments() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    h = new Hospital();
+	    h = Hospital.getHospital();
 	}
 
 	@Given("^with IP_department$")

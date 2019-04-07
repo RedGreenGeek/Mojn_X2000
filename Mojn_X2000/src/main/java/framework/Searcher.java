@@ -17,7 +17,7 @@ public class Searcher {
 		return s;
 	}
 	
-	private Searcher(Hospital hos) {
+	Searcher(Hospital hos) {
 		h = hos;
 	}
 	

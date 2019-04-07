@@ -9,8 +9,12 @@ import framework.Hospital;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import framework.department.Department;
 import framework.department.hc.InPatientDepart;
+import framework.*;
+import framework.person.*;
 
 public class UI_API {
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   PATIENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -46,17 +50,22 @@ public class UI_API {
 		
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DEPARTMENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public int BedsCurrentlyInUse(Department d) {
-		Department L = departmentSearch(d);
-		return ((InPatientDepart)p).beds.getBedsInUse();
+	public int BedsCurrentlyInUse(String dName) {
+		Searcher s = new Searcher(Hospital.getHospital());
+		java.util.Iterator<Department> I = s.departmentSearch(dName).iterator();
+		
+		while (I.hasNext()) {
+			Department d = I.next();		
+			if (d.getName().equals(dName)) {
+				return ((InPatientDepart)d).beds.getBedsInUse();
+			}
+		}
+		throw new IllegalArgumentException("Department name not found");
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   USER ACCESS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DATABASE   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   PARTICIPATION LISTS  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-	private Department departmentSearch(Department d) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 }
