@@ -10,7 +10,9 @@ import framework.person.Person;
 public class Hospital {
 	
 	private HashSet<Department> departSet = new HashSet<Department>();
-	private HashSet<Patient> patientRegistery = new HashSet<Patient>(); // temporary
+	protected static HashSet<Patient> patientRegistery = new HashSet<Patient>(); // temporary
+	
+	
 	
 	public Hospital() {
 		
