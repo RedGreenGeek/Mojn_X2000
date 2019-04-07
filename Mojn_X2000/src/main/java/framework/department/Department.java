@@ -9,7 +9,7 @@ public abstract class Department {
 
 	private String departName;
 	
-	protected  String getName(){
+	public String getName(){
 		return departName;
 	}
 	
