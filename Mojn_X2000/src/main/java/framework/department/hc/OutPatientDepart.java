@@ -55,7 +55,7 @@ public class OutPatientDepart extends HCDepart {
 	public Person DeQueue() {
 		ChangeReg r = new ChangeReg();
 		Person p = this.queue.poll().getID();
-		r.remove((Department)this,(Patient)p);
+		//r.remove((Department)this,(Patient)p);
 		return p;
 		
 		

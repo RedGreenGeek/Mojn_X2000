@@ -21,7 +21,7 @@ Feature: DepartmentStaff
   This feature makes it possible to add staff to a Department.
   
   Background:
-  Given that we have a Hospital
+  Given that we have a Hospital with Departments
   And with departments
 
   @tag1

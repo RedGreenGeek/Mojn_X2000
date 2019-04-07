@@ -1,4 +1,7 @@
-package framework.API;
+package framework;
+
+import framework.department.Department;
+import framework.department.hc.*;
 
 public class UI_API {
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   PATIENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -11,6 +14,9 @@ public class UI_API {
 		return "The patient has been registered succesfully!";
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DEPARTMENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	public int BedsCurrentlyInUse(Department p) {
+		return ((InPatientDepart)p).beds.getBedsInUse();
+	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   USER ACCESS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DATABASE   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   PARTICIPATION LISTS  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

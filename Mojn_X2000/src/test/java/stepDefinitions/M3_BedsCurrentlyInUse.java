@@ -13,19 +13,20 @@ import framework.person.*;
 import framework.person.staff.*;
 
 
-public class M3_DepartmentStaff {
+public class M3_BedsCurrentlyInUse {
 	
 	Hospital h;
+	Department in_depart;
 	
 	// Background 
 	
-	@Given("^that we have a Hospital with Departments$")
+	@Given("^we have a Hospital$")
 	public void that_we_are_on_a_Hospital_with_Departments() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    h = new Hospital();
 	}
 
-	@Given("^with departments$")
+	@Given("^with IP_department$")
 	public void with_sufficient_departments() throws Throwable {
 
 		// Staff set and patient set
@@ -69,23 +70,24 @@ public class M3_DepartmentStaff {
 		
 
 	}
-
-
-	@Given("^I am on the staff page$")
-	public void i_am_on_the_staff_page() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
-	}
 	
-	@When("^I add a staff member to a depart$")
-	public void i_add_a_staff_member_to_a_depart() throws Throwable {
+	@Given("^I am on the In-Patient Department page$")
+	public void i_am_on_the_In_Patient_Department_page() throws Throwable {
+	    ChangeReg k = new ChangeReg();
+	    Patient p =
+	    k.add(in_depart, 13);
+	}
+
+	@When("^I ask for the number of beds in use$")
+	public void i_ask_for_the_number_of_beds_in_use() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
-	
-	@Then("^I receive confirmation that the staff member added to the department$")
-	public void i_receive_confirmation_that_the_staff_member_added_to_the_department() throws Throwable {
+
+	@Then("^the number of beds in use is returned\\.$")
+	public void the_number_of_beds_in_use_is_returned() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
+
 }

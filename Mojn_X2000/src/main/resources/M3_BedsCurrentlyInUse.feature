@@ -17,24 +17,16 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Register Staff
-  This feature makes it possible to add staff to a record.
+Feature: DepartmentStaff
+  This feature makes it possible to add staff to a Department.
   
   Background:
-  Given that we are on a Hospital
-  And with sufficient departments
+  Given we have a Hospital
+  And with IP_department
 
   @tag1
-  Scenario: Staff registered successfully.
-    Given I am on the staff registration page
-    When I enter sufficient staff data
-    And click register staff
-    Then I receive confirmation that the staff member is registred
-    
-  @tag2
-  Scenario: Staff registered unsuccessfully
-    Given I am on the registration page
-    When I enter insufficient staff data
-    And I hit register staff
-    Then I receive an error message "insufficient staff data"
+  Scenario: BedsCurrentlyInUse reported successfully.
+    Given I am on the In-Patient Department page
+    When I ask for the number of beds in use
+    Then the number of beds in use is returned.
     
