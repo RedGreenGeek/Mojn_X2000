@@ -23,7 +23,7 @@ public class UI_API {
 		
 		try {
 			
-			ChangeReg cr = new ChangeReg();
+			ChangeReg cr = new ChangeReg(); // Used to modify attributes of Hospital
 			Patient patient = new Patient(firstName, lastName, adress, tribe, day, month, year, alive);
 			cr.add(Hospital.getHospital(), patient);
 
