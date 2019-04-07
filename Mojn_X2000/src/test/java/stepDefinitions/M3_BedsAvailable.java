@@ -12,20 +12,20 @@ import framework.person.*;
 import framework.person.staff.*;
 
 
-public class M3_BedsCurrentlyInUse {
+public class M3_BedsAvailable {
 	
 	Hospital h;
 	Department in_depart;
 	
 	// Background 
 	
-	@Given("^we have a Hospital$")
+	@Given("^a Hospital$")
 	public void that_we_are_on_a_Hospital_with_Departments() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    h = Hospital.getHospital();
 	}
 
-	@Given("^with IP_department$")
+	@Given("^with operational IP_department$")
 	public void with_sufficient_departments() throws Throwable {
 
 		// Staff set and patient set
@@ -55,7 +55,7 @@ public class M3_BedsCurrentlyInUse {
 		// Departments
 		Department Admin_depart = new AdminDepart("admin depart", staff_set);
 		Department out_depart = new OutPatientDepart("ER", staff_set, patient_set);
-		Department in_depart = new InPatientDepart("Cardio", staff_set, patient_set, 14);
+		Department in_depart = new InPatientDepart("Cardio", staff_set, patient_set, 3);
 		((InPatientDepart)in_depart).beds.AllocateBed(p1);
 		((InPatientDepart)in_depart).beds.AllocateBed(p1,12);
 		
@@ -67,26 +67,40 @@ public class M3_BedsCurrentlyInUse {
 		
 		h.setDepartSet(depart_set);
 	}
-	
-	@Given("^I am on the In-Patient Department page$")
-	public void i_am_on_the_In_Patient_Department_page() throws Throwable {
-//	    ChangeReg k = new ChangeReg();
-//	    Patient p = new Patient("p2_first", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
-//	    k.add(in_depart,p , 13);
+	@Given("^That beds are available$")
+	public void beds_are_available() {
+		
 	}
 	
 	int k;
 	
+	@When("^I ask for the number of beds available$")
+	public void i_ask_for_the_number_of_beds_available() throws Throwable {
+		k = UI_API.BedsAvailable("Cardio");
+	}
 	
-	@When("^I ask for the number of beds in use$")
-	public void i_ask_for_the_number_of_beds_in_use() throws Throwable {
+	@Then("^the number of beds available is returned\\.$")
+	public void the_number_of_beds_available_is_returned() throws Throwable {
+		assertEquals(k,1);
+	}
+	
+	//Next scenario
+	@Given("^That beds are not available$")
+	public void beds_are_not_available() {
+		Patient p3 = new Patient("p3_first", "p3_last", "p3_street", "p3_tribe", 01, 01, 1111, true);
 		
-		k = UI_API.BedsCurrentlyInUse("Cardio");
-	}
 
-	@Then("^the number of beds in use is returned\\.$")
-	public void the_number_of_beds_in_use_is_returned() throws Throwable {
-	    assertEquals(k,2);
+		
 	}
-
+	
+	@When("^I request the beds available$")
+	public void i_request_the_beds_available() throws Throwable {
+		k = UI_API.BedsAvailable("Cardio");
+	}
+	
+	@Then("^the string \"([^\"]*)\"\\.$")
+	public void the_string(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
 }

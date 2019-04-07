@@ -34,9 +34,11 @@ public class UI_API {
 		
 		return "The patient has been registered succesfully!";
 	}
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DEPARTMENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	public int BedsCurrentlyInUse(String dName) {
-		Searcher s = new Searcher(Hospital.getHospital());
+	/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DEPARTMENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+	
+	//searches for department and returns beds in use for the department matching the name.
+	public static int BedsCurrentlyInUse(String dName) {
+		Searcher s = Searcher.getInstance(Hospital.getHospital());
 		java.util.Iterator<Department> I = s.departmentSearch(dName).iterator();
 		
 		while (I.hasNext()) {

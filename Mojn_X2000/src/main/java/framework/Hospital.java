@@ -12,12 +12,14 @@ public class Hospital {
 	private static Hospital single_instance = null; 
 	
 	private HashSet<Department> departSet = new HashSet<Department>();
-	protected static HashSet<Patient> patientRegistery = new HashSet<Patient>(); // temporary
+	protected static HashSet<Patient> patientRegistery = new HashSet<Patient>(); // temporary Patient registry,
+	//to store patients in when not in the hospital, until we get a database.
 	
     private Hospital(){         
     } 
   
-    // static method to create instance of Singleton class 
+    // static method to create instance of Singleton class, 
+    //if the Hospital does not exist it is generated when called 
     public static Hospital getHospital() 
     { 
         if (single_instance == null) 
@@ -25,6 +27,7 @@ public class Hospital {
   
         return single_instance; 
     }
+    //<<<<<<<<<<<<<<< OK TO DELETE BELOW?>>>>>>>>>>>>>
 //	public Hospital() {
 //		
 //	}

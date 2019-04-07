@@ -10,6 +10,7 @@ public class Searcher {
 	static Hospital h;
 	private SearchEngine se = new SearchEngine();
 	
+	//Singleton caller, creates a searcher if non is instantiated.
 	public static synchronized Searcher getInstance(Hospital hos) {
 		if (s == null || h == null) {
 			s = new Searcher(hos);
@@ -21,6 +22,7 @@ public class Searcher {
 		h = hos;
 	}
 	
+	//Searches for a department name and returns a list of departments.
 	protected LinkedList<Department> departmentSearch(String departmentName){
 		LinkedList<Department> dList = new LinkedList<Department>(h.getDepartSet());
 		return se.department(departmentName, dList);
