@@ -9,17 +9,29 @@ import framework.person.Person;
 
 public class Hospital {
 	
+	private static Hospital single_instance = null; 
+	
 	private HashSet<Department> departSet = new HashSet<Department>();
 	protected static HashSet<Patient> patientRegistery = new HashSet<Patient>(); // temporary
 	
-	
-	public Hospital() {
-		
-	}
-	
-	public Hospital(HashSet<Department> departSet) {
-		this.departSet = departSet;
-	}
+    private Hospital(){         
+    } 
+  
+    // static method to create instance of Singleton class 
+    public static Hospital getHospital() 
+    { 
+        if (single_instance == null) 
+            single_instance = new Hospital(); 
+  
+        return single_instance; 
+    }
+//	public Hospital() {
+//		
+//	}
+//	
+//	public Hospital(HashSet<Department> departSet) {
+//		this.departSet = departSet;
+//	}
 	 
 	public void setDepartSet(HashSet<Department> departSet) {
 		this.departSet = departSet;
