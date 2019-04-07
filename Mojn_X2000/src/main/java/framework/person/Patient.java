@@ -3,7 +3,7 @@ package framework.person;
 public class Patient extends Person {
 	
 	static int counter;
-	private int patientID; // Common to all instances of the patient class
+	private int patientID; // Static variables are common to all instances of the patient class
 	
 	public int getPatientID() {
 	    return this.getPatientID();
