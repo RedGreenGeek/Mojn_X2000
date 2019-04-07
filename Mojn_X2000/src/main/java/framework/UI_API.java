@@ -10,7 +10,9 @@ public class UI_API {
 		
 		try {
 			
+			ChangeReg cr = new ChangeReg();
 			Patient patient = new Patient(firstName, lastName, adress, tribe, day, month, year, alive);
+			ChangeReg(getHospital(), patient);
 			
 			
 			
