@@ -151,7 +151,7 @@ public abstract class Person {
 	    this.lastName = name;
 	}
 	
-	static protected boolean isValidPersonData(String firstName, String lastName, int day, int month, int year, String adress, String tribe, boolean alive) {
+	static public boolean isValidPersonData(String firstName, String lastName, int day, int month, int year, String adress, String tribe, boolean alive) {
 		
 		return checkBirthDay(day, month, year) && checkString(firstName) && checkString(lastName) && checkString(adress) && checkString(tribe);
 

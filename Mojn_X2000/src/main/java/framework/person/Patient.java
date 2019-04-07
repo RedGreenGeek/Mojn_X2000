@@ -21,7 +21,7 @@ public class Patient extends Person {
 
 	}
 	
-	protected boolean isValidPatientData(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
+	static boolean isValidPatientData(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive) {
 		
 		return isValidPersonData(firstName, lastName, day, month, year, adress, tribe, alive);
 		
