@@ -11,6 +11,8 @@ public class Beds {
 		this.bedsInUse = 0;
 	}
 	
+	
+	// Places given patient in first bed available.
 	public void AllocateBed(Person patient) {
 		for (Person p: beds) {
 			if (p == null) {
@@ -20,7 +22,7 @@ public class Beds {
 			}
 		}
 	}
-	
+	//Places the patient in the given bed.
 	public void AllocateBed(Person patient, int bedNo) {
 		
 		if (beds[bedNo] == null) {
@@ -48,7 +50,8 @@ public class Beds {
 	public int getMaxBeds() {
 		return beds.length;
 	}
-
+	
+	//returns the always updated beds in use.
 	public int getBedsInUse() {
 		return bedsInUse;
 	}

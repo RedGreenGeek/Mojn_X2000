@@ -8,29 +8,32 @@ import framework.person.*;
 
 public class ChangeReg {
 	
-	public void add(Hospital h, Department d) {
+	protected void add(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.add(d);
 		h.setDepartSet(departSet);
 	}
-	public void remove(Hospital h, Department d) {
+
+	
+	protected void remove(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.remove(d);
 		h.setDepartSet(departSet);
 	}
 	
-	public void add(Department d, Staff s) {
+	protected void add(Department d, Staff s) {
 		HashSet<Person> staffSet = d.getStaff();
 		staffSet.add(s);
 		d.setStaff(staffSet);
 	}
-	public void remove(Department d, Staff s) {
+	
+	protected void remove(Department d, Staff s) {
 		HashSet<Person> staffSet = d.getStaff();
 		staffSet.remove(s);
 		d.setStaff(staffSet);
 	}
 	
-	public void add(Department d, Patient p) {
+	protected void add(Department d, Patient p) {
 		HashSet<Person> patientSet = d.getPatient();
 		if (d instanceof InPatientDepart) {
 			InPatientDepart IPD = (InPatientDepart)d;
@@ -51,7 +54,7 @@ public class ChangeReg {
 		else {System.err.println("Only Available to InPatient and OutPatient Departments.");}
 	}
 	
-	public void add(Department d, Patient p,int triageLevel) {
+	protected void add(Department d, Patient p,int triageLevel) {
 		HashSet<Person> patientSet = d.getPatient();
 
 		if(d instanceof OutPatientDepart) {
@@ -64,7 +67,7 @@ public class ChangeReg {
 		else {System.err.println("Only OutPatient Departments have triage levels");}
 	}
 	
-	public void remove(Department d, Patient p) {
+	protected void remove(Department d, Patient p) {
 		HashSet<Person> patientSet = d.getPatient();
 		patientSet.remove(p);
 		d.setPatient(patientSet);
