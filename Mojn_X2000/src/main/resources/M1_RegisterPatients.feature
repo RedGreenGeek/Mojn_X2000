@@ -29,8 +29,24 @@ Feature: Register Patient
     Then I get a message that the patient was registered succesfully
   @tag2
   Scenario: Insufficient Data Provided
-    When I am entering insufficient patient data
+    When I am not entering lastname
     Then I get a message that additional information is needed
+  @tag3
+  Scenario: Insufficient Data Provided
+    When I am not entering first name
+    Then I get a message that additional information is needed 
+  @tag4
+  Scenario: Insufficient Data Provided
+    When I am not entering adress
+    Then I get a message that additional information is needed
+  @tag5
+  Scenario: Insufficient Data Provided
+    When I am not entering tribe
+    Then I get a message that additional information is needed
+  @tag6
+  Scenario: Insufficient Data Provided
+    When I am not entering birthdate wrong
+    Then I get a message that additional information is needed   
     
   
 

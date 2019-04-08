@@ -10,25 +10,25 @@ public abstract class Person {
 	private String tribe;
 	private boolean alive;
 	
-	public String getAdress() {
-	    return this.adress;
-	}
+//	public String getAdress() {
+//	    return this.adress;
+//	}
 	
 	protected void setAdress(String adress) {
 	    this.adress = adress;
 	}
 	
-	public String getTribe() {
-	    return this.tribe;
-	}
+//	public String getTribe() {
+//	    return this.tribe;
+//	}
 	
 	protected void setTribe(String tribe) {
 	    this.tribe = tribe;
 	}
 	
-	public boolean isAlive() {
-	    return this.alive;
-	}
+//	public boolean isAlive() {
+//	    return this.alive;
+//	}
 	
 	protected void setAlive(boolean alive) {
 	    this.alive = alive;
@@ -131,9 +131,9 @@ public abstract class Person {
 	    }
 	}
 	
-	public String getBirthday() {
-	    return birthday;
-	}
+//	public String getBirthday() {
+//	    return birthday;
+//	}
 	
 	public String getFirstName() {
 	    return firstName;

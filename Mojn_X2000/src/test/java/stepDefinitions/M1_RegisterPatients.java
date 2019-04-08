@@ -51,8 +51,8 @@ public class M1_RegisterPatients {
 	
 	
 	//Next Scenario
-	@Given("^I am entering insufficient patient data$")
-	public void i_am_entering_insufficient_patient_data() throws Throwable {
+	@When("^I am not entering lastname$")
+	public void i_am_not_entering_lastname() throws Throwable {
 		k = UI_API.RegisterPatient("p2_first", "", "p2_street", "p2_tribe", 02, 02, 2222, true);
 	}
 
@@ -60,4 +60,24 @@ public class M1_RegisterPatients {
 	public void i_get_a_message_that_additional_information_is_needed() throws Throwable {
 		
 	}
+	
+	@When("^I am not entering first name$")
+	public void i_am_not_entering_first_name() throws Throwable {
+		k = UI_API.RegisterPatient("", "p2_last", "p2_street", "p2_tribe", 02, 02, 2222, true);
+	}
+
+	@When("^I am not entering adress$")
+	public void i_am_not_entering_adress() throws Throwable {
+		k = UI_API.RegisterPatient("p2_first", "p2_last", "", "p2_tribe", 02, 02, 2222, true);
+		}
+
+	@When("^I am not entering tribe$")
+	public void i_am_not_entering_tribe() throws Throwable {
+		k = UI_API.RegisterPatient("p2_first", "p2_last", "p2_street", "", 02, 02, 2222, true);
+		}
+
+	@When("^I am not entering birthdate wrong$")
+	public void i_am_not_entering_birthdate_wrong() throws Throwable {
+		k = UI_API.RegisterPatient("p2_first", "p2_last", "p2_street", "p2_tribe", 30, 02, 2222, true);
+		}
 }

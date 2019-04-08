@@ -20,6 +20,7 @@ public class Staff extends Person {
 		    this.setAdress(adress);
 		    this.setStaffID(JobType);
 		    this.setEmail();
+		    this.setJobType(JobType);
 			
 		} else {
 			
@@ -42,6 +43,10 @@ public class Staff extends Person {
 
 	protected void setEmail() {
 		this.email = (this.getFirstName() + this.getLastName() + "_" + this.serialID + "@mail.com").replaceAll(" ","");
+	}
+	
+	protected void setJobType(String jobType) {
+		this.jobType = jobType;
 	}
 
 }

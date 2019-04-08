@@ -13,11 +13,19 @@ public class Hospital {
 	protected static HashSet<Patient> patientRegistery = new HashSet<Patient>(); // temporary Patient registry,
 	//to store patients in when not in the hospital, until we get a database.
 	
-	protected static HashSet<Staff> staffRegistery = new HashSet<Staff>(); // temporary Patient registry,
-	//to store patients in when not in the hospital, until we get a database.
+	protected static HashSet<Staff> staffRegistery = new HashSet<Staff>(); // temporary Staff registry,
+	//to store staff members in until we get a database.
 	
 	private Hospital(){         
-    } 
+    }
+	
+    public static HashSet<Patient> getPatientRegistery() {
+		return patientRegistery;
+	}
+
+	public static void setPatientRegistery(HashSet<Patient> patientRegistery) {
+		Hospital.patientRegistery = patientRegistery;
+	}
   
     public static HashSet<Staff> getStaffRegistery() {
 		return staffRegistery;
@@ -37,11 +45,5 @@ public class Hospital {
         return single_instance; 
     }
     
-    public static HashSet<Patient> getPatientRegistery() {
-		return patientRegistery;
-	}
 
-	public static void setPatientRegistery(HashSet<Patient> patientRegistery) {
-		Hospital.patientRegistery = patientRegistery;
-	}
 }
