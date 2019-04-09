@@ -4,6 +4,7 @@ import java.util.*;
 
 import framework.person.Patient;
 import framework.person.Staff;
+import framework.Department;
 
 public class Hospital {
 	
@@ -15,6 +16,11 @@ public class Hospital {
 	
 	protected static HashSet<Staff> staffRegistery = new HashSet<Staff>(); // temporary Staff registry,
 	//to store staff members in until we get a database.
+	
+	protected static HashSet<Department> departSet = new HashSet<Department>(); // temporary Staff registry,
+	//to store staff members in until we get a database.
+	
+	
 	
 	private Hospital(){         
     }
@@ -48,9 +54,9 @@ public class Hospital {
 //		this.departSet = departSet;
 //	}
 //	
-//	public HashSet<Department> getDepartSet() {
-//		return this.departSet;
-//	}
+	public static HashSet<Department> getDepartSet() {
+		return departSet;
+	}
 //	
 //	public HashSet<Person> getAllStaff(){
 //		HashSet<Person> staffSet = new HashSet<Person>();

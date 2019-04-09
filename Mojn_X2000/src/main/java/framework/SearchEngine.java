@@ -1,24 +1,24 @@
-//package framework;
-//
-//import java.util.LinkedList;
-//
-//import Class_Framework.person.Person;
-//import Class_Framework.person.Staff;
-//
-//public class SearchEngine {
+package framework;
+
+import java.util.LinkedList;
+
+import framework.person.Person;
+import framework.person.Staff;
+
+public class SearchEngine {
 //	
-//	protected LinkedList<Department> department(String departmentName, LinkedList<Department> dList){
-//		LinkedList<Department> res = new LinkedList<Department>();
-//		while (!dList.isEmpty()) {
-//			if (dList.getFirst().getName().toLowerCase().startsWith(departmentName.toLowerCase())){
-//				res.add(dList.removeFirst());
-//			}
-//			else {
-//				dList.removeFirst();
-//			}
-//		}
-//		return res;
-//	}
+	protected LinkedList<Department> department(String departmentName, LinkedList<Department> dList){
+		LinkedList<Department> res = new LinkedList<Department>();
+		while (!dList.isEmpty()) {
+			if (dList.getFirst().getName().toLowerCase().startsWith(departmentName.toLowerCase())){
+				res.add(dList.removeFirst());
+			}
+			else {
+				dList.removeFirst();
+			}
+		}
+		return res;
+	}
 //	
 //	protected LinkedList<Person> firstName(String firstName,LinkedList<Person> sList){
 //		LinkedList<Person> res = new LinkedList<Person>();
@@ -71,4 +71,4 @@
 //		}
 //		return res;
 //	}
-//}
+}

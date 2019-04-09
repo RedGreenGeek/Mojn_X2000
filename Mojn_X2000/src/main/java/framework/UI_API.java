@@ -1,5 +1,7 @@
 package framework;
 
+import java.util.HashSet;
+
 import javax.swing.text.html.HTMLDocument.Iterator;
 
 import framework.person.*;
@@ -42,11 +44,49 @@ public class UI_API {
 	}
 	/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DEPARTMENTS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 	
+	public static String[] StaffAtDepartment(String dName) {
+	    Searcher s = Searcher.getInstance(Hospital.getHospital());
+	    
+	    try {
+	    	java.util.Iterator<Department> I = s.departmentSearch(dName).iterator();
+	    
+	    	String[] result = new String[0];
+		    while (I.hasNext()) {
+		      Department d = I.next();    
+		      if (d.getName().equals(dName)) {
+		        
+		    	  HashSet<Person> dummy = d.getStaff();
+		    	  result = new String[dummy.size()];
+		    	  int i = 0;
+		    	  java.util.Iterator<Person> I1 = dummy.iterator();
+		    	  
+		    	  while (I1.hasNext()){
+		    		  
+		    		  Staff staff = (Staff) I1.next(); //downcast finally worked!
+		    	  
+		    		  result[i++] = "StaffID: " + staff.getSerialID() + "Firstname: " + staff.getFirstName() + "Lastname: " + staff.getLastName();
+		    		  
+		    	  }
+		        
+		    	  return result;
+		      }
+		      
+		      return result;
+		      
+		    }
+	    } catch (IllegalArgumentException e) {
+	    	
+	    	return null;
+	    	
+	    }
+	    
+	    return null;
+	    
+	}
+	
 	//searches for department and returns beds in use for the department matching the name.
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   USER ACCESS   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   DATABASE   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   PARTICIPATION LISTS  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
 
 }

@@ -1,18 +1,18 @@
-//package framework.departments.HealthCare;
-//import java.util.ArrayList;
-////
+package framework.departments.HealthCare;
+import java.util.ArrayList;
 //
-//import java.util.HashSet;
-//import java.util.PriorityQueue;
-//
-//
-//import Class_Framework.ChangeReg;
-//import Class_Framework.Department;
-//import Class_Framework.Departments.HCDepart;
-//import Class_Framework.person.Patient;
-//import Class_Framework.person.Person;
-//
-//public class OutPatientDepart extends HCDepart {
+
+import java.util.HashSet;
+import java.util.PriorityQueue;
+
+
+//import framework.ChangeReg;
+import framework.Department;
+import framework.departments.HCDepart;
+//import framework.person.Patient;
+import framework.person.Person;
+
+public class OutPatientDepart extends HCDepart {
 //	class Pair implements Comparable<Pair> {
 //	      Person P;
 //	      int triageLevel;
@@ -41,12 +41,12 @@
 //	
 //	
 //	
-//	public OutPatientDepart(String departName, HashSet<Person> staffSet, HashSet<Person> patientSet) {
-//		super.setName(departName);
-//		super.setStaff(staffSet); 
+	public OutPatientDepart(String departName, HashSet<Person> staffSet/*, HashSet<Person> patientSet*/) {
+		super.setName(departName);
+		super.setStaff(staffSet); 
 //		this.patientSet = patientSet;
 //		this.queue = new PriorityQueue<Pair>(1);
-//	}
+	}
 //	
 //	public void EnQueue(Person P, int triageLevel) {
 //		Pair p = new Pair(P,triageLevel);
@@ -78,4 +78,4 @@
 //		
 //		
 //	}
-//}
+}

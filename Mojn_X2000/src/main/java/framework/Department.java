@@ -1,28 +1,29 @@
-//package framework;
-//import java.util.*;
+package framework;
+import java.util.*;
 //
-//import Class_Framework.person.Person;
+import framework.person.Person;
 //
-//public abstract class Department {
-//	private HashSet<Person> staffSet;
-//
-//	private String departName;
+public abstract class Department {
+	
+	private HashSet<Person> staffSet;
+
+	private String departName;
 //	
-//	protected  String getName(){
-//		return departName;
-//	}
+	protected  String getName(){
+		return departName;
+	}
 //	
-//	protected void setName(String departmentName) {
-//		this.departName = departmentName;
-//	}
+	protected void setName(String departmentName) {
+		this.departName = departmentName;
+	}
 //	
-//	protected HashSet<Person> getStaff() {
-//		return this.staffSet;
-//	}
+	protected HashSet<Person> getStaff() {
+		return this.staffSet;
+	}
 //	
-//	protected void setStaff(HashSet<Person> staffSet) {
-//		this.staffSet = staffSet;
-//	}
+	protected void setStaff(HashSet<Person> staffSet) {
+		this.staffSet = staffSet;
+	}
 //
 //	protected HashSet<Person> getPatient(){
 //		System.err.println("Warning, only HCDepartments has patients.");
@@ -30,4 +31,4 @@
 //	}
 //	
 //	protected void setPatient(HashSet<Person> patientSet) {}
-//}
+}

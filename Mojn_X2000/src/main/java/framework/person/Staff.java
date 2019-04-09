@@ -1,7 +1,7 @@
 package framework.person;
 
 public class Staff extends Person {
-	
+
 	private String email;
 	private String serialID;
 	private String jobType;
@@ -39,6 +39,10 @@ public class Staff extends Person {
 	protected void setStaffID(String jobTypeID) {
 		this.serialID = jobTypeID + Staff.counter;
 		Staff.counter +=1; 
+	}
+	
+	public String getSerialID() {
+		return serialID;
 	}
 
 	protected void setEmail() {
