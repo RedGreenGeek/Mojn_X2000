@@ -19,7 +19,7 @@ public class UI_API {
 		} catch (IllegalArgumentException e) {
 			
 		}
-			return "Illegal Argument!";
+			return "Insufficient data: Please fill all fields with correct data.";
 		
 	}
 		

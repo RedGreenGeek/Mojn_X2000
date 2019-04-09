@@ -58,7 +58,7 @@ public class M1_RegisterPatients {
 
 	@Then("^I get a message that additional information is needed$")
 	public void i_get_a_message_that_additional_information_is_needed() throws Throwable {
-		
+		assertEquals(k, ("Insufficient data: Please fill all fields with correct data."));
 	}
 	
 	@When("^I am not entering first name$")
