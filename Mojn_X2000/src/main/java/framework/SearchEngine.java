@@ -70,4 +70,17 @@ public class SearchEngine {
 		}
 		return res;
 	}
+
+	protected LinkedList<Person> id(String id, LinkedList<Person> pList) {
+		LinkedList<Person> res = new LinkedList<Person>();
+		while (!pList.isEmpty()) {
+			if (pList.getFirst().getID().equals(id)) {
+				res.add(pList.removeFirst());
+			}
+			else {
+				pList.removeFirst();
+			}
+		}
+		return res;
+	}
 }

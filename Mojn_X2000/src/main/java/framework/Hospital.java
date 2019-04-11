@@ -6,9 +6,18 @@ import framework.Departments.HCDepart;
 
 public class Hospital {
 	private HashSet<Department> departSet = new HashSet<Department>();
+	private HashSet<Person> allPatientSet = new HashSet<Person>();
 	
-	public Hospital(HashSet<Department> departSet) {
-		this.departSet = departSet;
+	
+	public Hospital() {
+	}
+	
+	protected HashSet<Person> getAllPatientSet() {
+		return allPatientSet;
+	}
+
+	protected void setAllPatientSet(HashSet<Person> allPatientSet) {
+		this.allPatientSet = allPatientSet;
 	}
 	
 	protected void setDepartSet(HashSet<Department> departSet) {

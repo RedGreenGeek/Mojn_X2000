@@ -7,24 +7,21 @@ public class Searcher {
 	static Hospital h;
 	private SearchEngine se = new SearchEngine();
 	
-	public static synchronized Searcher getInstance(Hospital hos) {
-		if (s == null || h == null) {
-			s = new Searcher(hos);
-		}
-		return s;
-	}
-	
-	private Searcher(Hospital hos) {
+	public Searcher(Hospital hos) {
 		h = hos;
 	}
+	
 	
 	protected LinkedList<Department> departmentSearch(String departmentName){
 		LinkedList<Department> dList = new LinkedList<Department>(h.getDepartSet());
 		return se.department(departmentName, dList);
 	}
 	
-	protected LinkedList<Person> patientSearch(String firstName, String lastName, String birthday) {
+	protected LinkedList<Person> patientSearch(String id, String firstName, String lastName, String birthday) {
 		LinkedList<Person> pList = new LinkedList<Person>(h.getAllPatient());
+		if (!id.equals("")) {
+			pList = se.id(id, pList);
+		}
 		if (!birthday.equals("")) {
 			pList = se.birthday(birthday, pList);
 		}

@@ -20,9 +20,8 @@
 Feature: Register Patient
 
   Background:
-	Given that we are on a Hospital
-	And with a Patient Registery
-	And I am on the patient registration page
+	Given I have a patient I want to register
+
   @tag1
   Scenario: Succesful Registration
     When I am entering sufficient patient data
@@ -43,10 +42,10 @@ Feature: Register Patient
   Scenario: Insufficient Data Provided
     When I am not entering tribe
     Then I get a message that additional information is needed
-  @tag6
+  @tag6 
   Scenario: Insufficient Data Provided
-    When I am not entering birthdate wrong
-    Then I get a message that additional information is needed   
+    When I am entering birthday wrongly
+    Then I get a message that additional information is needed  
     
   
 
