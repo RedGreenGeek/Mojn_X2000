@@ -9,10 +9,11 @@ import framework.person.*;
 import framework.person.staff.*;
 
 public class API {
-	Hospital h;
+	private static Hospital h;
 	private static Searcher searcher;
 	private static HashSet<Person> totalSet = new HashSet<Person>();
 	private static API instance;
+	private static ChangeReg R;
 	
 	public static synchronized API getInstance() {
 		if (instance==null) {
@@ -26,7 +27,7 @@ public class API {
 	
 	private API (){
 		//Loads hospital in from database
-		ChangeReg R = new ChangeReg();
+		R = new ChangeReg();
 		
 		//------
 		h = new Hospital();
@@ -54,6 +55,8 @@ public class API {
 		R.add(In, P2_in);
 		R.add(In, D1_in);
 		R.add(In, N1_in);
+		R.add(h, D1_in);
+		R.add(h, N1_in);
 		
 		
 		//------
@@ -66,6 +69,8 @@ public class API {
 		R.add(Out, P2_out);
 		R.add(Out, D1_out);
 		R.add(Out, N1_out);
+		R.add(h, D1_out);
+		R.add(h, N1_out);
 		
 		//------
 		ICTOfficer ICTOf = new ICTOfficer("Jens","Hansen","Norway","Indian",29,2,1996,"IT");
@@ -73,6 +78,8 @@ public class API {
 		
 		R.add(A,ICTOf);
 		R.add(A, clerk);
+		R.add(h,ICTOf);
+		R.add(h, clerk);
 		
 		//------
 		Patient P1_in2 = new Patient("Jens","Jensen","Zulu","Jagtvej 69",24,9,97,true,"Pediatric");
@@ -184,6 +191,130 @@ public class API {
 		}
 		return "Beds available in department: " + departmentName;
 	}
+	
+	/* _____________ STAFF REGISTRATION for M2 ______________ */
+	
+	public static String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+		
+		Staff p;
+		
+		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
+			
+			if (jobtype.equals("Clerk")) {
+				p = new Clerk(firstName, lastName, adress, tribe, day, month ,year, null);
+			}
+			
+			else if (jobtype.equals("Nurse")) {
+				p = new Nurse(firstName, lastName, adress, tribe, day, month ,year, null);
+			}
+			
+			else if (jobtype.equals("Doctor")) {
+				p = new Doctor(firstName, lastName, adress, tribe, day, month ,year, null);
+			}
+			
+			else if (jobtype.equals("ICTOfficer")) {
+				p = new ICTOfficer(firstName, lastName, adress, tribe, day, month ,year, null);
+			}
+			
+			else {
+				return "Unsuccesful registration!";
+			}
+			
+			R.add(h, p);
+			
+			return "The " + jobtype + " has been registered succesfully!";
+		
+		}
+		
+		else {
+			
+			return "Unsuccesful registration!";
+			
+		}
+		
+		
+	}
+	
+	public static String changeStaff (String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+		
+		if (searcher.staffSearch(StaffID, "", "", "", "").size() == 0) {
+			return "The ID does not match an employee!";
+		}
+		Staff person = (Staff) searcher.staffSearch(StaffID, "", "", "", "").get(0);
+		if (person==null) {
+			return "The ID does not match an employee!";
+		}
+		if (firstName == "") {
+			firstName = person.getFirstName();
+		}
+		if (lastName == "") {
+			lastName = person.getLastName();
+		}
+		if (adress == "") {
+			adress = person.getAdress();
+		}
+		if (tribe == "") {
+			tribe = person.getTribe();
+		}
+		if (day == 0 || month == 0 || year == 0) {
+			String[] birthday = person.getBirthday().split("-");
+			day = Integer.parseInt(birthday[0]);
+			month = Integer.parseInt(birthday[1]);
+			year = Integer.parseInt(birthday[2]);
+		}
+		
+		// special: Job type is wanted changed
+		if (jobtype != "") {
+			if(jobtype.equals("Nurse") ||jobtype.equals("Doctor") ||jobtype.equals("Clerk") ||jobtype.equals("ICTOfficer")) {
+			String d = person.getDepartment();
+			Department dd = searcher.departmentSearch(d).peek();
+			// removed from the specific department
+			R.remove(dd, person);
+			// removed from the overall set
+			h.getAllStaff("Overall").remove(person);
+			// registered as with new job type.
+			String message = registerStaff(jobtype, firstName, lastName, adress, tribe, day, month ,year);
+			return message;} else {return "Invalid job type!";}
+		}
+		else {
+			if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
+				person.setFirstName(firstName);
+				person.setLastName(lastName);
+				person.setBirthDay(day, month, year);
+				person.setAdress(adress);
+				person.setTribe(tribe);
+				return "Staff information has been changed successfully!";
+			}
+			else {
+				return "Illegal changes to patient. Please check that the information is correct!";
+			}
+		}
+		
+	}
+
+	public static String staffSearcher(String StaffID, String firstName, String lastName, String birthday, String email) {
+
+		LinkedList<Person> persons = searcher.staffSearch("",firstName, lastName, birthday, email);
+		String[] list = new String[persons.size()+1];
+		list[0] = "First name | Last name | Address | Birthday |  ID  | Job type ";
+		Staff s;
+		String message = "";
+		for (int i = 0; i<persons.size(); i++) {
+			s = (Staff) persons.get(i);
+			list[i+1] = s.getFirstName() + " | " + s.getLastName() + " | " + s.getAdress() + " | " + s.getBirthday() + " | " + s.getID() + " | " + s.getJobType();
+		}
+		for (int i = 0; i<list.length; i++) {
+			message = message + list[i] + "\n";
+		}
+		if (message.equals(list[0] + "\n")) {
+			return "No match to search parameters!";
+		} else {return message; }
+		
+		
+	}
+	
+	
+	
 	
 	
 	public String bedsInUse(String departmentName) {
