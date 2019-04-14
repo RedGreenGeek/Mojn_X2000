@@ -12,7 +12,7 @@ public class ChangeReg {
 	// Method has been overloaded to accept a person and the only instance of our hospital,
 	// such that a person can be added to the overall organization. 
 	public void add(Hospital h, Staff p) {	
-		HashSet<Staff> allStaffSet = h.getAllStaff("With department");
+		HashSet<Staff> allStaffSet = h.getAllStaff("With and without department");
 		allStaffSet.add(p);
 		h.setAllStaff(allStaffSet);
 		

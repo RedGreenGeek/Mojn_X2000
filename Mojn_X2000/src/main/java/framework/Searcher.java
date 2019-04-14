@@ -34,8 +34,11 @@ public class Searcher {
 		return pList;		
 	}
 	
-	protected LinkedList<Person> staffSearch(String firstName, String lastName, String birthday,String email) {
-		LinkedList<Person> pList = new LinkedList<Person>(h.getAllStaff());
+	protected LinkedList<Person> staffSearch(String staffId, String firstName, String lastName, String birthday,String email) {
+		LinkedList<Person> pList = new LinkedList<Person>(h.getAllStaff("With and without department"));
+		if (!staffId.equals("")) {
+			pList = se.id(staffId, pList);
+		}
 		if (!email.equals("")) {
 			pList = se.email(email,pList);
 		}

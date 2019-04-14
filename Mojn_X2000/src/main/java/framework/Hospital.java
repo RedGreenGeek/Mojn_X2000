@@ -6,10 +6,10 @@ import framework.Departments.HCDepart;
 import framework.person.Staff;
 
 public class Hospital {
+	
 	private HashSet<Department> departSet = new HashSet<Department>();
 	private HashSet<Person> allPatientSet = new HashSet<Person>();
 	private HashSet<Staff> allStaffSet = new HashSet<Staff>();
-	
 	
 	public Hospital() {
 	}
