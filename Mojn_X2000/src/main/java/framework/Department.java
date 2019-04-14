@@ -28,4 +28,9 @@ public abstract class Department {
 	}
 	
 	protected void setPatient(HashSet<Person> patientSet) {}
+	
+	@Override
+	public String toString() {
+		return departName;
+	}
 }

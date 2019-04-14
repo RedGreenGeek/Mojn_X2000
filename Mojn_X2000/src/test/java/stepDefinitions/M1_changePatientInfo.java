@@ -6,7 +6,7 @@ import cucumber.api.java.en.*;
 import framework.API;
 
 public class M1_changePatientInfo {
-	int patientID = 3;
+	String patientID;
 	String message;
 	API ui = API.getInstance();
 	
@@ -16,12 +16,12 @@ public class M1_changePatientInfo {
 
 	@When("^I am entering a valid patientID$")
 	public void i_am_entering_a_valid_patientID() {
-		patientID = 3;
+		patientID = "3";
 	}
 
 	@When("^I am changing the given info to something valid$")
 	public void i_am_changing_the_given_info_to_something_valid() {
-	    message=ui.changePatient("3", "Søren", "Sørensen", "SF", "Hellerup", 02, 02, 1902, true);
+	    message=ui.changePatient(patientID, "Søren", "Sørensen", "SF", "Hellerup", 02, 02, 1902, true);
 	}
 
 	@Then("^I get a message that the change was succesful$")

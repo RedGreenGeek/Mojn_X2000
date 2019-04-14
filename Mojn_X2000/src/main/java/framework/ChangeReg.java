@@ -36,7 +36,7 @@ public class ChangeReg {
 			InPatientDepart IPD = (InPatientDepart)d;
 			if (IPD.beds.getBedsAvailable()) {
 				patientSet.add(p);
-				IPD.beds.AllocateBed(p);
+//				IPD.beds.AllocateBed(p);
 				
 			}
 			

@@ -11,14 +11,17 @@ public class Beds {
 		this.bedsInUse = 0;
 	}
 	
-	public void AllocateBed(Person patient) {
+	public String AllocateBed(Person patient) {
+		String message = "-1";
 		for (Person p: beds) {
 			if (p == null) {
 				p = patient;
 				bedsInUse++;
+				message = beds.toString();
 				break;
 			}
 		}
+		return message;
 	}
 	
 	public void AllocateBed(Person patient, int bedNo) {
@@ -57,9 +60,8 @@ public class Beds {
 		this.bedsInUse = bedsInUse;
 	}
 	
-	 public boolean getBedsAvailable() {
-		 boolean Beds = bedsInUse<beds.length;
-		 return Beds;
-	 }
-
+	public boolean getBedsAvailable() {	 
+		boolean Beds = bedsInUse<beds.length;
+		return Beds;
+	}
 }
