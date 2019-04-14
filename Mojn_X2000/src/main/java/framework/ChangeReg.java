@@ -8,6 +8,15 @@ import framework.person.Patient;
 import framework.person.Staff;
 
 public class ChangeReg {
+	
+	// Method has been overloaded to accept a person and the only instance of our hospital,
+	// such that a person can be added to the overall organization. 
+	public void add(Hospital h, Staff p) {	
+		HashSet<Staff> allStaffSet = h.getAllStaff("With department");
+		allStaffSet.add(p);
+		h.setAllStaff(allStaffSet);
+		
+	}
 	public void add(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.add(d);

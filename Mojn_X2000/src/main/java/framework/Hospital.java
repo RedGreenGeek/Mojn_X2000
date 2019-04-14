@@ -3,10 +3,12 @@ package framework;
 import java.util.*;
 
 import framework.Departments.HCDepart;
+import framework.person.Staff;
 
 public class Hospital {
 	private HashSet<Department> departSet = new HashSet<Department>();
 	private HashSet<Person> allPatientSet = new HashSet<Person>();
+	private HashSet<Staff> allStaffSet = new HashSet<Staff>();
 	
 	
 	public Hospital() {
@@ -37,6 +39,17 @@ public class Hospital {
 //		}
 //		throw new IllegalArgumentException("No such department");
 //	}
+	
+	public HashSet<Staff> getAllStaff(String s){
+		
+		return this.allStaffSet;
+	}
+	
+	public void setAllStaff(HashSet<Staff> allStaffSet){
+		
+		this.allStaffSet = allStaffSet;
+		
+	}
 	
 	public HashSet<Person> getAllStaff(){
 		HashSet<Person> staffSet = new HashSet<Person>();

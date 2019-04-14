@@ -9,10 +9,11 @@ import framework.person.*;
 import framework.person.staff.*;
 
 public class API {
-	Hospital h;
+	private static Hospital h;
 	private static Searcher searcher;
 	private static HashSet<Person> totalSet = new HashSet<Person>();
 	private static API instance;
+	private static ChangeReg R;
 	
 	public static synchronized API getInstance() {
 		if (instance==null) {
@@ -26,7 +27,7 @@ public class API {
 	
 	private API (){
 		//Loads hospital in from database
-		ChangeReg R = new ChangeReg();
+		R = new ChangeReg();
 		
 		//------
 		h = new Hospital();
@@ -104,6 +105,49 @@ public class API {
 				return "Illegal information changes.";
 			}
 		}
+	}
+	
+	/* _____________ STAFF REGISTRATION for M2 ______________ */
+	
+	public static String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+		
+		Staff p;
+		
+		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
+			
+			if (jobtype.equals("Clerk")) {
+				p = new Clerk(firstName, lastName, adress, tribe, day, month ,year, null);
+			}
+			
+			else if (jobtype.equals("Nurse")) {
+				p = new Nurse(firstName, lastName, adress, tribe, day, month ,year, null);
+			}
+			
+			else if (jobtype.equals("Doctor")) {
+				p = new Doctor(firstName, lastName, adress, tribe, day, month ,year, null);
+			}
+			
+			else if (jobtype.equals("ICTOfficer")) {
+				p = new ICTOfficer(firstName, lastName, adress, tribe, day, month ,year, null);
+			}
+			
+			else {
+				return "Unsuccesful registration!";
+			}
+			
+			R.add(h, p);
+			
+			return "The " + jobtype + " has been registered succesfully!";
+		
+		}
+		
+		else {
+			
+			return "Unsuccesful registration!";
+			
+		}
+		
+		
 	}
 	
 	
