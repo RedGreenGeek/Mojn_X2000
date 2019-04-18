@@ -367,7 +367,6 @@ public class API {
 			
 			p = new Patient(firstName, lastName, adress, tribe, day, month ,year, true, department);
 			R.add(depart, p);
-			
 			return "The patient has been registered succesfully to " + department +  "!";
 		
 		}
@@ -377,6 +376,24 @@ public class API {
 			return "Unsuccesful registration cause to invalid patient data!";
 			
 		}
+	}
+	
+	// The input to this function should be specified in the gui so when
+	// i search for the patient and clicks remove this function is given the patient ID
+	public static String discharge(String ID) {
+		Patient p;
+		Department depart;
+		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
+			return "The patient ID's isn't uniqe";
+		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
+		
+		if (searcher.departmentSearch(p.getDepartment()).size() != 1) {
+			return "The department isn't uniqe";
+		} else {depart = searcher.departmentSearch(p.getDepartment()).peek();}
+		
+		R.remove(depart, p);
+		
+		return "The patient " + p.getFirstName() + " " + p.getLastName() + ", " + ID + ", has been removed succesfully from " + depart.getName();
 	}
 	
 	
