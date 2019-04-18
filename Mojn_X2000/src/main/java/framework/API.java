@@ -292,9 +292,9 @@ public class API {
 		
 	}
 
-	public static String staffSearcher(String StaffID, String firstName, String lastName, String birthday, String email) {
+	public static String staffSearcher(String staffID, String firstName, String lastName, String birthday, String email) {
 
-		LinkedList<Person> persons = searcher.staffSearch("",firstName, lastName, birthday, email);
+		LinkedList<Person> persons = searcher.staffSearch(staffID,firstName, lastName, birthday, email);
 		String[] list = new String[persons.size()+1];
 		list[0] = "First name | Last name | Address | Birthday |  ID  | Job type ";
 		Staff s;
@@ -329,6 +329,28 @@ public class API {
 		
 		return "Department: " + departmentName+" currently have "+depart.beds.getBedsInUse()+" beds in use.";
 	}
+	
+	public static String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
+		
+		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
+		String[] list = new String[persons.size()+1];
+		list[0] = "First name | Last name | Address | Birthday |  ID ";
+		Patient s;
+		String message = "";
+		for (int i = 0; i<persons.size(); i++) {
+			s = (Patient) persons.get(i);
+			list[i+1] = s.getFirstName() + " | " + s.getLastName() + " | " + s.getAdress() + " | " + s.getBirthday() + " | " + s.getID();
+		}
+		for (int i = 0; i<list.length; i++) {
+			message = message + list[i] + "\n";
+		}
+		if (message.equals(list[0] + "\n")) {
+			return "No match to search parameters!";
+		} else {return message; }
+		
+		
+	}
+	
 }
  // dsa
 
