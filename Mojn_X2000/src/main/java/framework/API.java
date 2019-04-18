@@ -351,8 +351,39 @@ public class API {
 		
 	}
 	
+	
+	/* _____________ PATIENT ADMISSION for M4 ______________ */
+	public static String patientAdmission(String department, String firstName, String lastName, String adress, String tribe, int day, int month, int year) {
+		Patient p;
+		Department depart;
+		if (searcher.departmentSearch(department).size() != 1) {
+			return "The department specification is ambigious";
+		}else {
+			depart = searcher.departmentSearch(department).peek();
+		}
+		
+		
+		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
+			
+			p = new Patient(firstName, lastName, adress, tribe, day, month ,year, true, department);
+			R.add(depart, p);
+			
+			return "The patient has been registered succesfully to " + department +  "!";
+		
+		}
+		
+		else {
+			
+			return "Unsuccesful registration cause to invalid patient data!";
+			
+		}
+	}
+	
+	
 }
- // dsa
+
+
+
 
 
 
