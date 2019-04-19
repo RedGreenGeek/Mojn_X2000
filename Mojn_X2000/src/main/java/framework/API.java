@@ -391,6 +391,27 @@ public class API {
 		return "The patient " + p.getFirstName() + " " + p.getLastName() + ", " + ID + ", has been removed succesfully from " + depart.getName();
 	}
 	
+	public static String movePatientDepart(String ID, String depart) {
+		Patient p;
+		String return_message;
+		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
+			return "The patient wasn't moved";
+		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
+
+		return_message = discharge(ID);
+		if (return_message.equals("The department isn't uniqe") || return_message.equals("The patient ID's isn't uniqe")) {
+			return "The patient wasn't moved";
+		}
+		
+		String[] bday = p.getBirthday().split("-");
+		int day = Integer.parseInt(bday[0]);
+		int month = Integer.parseInt(bday[1]);
+		int year = Integer.parseInt(bday[2]);
+		return_message = patientAdmission(depart, p.getFirstName(), p.getLastName(), p.getAdress(), p.getTribe(), day, month, year);
+		if (return_message.equals("The department specification is ambigious") || return_message.equals("Unsuccesful registration cause to invalid patient data!")) {
+			return "The patient wasn't moved";
+		} else {return "The patient was moved succesfully to" + depart;}
+	}
 	
 }
 
