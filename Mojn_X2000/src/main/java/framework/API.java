@@ -98,6 +98,7 @@ public class API {
 		System.out.println(In.beds.getBedsAvailable());
 	}
 	
+	/* _____________ PATIENT REGISTRATION for M1 ______________ */
 	public static String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month,
 			int year, boolean alive) {
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
@@ -130,67 +131,27 @@ public class API {
 		}
 	}
 
-	public LinkedList<String> getDepartments() {
-		LinkedList<Department> ds = new LinkedList<Department>(h.getDepartSet());
-		LinkedList<String> dlist = new LinkedList<String>();
-		while (!ds.isEmpty()) {
-			dlist.add(ds.removeFirst().toString());
-		}
-		return dlist;
-	}
-
-	public LinkedList<String> getDeparmentStaff(String departmentName) {
-		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
-		LinkedList<String> res = new LinkedList<String>();
-		if (resList.size()==1) {
-			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getStaff());
-			while (!sList.isEmpty()) {
-				res.add(sList.removeFirst().toString());
-			}
-		}
-		else {
-			res.add("No or multiple department(s) match your search criterion");
-		}
-		return res;
-	}
-
-	public String allocateToBed(String departmentName, String patientID) {
-		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
-		LinkedList<Person> patientRes = searcher.patientSearch(patientID,"","","");
-		if (departmentRes.size()!=1) {
-			return "No or multiple department(s) match your search criterion";
-		}
-		if (patientRes.size()!=1) {
-			return ("No patient with given ID in department: " + departmentName); 
-		}
-		if (!(departmentRes.getFirst() instanceof InPatientDepart)) {
-			return "Department "+departmentName+" does not contain any beds.";
-		}
-		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
+	public static String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
 		
-		if (!depart.beds.getBedsAvailable()) {
-			return "No beds available in department: " + departmentName;
+		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
+		String[] list = new String[persons.size()+1];
+		list[0] = "First name | Last name | Address | Birthday |  ID ";
+		Patient s;
+		String message = "";
+		for (int i = 0; i<persons.size(); i++) {
+			s = (Patient) persons.get(i);
+			list[i+1] = s.getFirstName() + " | " + s.getLastName() + " | " + s.getAdress() + " | " + s.getBirthday() + " | " + s.getID();
 		}
-		String bedNo = depart.beds.AllocateBed(patientRes.getFirst());
-		return patientRes.getFirst().toString()+" was added to bed: "+bedNo;
+		for (int i = 0; i<list.length; i++) {
+			message = message + list[i] + "\n";
+		}
+		if (message.equals(list[0] + "\n")) {
+			return "No match to search parameters!";
+		} else {return message; }
+		
+		
 	}
 
-	public String bedsAvailable(String departmentName) {
-		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
-		if (departmentRes.size()!=1) {
-			return "No or multiple department(s) match your search criterion";
-		}
-		if (!(departmentRes.getFirst() instanceof InPatientDepart)) {
-			return "Department "+departmentName+" does not contain any beds.";
-		}
-		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
-		
-		if (!depart.beds.getBedsAvailable()) {
-			return "No beds available in department: " + departmentName;
-		}
-		return "Beds available in department: " + departmentName;
-	}
-	
 	/* _____________ STAFF REGISTRATION for M2 ______________ */
 	
 	public static String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
@@ -312,6 +273,69 @@ public class API {
 		
 	}
 	
+	/* _____________ HEALTH FACILITY MANAGMENT for M3 ______________ */
+	
+	public LinkedList<String> getDepartments() {
+		LinkedList<Department> ds = new LinkedList<Department>(h.getDepartSet());
+		LinkedList<String> dlist = new LinkedList<String>();
+		while (!ds.isEmpty()) {
+			dlist.add(ds.removeFirst().toString());
+		}
+		return dlist;
+	}
+
+	public LinkedList<String> getDeparmentStaff(String departmentName) {
+		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
+		LinkedList<String> res = new LinkedList<String>();
+		if (resList.size()==1) {
+			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getStaff());
+			while (!sList.isEmpty()) {
+				res.add(sList.removeFirst().toString());
+			}
+		}
+		else {
+			res.add("No or multiple department(s) match your search criterion");
+		}
+		return res;
+	}
+
+	public String allocateToBed(String departmentName, String patientID) {
+		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
+		LinkedList<Person> patientRes = searcher.patientSearch(patientID,"","","");
+		if (departmentRes.size()!=1) {
+			return "No or multiple department(s) match your search criterion";
+		}
+		if (patientRes.size()!=1) {
+			return ("No patient with given ID in department: " + departmentName); 
+		}
+		if (!(departmentRes.getFirst() instanceof InPatientDepart)) {
+			return "Department "+departmentName+" does not contain any beds.";
+		}
+		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
+		
+		if (!depart.beds.getBedsAvailable()) {
+			return "No beds available in department: " + departmentName;
+		}
+		String bedNo = depart.beds.AllocateBed(patientRes.getFirst());
+		return patientRes.getFirst().toString()+" was added to bed: "+bedNo;
+	}
+
+	public String bedsAvailable(String departmentName) {
+		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
+		if (departmentRes.size()!=1) {
+			return "No or multiple department(s) match your search criterion";
+		}
+		if (!(departmentRes.getFirst() instanceof InPatientDepart)) {
+			return "Department "+departmentName+" does not contain any beds.";
+		}
+		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
+		
+		if (!depart.beds.getBedsAvailable()) {
+			return "No beds available in department: " + departmentName;
+		}
+		return "Beds available in department: " + departmentName;
+	}
+	
 	public String bedsInUse(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
@@ -324,28 +348,6 @@ public class API {
 		
 		return "Department: " + departmentName+" currently have "+depart.beds.getBedsInUse()+" beds in use.";
 	}
-	
-	public static String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
-		
-		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
-		String[] list = new String[persons.size()+1];
-		list[0] = "First name | Last name | Address | Birthday |  ID ";
-		Patient s;
-		String message = "";
-		for (int i = 0; i<persons.size(); i++) {
-			s = (Patient) persons.get(i);
-			list[i+1] = s.getFirstName() + " | " + s.getLastName() + " | " + s.getAdress() + " | " + s.getBirthday() + " | " + s.getID();
-		}
-		for (int i = 0; i<list.length; i++) {
-			message = message + list[i] + "\n";
-		}
-		if (message.equals(list[0] + "\n")) {
-			return "No match to search parameters!";
-		} else {return message; }
-		
-		
-	}
-	
 	
 	/* _____________ PATIENT ADMISSION for M4 ______________ */
 	public static String patientAdmission(String department, String firstName, String lastName, String adress, String tribe, int day, int month, int year) {
@@ -373,8 +375,8 @@ public class API {
 		}
 	}
 	
-	// The input to this function should be specified in the gui so when
-	// I search for the patient and click remove this function is given the patient ID
+		// The input to this function should be specified in the gui so when
+		// I search for the patient and click remove this function is given the patient ID
 	public static String discharge(String ID) {
 		Patient p;
 		Department depart;
