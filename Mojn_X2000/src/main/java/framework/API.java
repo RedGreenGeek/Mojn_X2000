@@ -98,7 +98,6 @@ public class API {
 		System.out.println(In.beds.getBedsAvailable());
 	}
 	
-	
 	public static String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month,
 			int year, boolean alive) {
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
@@ -313,10 +312,6 @@ public class API {
 		
 	}
 	
-	
-	
-	
-	
 	public String bedsInUse(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
@@ -379,7 +374,7 @@ public class API {
 	}
 	
 	// The input to this function should be specified in the gui so when
-	// i search for the patient and clicks remove this function is given the patient ID
+	// I search for the patient and click remove this function is given the patient ID
 	public static String discharge(String ID) {
 		Patient p;
 		Department depart;
