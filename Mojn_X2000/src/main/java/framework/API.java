@@ -415,6 +415,62 @@ public class API {
 		} else {return "The patient was moved succesfully to" + depart;}
 	}
 	
+	public static String movePatientBed(String ID, String newBed, String newDepart) {
+		InPatientDepart newDepartment;
+		InPatientDepart oldDepartment;
+		Patient p;
+		String returnmessage;
+		int bedNo;
+		try {
+			bedNo = Integer.parseInt(newBed);
+		} catch (Exception e) {return "The bed specification wasn't an integer";}
+		// Should not be able to give an error message.
+		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
+			return "The patient wasn't moved cause to invalid ID";
+		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
+		// Should not be able to give an error message.
+		if (searcher.departmentSearch(p.getDepartment()).size() != 1) {
+			return "The department isn't uniqe";
+		}
+		// This should also not could give an error message
+		if (!(searcher.departmentSearch(p.getDepartment()).getFirst() instanceof framework.Departments.HealthCare.InPatientDepart)) {
+			return "The department isn't an indepartment";
+		}
+		else {oldDepartment = (InPatientDepart) searcher.departmentSearch(p.getDepartment()).peek();}
+		
+		// If a new department is specified
+		if (!newDepart.equals("")) {
+			if (searcher.departmentSearch(newDepart).size() != 1) {
+				return "The new department matches several or no departments";
+			}
+			if (!(searcher.departmentSearch(newDepart).getFirst() instanceof framework.Departments.HealthCare.InPatientDepart)) {
+				return "The department isn't an indepartment";
+				
+			}
+			else {
+				newDepartment = (InPatientDepart) searcher.departmentSearch(newDepart).getFirst();
+				oldDepartment.beds.Discharge(p);
+				if (newDepartment.beds.getMaxBeds() < bedNo) {
+					return "The bed wasn't free";
+				}
+				returnmessage = newDepartment.beds.AllocateBed(p, bedNo);
+				if (returnmessage.equals("Ok")) {
+					return "The patient was moved succesfully";
+				} else {return "The bed wasn't free";}
+			}
+		} 
+		// If no new department is specified wee assume it's an internal bed move
+		else {
+			oldDepartment.beds.Discharge(p);
+			if (oldDepartment.beds.getMaxBeds() < bedNo) {
+				return "The bed wasn't free";
+			}
+			returnmessage = oldDepartment.beds.AllocateBed(p, bedNo);	
+			if (returnmessage.equals("Ok")) {
+				return "The patient was moved succesfully";
+			} else {return "The bed wasn't free";}
+		}
+	}
 }
 
 

@@ -24,13 +24,16 @@ public class Beds {
 		return message;
 	}
 	
-	public void AllocateBed(Person patient, int bedNo) {
-		
+	public String AllocateBed(Person patient, int bedNo) {
+	
 		if (beds[bedNo] == null) {
 			beds[bedNo] = patient;
 			bedsInUse++;
 		}
-		else {System.err.println("Bed occupied");}
+		else {return "Error";}
+		
+		return "Ok";
+		
 	}
 	
 	public void Discharge(Person patient) {
