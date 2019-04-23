@@ -17,18 +17,19 @@ public class M2_changeStaffInfo {
 	
 	@Given("^I am an ICT officer$")
 	public void i_am_an_ICT_officer() {
-		// I am an ICT Officer
+		api.registerStaff("Nurse", "Erika", "Eriksen", "NurseRoad", "Humanist", 13, 5, 1990);
+		api.staffSearcher("", "Erika", "Eriksen", "", "");
 	}
 	
 	@When("^I am entering sufficient search data$")
 	public void i_am_entering_sufficient_search_data() {
-		message = API.staffSearcher("", "Lars", "", "", "");
+		message = api.staffSearcher("", "Lars", "", "", "");
 		assertFalse(message.equals("No match to search parameters!"));
 	}
 	
 	@Then("^I can change the wanted parameters to something valid$")
 	public void i_can_change_the_wanted_parameters_to_something_valid() {
-		message = API.changeStaff ("D2" ,"" ,"LARS", "LYKKE","Venstre", "", 0, 0, 0);
+		message = api.changeStaff ("D2" ,"" ,"LARS", "LYKKE","Venstre", "", 0, 0, 0);
 		assertTrue(message.equals("Staff information has been changed successfully!"));
 
 	}
@@ -43,7 +44,7 @@ public class M2_changeStaffInfo {
 	@When("^I am entering insufficient search data$")
 	public void i_am_entering_insufficient_search_data() {
 		
-		message = API.changeStaff("J192" ,"" ,"", "","", "", 0, 0, 0);	
+		message = api.changeStaff("J192" ,"" ,"", "","", "", 0, 0, 0);	
 		
 	}
 	
@@ -58,7 +59,7 @@ public class M2_changeStaffInfo {
 	@When("^I try invalid changes on a staff$")
 	public void i_try_invalid_changes_on_a_staff() {
 	    
-		message = API.changeStaff("" ,"" ,"Lars", "Lykke","", "", 45, 2, 1971);	
+		message = api.changeStaff("" ,"" ,"Lars", "Lykke","", "", 45, 2, 1971);	
 	}
 
 	@Then("^I recieve an error message saying that it is invalid$")

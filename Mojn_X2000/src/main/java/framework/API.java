@@ -154,10 +154,8 @@ public class API {
 
 	/* _____________ STAFF REGISTRATION for M2 ______________ */
 	
-	public static String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
-		
+	public String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
 		Staff p;
-		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
 			
 			if (jobtype.equals("Clerk")) {
@@ -191,11 +189,25 @@ public class API {
 			return "Unsuccesful registration!";
 			
 		}
-		
-		
 	}
 	
-	public static String changeStaff (String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+	public String assignStaffDepartment(String departmentName, String staffID, String firstName, String lastName, String birthday, String email) {
+		LinkedList<Person> staffRes = searcher.staffSearch(staffID, firstName, lastName, birthday, email);
+		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
+		
+		if (staffRes.size()!=1 || departmentRes.size()!=1) {
+			return "Warning, invalid person info or department name";
+		}
+		
+		R.remove(searcher.departmentSearch(staffRes.getFirst().getDepartment()).getFirst(),(Staff) staffRes.getFirst());
+		R.add(departmentRes.getFirst(), (Staff) staffRes.getFirst());
+		staffRes.getFirst().setDepartment(departmentName);
+		
+		return "Staff added successfully to department";
+	}
+	
+	
+	public String changeStaff (String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
 		
 		if (searcher.staffSearch(StaffID, "", "", "", "").size() == 0) {
 			return "The ID does not match an employee!";
@@ -252,7 +264,7 @@ public class API {
 		
 	}
 
-	public static String staffSearcher(String staffID, String firstName, String lastName, String birthday, String email) {
+	public String staffSearcher(String staffID, String firstName, String lastName, String birthday, String email) {
 
 		LinkedList<Person> persons = searcher.staffSearch(staffID,firstName, lastName, birthday, email);
 		String[] list = new String[persons.size()+1];
@@ -471,6 +483,9 @@ public class API {
 			} else {return "The bed wasn't free";}
 		}
 	}
+	
+	
+	/* _____________ PATIENT ADMISSION for M4 ______________ */
 }
 
 
