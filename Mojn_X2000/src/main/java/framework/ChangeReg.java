@@ -11,7 +11,7 @@ public class ChangeReg {
 	
 	// Adding database connection
 	
-	Database DB = Database.getInstance();
+	Database DB = Database.getInstance(Database.DEFAULT);
 	
 	// Method has been overloaded to accept a person and the only instance of our hospital,
 	// such that a person can be added to the overall organization. 
@@ -23,12 +23,11 @@ public class ChangeReg {
 	}
 	
 	public void add(Hospital h, Patient p) {	
+		
 		HashSet<Person> allPatientSet = h.getAllPatientSet();
 		allPatientSet.add(p);
 		h.setAllPatientSet(allPatientSet);
-		String message = DB.writePatient(p);
-		
-		System.out.println(message);
+		DB.writePatient(p);
 		
 	}
 	
@@ -59,6 +58,7 @@ public class ChangeReg {
 		if (d instanceof InPatientDepart) {
 			InPatientDepart IPD = (InPatientDepart)d;
 			if (IPD.beds.getBedsAvailable()) {
+				p.setDepartment(d.getName());
 				patientSet.add(p);
 //				IPD.beds.AllocateBed(p);
 				
@@ -66,6 +66,7 @@ public class ChangeReg {
 			
 		}
 		else if(d instanceof OutPatientDepart) {
+			p.setDepartment(d.getName());
 			OutPatientDepart OutD = (OutPatientDepart)d;
 			OutD.EnQueue(p);
 			patientSet.add(p);

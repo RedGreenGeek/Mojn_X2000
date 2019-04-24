@@ -11,7 +11,7 @@ import framework.Person;
 import framework.Departments.HCDepart;
 import framework.person.Patient;
 
-public class OutPatientDepart extends HCDepart {
+public class OutPatientDepart20 extends HCDepart {
 	
 	class Pair implements Comparable<Pair> {
 	      Person P;
@@ -35,14 +35,14 @@ public class OutPatientDepart extends HCDepart {
 
 	public PriorityQueue<Pair> queue;
 		
-	public OutPatientDepart(String departName, HashSet<Person> staffSet, HashSet<Person> patientSet) {
+	public OutPatientDepart20(String departName, HashSet<Person> staffSet, HashSet<Person> patientSet) {
 		super.setName(departName);
 		super.setStaff(staffSet); 
 		this.patientSet = patientSet;
 		this.queue = new PriorityQueue<Pair>(1);
 	}
 	
-	public OutPatientDepart(String departName) {
+	public OutPatientDepart20(String departName) {
 		super.setName(departName);
 		this.queue = new PriorityQueue<Pair>(1);
 	}

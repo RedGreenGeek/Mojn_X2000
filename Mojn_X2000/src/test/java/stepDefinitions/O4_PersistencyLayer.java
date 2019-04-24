@@ -18,21 +18,21 @@ public class O4_PersistencyLayer {
 	HashSet<Department> dp = new HashSet<Department>();
 	
 	@Given("^a hospital using the management system$")
-	public void a_hospital_using_the_management_system() throws Throwable {
+	public void a_hospital_using_the_management_system() {
 	    
 		// The hospital uses the management system
 		
 	}
 
 	@When("^some staff start the system on their computer$")
-	public void some_staff_start_the_system_on_their_computer() throws Throwable {
+	public void some_staff_start_the_system_on_their_computer() {
 	    
 		api = API.getInstance();
 		
 	}
 
 	@Then("^the system is connected to the database$")
-	public void the_system_is_connected_to_the_database() throws Throwable {
+	public void the_system_is_connected_to_the_database() {
 	    
 		assertTrue(api.isConnected());
 		
@@ -40,10 +40,8 @@ public class O4_PersistencyLayer {
 	
 	@When("^some staff adds a patient$")
 	public void some_staff_adds_a_patient() throws Throwable {
-		
-		String result = api.registerPatient("Jens","Jensen","Zulu","Jagtvej 69",24,9,97,true);
-		
-		assertEquals(result, "Patient registered succesfully.");
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
 		
 	}
 

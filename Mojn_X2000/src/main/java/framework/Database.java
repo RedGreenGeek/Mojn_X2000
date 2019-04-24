@@ -11,7 +11,8 @@ import framework.person.Staff;
 public class Database {
 	
 	private static Database instance;
-
+	public static String DEFAULT = "mydb";
+	private String driver_host;
 	private String URL;
 	private String database;
 	private String username;
@@ -22,22 +23,35 @@ public class Database {
 	/* ######################################################################### */
 	/* ______________ SECTION 1: Connection and singleton-creation _____________ */
 	/* ######################################################################### */
-
+	
 	private Database() {
 
-		this.URL = "jdbc:mysql://localhost:3306/mydb";
+		this.driver_host = "jdbc:mysql://localhost:3306/";
 		this.database = "mydb";
 		this.username = "root";
 		this.password = "AGILE2019";
+		this.URL = driver_host + database;
+
+		EstablishConnection();
+
+	}
+
+	private Database(String name_of_database) {
+
+		this.driver_host = "jdbc:mysql://localhost:3306/";
+		this.database = name_of_database;
+		this.username = "root";
+		this.password = "AGILE2019";
+		this.URL = driver_host + database;
 
 		EstablishConnection();
 
 	}
 	
-	public static synchronized Database getInstance() {
+	public static synchronized Database getInstance(String name_of_database) {
 		
 		if (instance==null) {
-			instance = new Database();
+			instance = new Database(name_of_database);
 			return instance;
 		}
 		else {
@@ -93,8 +107,9 @@ public class Database {
 		try {	
 			Statement st = myConnection.createStatement();	
 			st.executeUpdate(query);
-			return "Success!";
+			return "SUCCESS!";
 		} catch(Exception e) {
+			e.printStackTrace();
 			return "ERROR";
 		}
 		
@@ -104,7 +119,7 @@ public class Database {
 	/* _______________ SECTION 3: Writing all objects to database ______________ */
 	/* ######################################################################### */
 	
-	public String writePatient(Patient p) {
+	protected String writePatient(Patient p) {
 		
 		String firstName = p.getFirstName();
 		String lastName = p.getLastName();
@@ -113,14 +128,61 @@ public class Database {
 		String tribe = p.getTribe();
 		boolean alive = p.isAlive();
 		String department = p.getDepartment();
-		String triage = p.getTriage();
 		String id = p.getID();
-		String bed_location = p.getBedLocation();
+		Integer triage = p.getTriage();
+		Integer bed_location = p.getBedLocation();
 		
-		String query = String.format("INSERT INTO Patient ('id', 'first_name', 'last_name', "
-				+ "'birthday', 'bed', 'alive', 'Department_name', 'address', 'tribe', 'triage')"
-				+ " ON DUPLICATE KEY UPDATE " + "values ('%s','%s','%s', '%s', '%s', '%s', '%b', '%s', '%s', '%s')", firstName, lastName, birthday, bed_location, address, 
-				tribe, alive, department, triage, id) ;
+		String query;
+		
+		if (triage != null && bed_location != null) {
+
+			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", %d, %d) ",
+					id, firstName, lastName, birthday, alive, 
+					department, address, tribe, triage, bed_location);
+			 
+			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", triage = \"%d\", bed = \"%d\"", id, firstName, lastName, birthday, alive, 
+					department, address, tribe, triage, bed_location);
+			
+			query = query1 + query2;
+		
+		} else if (triage == null && bed_location != null) {
+			
+			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", %d) ",
+					id, firstName, lastName, birthday, alive, 
+					department, address, tribe, bed_location);
+			 
+			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", bed = \"%d\"", id, firstName, lastName, birthday, alive, 
+					department, address, tribe, bed_location);
+			
+			query = query1 + query2;
+			
+		} else if (triage != null && bed_location == null) {
+			
+			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", %d) ",
+					id, firstName, lastName, birthday, alive, 
+					department, address, tribe, triage);
+			 
+			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", triage = \"%d\"", id, firstName, lastName, birthday, alive, 
+					department, address, tribe, triage);
+			
+			query = query1 + query2;
+			
+		} else {
+			
+			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\") ",
+					id, firstName, lastName, birthday, alive, 
+					department, address, tribe);
+			 
+			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\"", id, firstName, lastName, birthday, alive, 
+					department, address, tribe);
+			
+			query = query1 + query2;
+		
+		}
 
 		return INSERT(query);
 		

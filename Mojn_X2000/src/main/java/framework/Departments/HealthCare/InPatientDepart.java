@@ -17,6 +17,11 @@ public class InPatientDepart extends HCDepart{
 		this.beds = new Beds(maxBeds);
 	}
 	
+	public InPatientDepart(String departName, int maxBeds) {
+		super.setName(departName);
+		this.beds = new Beds(maxBeds);
+	}
+	
 	public int get_max_beds() {
 		return max_beds;
 	}

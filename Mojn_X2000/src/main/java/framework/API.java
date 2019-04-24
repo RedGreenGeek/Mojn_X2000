@@ -31,9 +31,7 @@ public class API {
 	
 	private API (){
 		
-		// CONNECTION TO DATABASE TO ENSURE CONNECTION
-		DB = Database.getInstance();
-		
+		//------
 		R = new ChangeReg();
 		
 		//------
@@ -123,16 +121,24 @@ public class API {
 	
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
 	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+		
+		System.out.println(Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive));
+		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			
+			
+			System.out.println(firstName + lastName + address + tribe);
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
 			R.add(h, new Patient(firstName,lastName,tribe,address,day,month,year,alive,null)); // Adding patient through changereg
 			totalSet.add(new Patient(firstName,lastName,tribe,address,day,month,year,alive,null));
-			
+
+			System.out.println("Patient registered succesfully.");
 			return "Patient registered succesfully.";
 		}
 		else {
 			
+			System.out.println(firstName + lastName + address + tribe);
+			System.out.println("Additional information is needed.");
 			return "Additional information is needed.";
 			
 		}
