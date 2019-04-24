@@ -33,8 +33,8 @@ public class M4_PatientAdmission {
 		
 	}
 
-	@When("^I am entering a existing department$")
-	public void i_am_entering_a_existing_department() {
+	@When("^I am entering a existing In depart$")
+	public void i_am_entering_a_existing_In_depart() {
 		String firstName = "Anton";
 		String lastName = "Larsen";
 		String adress = "Jagtvej";
@@ -43,49 +43,109 @@ public class M4_PatientAdmission {
 		int month = 12;
 		int year = 1996;
 		String department = "ER";
-		message = API.patientAdmission(department, firstName, lastName, adress, tribe, day, month, year);
-
+		String trilvl = "";
+		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+	}
+	
+	@Then("^I get a message with a positiv In feed$")
+	public void i_get_a_message_with_a_positiv_In_feed() {
+		assertEquals(message, "The patient has been registered succesfully to ER!");
 	}
 
-	@Then("^I get a message with a statement that the patient has been added succesfully$")
-	public void i_get_a_message_with_a_statement_that_the_patient_has_been_added_succesfully() {
-		assertNotEquals(message, "Unsuccesful registration cause to invalid patient data!");
-		assertNotEquals(message, "The department specification is ambigious");
-	}
 
-	@When("^I am entering invalid patient data$")
-	public void i_am_entering_invalid_patient_data() {
+	@When("^I am entering a existing Out depart$")
+	public void i_am_entering_a_existing_Out_depart() {
 		String firstName = "Anton";
 		String lastName = "Larsen";
 		String adress = "Jagtvej";
 		String tribe = "DTU";
 		int day = 1;
-		int month = 52;
+		int month = 12;
 		int year = 1996;
-		String department = "ER";
-		message = API.patientAdmission(department, firstName, lastName, adress, tribe, day, month, year);
+		String department = "Cardio";
+		String trilvl = "2";
+		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+	}
+	
+	@Then("^I get a message with a positiv Out feed$")
+	public void i_get_a_message_with_a_positiv_Out_feed() {
+		assertEquals(message, "The patient has been registered succesfully to Cardio!");
 	}
 
-	@Then("^I get a message with the statement that the patient hasn't been added unsuccesfully cause to invalid patient data$")
-	public void i_get_a_message_with_the_statement_that_the_patient_hasn_t_been_added_unsuccesfully_cause_to_invalid_patient_data() {
+	@When("^I am entering a wrong Admin depart$")
+	public void i_am_entering_a_wrong_Admin_depart() {
+		String firstName = "Anton";
+		String lastName = "Larsen";
+		String adress = "Jagtvej";
+		String tribe = "DTU";
+		int day = 1;
+		int month = 12;
+		int year = 1996;
+		String department = "IT";
+		String trilvl = "";
+		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+	}
+
+	@Then("^I get an error message Admin depart$")
+	public void i_get_an_error_message_Admin_depart() {
+		assertEquals(message, "The department is an administrativ department");
+	}
+
+	@When("^I am entering a wrong trilvl$")
+	public void i_am_entering_a_wrong_trilvl() {
+		String firstName = "Anton";
+		String lastName = "Larsen";
+		String adress = "Jagtvej";
+		String tribe = "DTU";
+		int day = 1;
+		int month = 12;
+		int year = 1996;
+		String department = "ER";
+		String trilvl = "wer";
+		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+	}
+
+	@Then("^I get an error message trilvl$")
+	public void i_get_an_error_message_trilvl() {
+		assertEquals(message, "The triage level specification wasn't an integer");
+	}
+
+	@When("^I am entering a wrong Person value$")
+	public void i_am_entering_a_wrong_Person_value() {
+		String firstName = "Anton";
+		String lastName = "Larsen";
+		String adress = "Jagtvej";
+		String tribe = "DTU";
+		int day = 1;
+		int month = 1223;
+		int year = 1996;
+		String department = "ER";
+		String trilvl = "";
+		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+	}
+
+	@Then("^I get an error message invalid data$")
+	public void i_get_an_error_message_invalid_data() {
 		assertEquals(message, "Unsuccesful registration cause to invalid patient data!");
 	}
 
-	@When("^I am entering a non existent department$")
-	public void i_am_entering_a_non_existent_department() {
+	@When("^I am entering a wrong invalid depart$")
+	public void i_am_entering_a_wrong_invalid_depart() {
 		String firstName = "Anton";
 		String lastName = "Larsen";
 		String adress = "Jagtvej";
 		String tribe = "DTU";
 		int day = 1;
-		int month = 12;
+		int month = 1223;
 		int year = 1996;
-		String department = "Ieggfn";
-		message = API.patientAdmission(department, firstName, lastName, adress, tribe, day, month, year);
+		String department = "ERsfdgsfg343tr";
+		String trilvl = "";
+		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
 	}
 
-	@Then("^I get a message with the statement that the patient hasn't been added unsuccesfully cause to non existent department$")
-	public void i_get_a_message_with_the_statement_that_the_patient_hasn_t_been_added_unsuccesfully_cause_to_non_existent_department() {
+	@Then("^I get an error message invalid depart$")
+	public void i_get_an_error_message_invalid_depart() {
 		assertEquals(message, "The department specification is ambigious");
 	}
+
 }

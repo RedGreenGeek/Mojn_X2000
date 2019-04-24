@@ -21,51 +21,65 @@ public class M4_movePatientBeds {
 		// All the inputs will be given in the last when call
 	}
 
-	@When("^I am entering an existing indepartment$")
-	public void i_am_entering_an_existing_indepartment() {
-		// All the inputs will be given in the last when call
+	@When("^I am entering a Diffrent bed no$")
+	public void i_am_entering_a_Diffrent_bed_no() {
+		message = api.movePatientBed("3", "2");
 	}
 
-	@When("^I am entering a non occupied bedNo$")
-	public void i_am_entering_a_non_occupied_bedNo() {
-		message = API.movePatientBed("6", "1", "Pediatric");
-		
-	}
-
-	@Then("^I get a return message with the statement that the patient was moved succesfully$")
-	public void i_get_a_return_message_with_the_statement_that_the_patient_was_moved_succesfully() {
+	@Then("^I get a good Moved to diffrent bed$")
+	public void i_get_a_good_Moved_to_diffrent_bed() {
 		assertEquals(message, "The patient was moved succesfully");
 	}
 
-	@When("^I am writing an invalid patient ID$")
-	public void i_am_writing_an_invalid_patient_ID() {
-		message = API.movePatientBed("6340", "1", "Pediatric");
+	@When("^I am entering a Same bed no$")
+	public void i_am_entering_a_Same_bed_no() {
+		message = api.movePatientBed("3", "2");
 	}
 
-	@Then("^I get an error message that the move between beds was unsuccesful$")
-	public void i_get_an_error_message_that_the_move_between_beds_was_unsuccesful() {
-		assertEquals(message, "The patient wasn't moved cause to invalid ID");
-		
+	@Then("^I get a good Moved to same bed$")
+	public void i_get_a_good_Moved_to_same_bed() {
+		assertEquals(message, "The patient was moved succesfully to the same bed");
 	}
 
-	@When("^I am trying to move to a non existent department or multiple departments$")
-	public void i_am_trying_to_move_to_a_non_existent_department_or_multiple_departments() {
-		message = API.movePatientBed("6", "1", "Non existent");
-		
+	@When("^I am writing an not int bed$")
+	public void i_am_writing_an_not_int_bed() {
+		message = api.movePatientBed("3", "dfgas");
 	}
 
-	@Then("^I get a message that the move between beds was unsuccesful$")
-	public void i_get_a_message_that_the_move_between_beds_was_unsuccesful() {
-		assertEquals(message, "The new department matches several or no departments");
+	@Then("^I get an not int error$")
+	public void i_get_an_not_int_error() {
+		assertEquals(message, "You need to specify the bed number as an integer");
 	}
 
-	@When("^I am trying to move to a department that isn't an indepartment$")
-	public void i_am_trying_to_move_to_a_department_that_isn_t_an_indepartment() {
-		message = API.movePatientBed("6", "1", "Cardio");
+	@When("^I am writing an Out patient$")
+	public void i_am_writing_an_Out_patient() {
+		message = api.movePatientBed("4", "2");
 	}
 
-	@Then("^I get a message that the move between beds was unsuccesful because the department isn't an indepartment$")
-	public void i_get_a_message_that_the_move_between_beds_was_unsuccesful_because_the_department_isn_t_an_indepartment() {
+	@Then("^I get an Out patient error$")
+	public void i_get_an_Out_patient_error() {
 		assertEquals(message, "The department isn't an indepartment");
 	}
+
+	@When("^I am writing an Wrong ID$")
+	public void i_am_writing_an_Wrong_ID() {
+		message = api.movePatientBed("sdgsd", "2");
+	}
+
+	@Then("^I get an Wrong ID error$")
+	public void i_get_an_Wrong_ID_error() {
+		assertEquals(message, "The patient wasn't moved cause to invalid ID");
+	}
+
+	@When("^I am writing an bed over max$")
+	public void i_am_writing_an_bed_over_max() {
+		message = api.movePatientBed("3", "200");
+	}
+
+	@Then("^I get an bed max error$")
+	public void i_get_an_bed_max_error() {
+		assertEquals(message, "There aren't that many beds in the department");
+	}
+
+
 }

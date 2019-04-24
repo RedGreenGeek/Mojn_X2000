@@ -27,15 +27,15 @@ Feature: Move patients between departments
   @tag3
   Scenario: moving a patient succesfully
     When I am entering a valid patient ID
-    And I am entering an existing department
+    And I am entering an existing health care department
     Then I get a message with a statement that the patient has been moved succesfully
     
   @tag4
-  Scenario: moving a patient unsuccesfully cause to invalid patient ID
-    When I am entering an invalid patient ID
-    Then I get an error message that the move was unsuccesful
+  Scenario Outline: moving a patient unsuccesfully cause to <cause>
+    When I am entering a wrong <cause>
+    Then I get an <error message> 
     
-  @tag5
-  Scenario: moving a patient unsuccesfully cause to non existent department
-    When I am trying to move to a non existent department
-    Then I get a message that the move was unsuccesful
+   Examples: 
+      | cause		 				 | error message |
+      | patient ID       | ID error			 |
+      | patient admission| admit error	 |

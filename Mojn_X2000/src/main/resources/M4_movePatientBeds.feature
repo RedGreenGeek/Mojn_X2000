@@ -25,23 +25,26 @@ Feature: Move patients between beds
    	And with a unique department names
 
   @tag3
-  Scenario: moving a patient succesfully between beds
+  Scenario Outline: moving a patient succesfully between beds
     When I am writing a valid patient ID
-    And I am entering an existing indepartment
-    And I am entering a non occupied bedNo
-    Then I get a return message with the statement that the patient was moved succesfully
+    And I am entering a <bed>
+    Then I get a good <return message>
+    
+   Examples: 
+      | bed				       | return message       |
+      | Diffrent bed no  | Moved to diffrent bed|
+      | Same bed no		   | Moved to same bed 	  |
     
   @tag4
-  Scenario: moving a patient unsuccesfully between beds cause to invalid patient ID
-    When I am writing an invalid patient ID
-    Then I get an error message that the move between beds was unsuccesful
+  Scenario Outline: moving a patient unsuccesfully between beds
+    When I am writing an <invalid info>
+    Then I get an <error info>
     
-  @tag5
-  Scenario: moving a patient unsuccesfully cause to non existent or multiple departments
-    When I am trying to move to a non existent department or multiple departments
-    Then I get a message that the move between beds was unsuccesful
-    
-  @tag6
-  Scenario: moving a patient unsuccesfully because the department isn't an indepartment
-  When I am trying to move to a department that isn't an indepartment
-  Then I get a message that the move between beds was unsuccesful because the department isn't an indepartment
+    Examples: 
+      | invalid info | error info       |
+      | not int bed  | not int error		|
+      | Out patient  | Out patient error|
+      | Wrong ID     | Wrong ID error   |
+      | bed over max | bed max error		|
+      
+

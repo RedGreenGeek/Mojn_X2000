@@ -29,4 +29,14 @@ Feature: Discharge patients
     And The patient belongs to an unique department
     Then I get a message with a statement that the patient has been removed succesfully
     
+  @tag4
+  Scenario Outline: removing a patient unsuccesfully
+    When I am entering a wrong <value>
+    Then I get an error message <error>
+
+    Examples: 
+      | value 		 | error  |
+      | ID         | ID     |
+ 
+    
  
