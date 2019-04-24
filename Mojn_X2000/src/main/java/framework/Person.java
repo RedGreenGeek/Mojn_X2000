@@ -11,6 +11,9 @@ private String tribe;
 private boolean alive;
 private String department;
 
+@Override
+public abstract String toString();
+
 protected String getDepartment() {
 	return department;
 }

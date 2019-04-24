@@ -17,27 +17,29 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Assign Staff Department
-  This feature makes it possible to assign staff to a department.
+Feature: Get Queue List
+  This feature makes it possible to get a queue list of a out patient department
   
   Background:
-	Given that we are on a hospital
-	And given a department name
-	And given staff info
-		
+   	Given that we have a hospital with departments
+   	And with a unique out patient department name
+
   @tag1
-  Scenario: Add staff to department successfully
-    When I am entering correct info 
-    And I am entered a correct department name
-    Then I get a message that the staff was added sucessfully
+  Scenario: Getting a queue list successfully
+    When I am entering unique department name of a out patient department
+    Then I get a list of the current queue
     
   @tag2
   Scenario: Invalid department name
-    When I am entering invalid department name
-    Then I recieve an error message
+    When I am entering non unique department name
+    Then I get a error message
     
-  @tag2
-  Scenario: Invalid info
-    When I am entering invalid info
-    Then I recieve an error message
+  @tag3
+  Scenario: Invalid department type
+    When I am entering unique department name of non out patient department
+    Then I get a error message
+  
+    
 
+    
+  

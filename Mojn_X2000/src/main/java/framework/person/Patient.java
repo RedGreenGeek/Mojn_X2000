@@ -27,4 +27,9 @@ public Patient(String firstName, String lastName, String adress, String tribe, i
 public String getID() {
 	return Integer.toString(this.patientID);
 }
+
+@Override
+public String toString() {
+	return patientID+"; "+this.getDepartment()+"; "+this.getLastName()+", "+this.getFirstName();
+}
 }
