@@ -148,10 +148,9 @@ public class API {
 		if (message.equals(list[0] + "\n")) {
 			return "No match to search parameters!";
 		} else {return message; }
-		
-		
 	}
 
+	
 	/* _____________ STAFF REGISTRATION for M2 ______________ */
 	
 	public String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
@@ -331,6 +330,7 @@ public class API {
 		String bedNo = depart.beds.AllocateBed(patientRes.getFirst());
 		return patientRes.getFirst().toString()+" was added to bed: "+bedNo;
 	}
+	
 
 	public String bedsAvailable(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
@@ -480,12 +480,52 @@ public class API {
 		
 	}
 
+	
+	
+	/* _____________ PATIENT WAITING O3 ______________ */
+	public LinkedList<String> getQueue(String departmentName) {
+		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
+		OutPatientDepart outDepart;
+		LinkedList<String> res = new LinkedList<String>();
+		
+		if (departmentRes.size() != 1) {
+			res.add("Warning, could not retrieve queue of given department.");
+			return res;
+		}
+		try {
+			outDepart = (OutPatientDepart) departmentRes.getFirst();
+		} 
+		catch (ClassCastException e) {
+			res.add("Warning, could not retrieve queue of given department.");
+			return res;
+		}
+		ArrayList<Person> queue = outDepart.PrintQueue();
+		
+		for (int i = 0; i<queue.size(); i++) {
+			res.add(queue.get(i).toString());
+		}
+
+		return res;
+	}
+
+	public String getNextInQueue(String departmentName) {
+		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
+		OutPatientDepart outDepart;
+		
+		if (departmentRes.size() != 1) {
+			return "Warning, could not retrieve next in line.";
+		}
+		try {
+			outDepart = (OutPatientDepart) departmentRes.getFirst();
+		} 
+		catch (ClassCastException e) {
+			return "Warning, could not retrieve next in line.";
+		}
+		Person next = outDepart.DeQueue();
+		if (next == null) {
+			return "Warning, could not retrieve next in line.";
+		}
+		
+		return outDepart.DeQueue().toString();
+	}
 }
-
-
-
-
-
-
-
-

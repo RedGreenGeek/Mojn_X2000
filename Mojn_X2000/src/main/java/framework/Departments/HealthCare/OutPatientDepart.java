@@ -58,13 +58,15 @@ public class OutPatientDepart extends HCDepart {
 		
 	}
 	public Person DeQueue() {
-		ChangeReg r = new ChangeReg();
-		Person p = this.queue.poll().getID();
-		r.remove((Department)this,(Patient)p);
-		return p;
-		
-		
+		if (!queue.isEmpty()) {
+			ChangeReg r = new ChangeReg();
+			Person p = this.queue.poll().getID();
+			r.remove((Department)this,(Patient)p);
+			return p;
+		}
+		return null;
 	}
+	
 	public ArrayList<Person> PrintQueue() {
 		java.util.Iterator<Pair> Q = this.queue.iterator();
 		ArrayList<Person> PList = new ArrayList<Person>();
