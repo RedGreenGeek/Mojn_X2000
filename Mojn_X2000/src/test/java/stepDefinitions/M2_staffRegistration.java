@@ -28,7 +28,7 @@ public class M2_staffRegistration {
 
 	@When("^I am entering sufficient clerk data$")
 	public void i_am_entering_sufficient_clerk_data() {
-		user_message = API.registerStaff ("Clerk" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
+		user_message = api.registerStaff ("Clerk" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
 	}
 
 	@Then("^I get a message that the clerk was registered succesfully$")
@@ -38,7 +38,7 @@ public class M2_staffRegistration {
 
 	@When("^I am entering sufficient nurse data$")
 	public void i_am_entering_sufficient_nurse_data() {
-		user_message = API.registerStaff ("Nurse" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
+		user_message = api.registerStaff ("Nurse" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
 	}
 
 	@Then("^I get a message that the nurse was registered succesfully$")
@@ -48,7 +48,7 @@ public class M2_staffRegistration {
 
 	@When("^I am entering sufficient doctor data$")
 	public void i_am_entering_sufficient_doctor_data() {
-		user_message = API.registerStaff ("Doctor" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
+		user_message = api.registerStaff ("Doctor" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
 	}
 
 	@Then("^I get a message that the doctor was registered succesfully$")
@@ -58,7 +58,7 @@ public class M2_staffRegistration {
 
 	@When("^I am entering sufficient ictofficer data$")
 	public void i_am_entering_sufficient_ictofficer_data() throws Throwable {
-		user_message = API.registerStaff ("ICTOfficer" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
+		user_message = api.registerStaff ("ICTOfficer" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
 	}
 
 	@Then("^I get a message that the ictofficer was registered succesfully$")
@@ -70,8 +70,8 @@ public class M2_staffRegistration {
 
 	@When("^I am entering insufficient staff data$")
 	public void i_am_entering_insufficient_staff_data() {
-		user_message = API.registerStaff ("Nurse" ,"Lars", "", "Silkeborg", "Jysk billionær", 1, 1, 666);
-		user_message2 = user_message = API.registerStaff ("Kromutter" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
+		user_message = api.registerStaff ("Nurse" ,"Lars", "", "Silkeborg", "Jysk billionær", 1, 1, 666);
+		user_message2 = user_message = api.registerStaff ("Kromutter" ,"Lars", "Larsen", "Silkeborg", "Jysk billionær", 1, 1, 666);
 	}
 
 	@Then("^I get a message$")
