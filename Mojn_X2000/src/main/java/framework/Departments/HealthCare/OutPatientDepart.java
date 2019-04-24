@@ -12,6 +12,7 @@ import framework.Departments.HCDepart;
 import framework.person.Patient;
 
 public class OutPatientDepart extends HCDepart {
+	
 	class Pair implements Comparable<Pair> {
 	      Person P;
 	      int triageLevel;
@@ -30,16 +31,10 @@ public class OutPatientDepart extends HCDepart {
 	        return this.P;
 	      }
 
-	    }
+	}
 
-	
-	public int triageLevel;
-	public Patient P;
 	public PriorityQueue<Pair> queue;
-	
-	
-	
-	
+		
 	public OutPatientDepart(String departName, HashSet<Person> staffSet, HashSet<Person> patientSet) {
 		super.setName(departName);
 		super.setStaff(staffSet); 
@@ -57,6 +52,7 @@ public class OutPatientDepart extends HCDepart {
 		this.queue.add(p);
 		
 	}
+	
 	public Person DeQueue() {
 		if (!queue.isEmpty()) {
 			ChangeReg r = new ChangeReg();

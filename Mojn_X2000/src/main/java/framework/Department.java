@@ -2,6 +2,7 @@ package framework;
 import java.util.*;
 
 public abstract class Department {
+	
 	private HashSet<Person> staffSet;
 
 	private String departName;

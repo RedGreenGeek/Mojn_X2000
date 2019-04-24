@@ -7,6 +7,8 @@ import framework.person.Staff;
 
 public class Hospital {
 	
+	// Remember to override hashcode and equals
+	
 	private HashSet<Department> departSet = new HashSet<Department>();
 	private HashSet<Person> allPatientSet = new HashSet<Person>();
 	private HashSet<Staff> allStaffSet = new HashSet<Staff>();

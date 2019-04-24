@@ -9,6 +9,10 @@ import framework.person.Staff;
 
 public class ChangeReg {
 	
+	// Adding database connection
+	
+	Database DB = Database.getInstance();
+	
 	// Method has been overloaded to accept a person and the only instance of our hospital,
 	// such that a person can be added to the overall organization. 
 	public void add(Hospital h, Staff p) {	
@@ -17,6 +21,17 @@ public class ChangeReg {
 		h.setAllStaff(allStaffSet);
 		
 	}
+	
+	public void add(Hospital h, Patient p) {	
+		HashSet<Person> allPatientSet = h.getAllPatientSet();
+		allPatientSet.add(p);
+		h.setAllPatientSet(allPatientSet);
+		String message = DB.writePatient(p);
+		
+		System.out.println(message);
+		
+	}
+	
 	public void add(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.add(d);
