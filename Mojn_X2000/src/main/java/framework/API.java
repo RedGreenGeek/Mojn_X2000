@@ -11,11 +11,13 @@ import framework.Password.*;
 import framework.person.staff.*;
 
 public class API {
+	
 	private static Hospital h;
 	private static Searcher searcher;
 	private static HashSet<Person> totalSet = new HashSet<Person>();
 	private static API instance;
 	private static ChangeReg R;
+	private static Database DB;
 	
 	public static synchronized API getInstance() {
 		if (instance==null) {
@@ -28,7 +30,10 @@ public class API {
 	}
 	
 	private API (){
-		//Loads hospital in from database
+		
+		// CONNECTION TO DATABASE TO ENSURE CONNECTION
+		DB = Database.getInstance();
+		
 		R = new ChangeReg();
 		
 		//------
@@ -108,14 +113,28 @@ public class API {
 		System.out.println(In.beds.getBedsAvailable());
 	}
 	
+	/* __--_________ DATABASE PROPERTIES for O4 _______________ */
+	
+	public boolean isConnected() {
+		
+		return DB != null;
+		
+	}
+	
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
 	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
+			
+			// Adding to hospital  ->  The changereg R makes sure to handle database communication
+			R.add(h, new Patient(firstName,lastName,tribe,address,day,month,year,alive,null)); // Adding patient through changereg
 			totalSet.add(new Patient(firstName,lastName,tribe,address,day,month,year,alive,null));
+			
 			return "Patient registered succesfully.";
 		}
 		else {
+			
 			return "Additional information is needed.";
+			
 		}
 	}
 	

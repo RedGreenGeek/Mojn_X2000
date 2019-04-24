@@ -22,7 +22,9 @@ public class M1_RegisterPatient {
 	
 	@Given("^I have a patient I want to register$")
 	public void I_have_a_patient_I_want_to_register() {
+		
 		assertTrue(true);
+		
 	}
 	
 	@When("^I am entering sufficient patient data$")

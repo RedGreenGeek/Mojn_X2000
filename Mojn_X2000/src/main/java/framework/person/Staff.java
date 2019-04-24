@@ -67,6 +67,10 @@ protected void setEmail() {
 	this.email = (this.getFirstName() + this.getLastName() + "_" + this.serialID + "@mail.com").replaceAll(" ","");
 }
 
+protected void setEmail(String email) {
+	this.email = email;
+}
+
 public String getEmail() {
 	return email;
 }
