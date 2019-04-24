@@ -67,6 +67,26 @@ public class M2_changeStaffInfo {
 	    
 		assertEquals(message, "Illegal changes to patient. Please check that the information is correct!");
 	}
+	
+	@When("^I am entering sufficient data, but no job type$")
+	public void i_am_entering_sufficient_data_but_no_job_type() {
+		message = api.changeStaff("N3" ,"" ,"Jonna", "Nielsen","Ikke-doktorvej", "Tysk", 02,02, 1902);
+	}
+
+	@Then("^I recieve a message saying that the change has been done$")
+	public void i_recieve_a_message_saying_that_the_change_has_been_done() {
+		assertEquals(message, "Staff information has been changed successfully!");
+	}
+	
+	@When("^I am entering sufficient data, with jobtype$")
+	public void i_am_entering_sufficient_data_with_jobtype() {
+		message = api.changeStaff("N3" ,"Doctor" ,"Jonna", "Nielsen","Ikke-doktorvej", "Tysk", 02,02, 1902);
+	}
+
+	@Then("^I recieve a message saying that the change has been Done$")
+	public void i_recieve_a_message_saying_that_the_change_has_been_Done()  {
+		assertEquals(message, "The Doctor has been registered succesfully!");
+	}
 
 
 }

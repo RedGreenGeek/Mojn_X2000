@@ -40,4 +40,13 @@ Feature: Change Staff Information
   Scenario: Invalid changed parameters
     When I try invalid changes on a staff
     Then I recieve an error message saying that it is invalid
-
+  
+  @tag4
+    Scenario: Change a staff member succesfully with no jobtype given
+    When I am entering sufficient data, but no job type
+    Then I recieve a message saying that the change has been done
+  
+  @tag5
+    Scenario: Change a staff member succesfully with jobtype given
+    When I am entering sufficient data, with jobtype
+    Then I recieve a message saying that the change has been Done
