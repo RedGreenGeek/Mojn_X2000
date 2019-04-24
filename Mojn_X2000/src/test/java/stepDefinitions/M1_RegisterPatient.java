@@ -6,7 +6,7 @@ import cucumber.api.java.en.*;
 import framework.API;
 
 public class M1_RegisterPatient {
-	
+
 	String message;
 	String firstName = "firstName";
 	String lastName = "lastName";
@@ -17,6 +17,9 @@ public class M1_RegisterPatient {
 	int year = 1990;
 	boolean alive = true;
 	
+	API api = API.getInstance();
+
+	
 	@Given("^I have a patient I want to register$")
 	public void I_have_a_patient_I_want_to_register() {
 		assertTrue(true);
@@ -25,7 +28,7 @@ public class M1_RegisterPatient {
 	@When("^I am entering sufficient patient data$")
 	public void i_am_entering_sufficient_patient_data() {
 		
-		message = API.registerPatient(firstName, lastName, tribe, address, day, month, year, alive);
+		message = api.registerPatient(firstName, lastName, tribe, address, day, month, year, alive);
 
 	}
 
@@ -38,27 +41,27 @@ public class M1_RegisterPatient {
 	
 	@When("^I am not entering lastname$")
 	public void i_am_not_entering_lastname() {	
-		message = API.registerPatient(firstName, "", tribe, address, day, month, year, alive);
+		message = api.registerPatient(firstName, "", tribe, address, day, month, year, alive);
 	}
 
 	@When("^I am not entering first name$")
 	public void i_am_not_entering_first_name() {
-		message = API.registerPatient("", lastName, tribe, address, day, month, year, alive);
+		message = api.registerPatient("", lastName, tribe, address, day, month, year, alive);
 	}
 
 	@When("^I am not entering adress$")
 	public void i_am_not_entering_adress() {
-		message = API.registerPatient(firstName, lastName, tribe, "", day, month, year, alive);
+		message = api.registerPatient(firstName, lastName, tribe, "", day, month, year, alive);
 	}
 
 	@When("^I am not entering tribe$")
 	public void i_am_not_entering_tribe() {
-		message = API.registerPatient(firstName, lastName, "", address, day, month, year, alive);
+		message = api.registerPatient(firstName, lastName, "", address, day, month, year, alive);
 	}
 
 	@When("^I am entering birthday wrongly$")
 	public void i_am_entering_birthday_wrongly() {
-		message = API.registerPatient(firstName, lastName, tribe, address, 32, month, year, alive);
+		message = api.registerPatient(firstName, lastName, tribe, address, 32, month, year, alive);
 	}
 	
 	@Then("^I get a message that additional information is needed$")
