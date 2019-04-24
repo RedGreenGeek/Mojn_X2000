@@ -25,14 +25,16 @@ public class Beds {
 	}
 	
 	public String AllocateBed(Person patient, int bedNo) {
-	
+		if (beds[bedNo] == patient) {
+			return "Same bed";
+		}
 		if (beds[bedNo] == null) {
 			beds[bedNo] = patient;
 			bedsInUse++;
+			return "Ok";
 		}
 		else {return "Error";}
 		
-		return "Ok";
 		
 	}
 	
