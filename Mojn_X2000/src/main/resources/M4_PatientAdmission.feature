@@ -45,7 +45,6 @@ Feature: Patient admission
       | ID            | ID   			    |
       | Admin depart  | Admin depart  |
       | trilvl        | trilvl        |
-      | Person value  | invalid data  |
       | invalid depart| invalid depart|
     
   

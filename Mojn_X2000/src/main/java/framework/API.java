@@ -163,7 +163,7 @@ public class API {
 	
 	/* _____________ STAFF REGISTRATION for M2 ______________ */
 	
-	public String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+	public String registerStaff(String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
 		Staff p;
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
 			
@@ -215,8 +215,7 @@ public class API {
 		return "Staff added successfully to department";
 	}
 	
-	
-	public String changeStaff (String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+	public String changeStaff(String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
 		
 		if (searcher.staffSearch(StaffID, "", "", "", "").size() == 0) {
 			return "The ID does not match an employee!";
@@ -341,7 +340,6 @@ public class API {
 		return patientRes.getFirst().toString()+" was added to bed: "+bedNo;
 	}
 	
-
 	public String bedsAvailable(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
@@ -372,7 +370,7 @@ public class API {
 	}
 	
 /* _____________ PATIENT ADMISSION for M4 ______________ */
-	public String patientAdmission(String trilvl, String department, String firstName, String lastName, String adress, String tribe, int day, int month, int year) {
+	public String patientAdmission(String trilvl, String department, String ID) {
 		Patient p;
 		Department depart;
 		int triagelvl = 1;
@@ -393,27 +391,25 @@ public class API {
 		}
 		
 		
-		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
-			p = new Patient(firstName, lastName, adress, tribe, day, month ,year, true, department);
-			if (depart instanceof framework.Departments.HealthCare.InPatientDepart) {
+		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
+			return "The patient ID's isn't uniqe";
+		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
+		
+		if (depart instanceof framework.Departments.HealthCare.InPatientDepart) {
 				InPatientDepart inDepart = (InPatientDepart) depart;
 				R.add(inDepart, p);
 				inDepart.beds.AllocateBed(p);
 			}
-			else {
+		else {
 				OutPatientDepart outDepart = (OutPatientDepart) depart;
 				R.add(outDepart, p);
 				outDepart.EnQueue(p, triagelvl);
 			}
-			return "The patient has been registered succesfully to " + department +  "!";
+		return "The patient has been registered succesfully to " + department +  "!";
 		
-		}
 		
-		else {
-			
-			return "Unsuccesful registration cause to invalid patient data!";
-			
-		}
+		
+
 	}
 	
 		// The input to this function should be specified in the gui so when
@@ -445,7 +441,7 @@ public class API {
 		int day = Integer.parseInt(bday[0]);
 		int month = Integer.parseInt(bday[1]);
 		int year = Integer.parseInt(bday[2]);
-		return_message = patientAdmission(trilvl, depart, p.getFirstName(), p.getLastName(), p.getAdress(), p.getTribe(), day, month, year);
+		return_message = patientAdmission(trilvl, depart, ID);
 		if (return_message.equals("The department specification is ambigious") || return_message.equals("Unsuccesful registration cause to invalid patient data!") || return_message.equals("The triage level specification wasn't an integer") || return_message.equals("The department is an administrativ department")) {
 			return "The patient wasn't moved";
 		} else {
