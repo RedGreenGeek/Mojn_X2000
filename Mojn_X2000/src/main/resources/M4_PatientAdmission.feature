@@ -25,17 +25,27 @@ Feature: Patient admission
    	And with a unique department names
 
   @tag3
-  Scenario: adding a patient succesfully
+  Scenario Outline: adding a patient succesfully
     When I am entering valid patient data
-    And I am entering a existing department
-    Then I get a message with a statement that the patient has been added succesfully
+    And I am entering a existing <department>
+    Then I get a message with a positiv <feedback>
     
+  Examples: 
+      | department | feedback |
+      | In depart  | In feed  |
+      | Out depart | Out feed |
+      
   @tag4
-  Scenario: adding a patient unsuccesfully cause to invalid patient data
-    When I am entering invalid patient data
-    Then I get a message with the statement that the patient hasn't been added unsuccesfully cause to invalid patient data
+  Scenario Outline: adding a patient unsuccesfully
+    When I am entering a wrong <value>
+    Then I get an error message <error>
+
+    Examples: 
+      | value 		    | error  			  |
+      | ID            | ID   			    |
+      | Admin depart  | Admin depart  |
+      | trilvl        | trilvl        |
+      | Person value  | invalid data  |
+      | invalid depart| invalid depart|
     
-  @tag5
-  Scenario: adding a patient unsuccesfully cause to non existent department
-    When I am entering a non existent department
-    Then I get a message with the statement that the patient hasn't been added unsuccesfully cause to non existent department
+  
