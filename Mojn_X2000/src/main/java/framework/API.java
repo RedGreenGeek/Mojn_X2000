@@ -515,7 +515,32 @@ public class API {
 			res.add(queue.get(i).toString());
 		}
 
-   /* ______________  PASSWORD METHODS for O2 ________________    */
+   
+
+		return res;
+	}
+
+	public String getNextInQueue(String departmentName) {
+		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
+		OutPatientDepart outDepart;
+		
+		if (departmentRes.size() != 1) {
+			return "Warning, could not retrieve next in line.";
+		}
+		try {
+			outDepart = (OutPatientDepart) departmentRes.getFirst();
+		} 
+		catch (ClassCastException e) {
+			return "Warning, could not retrieve next in line.";
+		}
+		Person next = outDepart.DeQueue();
+		if (next == null) {
+			return "Warning, could not retrieve next in line.";
+		}
+		
+		return outDepart.DeQueue().toString();
+	}
+	/* ______________  PASSWORD METHODS for O2 ________________    */
 
 	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
 		Password Pass = Password.getInstance();
@@ -556,30 +581,5 @@ public class API {
 		return "Something went wrong";
 
 
-}
-}
-
-		return res;
-	}
-
-	public String getNextInQueue(String departmentName) {
-		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
-		OutPatientDepart outDepart;
-		
-		if (departmentRes.size() != 1) {
-			return "Warning, could not retrieve next in line.";
-		}
-		try {
-			outDepart = (OutPatientDepart) departmentRes.getFirst();
-		} 
-		catch (ClassCastException e) {
-			return "Warning, could not retrieve next in line.";
-		}
-		Person next = outDepart.DeQueue();
-		if (next == null) {
-			return "Warning, could not retrieve next in line.";
-		}
-		
-		return outDepart.DeQueue().toString();
 	}
 }
