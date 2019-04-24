@@ -67,10 +67,10 @@ public class Patient extends Person {
 	}
 
 
-}
 
-@Override
-public String toString() {
-	return patientID+"; "+this.getDepartment()+"; "+this.getLastName()+", "+this.getFirstName();
-}
+	@Override
+	public String toString() {
+		return patientID+"; "+this.getDepartment()+"; "+this.getLastName()+", "+this.getFirstName();
+	}
+	
 }
