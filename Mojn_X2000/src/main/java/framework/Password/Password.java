@@ -5,9 +5,16 @@ import java.util.HashMap;
 public class Password {
 	private HashMap<String, String> PassMap;
 	private long hashValue;
+	private static Password self;
 	
+	public static synchronized Password getInstance() {
+		if (self == null){
+			self = new Password();
+		}
+		return self; 
+	}
 
-	public Password() {
+	private Password() {
 		this.PassMap = new HashMap<String,String>();		
 	}
 	
@@ -16,6 +23,18 @@ public class Password {
 		String key = String.valueOf(this.hashValue);
 						
 		this.PassMap.put(StaffId, key);
+		
+	}
+	
+	public boolean checkUniqueID(String StaffID) {
+		String value = this.PassMap.get(StaffID);
+
+		if (value == null) {
+		    return false;
+		} else {
+		    return true;
+		}
+		
 	}
 
 	

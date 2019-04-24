@@ -28,7 +28,7 @@ public class M4_movePatientBeds {
 
 	@When("^I am entering a non occupied bedNo$")
 	public void i_am_entering_a_non_occupied_bedNo() {
-		message = API.movePatientBed("6", "1", "Pediatric");
+		message = api.movePatientBed("6", "1", "Pediatric");
 		
 	}
 
@@ -39,7 +39,7 @@ public class M4_movePatientBeds {
 
 	@When("^I am writing an invalid patient ID$")
 	public void i_am_writing_an_invalid_patient_ID() {
-		message = API.movePatientBed("6340", "1", "Pediatric");
+		message = api.movePatientBed("6340", "1", "Pediatric");
 	}
 
 	@Then("^I get an error message that the move between beds was unsuccesful$")
@@ -50,7 +50,7 @@ public class M4_movePatientBeds {
 
 	@When("^I am trying to move to a non existent department or multiple departments$")
 	public void i_am_trying_to_move_to_a_non_existent_department_or_multiple_departments() {
-		message = API.movePatientBed("6", "1", "Non existent");
+		message = api.movePatientBed("6", "1", "Non existent");
 		
 	}
 
@@ -61,7 +61,7 @@ public class M4_movePatientBeds {
 
 	@When("^I am trying to move to a department that isn't an indepartment$")
 	public void i_am_trying_to_move_to_a_department_that_isn_t_an_indepartment() {
-		message = API.movePatientBed("6", "1", "Cardio");
+		message = api.movePatientBed("6", "1", "Cardio");
 	}
 
 	@Then("^I get a message that the move between beds was unsuccesful because the department isn't an indepartment$")

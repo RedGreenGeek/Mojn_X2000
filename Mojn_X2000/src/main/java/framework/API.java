@@ -6,6 +6,8 @@ import framework.Departments.AdminDepart;
 import framework.Departments.HealthCare.InPatientDepart;
 import framework.Departments.HealthCare.OutPatientDepart;
 import framework.person.*;
+import framework.Password.*;
+
 import framework.person.staff.*;
 
 public class API {
@@ -60,10 +62,18 @@ public class API {
 		
 		
 		//------
+		Password Pas = Password.getInstance();
+		//
+		
 		Patient P1_out = new Patient("Søren","Sørensen","Ventre","Hellerup",24,9,97,true,"Cardio");
 		Patient P2_out = new Patient("Lars","Larsen","Jysk","Nordvestjylland",20,12,1950,true,"Cardio");
 		Doctor D1_out = new Doctor("Lars","Løkke","Ventre","Græsted",01,01,1950,"Cardio");
 		Nurse N1_out = new Nurse("Helle","Thorning","Gucci","Herlev",02,02,1960,"Cardio");
+		Pas.addPassToMap("asd", "N3");
+		
+		System.out.println(D1_out.getID() + " Is the ID of Doctor");
+
+		System.out.println(N1_out.getID() + " Is the ID of nurse");
 		
 		R.add(Out, P1_out);
 		R.add(Out, P2_out);
@@ -483,10 +493,58 @@ public class API {
 			} else {return "The bed wasn't free";}
 		}
 	}
+
 	
 	
 	/* _____________ PATIENT ADMISSION for M4 ______________ */
+
+
+
+
+   /* ______________  PASSWORD METHODS for O2 ________________    */
+
+	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
+		Password Pass = Password.getInstance();
+
+		
+		if (Pass.checkUniqueID(staffID)) {
+			return "Password already created for this staff!";
+		}
+		
+		if (newPassword2 == newPassword1) {
+			Pass.addPassToMap(newPassword1, staffID);
+			return "Password created";
+							}
+		else{
+			return "The two passwords do not match";
+		}
+	
+	}
+	
+	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
+		Password Pass = Password.getInstance();
+		
+		if (!Pass.checkUniqueID(staffID)) {
+			return "Staff ID does not exist";
+			
+		}
+		
+		if (Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
+			Pass.addPassToMap(newPassword1, staffID);
+			return "Password changed";
+		}
+		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
+			return "Wrong old password";
+		}
+		if (Pass.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
+			return "The 2 new passwords are not equal";
+		}
+		return "Something went wrong";
+
+
 }
+}
+
 
 
 
