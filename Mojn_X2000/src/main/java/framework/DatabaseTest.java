@@ -48,8 +48,8 @@ class DatabaseTest {
 
 		Patient p = new Patient("Hans","Hansen","Masai","Tagensvej 101",24,12,2000,true,"ER");
 		p.setTriage(3);
-		OutPatientDepart d = new OutPatientDepart("Emergency");
-		d.EnQueue(p, triageLevel);
+		OutPatientDepart20 d = new OutPatientDepart20("Emergency");
+		d.EnQueue(p, p.getTriage());
 		R.add(d, p);
 		String message = DB.writePatient(p);
 		
