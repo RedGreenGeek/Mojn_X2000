@@ -109,8 +109,7 @@ public class API {
 	}
 	
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
-	public static String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month,
-			int year, boolean alive) {
+	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			totalSet.add(new Patient(firstName,lastName,tribe,address,day,month,year,alive,null));
 			return "Patient registered succesfully.";
@@ -120,7 +119,7 @@ public class API {
 		}
 	}
 	
-	public static String changePatient(String ID, String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+	public  String changePatient(String ID, String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
 		Patient p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();
 		if (p==null) {
 			return "No patient with that ID found.";
@@ -141,7 +140,7 @@ public class API {
 		}
 	}
 
-	public static String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
+	public  String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
 		
 		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
 		String[] list = new String[persons.size()+1];
