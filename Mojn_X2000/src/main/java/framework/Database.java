@@ -440,21 +440,10 @@ public class Database {
 		LinkedList<Staff> list_staff = new LinkedList<Staff>();
 		
 		// Conversion from list to hashset
+		
 		while (I_department.hasNext()) {
 			
 			list_department.add(I_department.next());
-			
-		}
-		
-		while (I_patient.hasNext()) {
-			
-			list_patient.add(I_patient.next());
-			
-		}
-		
-		while (I_staff.hasNext()) {
-			
-			list_staff.add(I_staff.next());
 			
 		}
 		
@@ -474,7 +463,6 @@ public class Database {
 			
 			if (department instanceof OutPatientDepart) {
 				
-				((OutPatientDepart) department).EnQueue(P, P.getTriage());
 				
 			}
 			
