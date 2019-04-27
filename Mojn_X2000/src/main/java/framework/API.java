@@ -357,11 +357,13 @@ public class API {
 			return "Department "+departmentName+" does not contain any beds.";
 		}
 		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
+		Patient p = (Patient) patientRes.getFirst();
 		
 		if (!depart.beds.getBedsAvailable()) {
 			return "No beds available in department: " + departmentName;
 		}
-		String bedNo = depart.beds.AllocateBed(patientRes.getFirst());
+		R.add(depart, p);
+		Integer bedNo = p.getBedLocation();
 		return patientRes.getFirst().toString()+" was added to bed: "+bedNo;
 	}
 	
