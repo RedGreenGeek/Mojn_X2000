@@ -450,36 +450,35 @@ public class Database {
 		ChangeReg R = new ChangeReg();
 		SearchEngine searcher = new SearchEngine();
 		
-		Iterator<Patient> I = patientset.iterator();
-		
-		while (I.hasNext()) {
+		while (I_patient.hasNext()) {
 			
-			Patient P = I.next();
+			Patient P = I_patient.next();
 			String departmentName = P.getDepartment();
 			
 			Department department = searcher.department(departmentName, list_department).get(0);
 			
-			//
+			R.add(department, P);
+	
+		}
+
+		while (I_staff.hasNext()) {
 			
-			if (department instanceof OutPatientDepart) {
-				
-				
-			}
+			Staff P = I_staff.next();
+			String departmentName = P.getDepartment();
 			
-			else if (department instanceof InPatientDepart) {
-				
-				((InPatientDepart) department).beds.AllocateBed(P, P.getBedLocation());
-				
-			}
+			Department department = searcher.department(departmentName, list_department).get(0);
 			
-			else if (department instanceof AdminDepart) {
-				
-			}
-			
+			R.add(department, P);
+	
 		}
 		
+		hospital.setDepartSet(departmentset);
+		hospital.setAllPatientSet(patientset);
+		hospital.setAllStaff(staffset);
 		
+		return hospital;
 		
+
 	}
 	
 	/* ######################################################################### */

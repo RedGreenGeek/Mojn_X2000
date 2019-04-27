@@ -24,7 +24,7 @@ public class ChangeReg {
 	
 	public void add(Hospital h, Patient p) {	
 		
-		HashSet<Person> allPatientSet = h.getAllPatientSet();
+		HashSet<Patient> allPatientSet = h.getAllPatientSet();
 		allPatientSet.add(p);
 		h.setAllPatientSet(allPatientSet);
 		DB.writePatient(p);
