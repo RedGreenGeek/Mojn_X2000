@@ -57,23 +57,28 @@ public class ChangeReg {
 		HashSet<Person> patientSet = d.getPatient();
 		if (d instanceof InPatientDepart) {
 			InPatientDepart IPD = (InPatientDepart)d;
-			if (IPD.beds.getBedsAvailable()) {
+			if (p.getDepartment().equals(d.getName())) {
+				patientSet.add(p);
+				IPD.beds.AllocateBed(p, p.getBedLocation());
+			}
+			else {
 				p.setDepartment(d.getName());
 				patientSet.add(p);
-//				IPD.beds.AllocateBed(p);
-				
+				IPD.beds.AllocateBed(p);
 			}
-			
 		}
 		else if(d instanceof OutPatientDepart) {
 			p.setDepartment(d.getName());
-			OutPatientDepart OutD = (OutPatientDepart)d;
-			OutD.EnQueue(p);
+			OutPatientDepart OutD = (OutPatientDepart) d;
+			if (p.getTriage()==null) {
+				OutD.EnQueue(p);
+			}
+			else {
+				OutD.EnQueue(p,p.getTriage());
+			}
 			patientSet.add(p);
 			d.setPatient(patientSet);
-			
 		}
-		else {System.err.println("Only Available to InPatient and OutPatient Departments.");}
 	}
 	
 	public void add(Department d, Patient p,int triageLevel) {
