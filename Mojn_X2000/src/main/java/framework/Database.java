@@ -436,8 +436,6 @@ public class Database {
 		Iterator<Staff> I_staff = staffset.iterator();
 		
 		LinkedList<Department> list_department = new LinkedList<Department>();
-		LinkedList<Patient> list_patient = new LinkedList<Patient>();
-		LinkedList<Staff> list_staff = new LinkedList<Staff>();
 		
 		// Conversion from list to hashset
 		
