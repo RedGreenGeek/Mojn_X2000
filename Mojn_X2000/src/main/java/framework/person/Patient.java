@@ -10,22 +10,22 @@ public class Patient extends Person {
 	private Integer triage;
 	private Integer bed_location;
 	
-	public Patient(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive, String d) {
+	public Patient(String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department) {
 		
 	    this.setFirstName(firstName);
 	    this.setLastName(lastName);
 	    this.setAlive(alive);
 	    this.setBirthDay(day, month, year);
 	    this.setTribe(tribe);
-	    this.setAdress(adress);
+	    this.setAdress(address);
 	    this.patientID = ++Patient.counter;
-	    this.setDepartment(d);
+	    this.setDepartment(department);
 	    this.triage = null;
 	    this.bed_location = null;
 	    
 	}
 	
-	public Patient(int PatientID, String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive, String d, int triage, int bed) {
+	public Patient(int PatientID, String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department, Integer triage, Integer bed) {
 	    
 		this.setPatientID(PatientID);
 		this.setFirstName(firstName);
@@ -33,9 +33,9 @@ public class Patient extends Person {
 	    this.setAlive(alive);
 	    this.setBirthDay(day, month, year);
 	    this.setTribe(tribe);
-	    this.setAdress(adress);
+	    this.setAdress(address);
 	    this.setPatientID(PatientID);
-	    this.setDepartment(d);	   
+	    this.setDepartment(department);	   
 	    this.setTriage(triage);
 	    this.setBedLocation(bed);
 
@@ -69,8 +69,6 @@ public class Patient extends Person {
 	public Integer getBedLocation() {
 		return triage;
 	}
-
-
 
 	@Override
 	public String toString() {
