@@ -429,7 +429,7 @@ public class Database {
 	/* _______________ SECTION 6: Connector  ___________________________________ */
 	/* ######################################################################### */
 	
-	private Hospital buildHospital(Hospital hospital, HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
+	Hospital buildHospital(Hospital hospital, HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
 		
 		Iterator<Department> I_department = departmentset.iterator();
 		Iterator<Patient> I_patient = patientset.iterator();
@@ -482,13 +482,7 @@ public class Database {
 	/* ######################################################################### */
 	/* _______________ SECTION 7: Rebooting hospital ___________________________ */
 	/* ######################################################################### */
-	
-	public Hospital boot() {
-		
-		Hospital hospital = new Hospital();
-		
-		
-	}
+
 	
 	
 

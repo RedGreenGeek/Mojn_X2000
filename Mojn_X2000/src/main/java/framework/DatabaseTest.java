@@ -163,9 +163,8 @@ class DatabaseTest {
 		departmentset.add(new OutPatientDepart("OUT1"));
 		departmentset.add(new AdminDepart("AD1"));
 		
-		Hospital h = buildHospital();
-		
-		assertEquals()
+		h = DB.buildHospital(h, departmentset, staffset, patientset);
+
 	}
 
 }
