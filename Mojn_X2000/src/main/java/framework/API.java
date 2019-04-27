@@ -1,8 +1,10 @@
 package framework;
 
+import java.io.IOException;
 import java.util.*;
 
 import framework.Departments.AdminDepart;
+import framework.Departments.HCDepart;
 import framework.Departments.HealthCare.InPatientDepart;
 import framework.Departments.HealthCare.OutPatientDepart;
 import framework.person.*;
@@ -48,10 +50,10 @@ public class API {
 		
 		
 		//------
-		Patient P1_in = new Patient("Jens","Jensen","Zulu","Jagtvej 69",24,9,97,true,"ER");
-		Patient P2_in = new Patient("Hans","Hansen","Masai","Tagensvej 101",24,12,2000,true,"ER");
-		Doctor D1_in = new Doctor("Svend","Nielsen","Dansk","Doktorvej",01,01,1901,"ER");
-		Nurse N1_in = new Nurse("Jonna","Nielsen","Tysk","Ikke-doktorvej",02,02,1902,"ER");
+		Patient P1_in = new Patient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true,"ER");
+		Patient P2_in = new Patient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true,"ER");
+		Doctor D1_in = new Doctor("Svend","Nielsen","Doktorvej","Dansk",01,01,1901,"ER");
+		Nurse N1_in = new Nurse("Jonna","Nielsen","Ikke-doktorvej","Tysk",02,02,1902,"ER");
 		
 		R.add(In, P1_in);
 		R.add(In, P2_in);
@@ -65,15 +67,12 @@ public class API {
 		Password Pas = Password.getInstance();
 		//
 		
-		Patient P1_out = new Patient("Søren","Sørensen","Ventre","Hellerup",24,9,97,true,"Cardio");
-		Patient P2_out = new Patient("Lars","Larsen","Jysk","Nordvestjylland",20,12,1950,true,"Cardio");
-		Doctor D1_out = new Doctor("Lars","Løkke","Ventre","Græsted",01,01,1950,"Cardio");
-		Nurse N1_out = new Nurse("Helle","Thorning","Gucci","Herlev",02,02,1960,"Cardio");
+		Patient P1_out = new Patient("Søren","Sørensen","Hellerup","Ventre",24,9,97,true,"Cardio");
+		Patient P2_out = new Patient("Lars","Larsen","Nordvestjylland","Jysk",20,12,1950,true,"Cardio");
+		Doctor D1_out = new Doctor("Lars","Løkke","Græsted","Ventre",01,01,1950,"Cardio");
+		Nurse N1_out = new Nurse("Helle","Thorning","Herlev","Gucci",02,02,1960,"Cardio");
 		Pas.addPassToMap("asd", "N3");
 		
-		System.out.println(D1_out.getID() + " Is the ID of Doctor");
-
-		System.out.println(N1_out.getID() + " Is the ID of nurse");
 		
 		R.add(Out, P1_out);
 		R.add(Out, P2_out);
@@ -92,10 +91,10 @@ public class API {
 		R.add(h, clerk);
 		
 		//------
-		Patient P1_in2 = new Patient("Jens","Jensen","Zulu","Jagtvej 69",24,9,97,true,"Pediatric");
-		Patient P2_in2 = new Patient("Hans","Hansen","Masai","Tagensvej 101",24,12,2000,true,"Pediatric");
-		Doctor D1_in2 = new Doctor("Svend","Nielsen","Dansk","Doktorvej",01,01,1901,"Pediatric");
-		Nurse N1_in2 = new Nurse("Jonna","Nielsen","Tysk","Ikke-doktorvej",02,02,1902,"Pediatric");
+		Patient P1_in2 = new Patient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true,"Pediatric");
+		Patient P2_in2 = new Patient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true,"Pediatric");
+		Doctor D1_in2 = new Doctor("Svend","Nielsen","Doktorvej","Dansk",01,01,1901,"Pediatric");
+		Nurse N1_in2 = new Nurse("Jonna","Nielsen","Ikke-doktorvej","Tysk",02,02,1902,"Pediatric");
 		
 		R.add(In2, P1_in2);
 		R.add(In2, P2_in2);
@@ -104,8 +103,6 @@ public class API {
 		
 		In2.beds.AllocateBed(P1_in2);
 		In2.beds.AllocateBed(P2_in2);
-		
-		System.out.println(In.beds.getBedsAvailable());
 	}
 	
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
@@ -579,7 +576,23 @@ public class API {
 			return "The 2 new passwords are not equal";
 		}
 		return "Something went wrong";
-
-
+	}
+	
+	
+	
+	/* ______________  PARTICIPATION LIST for O5 ________________    */
+	//OSB in order for this to run correctly, you need to set a valid directory in participationList object!!
+	public String getParticipationList(boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
+		new ParticipationList(new LinkedList<Person>(h.getAllPatient()), department, birthday, address, tribe);
+		return "Participation list was created successfully.";
+	}
+	
+	public String getParticipationList(String departmentName, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
+		LinkedList<Department> dList = searcher.departmentSearch(departmentName);
+		if (dList.size() != 1 || !(dList.getFirst() instanceof HCDepart)) {
+			return "Warning, an error occured, no list was created.";
+		}
+		new ParticipationList(new LinkedList<Person>(dList.getFirst().getPatient()), department, birthday, address, tribe);
+		return "Participation list was created successfully.";
 	}
 }
