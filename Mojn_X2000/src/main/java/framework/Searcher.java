@@ -11,7 +11,6 @@ public class Searcher {
 		h = hos;
 	}
 	
-	
 	protected LinkedList<Department> departmentSearch(String departmentName){
 		LinkedList<Department> dList = new LinkedList<Department>(h.getDepartSet());
 		return se.department(departmentName, dList);

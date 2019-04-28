@@ -1,6 +1,5 @@
 package framework.person.staff;
 
-import framework.Department;
 import framework.person.Staff;
 
 public class Doctor extends Staff{

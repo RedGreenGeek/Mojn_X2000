@@ -1,6 +1,5 @@
 package framework.person;
 
-import framework.Department;
 import framework.Person;
 
 public class Patient extends Person {
@@ -11,7 +10,6 @@ public class Patient extends Person {
 	private Integer bed_location = null;
 	
 	public Patient(String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department) {
-		
 	    this.setFirstName(firstName);
 	    this.setLastName(lastName);
 	    this.setAlive(alive);
@@ -22,11 +20,9 @@ public class Patient extends Person {
 	    this.setDepartment(department);
 	    this.triage = null;
 	    this.bed_location = null;
-	    
 	}
 	
 	public Patient(int PatientID, String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department, Integer triage, Integer bed) {
-	    
 		this.setPatientID(PatientID);
 		this.setFirstName(firstName);
 	    this.setLastName(lastName);
@@ -44,7 +40,6 @@ public class Patient extends Person {
 	    if (triage != null) {
 		    this.setTriage(triage);
 	    }
-
 	}
 
 	@Override
@@ -52,7 +47,7 @@ public class Patient extends Person {
 		return Integer.toString(this.patientID);
 	}
 	
-	public void setPatientID(int patientID) {
+	protected void setPatientID(int patientID) {
 	    this.patientID = patientID;
 	}
 	
@@ -75,7 +70,6 @@ public class Patient extends Person {
 	public Integer getBedLocation() {
 		return bed_location;
 	}
-
 
 	@Override
 	public String toString() {

@@ -29,31 +29,19 @@ public class Hospital {
 		this.departSet = departSet;
 	}
 	
-	public HashSet<Department> getDepartSet() {
+	protected HashSet<Department> getDepartSet() {
 		return this.departSet;
 	}
 	
-//	public Department getDepartment(String departName) {
-//
-//		for (Department i:this.departSet) {
-//			if (i.departName == departName) {
-//			return i;
-//			}
-//		}
-//		throw new IllegalArgumentException("No such department");
-//	}
-	
-	public HashSet<Staff> getStaffSet(){
-		
+	protected HashSet<Staff> getStaffSet(){
 		return this.allStaffSet;
 	}
 	
-	public void setAllStaff(HashSet<Staff> allStaffSet){
+	protected void setAllStaff(HashSet<Staff> allStaffSet){
 		this.allStaffSet = allStaffSet;
-		
 	}
 	
-	public HashSet<Person> getAllStaff(){
+	protected HashSet<Person> getAllStaff(){
 		HashSet<Person> staffSet = new HashSet<Person>();
 		LinkedList<Department> departList = new LinkedList<Department>(this.departSet);
 		while (!departList.isEmpty()) {
@@ -62,7 +50,7 @@ public class Hospital {
 		return staffSet;
 	}
 	
-	public HashSet<Person> getAllAdmittedPatients(){
+	protected HashSet<Person> getAllAdmittedPatients(){
 		HashSet<Person> patientSet = new HashSet<Person>();
 		LinkedList<Department> departList = new LinkedList<Department>(this.departSet);
 		while (!departList.isEmpty()) {

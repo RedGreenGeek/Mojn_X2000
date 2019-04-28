@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class ParticipationList {
-	ParticipationList(LinkedList<Person> ll, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException{
+	public ParticipationList(LinkedList<Person> ll, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException{
 		String s = this.makeString(ll,department, birthday, address, tribe);
 		String fileSeparator = System.getProperty("file.separator");
 		DateFormat dateFormat = new SimpleDateFormat("dd:MM:yy-HH.mm");

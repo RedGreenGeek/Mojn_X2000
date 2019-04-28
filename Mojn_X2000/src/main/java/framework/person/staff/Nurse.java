@@ -1,6 +1,5 @@
 package framework.person.staff;
 
-import framework.Department;
 import framework.person.Staff;
 
 public class Nurse extends Staff{
@@ -14,7 +13,7 @@ public class Nurse extends Staff{
 		this.setID("N");
 		this.setEmail(); // 
 		this.setDepartment(d);
-		}
+	}
 	
 	public Nurse(String jobID, String firstName, String lastName,String adress, String tribe, int day, int month, int year, String d) {
 		this.setFirstName(firstName);
@@ -26,5 +25,5 @@ public class Nurse extends Staff{
 		this.setID_reload(jobID);
 		this.setEmail(); // 
 		this.setDepartment(d);
-		}
+	}
 }

@@ -3,8 +3,8 @@ package framework.Departments.HealthCare;
 import framework.Person;
 
 public class Beds {
-	Person[] beds;
-	int bedsInUse;
+	protected Person[] beds;
+	protected int bedsInUse;
 	
 	public Beds(int maxBeds) {
 		this.beds = new Person[maxBeds];
@@ -25,10 +25,6 @@ public class Beds {
 	}
 	
 	public String AllocateBed(Person patient, int bedNo) {
-		
-		System.out.println("Number of beds: " + beds.length);
-		System.out.println("Bed number: " + bedNo);
-		 
 		if (beds[bedNo] == patient) {
 			return "Same bed";
 		}
@@ -38,8 +34,6 @@ public class Beds {
 			return "Ok";
 		}
 		else {return "Error";}
-		
-		
 	}
 	
 	public void Discharge(Person patient) {

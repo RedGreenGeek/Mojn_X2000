@@ -38,7 +38,7 @@ public class OutPatientDepart extends HCDepart {
 	public OutPatientDepart(String departName, HashSet<Person> staffSet, HashSet<Person> patientSet) {
 		super.setName(departName);
 		super.setStaff(staffSet); 
-		this.patientSet = patientSet;
+		super.setPatient(patientSet);
 		this.queue = new PriorityQueue<Pair>(1);
 	}
 	
@@ -75,9 +75,6 @@ public class OutPatientDepart extends HCDepart {
 			PList.add(Q.next().getID());
 			
 		}
-		
 		return PList;
-		
-		
 	}
 }

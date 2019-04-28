@@ -6,20 +6,19 @@ import framework.Person;
 import framework.Departments.HCDepart;
 
 public class InPatientDepart extends HCDepart{
-	
 	public Beds beds;
-	public int max_beds;
+	private int max_beds;
 		
 	public InPatientDepart(String departName, HashSet<Person> staffSet, HashSet<Person> patientSet, int maxBeds) {
 		super.setName(departName);
 		super.setStaff(staffSet); 
-		this.patientSet = patientSet;
+		super.setPatient(patientSet);
 		this.beds = new Beds(maxBeds);
 	}
 	
 	public InPatientDepart(String departName, int maxBeds) {
 		this.setStaff(new HashSet<Person>());
-		this.patientSet = new HashSet<Person>();
+		super.setPatient(new HashSet<Person>());
 		super.setName(departName);
 		this.max_beds = maxBeds;
 		this.beds = new Beds(maxBeds);
@@ -32,9 +31,6 @@ public class InPatientDepart extends HCDepart{
 	public int get_beds_in_use() {
 		return beds.bedsInUse;
 	}
-		
-	
-
 }
 
 

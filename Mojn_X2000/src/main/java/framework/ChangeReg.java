@@ -10,45 +10,42 @@ import framework.person.Staff;
 public class ChangeReg {
 	
 	// Adding database connection
-	
-	Database DB = Database.getInstance(Database.DEFAULT);
+	private Database DB = Database.getInstance(Database.DEFAULT);
 	
 	// Method has been overloaded to accept a person and the only instance of our hospital,
 	// such that a person can be added to the overall organization. 
-	public void add(Hospital h, Staff p) {	
+	protected void add(Hospital h, Staff p) {	
 		HashSet<Staff> allStaffSet = h.getStaffSet();
 		allStaffSet.add(p);
 		h.setAllStaff(allStaffSet);
-		
 	}
 	
-	public void add(Hospital h, Patient p) {
+	protected void add(Hospital h, Patient p) {
 		HashSet<Patient> allPatientSet = h.getAllPatientSet();
-//		System.out.println(allPatientSet);
 		allPatientSet.add(p);
-//		System.out.println(allPatientSet);
 		h.setAllPatientSet(allPatientSet);
 		DB.writePatient(p);
-		
 	}
 	
-	public void add(Hospital h, Department d) {
+	protected void add(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.add(d);
 		h.setDepartSet(departSet);
 	}
-	public void remove(Hospital h, Department d) {
+	
+	protected void remove(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.remove(d);
 		h.setDepartSet(departSet);
 	}
 	
-	public void add(Department d, Staff s) {
+	protected void add(Department d, Staff s) {
 		HashSet<Person> staffSet = d.getStaff();
 		staffSet.add(s);
 		d.setStaff(staffSet);
 	}
-	public void remove(Department d, Staff s) {
+	
+	protected void remove(Department d, Staff s) {
 		HashSet<Person> staffSet = d.getStaff();
 		staffSet.remove(s);
 		d.setStaff(staffSet);
@@ -77,7 +74,7 @@ public class ChangeReg {
 		}
 	}
 	
-	public void add(Department d, Patient p,int triageLevel) {
+	protected void add(Department d, Patient p,int triageLevel) {
 		HashSet<Person> patientSet = d.getPatient();
 
 		if(d instanceof OutPatientDepart) {
@@ -90,7 +87,7 @@ public class ChangeReg {
 		else {System.err.println("Only OutPatient Departments have triage levels");}
 	}
 	
-	public void remove(Department d, Patient p) {
+	 public void remove(Department d, Patient p) {
 		HashSet<Person> patientSet = d.getPatient();
 		patientSet.remove(p);
 		d.setPatient(patientSet);
