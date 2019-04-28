@@ -76,7 +76,6 @@ public class API {
 		Patient P2_out = new Patient("Lars","Larsen","Nordvestjylland","Jysk",20,12,1950,true,"Cardio");
 		Doctor D1_out = new Doctor("Lars","Løkke","Græsted","Ventre",01,01,1950,"Cardio");
 		Nurse N1_out = new Nurse("Helle","Thorning","Herlev","Gucci",02,02,1960,"Cardio");
-		Pas.addPassToMap("asd", "N3");
 		
 		
 		R.add(Out, P1_out);
@@ -89,6 +88,14 @@ public class API {
 		//------
 		ICTOfficer ICTOf = new ICTOfficer("Jens","Hansen","Norway","Indian",29,2,1996,"IT");
 		Clerk clerk = new Clerk("Mads","hansen","Uganda","Black-rocks Clan",23,4,2000,"IT");
+		System.out.println(D1_out.getID());
+		Pas.addPassToMap("password", "IT4");
+		Pas.addPassToMap("password", "C5");
+		Pas.addPassToMap("password", "D2");
+		Pas.addPassToMap("password", "N3");
+
+
+
 		
 		R.add(A,ICTOf);
 		R.add(A, clerk);
