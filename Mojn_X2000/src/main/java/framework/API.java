@@ -33,9 +33,7 @@ public class API {
 	
 	private API (){
 		
-		// CONNECTION TO DATABASE TO ENSURE CONNECTION
-		DB = Database.getInstance();
-		
+		//------
 		R = new ChangeReg();
 		
 		//------
@@ -120,16 +118,24 @@ public class API {
 	
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
 	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+		
+		System.out.println(Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive));
+		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			
+			
+			System.out.println(firstName + lastName + address + tribe);
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
 			R.add(h, new Patient(firstName,lastName,tribe,address,day,month,year,alive,null)); // Adding patient through changereg
 			totalSet.add(new Patient(firstName,lastName,tribe,address,day,month,year,alive,null));
-			
+
+			System.out.println("Patient registered succesfully.");
 			return "Patient registered succesfully.";
 		}
 		else {
 			
+			System.out.println(firstName + lastName + address + tribe);
+			System.out.println("Additional information is needed.");
 			return "Additional information is needed.";
 			
 		}
@@ -267,7 +273,7 @@ public class API {
 			// removed from the specific department
 			R.remove(dd, person);
 			// removed from the overall set
-			h.getAllStaff("Overall").remove(person);
+			h.getStaffSet().remove(person);
 			// registered as with new job type.
 			String message = registerStaff(jobtype, firstName, lastName, adress, tribe, day, month ,year);
 			return message;} else {return "Invalid job type!";}
@@ -348,11 +354,13 @@ public class API {
 			return "Department "+departmentName+" does not contain any beds.";
 		}
 		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
+		Patient p = (Patient) patientRes.getFirst();
 		
 		if (!depart.beds.getBedsAvailable()) {
 			return "No beds available in department: " + departmentName;
 		}
-		String bedNo = depart.beds.AllocateBed(patientRes.getFirst());
+		R.add(depart, p);
+		Integer bedNo = p.getBedLocation();
 		return patientRes.getFirst().toString()+" was added to bed: "+bedNo;
 	}
 	

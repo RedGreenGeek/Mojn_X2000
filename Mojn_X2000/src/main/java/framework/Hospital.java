@@ -3,6 +3,7 @@ package framework;
 import java.util.*;
 
 import framework.Departments.HCDepart;
+import framework.person.Patient;
 import framework.person.Staff;
 
 public class Hospital {
@@ -10,17 +11,17 @@ public class Hospital {
 	// Remember to override hashcode and equals
 	
 	private HashSet<Department> departSet = new HashSet<Department>();
-	private HashSet<Person> allPatientSet = new HashSet<Person>();
+	private HashSet<Patient> allPatientSet = new HashSet<Patient>();
 	private HashSet<Staff> allStaffSet = new HashSet<Staff>();
 	
 	public Hospital() {
 	}
 	
-	protected HashSet<Person> getAllPatientSet() {
+	protected HashSet<Patient> getAllPatientSet() {
 		return allPatientSet;
 	}
 
-	protected void setAllPatientSet(HashSet<Person> allPatientSet) {
+	protected void setAllPatientSet(HashSet<Patient> allPatientSet) {
 		this.allPatientSet = allPatientSet;
 	}
 	
@@ -42,7 +43,7 @@ public class Hospital {
 //		throw new IllegalArgumentException("No such department");
 //	}
 	
-	public HashSet<Staff> getAllStaff(String s){
+	public HashSet<Staff> getStaffSet(){
 		
 		return this.allStaffSet;
 	}
