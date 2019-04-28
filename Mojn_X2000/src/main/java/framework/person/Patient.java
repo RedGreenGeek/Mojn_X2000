@@ -7,8 +7,8 @@ public class Patient extends Person {
 	
 	private int patientID;
 	private static int counter;
-	private Integer triage = 1;
-	private Integer bed_location;
+	private Integer triage = null;
+	private Integer bed_location = null;
 	
 	public Patient(String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department) {
 		
@@ -72,22 +72,13 @@ public class Patient extends Person {
 		return triage;
 	}
 	
-	public String getBedLocation() {
-		if (bed_location == null) {
-			return null;
-		}
-		return Integer.toString(bed_location);
+	public Integer getBedLocation() {
+		return bed_location;
 	}
 
-<<<<<<< HEAD
-@Override
-public String toString() {
-	return patientID+"; "+this.getDepartment()+"; "+this.getLastName()+", "+this.getFirstName();
-}
-=======
+
 	@Override
 	public String toString() {
 		return patientID+"; "+this.getDepartment()+"; "+this.getLastName()+", "+this.getFirstName();
 	}
->>>>>>> Dev3
 }

@@ -29,7 +29,7 @@ public class API {
 	
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
-		DB = Database.getInstance();
+		DB = Database.getInstance(Database.DEFAULT);
 		
 		R = new ChangeReg();
 		
@@ -299,7 +299,7 @@ public class API {
 			return "No beds available in department: " + departmentName;
 		}
 		discharge(patientRes.getFirst().getID());
-		patientAdmission(p.getTriage(), departmentName, patientID);
+		patientAdmission(p.getTriage().toString(), departmentName, patientID);
 		return p+" was added to bed: "+p.getBedLocation();
 	}
 	
