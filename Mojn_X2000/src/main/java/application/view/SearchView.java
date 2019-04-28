@@ -27,7 +27,7 @@ public class SearchView extends JFrame {
 	private JLabel adressLabel;
 	private JLabel tribeLabel;
 	private JLabel birthdayLabel;
-	private JLabel departLabel;
+	private JLabel IDLabel;
 	private JTextField firstNameField;
 	private JTextField surnameField;
 	private JTextField adressField;
@@ -35,7 +35,7 @@ public class SearchView extends JFrame {
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
-	private JTextField departField;
+	private JTextField idField;
 	private JLabel ageLabel ;
 
 
@@ -62,7 +62,6 @@ public class SearchView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Hospital Structur Menu");
 		setPreferredSize(new Dimension(800, 700));
-		String path = "C:\\Users\\anton\\OneDrive\\Dokumenter\\Uni\\Uni\\4. semester\\Agil\\Exam proj\\icons\\Hospital structur";
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -73,7 +72,7 @@ public class SearchView extends JFrame {
 		tribeLabel = new JLabel("Tribe: ");
 		birthdayLabel = new JLabel("Birthday: ");
 		ageLabel = new JLabel("Job type: ");
-		departLabel = new JLabel("Department: ");
+		IDLabel = new JLabel("ID: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
 		adressField = new JTextField(11);
@@ -81,7 +80,7 @@ public class SearchView extends JFrame {
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
-		departField = new JTextField(11);
+		idField = new JTextField(11);
 	
 		
 		
@@ -97,16 +96,16 @@ public class SearchView extends JFrame {
 				String day = dayField.getText();
 				String month = monthField.getText();
 				String year = yearField.getText();
-				String depart = departField.getText();
+				String id = idField.getText();
 				firstNameField.setText("");
 				surnameField.setText("");
 				dayField.setText("");
 				monthField.setText("");
 				yearField.setText("");
-				departField.setText("");
+				idField.setText("");
 				tribeField.setText("");
 				adressField.setText("");
-				msg = controller.SearchAPI(firstName, surname, adress, tribe, day, month, year, depart);
+				msg = controller.SearchAPI(firstName, surname, adress, tribe, day, month, year, id);
 				
 
 				textArea.append(msg);
@@ -241,13 +240,13 @@ public class SearchView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(departLabel, gc);
+		inputArea.add(IDLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(departField, gc);
+		inputArea.add(idField, gc);
 		
 		
 		/////////////////////////// 7. linje
