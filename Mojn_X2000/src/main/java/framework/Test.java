@@ -8,4 +8,4 @@ public class Test {
 		API api = API.getInstance();
 		api.getParticipationList(true,true,true,true);
 		}
-	}
+	}//kjh
