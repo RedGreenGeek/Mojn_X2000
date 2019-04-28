@@ -37,7 +37,7 @@ public class M1_RegisterPatient {
 	@Then("^I get a message that the patient was registered succesfully$")
 	public void i_get_a_message_that_the_patient_was_registered_succesfully() throws Throwable {
 
-		assertTrue(message.equals("Patient registered succesfully."));
+		assertEquals(message, "Patient registered succesfully.");
 		
 	}
 	

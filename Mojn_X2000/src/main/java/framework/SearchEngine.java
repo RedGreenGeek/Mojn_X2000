@@ -6,8 +6,9 @@ import framework.person.Staff;
 
 public class SearchEngine {
 	
-	protected LinkedList<Department> department(String departmentName, LinkedList<Department> dList){
+	protected LinkedList<Department> department(String departmentName, LinkedList<Department> ds){
 		LinkedList<Department> res = new LinkedList<Department>();
+		LinkedList<Department> dList = (LinkedList<Department>) ds.clone();
 		while (!dList.isEmpty()) {
 			if (dList.getFirst().getName().toLowerCase().startsWith(departmentName.toLowerCase())){
 				res.add(dList.removeFirst());

@@ -3,7 +3,7 @@ import java.util.*;
 
 public abstract class Department {
 	
-	private HashSet<Person> staffSet;
+	private HashSet<Person> staffSet = new HashSet<Person>();
 
 	private String departName;
 	

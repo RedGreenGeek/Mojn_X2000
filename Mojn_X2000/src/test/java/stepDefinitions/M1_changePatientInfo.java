@@ -26,7 +26,7 @@ public class M1_changePatientInfo {
 
 	@Then("^I get a message that the change was succesful$")
 	public void i_get_a_message_that_the_change_was_succesful() {
-	   assertTrue(message.equals("Patient information has been changed successfully."));
+	   assertEquals("Patient information has been changed successfully.",message);
 	}
 
 	@When("^I am entering invalid patientID$")

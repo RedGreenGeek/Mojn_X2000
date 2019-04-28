@@ -25,6 +25,10 @@ public class Beds {
 	}
 	
 	public String AllocateBed(Person patient, int bedNo) {
+		
+		System.out.println("Number of beds: " + beds.length);
+		System.out.println("Bed number: " + bedNo);
+		 
 		if (beds[bedNo] == patient) {
 			return "Same bed";
 		}
