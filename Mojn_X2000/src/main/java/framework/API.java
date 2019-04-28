@@ -1,8 +1,10 @@
 package framework;
 
+import java.io.IOException;
 import java.util.*;
 
 import framework.Departments.AdminDepart;
+import framework.Departments.HCDepart;
 import framework.Departments.HealthCare.InPatientDepart;
 import framework.Departments.HealthCare.OutPatientDepart;
 import framework.person.*;
