@@ -17,7 +17,7 @@ public class Hospital {
 	public Hospital() {
 	}
 	
-	protected HashSet<Patient> getAllPatientSet() {
+	public HashSet<Patient> getAllPatientSet() {
 		return allPatientSet;
 	}
 

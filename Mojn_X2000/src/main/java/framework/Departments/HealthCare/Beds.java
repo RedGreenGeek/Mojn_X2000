@@ -25,15 +25,15 @@ public class Beds {
 	}
 	
 	public String AllocateBed(Person patient, int bedNo) {
-		
+		int index = bedNo-1;
 		System.out.println("Number of beds: " + beds.length);
-		System.out.println("Bed number: " + bedNo);
+		System.out.println("Bed number: " + index);
 		 
-		if (beds[bedNo] == patient) {
+		if (beds[index] == patient) {
 			return "Same bed";
 		}
-		if (beds[bedNo] == null) {
-			beds[bedNo] = patient;
+		if (beds[index] == null) {
+			beds[index] = patient;
 			bedsInUse++;
 			return "Ok";
 		}
