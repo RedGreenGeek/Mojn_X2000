@@ -9,7 +9,7 @@ private String birthday;
 private String adress;
 private String tribe;
 private boolean alive;
-private String department;
+private String department = null;
 
 @Override
 public abstract String toString();

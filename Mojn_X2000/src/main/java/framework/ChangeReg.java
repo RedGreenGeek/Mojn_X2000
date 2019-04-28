@@ -58,10 +58,9 @@ public class ChangeReg {
 		HashSet<Person> patientSet = d.getPatient();
 		if (d instanceof InPatientDepart) {
 			InPatientDepart IPD = (InPatientDepart)d;
-			if (p.getDepartment().equals(d.getName()) && p.getBedLocation()!=null) {
-				patientSet.add(p);
-				p.setDepartment(IPD.getName());
-			}
+			patientSet.add(p);
+			d.setPatient(patientSet);
+			p.setDepartment(IPD.getName());
 		}
 		else if(d instanceof OutPatientDepart) {
 			p.setDepartment(d.getName());
