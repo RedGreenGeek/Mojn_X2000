@@ -27,9 +27,9 @@ public class SearchController {
 		this.view.setSession(sessionModel);
 	}
 	
-	public String SearchAPI(String firstName, String surname, String adress, String tribe, String day, String month, String year, String depart) {
+	public String SearchAPI(String firstName, String surname, String adress, String tribe, String day, String month, String year, String id) {
 		API api =  API.getInstance();
-		String a = api.patientSearcher("1", firstName, surname, day+"-"+month+"-"+year);
+		String a = api.patientSearcher(id, firstName, surname, day+"-"+month+"-"+year);
 		return a;
 		
 	}
