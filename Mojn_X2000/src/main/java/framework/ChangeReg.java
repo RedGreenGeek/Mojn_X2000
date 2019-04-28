@@ -22,9 +22,11 @@ public class ChangeReg {
 		
 	}
 	
-	public void add(Hospital h, Patient p) {	
+	public void add(Hospital h, Patient p) {
 		HashSet<Person> allPatientSet = h.getAllPatientSet();
+		System.out.println(allPatientSet);
 		allPatientSet.add(p);
+		System.out.println(allPatientSet);
 		h.setAllPatientSet(allPatientSet);
 		String message = DB.writePatient(p);
 		

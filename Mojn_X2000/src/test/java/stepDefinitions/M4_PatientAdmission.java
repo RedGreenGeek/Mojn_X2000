@@ -22,29 +22,14 @@ public class M4_PatientAdmission {
 
 	@When("^I am entering valid patient data$")
 	public void i_am_entering_valid_patient_data() {
-		String firstName = "Anton";
-		String lastName = "Larsen";
-		String adress = "Jagtvej";
-		String tribe = "DTU";
-		int day = 1;
-		int month = 12;
-		int year = 1996;
-		// These data will be handled in the next step
-		
+		// Data will be handled in the next step
 	}
 
 	@When("^I am entering a existing In depart$")
 	public void i_am_entering_a_existing_In_depart() {
-		String firstName = "Anton";
-		String lastName = "Larsen";
-		String adress = "Jagtvej";
-		String tribe = "DTU";
-		int day = 1;
-		int month = 12;
-		int year = 1996;
-		String department = "ER";
+		String departmentName = "ER";
 		String trilvl = "";
-		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+		message = api.patientAdmission(trilvl, departmentName, "2");
 	}
 	
 	@Then("^I get a message with a positiv In feed$")
@@ -55,16 +40,9 @@ public class M4_PatientAdmission {
 
 	@When("^I am entering a existing Out depart$")
 	public void i_am_entering_a_existing_Out_depart() {
-		String firstName = "Anton";
-		String lastName = "Larsen";
-		String adress = "Jagtvej";
-		String tribe = "DTU";
-		int day = 1;
-		int month = 12;
-		int year = 1996;
 		String department = "Cardio";
 		String trilvl = "2";
-		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+		message = api.patientAdmission(trilvl, department, "1");
 	}
 	
 	@Then("^I get a message with a positiv Out feed$")
@@ -74,16 +52,9 @@ public class M4_PatientAdmission {
 
 	@When("^I am entering a wrong Admin depart$")
 	public void i_am_entering_a_wrong_Admin_depart() {
-		String firstName = "Anton";
-		String lastName = "Larsen";
-		String adress = "Jagtvej";
-		String tribe = "DTU";
-		int day = 1;
-		int month = 12;
-		int year = 1996;
 		String department = "IT";
 		String trilvl = "";
-		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+		message = api.patientAdmission(trilvl, department,"4");
 	}
 
 	@Then("^I get an error message Admin depart$")
@@ -93,16 +64,9 @@ public class M4_PatientAdmission {
 
 	@When("^I am entering a wrong trilvl$")
 	public void i_am_entering_a_wrong_trilvl() {
-		String firstName = "Anton";
-		String lastName = "Larsen";
-		String adress = "Jagtvej";
-		String tribe = "DTU";
-		int day = 1;
-		int month = 12;
-		int year = 1996;
 		String department = "ER";
 		String trilvl = "wer";
-		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+		message = api.patientAdmission(trilvl, department,"5");
 	}
 
 	@Then("^I get an error message trilvl$")
@@ -112,16 +76,9 @@ public class M4_PatientAdmission {
 
 	@When("^I am entering a wrong Person value$")
 	public void i_am_entering_a_wrong_Person_value() {
-		String firstName = "Anton";
-		String lastName = "Larsen";
-		String adress = "Jagtvej";
-		String tribe = "DTU";
-		int day = 1;
-		int month = 1223;
-		int year = 1996;
 		String department = "ER";
 		String trilvl = "";
-		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+		message = api.patientAdmission(trilvl, department,"4243");
 	}
 
 	@Then("^I get an error message invalid data$")
@@ -131,16 +88,9 @@ public class M4_PatientAdmission {
 
 	@When("^I am entering a wrong invalid depart$")
 	public void i_am_entering_a_wrong_invalid_depart() {
-		String firstName = "Anton";
-		String lastName = "Larsen";
-		String adress = "Jagtvej";
-		String tribe = "DTU";
-		int day = 1;
-		int month = 1223;
-		int year = 1996;
 		String department = "ERsfdgsfg343tr";
 		String trilvl = "";
-		message = api.patientAdmission(trilvl, department, firstName, lastName, adress, tribe, day, month, year);
+		message = api.patientAdmission(trilvl, department,"2");
 	}
 
 	@Then("^I get an error message invalid depart$")

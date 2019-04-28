@@ -63,6 +63,9 @@ public class Patient extends Person {
 	}
 	
 	public String getBedLocation() {
+		if (bed_location == null) {
+			return null;
+		}
 		return Integer.toString(bed_location);
 	}
 

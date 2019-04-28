@@ -17,7 +17,6 @@ public class API {
 	private static API instance;
 	private Hospital h;
 	private Searcher searcher;
-	private HashSet<Person> totalSet = new HashSet<Person>();
 	private ChangeReg R;
 	private Database DB;
 	
@@ -51,56 +50,56 @@ public class API {
 		
 		
 		//------
-		Patient P1_in = new Patient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true,"ER");
-		Patient P2_in = new Patient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true,"ER");
-		Doctor D1_in = new Doctor("Svend","Nielsen","Doktorvej","Dansk",01,01,1901,"ER");
-		Nurse N1_in = new Nurse("Jonna","Nielsen","Ikke-doktorvej","Tysk",02,02,1902,"ER");
+		System.out.println(this.registerPatient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true));
+		System.out.println(this.patientAdmission("", "ER", "1"));
+	
+		System.out.println(h.getAllPatient());
+
 		
-		R.add(In, P1_in);
-		R.add(In, P2_in);
-		R.add(In, D1_in);
-		R.add(In, N1_in);
-		R.add(h, D1_in);
-		R.add(h, N1_in);
+		this.registerPatient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true);
+		this.patientAdmission("", "ER", "2");
 		
 		
+		
+		this.registerStaff("Doctor", "Svend","Nielsen","Doktorvej","Dansk",01,01,1901);
+		this.assignStaffDepartment("ER", "", "Svend", "Nielsen", "", "");
+		
+		this.registerStaff("Nurse", "Jonna","Nielsen","Ikke-doktorvej","Tysk",02,02,1902);
+		this.assignStaffDepartment("ER", "", "Jonna", "Nielsen", "", "");
+		
+
 		//------
 		Password Pas = Password.getInstance();
-		//
 		
-		Patient P1_out = new Patient("Søren","Sørensen","Hellerup","Ventre",24,9,97,true,"Cardio");
-		Patient P2_out = new Patient("Lars","Larsen","Nordvestjylland","Jysk",20,12,1950,true,"Cardio");
-		Doctor D1_out = new Doctor("Lars","Løkke","Græsted","Ventre",01,01,1950,"Cardio");
-		Nurse N1_out = new Nurse("Helle","Thorning","Herlev","Gucci",02,02,1960,"Cardio");
+		//
+		this.registerPatient("Søren","Sørensen","Hellerup","Ventre",24,9,97,true);
+		this.patientAdmission("", "Cardio", "3");
+		
+		this.registerPatient("Lars","Larsen","Nordvestjylland","Jysk",20,12,1950,true);
+		this.patientAdmission("", "Cardio", "4");
+		
+		this.registerStaff("Doctor", "Lars","Løkke","Græsted","Ventre",01,01,1950);
+		this.assignStaffDepartment("Cardio", "", "Lars", "Løkke", "", "");
+		
+		this.registerStaff("Nurse", "Helle","Thorning","Herlev","Gucci",02,02,1960);
+		this.assignStaffDepartment("Cardio", "", "Helle", "Thorning", "", "");
+		
 		Pas.addPassToMap("asd", "N3");
 		
+		//------
+		this.registerStaff("ICTOfficer", "Jens","Hansen","Norway","Indian",29,2,1996);
+		this.assignStaffDepartment("IT", "", "Jens", "Hansen", "", "");
 		
-		R.add(Out, P1_out);
-		R.add(Out, P2_out);
-		R.add(Out, D1_out);
-		R.add(Out, N1_out);
-		R.add(h, D1_out);
-		R.add(h, N1_out);
+		this.registerStaff("Clerk", "Mads", "Hansen", "Uganda","Black-rocks Clan",23,4,2000);
+		this.assignStaffDepartment("IT", "", "Mads", "Hansen", "", "");
+		
 		
 		//------
-		ICTOfficer ICTOf = new ICTOfficer("Jens","Hansen","Norway","Indian",29,2,1996,"IT");
-		Clerk clerk = new Clerk("Mads","hansen","Uganda","Black-rocks Clan",23,4,2000,"IT");
+		this.registerPatient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true);
+		this.patientAdmission("", "Pediatric", "5");
 		
-		R.add(A,ICTOf);
-		R.add(A, clerk);
-		R.add(h,ICTOf);
-		R.add(h, clerk);
-		
-		//------
-		Patient P1_in2 = new Patient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true,"Pediatric");
-		Patient P2_in2 = new Patient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true,"Pediatric");
-		Doctor D1_in2 = new Doctor("Svend","Nielsen","Doktorvej","Dansk",01,01,1901,"Pediatric");
-		Nurse N1_in2 = new Nurse("Jonna","Nielsen","Ikke-doktorvej","Tysk",02,02,1902,"Pediatric");
-		
-		R.add(In2, P1_in2);
-		R.add(In2, P2_in2);
-		R.add(In2, D1_in2);
-		R.add(In2, N1_in2);
+		this.registerPatient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true);
+		this.patientAdmission("", "Pediatric", "6");
 		//LOADING COMPLETE
 	}
 	
@@ -113,29 +112,24 @@ public class API {
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
 			R.add(h, new Patient(firstName,lastName,tribe,address,day,month,year,alive,null)); // Adding patient through changereg
-			totalSet.add(new Patient(firstName,lastName,tribe,address,day,month,year,alive,null));
 			return "Patient registered succesfully.";
 		} else {return "Additional information is needed.";}
 	}
 	
 	// CHANGE EXISTING PATIENT 
 	public String changePatient(String ID, String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
-		Patient p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();
-		if (p==null) {return "No patient with that ID found.";}
-		else {
-			if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
-				p.setFirstName(firstName);
-				p.setLastName(lastName);
-				p.setBirthDay(day, month, year);
-				p.setAdress(address);
-				p.setTribe(tribe);
-				p.setAlive(alive);
-				return "Patient information has been changed successfully.";
-			}
-			else {
-				return "Illegal information changes.";
-			}
-		}
+		LinkedList<Person> patientSearch = searcher.patientSearch(ID, "", "", "");
+		if (patientSearch.size() != 1) {return "No patient with that ID found.";}
+		Patient p = (Patient) patientSearch.getFirst();
+		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
+			p.setFirstName(firstName);
+			p.setLastName(lastName);
+			p.setBirthDay(day, month, year);
+			p.setAdress(address);
+			p.setTribe(tribe);
+			p.setAlive(alive);
+			return "Patient information has been changed successfully.";
+		} else {return "Illegal information changes.";}
 	}
 	
 	// PATIENT SEARCH 'PATIENT ATBs.' -> String (patient info)
@@ -190,7 +184,9 @@ public class API {
 		if (staffRes.size()!=1 || departmentRes.size()!=1) {
 			return "Warning, invalid person info or department name";
 		}
-		R.remove(searcher.departmentSearch(staffRes.getFirst().getDepartment()).getFirst(),(Staff) staffRes.getFirst());
+		if (staffRes.getFirst().getDepartment() != null) {
+			R.remove(searcher.departmentSearch(staffRes.getFirst().getDepartment()).getFirst(),(Staff) staffRes.getFirst());
+		}
 		R.add(departmentRes.getFirst(), (Staff) staffRes.getFirst());
 		staffRes.getFirst().setDepartment(departmentName);
 		return "Staff added successfully to department";
@@ -295,16 +291,17 @@ public class API {
 		if (patientRes.size()!=1) {
 			return ("No patient with given ID in department: " + departmentName); 
 		}
+		Patient p = (Patient) patientRes.getFirst();
 		if (!(departmentRes.getFirst() instanceof InPatientDepart)) {
 			return "Department "+departmentName+" does not contain any beds.";
 		}
 		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
-		
 		if (!depart.beds.getBedsAvailable()) {
 			return "No beds available in department: " + departmentName;
 		}
-		String bedNo = depart.beds.AllocateBed(patientRes.getFirst());
-		return patientRes.getFirst().toString()+" was added to bed: "+bedNo;
+		discharge(patientRes.getFirst().getID());
+		patientAdmission(p.getTriage(), departmentName, patientID);
+		return p+" was added to bed: "+p.getBedLocation();
 	}
 	
 	//BEDS AVAILABLE IN GIVEN DEPARTMENT (Y/N)

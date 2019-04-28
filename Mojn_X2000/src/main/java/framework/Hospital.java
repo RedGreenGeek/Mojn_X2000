@@ -43,12 +43,10 @@ public class Hospital {
 //	}
 	
 	public HashSet<Staff> getAllStaff(String s){
-		
 		return this.allStaffSet;
 	}
 	
 	public void setAllStaff(HashSet<Staff> allStaffSet){
-		
 		this.allStaffSet = allStaffSet;
 		
 	}
