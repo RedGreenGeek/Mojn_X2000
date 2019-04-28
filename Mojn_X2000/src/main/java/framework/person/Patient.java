@@ -66,9 +66,6 @@ public class Patient extends Person {
 		return Integer.toString(bed_location);
 	}
 
-
-}
-
 @Override
 public String toString() {
 	return patientID+"; "+this.getDepartment()+"; "+this.getLastName()+", "+this.getFirstName();
