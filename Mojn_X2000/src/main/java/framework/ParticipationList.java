@@ -14,9 +14,7 @@ public class ParticipationList {
 		String fileSeparator = System.getProperty("file.separator");
 		DateFormat dateFormat = new SimpleDateFormat("dd:MM:yy-HH.mm");
 		Date date = new Date();
-		
-		//Set directory below here: (it's Users/mads/participationList currently)
-        String absoluteFilePath = fileSeparator+"Users"+fileSeparator+"mads"+fileSeparator+"participationList"+fileSeparator+dateFormat.format(date)+".csv";
+        String absoluteFilePath = "ParticipationLists"+fileSeparator+dateFormat.format(date)+".csv";
         File file = new File(absoluteFilePath);
         file.delete();
         file.createNewFile();

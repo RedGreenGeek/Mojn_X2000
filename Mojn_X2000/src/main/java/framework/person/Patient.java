@@ -7,7 +7,7 @@ public class Patient extends Person {
 	
 	private int patientID;
 	private static int counter;
-	private Integer triage;
+	private Integer triage = 1;
 	private Integer bed_location;
 	
 	public Patient(String firstName, String lastName, String adress, String tribe, int day, int month, int year, boolean alive, String d) {

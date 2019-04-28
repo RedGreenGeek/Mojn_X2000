@@ -13,32 +13,28 @@ import framework.Password.*;
 import framework.person.staff.*;
 
 public class API {
-	
-	private static Hospital h;
-	private static Searcher searcher;
-	private static HashSet<Person> totalSet = new HashSet<Person>();
+	// INIT ATTRIBUTES  
 	private static API instance;
-	private static ChangeReg R;
-	private static Database DB;
+	private Hospital h;
+	private Searcher searcher;
+	private HashSet<Person> totalSet = new HashSet<Person>();
+	private ChangeReg R;
+	private Database DB;
 	
 	public static synchronized API getInstance() {
 		if (instance==null) {
 			instance = new API();
-			return instance;
 		}
-		else {
-			return instance;
-		}
+		return instance;
 	}
 	
 	private API (){
-		
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = Database.getInstance();
 		
 		R = new ChangeReg();
 		
-		//------
+		//LOAD ARTIFICIAL HOSPITAL
 		h = new Hospital();
 		searcher = new Searcher(h);
 		
@@ -105,41 +101,27 @@ public class API {
 		R.add(In2, P2_in2);
 		R.add(In2, D1_in2);
 		R.add(In2, N1_in2);
-		
-		In2.beds.AllocateBed(P1_in2);
-		In2.beds.AllocateBed(P2_in2);
+		//LOADING COMPLETE
 	}
 	
-	/* __--_________ DATABASE PROPERTIES for O4 _______________ */
-	
-	public boolean isConnected() {
-		
-		return DB != null;
-		
-	}
+
 	
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
+	
+	// REGISTER PATIENT TO HOSPITAL (NO DEPARTMENT)
 	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
-			
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
 			R.add(h, new Patient(firstName,lastName,tribe,address,day,month,year,alive,null)); // Adding patient through changereg
 			totalSet.add(new Patient(firstName,lastName,tribe,address,day,month,year,alive,null));
-			
 			return "Patient registered succesfully.";
-		}
-		else {
-			
-			return "Additional information is needed.";
-			
-		}
+		} else {return "Additional information is needed.";}
 	}
 	
-	public  String changePatient(String ID, String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+	// CHANGE EXISTING PATIENT 
+	public String changePatient(String ID, String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
 		Patient p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();
-		if (p==null) {
-			return "No patient with that ID found.";
-		}
+		if (p==null) {return "No patient with that ID found.";}
 		else {
 			if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 				p.setFirstName(firstName);
@@ -155,9 +137,9 @@ public class API {
 			}
 		}
 	}
-
-	public  String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
-		
+	
+	// PATIENT SEARCH 'PATIENT ATBs.' -> String (patient info)
+	public String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
 		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
 		String[] list = new String[persons.size()+1];
 		list[0] = "First name | Last name | Address | Birthday |  ID ";
@@ -176,82 +158,55 @@ public class API {
 	}
 
 	
+	
 	/* _____________ STAFF REGISTRATION for M2 ______________ */
 	
+	//registerStaff takes staff ATBs, adds staff to hospital (no department)
 	public String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
 		Staff p;
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
-			
 			if (jobtype.equals("Clerk")) {
 				p = new Clerk(firstName, lastName, adress, tribe, day, month ,year, null);
 			}
-			
 			else if (jobtype.equals("Nurse")) {
 				p = new Nurse(firstName, lastName, adress, tribe, day, month ,year, null);
 			}
-			
 			else if (jobtype.equals("Doctor")) {
 				p = new Doctor(firstName, lastName, adress, tribe, day, month ,year, null);
 			}
-			
 			else if (jobtype.equals("ICTOfficer")) {
 				p = new ICTOfficer(firstName, lastName, adress, tribe, day, month ,year, null);
 			}
-			
-			else {
-				return "Unsuccesful registration!";
-			}
-			
+			else {return "Unsuccesful registration!";}
 			R.add(h, p);
-			
 			return "The " + jobtype + " has been registered succesfully!";
-		
-		}
-		
-		else {
-			
-			return "Unsuccesful registration!";
-			
-		}
+		}else {return "Unsuccesful registration!";}
 	}
 	
+	//ASSIGN STAFF TO DEPARTMENT
 	public String assignStaffDepartment(String departmentName, String staffID, String firstName, String lastName, String birthday, String email) {
 		LinkedList<Person> staffRes = searcher.staffSearch(staffID, firstName, lastName, birthday, email);
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
-		
 		if (staffRes.size()!=1 || departmentRes.size()!=1) {
 			return "Warning, invalid person info or department name";
 		}
-		
 		R.remove(searcher.departmentSearch(staffRes.getFirst().getDepartment()).getFirst(),(Staff) staffRes.getFirst());
 		R.add(departmentRes.getFirst(), (Staff) staffRes.getFirst());
 		staffRes.getFirst().setDepartment(departmentName);
-		
 		return "Staff added successfully to department";
 	}
 	
-	
+	//CHANGE STAFF FROM ID -> TO ATBs
 	public String changeStaff (String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
-		
 		if (searcher.staffSearch(StaffID, "", "", "", "").size() == 0) {
 			return "The ID does not match an employee!";
 		}
 		Staff person = (Staff) searcher.staffSearch(StaffID, "", "", "", "").get(0);
-		if (person==null) {
-			return "The ID does not match an employee!";
-		}
-		if (firstName == "") {
-			firstName = person.getFirstName();
-		}
-		if (lastName == "") {
-			lastName = person.getLastName();
-		}
-		if (adress == "") {
-			adress = person.getAdress();
-		}
-		if (tribe == "") {
-			tribe = person.getTribe();
-		}
+		if (person==null) {return "The ID does not match an employee!";}
+		if (firstName == "") {firstName = person.getFirstName();}
+		if (lastName == "") {lastName = person.getLastName();}
+		if (adress == "") {adress = person.getAdress();}
+		if (tribe == "") {tribe = person.getTribe();}
 		if (day == 0 || month == 0 || year == 0) {
 			String[] birthday = person.getBirthday().split("-");
 			day = Integer.parseInt(birthday[0]);
@@ -281,15 +236,12 @@ public class API {
 				person.setTribe(tribe);
 				return "Staff information has been changed successfully!";
 			}
-			else {
-				return "Illegal changes to patient. Please check that the information is correct!";
-			}
+			else {return "Illegal changes to patient. Please check that the information is correct!";}
 		}
-		
 	}
-
+	
+	//STAFF SEARCH
 	public String staffSearcher(String staffID, String firstName, String lastName, String birthday, String email) {
-
 		LinkedList<Person> persons = searcher.staffSearch(staffID,firstName, lastName, birthday, email);
 		String[] list = new String[persons.size()+1];
 		list[0] = "First name | Last name | Address | Birthday |  ID  | Job type ";
@@ -305,12 +257,12 @@ public class API {
 		if (message.equals(list[0] + "\n")) {
 			return "No match to search parameters!";
 		} else {return message; }
-		
-		
 	}
+	
 	
 	/* _____________ HEALTH FACILITY MANAGMENT for M3 ______________ */
 	
+	//GET ALL DEPARTMENTS
 	public LinkedList<String> getDepartments() {
 		LinkedList<Department> ds = new LinkedList<Department>(h.getDepartSet());
 		LinkedList<String> dlist = new LinkedList<String>();
@@ -319,7 +271,8 @@ public class API {
 		}
 		return dlist;
 	}
-
+	
+	//GET STAFF LIST OF GIVEN DEPARTMETN
 	public LinkedList<String> getDeparmentStaff(String departmentName) {
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
 		LinkedList<String> res = new LinkedList<String>();
@@ -328,13 +281,11 @@ public class API {
 			while (!sList.isEmpty()) {
 				res.add(sList.removeFirst().toString());
 			}
-		}
-		else {
-			res.add("No or multiple department(s) match your search criterion");
-		}
+		} else {res.add("No or multiple department(s) match your search criterion");}
 		return res;
 	}
-
+	
+	//ALLOCATE EXSISTING PATIENT TO BED
 	public String allocateToBed(String departmentName, String patientID) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		LinkedList<Person> patientRes = searcher.patientSearch(patientID,"","","");
@@ -356,7 +307,7 @@ public class API {
 		return patientRes.getFirst().toString()+" was added to bed: "+bedNo;
 	}
 	
-
+	//BEDS AVAILABLE IN GIVEN DEPARTMENT (Y/N)
 	public String bedsAvailable(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
@@ -373,6 +324,7 @@ public class API {
 		return "Beds available in department: " + departmentName;
 	}
 	
+	//HOW MANY BEDS IN USE IN GIVEN DEPARTMENT
 	public String bedsInUse(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
@@ -386,203 +338,163 @@ public class API {
 		return "Department: " + departmentName+" currently have "+depart.beds.getBedsInUse()+" beds in use.";
 	}
 	
-/* _____________ PATIENT ADMISSION for M4 ______________ */
-	public String patientAdmission(String trilvl, String department, String firstName, String lastName, String adress, String tribe, int day, int month, int year) {
-		Patient p;
-		Department depart;
+	
+	/* _____________ PATIENT ADMISSION for M4 ______________ */
+	
+	//ADMIT EXSISTING PATIENT TO DEPARTMENT
+	public String patientAdmission(String trilvl, String departmentName, String patientId) {
+		//CHECK TRIAGE LEVEL
 		int triagelvl = 1;
 		try {
-			if (!trilvl.equals("")) {
-				triagelvl = Integer.parseInt(trilvl);
-			}
+			if (!trilvl.equals("")) {triagelvl = Integer.parseInt(trilvl);}
 		} catch (Exception e) {return "The triage level specification wasn't an integer";}
+	
+		LinkedList<Person> pSearch = searcher.patientSearch(patientId, "", "", "");
+		if (pSearch.size()!=1) {return "Invalid patient ID";}
+		Patient p = (Patient) pSearch.getFirst();
 		
-		if (searcher.departmentSearch(department).size() != 1 ) {
+		LinkedList<Department> departmentSearch = searcher.departmentSearch(departmentName);
+		if (departmentSearch.size() != 1 ) {
 			return "The department specification is ambigious";
 		}
-		if ((searcher.departmentSearch(department).getFirst() instanceof framework.Departments.AdminDepart)) {
+		Department d = departmentSearch.getFirst();
+		if (d instanceof framework.Departments.AdminDepart) {
 			return "The department is an administrativ department";
 		}
-		else {
-			depart = searcher.departmentSearch(department).peek();
+		discharge(p.getID());
+		if (d instanceof framework.Departments.HealthCare.InPatientDepart) {
+			InPatientDepart inDepart = (InPatientDepart) d;
+			R.add(inDepart, p);
+			inDepart.beds.AllocateBed(p);
+		} else {
+			OutPatientDepart outDepart = (OutPatientDepart) d;
+			R.add(outDepart, p);
+			outDepart.EnQueue(p, triagelvl);
 		}
-		
-		
-		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
-			p = new Patient(firstName, lastName, adress, tribe, day, month ,year, true, department);
-			if (depart instanceof framework.Departments.HealthCare.InPatientDepart) {
-				InPatientDepart inDepart = (InPatientDepart) depart;
-				R.add(inDepart, p);
-				inDepart.beds.AllocateBed(p);
-			}
-			else {
-				OutPatientDepart outDepart = (OutPatientDepart) depart;
-				R.add(outDepart, p);
-				outDepart.EnQueue(p, triagelvl);
-			}
-			return "The patient has been registered succesfully to " + department +  "!";
-		
-		}
-		
-		else {
-			
-			return "Unsuccesful registration cause to invalid patient data!";
-			
-		}
+		return "The patient has been registered succesfully to " + departmentName +  "!";
 	}
 	
-		// The input to this function should be specified in the gui so when
-		// I search for the patient and click remove this function is given the patient ID
+	// The input to this function should be specified in the GUI so when
+	// I search for the patient and click remove this function is given the patient ID
 	public String discharge(String ID) {
 		Patient p;
-		Department depart;
 		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
 			return "The patient ID's isn't uniqe";
 		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
 		
-		depart = searcher.departmentSearch(p.getDepartment()).peek();
-		
-		R.remove(depart, p);
-		
-		return "The patient " + p.getFirstName() + " " + p.getLastName() + ", " + ID + ", has been removed succesfully from " + depart.getName();
+		LinkedList<Department> dSearch = searcher.departmentSearch(p.getDepartment());
+		if (dSearch.size() != 1) {return p + " was not assigned to any department.";}
+		Department d = dSearch.getFirst();
+		R.remove(d, p);
+		return p + ", has been removed succesfully from " + d;
 	}
 	
-	public String movePatientDepart(String ID, String depart, String trilvl) {
-		Patient p;
-		String return_message;
-
-		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
-			return "The patient wasn't moved";
-		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
-		
-		
-		String[] bday = p.getBirthday().split("-");
-		int day = Integer.parseInt(bday[0]);
-		int month = Integer.parseInt(bday[1]);
-		int year = Integer.parseInt(bday[2]);
-		return_message = patientAdmission(trilvl, depart, p.getFirstName(), p.getLastName(), p.getAdress(), p.getTribe(), day, month, year);
-		if (return_message.equals("The department specification is ambigious") || return_message.equals("Unsuccesful registration cause to invalid patient data!") || return_message.equals("The triage level specification wasn't an integer") || return_message.equals("The department is an administrativ department")) {
-			return "The patient wasn't moved";
-		} else {
-			discharge(ID);
-			return "The patient was moved succesfully to " + depart;
+	//MOVE PATIENT FROM DEPARTMENT TO DEPARTMENT
+	public String movePatientDepart(String ID, String departmentName, String trilvl) {
+		if (patientAdmission(ID,departmentName,trilvl).contains("succesfully")) {
+			return "The patient was moved successfully";
 		}
+		return "The patient wasn't moved";
 	}
 	
+	//MOVE A PATIENT TO A NEW BED
 	public String movePatientBed(String ID, String newBed) {
 		InPatientDepart Department;
 		Patient p;
-		String returnmessage;
+		String message;
 		int bedNo;
 		try {
 			bedNo = Integer.parseInt(newBed);
 		} catch (Exception e) {return "You need to specify the bed number as an integer";}
-		// Should not be able to give an error message.
+		
 		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
 			return "The patient wasn't moved cause to invalid ID";
 		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
-
-		// This should also not could give an error message
+		
 		if (!(searcher.departmentSearch(p.getDepartment()).getFirst() instanceof framework.Departments.HealthCare.InPatientDepart)) {
 			return "The department isn't an indepartment";
 		}
-		else {Department = (InPatientDepart) searcher.departmentSearch(p.getDepartment()).peek();}
-		
-
-			
+		else {Department = (InPatientDepart) searcher.departmentSearch(p.getDepartment()).getFirst();}		
 			if (Department.beds.getMaxBeds() < bedNo) {
 				return "There aren't that many beds in the department";
 			}
-			returnmessage = Department.beds.AllocateBed(p, bedNo);	
-			if (returnmessage.equals("Ok")) {
+			message = Department.beds.AllocateBed(p, bedNo);	
+			if (message.equals("Ok")) {
 				Department.beds.Discharge(p);
 				return "The patient was moved succesfully";
 			}
-			if (returnmessage.equals("Same bed")) {
+			if (message.equals("Same bed")) {
 				return "The patient was moved succesfully to the same bed";
 			}
 			else {return "The bed wasn't free";}
-		
 	}
-
 	
 	
 	/* _____________ PATIENT WAITING O3 ______________ */
+	
+	//GET WAITING QUEUE OF GIVEN DEPARTMENT
 	public LinkedList<String> getQueue(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		OutPatientDepart outDepart;
 		LinkedList<String> res = new LinkedList<String>();
-		
 		if (departmentRes.size() != 1) {
 			res.add("Warning, could not retrieve queue of given department.");
 			return res;
 		}
 		try {
 			outDepart = (OutPatientDepart) departmentRes.getFirst();
-		} 
-		catch (ClassCastException e) {
+		} catch (ClassCastException e) {
 			res.add("Warning, could not retrieve queue of given department.");
 			return res;
 		}
 		ArrayList<Person> queue = outDepart.PrintQueue();
-		
 		for (int i = 0; i<queue.size(); i++) {
 			res.add(queue.get(i).toString());
 		}
-
-   
-
 		return res;
 	}
-
+	
+	//GET NEXT IN QUEUE (METHOD DEQUEUES PATIENT!)
 	public String getNextInQueue(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		OutPatientDepart outDepart;
-		
 		if (departmentRes.size() != 1) {
 			return "Warning, could not retrieve next in line.";
 		}
-		try {
-			outDepart = (OutPatientDepart) departmentRes.getFirst();
-		} 
-		catch (ClassCastException e) {
+		if (!(departmentRes.getFirst() instanceof OutPatientDepart)) {
 			return "Warning, could not retrieve next in line.";
 		}
+		outDepart = (OutPatientDepart) departmentRes.getFirst();
 		Person next = outDepart.DeQueue();
 		if (next == null) {
 			return "Warning, could not retrieve next in line.";
 		}
-		
-		return outDepart.DeQueue().toString();
+		return next.toString();
 	}
+	
+	
 	/* ______________  PASSWORD METHODS for O2 ________________    */
-
+	
+	//ADDS NEW PASSWORD
 	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
 		Password Pass = Password.getInstance();
-
-		
 		if (Pass.checkUniqueID(staffID)) {
 			return "Password already created for this staff!";
 		}
-		
 		if (newPassword2 == newPassword1) {
 			Pass.addPassToMap(newPassword1, staffID);
 			return "Password created";
-							}
-		else{
+		} else{
 			return "The two passwords do not match";
 		}
-	
 	}
 	
+	//CHANGE PASSWORD FROM KNOWN PASSWORD
 	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
 		Password Pass = Password.getInstance();
-		
 		if (!Pass.checkUniqueID(staffID)) {
 			return "Staff ID does not exist";
-			
 		}
-		
 		if (Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
 			Pass.addPassToMap(newPassword1, staffID);
 			return "Password changed";
@@ -597,14 +509,23 @@ public class API {
 	}
 	
 	
+	/* _____________ DATABASE PROPERTIES for O4 _______________ */
+	
+	//CHECK FOR CONNECTIVITY TO DATABASE
+	public boolean isConnected() {
+		return DB != null;
+	}
+	
 	
 	/* ______________  PARTICIPATION LIST for O5 ________________    */
-	//OSB in order for this to run correctly, you need to set a valid directory in participationList object!!
+	
+	//CREATES A .csv FILE CONTAINING ALL PATIENTS
 	public String getParticipationList(boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
 		new ParticipationList(new LinkedList<Person>(h.getAllPatient()), department, birthday, address, tribe);
 		return "Participation list was created successfully.";
 	}
 	
+	//CREATES A .csv FILE CONTAINING ALL PATIENTS OF GIVEN DEPARTMENT
 	public String getParticipationList(String departmentName, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
 		LinkedList<Department> dList = searcher.departmentSearch(departmentName);
 		if (dList.size() != 1 || !(dList.getFirst() instanceof HCDepart)) {
