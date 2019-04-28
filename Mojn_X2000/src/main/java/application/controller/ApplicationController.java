@@ -30,7 +30,6 @@ public class ApplicationController {
 	
 	public void manageInventory(Session session) {
 		inventoryController = new InventoryController(new Inventory(), session);
-		
 		InventoryView invView = new InventoryView(inventoryController);
 
 		inventoryController.setView(invView);
