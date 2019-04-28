@@ -7,8 +7,8 @@ public class Patient extends Person {
 	
 	private int patientID;
 	private static int counter;
-	private Integer triage;
-	private Integer bed_location;
+	private Integer triage = null;
+	private Integer bed_location = null;
 	
 	public Patient(String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department) {
 		
@@ -36,8 +36,14 @@ public class Patient extends Person {
 	    this.setAdress(address);
 	    this.setPatientID(PatientID);
 	    this.setDepartment(department);	   
-	    this.setTriage(triage);
-	    this.setBedLocation(bed);
+ 
+	    if (bed != null) {
+	    	this.setBedLocation(bed);
+	    }
+	    
+	    if (triage != null) {
+		    this.setTriage(triage);
+	    }
 
 	}
 
@@ -67,7 +73,7 @@ public class Patient extends Person {
 	}
 	
 	public Integer getBedLocation() {
-		return triage;
+		return bed_location;
 	}
 
 	@Override

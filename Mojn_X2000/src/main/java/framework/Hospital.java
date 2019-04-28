@@ -43,7 +43,7 @@ public class Hospital {
 //		throw new IllegalArgumentException("No such department");
 //	}
 	
-	public HashSet<Staff> getAllStaff(String s){
+	public HashSet<Staff> getStaffSet(){
 		
 		return this.allStaffSet;
 	}

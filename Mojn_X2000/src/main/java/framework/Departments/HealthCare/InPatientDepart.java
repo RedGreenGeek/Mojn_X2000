@@ -18,7 +18,10 @@ public class InPatientDepart extends HCDepart{
 	}
 	
 	public InPatientDepart(String departName, int maxBeds) {
+		this.setStaff(new HashSet<Person>());
+		this.patientSet = new HashSet<Person>();
 		super.setName(departName);
+		this.max_beds = maxBeds;
 		this.beds = new Beds(maxBeds);
 	}
 	

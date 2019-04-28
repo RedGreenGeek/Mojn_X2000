@@ -220,6 +220,9 @@ public class Database {
 		if (department instanceof InPatientDepart ) {
 			
 			int max = ((InPatientDepart) department).get_max_beds();
+			
+			System.out.println("MAX: " + max);
+			
 			int use = ((InPatientDepart) department).get_beds_in_use();
 			
 			query = String.format("INSERT IGNORE INTO Department (name, beds_max, beds_use, type) VALUES (\"%s\", \"%d\", \"%d\", \"%s\")", name, max, use, "IPD");
@@ -429,46 +432,54 @@ public class Database {
 	/* _______________ SECTION 6: Connector  ___________________________________ */
 	/* ######################################################################### */
 	
-	Hospital buildHospital(Hospital hospital, HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
+	Hospital buildHospital(HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
 		
-		Iterator<Department> I_department = departmentset.iterator();
-		Iterator<Patient> I_patient = patientset.iterator();
-		Iterator<Staff> I_staff = staffset.iterator();
-		
-		LinkedList<Department> list_department = new LinkedList<Department>();
-		
-		// Conversion from list to hashset
-		
-		while (I_department.hasNext()) {
-			
-			list_department.add(I_department.next());
-			
-		}
-		
-		ChangeReg R = new ChangeReg();
-		SearchEngine searcher = new SearchEngine();
-		
-		while (I_patient.hasNext()) {
-			
-			Patient P = I_patient.next();
-			String departmentName = P.getDepartment();
-			
-			Department department = searcher.department(departmentName, list_department).get(0);
-			
-			R.add(department, P);
-	
-		}
+		Hospital hospital = new Hospital();
 
-		while (I_staff.hasNext()) {
+		hospital.setDepartSet(departmentset);
+		
+		Searcher s = new Searcher(hospital);
+		ChangeReg R = new ChangeReg();
+		
+		LinkedList<Staff> staffList = new LinkedList<Staff>(staffset);
+		
+		while (!staffList.isEmpty()) {
+			Staff pat = staffList.getFirst();
+			System.out.println("Patient department: " + pat.getDepartment());
 			
-			Staff P = I_staff.next();
-			String departmentName = P.getDepartment();
+			LinkedList<Department> d_list = s.departmentSearch(pat.getDepartment());
 			
-			Department department = searcher.department(departmentName, list_department).get(0);
+			if (!d_list.isEmpty()) {
+				Department d = d_list.getFirst();
+				Staff s1 = staffList.removeFirst();
+				R.add(d, s1);
+			}
 			
-			R.add(department, P);
-	
+			else {
+				Staff s1 = staffList.removeFirst();
+				System.out.println("No matches on department: " + pat.getDepartment());
+			}
+
 		}
+		
+		LinkedList<Patient> patientList = new LinkedList<Patient>(patientset);
+		
+		while (!patientList.isEmpty()) {
+			LinkedList<Department> d = s.departmentSearch(patientList.getFirst().getDepartment());
+			
+			if (!d.isEmpty()) {
+				Department d_res = d.getFirst();
+				Patient p1 = patientList.removeFirst();
+				R.add(d_res, p1);
+			}
+			
+			else {
+				Patient p1 = patientList.removeFirst();
+				System.out.println("No matches on department: " + p1.getDepartment());
+			}
+
+		}
+		
 		
 		hospital.setDepartSet(departmentset);
 		hospital.setAllPatientSet(patientset);
@@ -482,7 +493,33 @@ public class Database {
 	/* ######################################################################### */
 	/* _______________ SECTION 7: Rebooting hospital ___________________________ */
 	/* ######################################################################### */
+	
+	Hospital boot() throws Throwable {
+		
+		HashSet<Patient> p_set = loadPatient();
+		HashSet<Staff> s_set = loadStaff();
+		HashSet<Department> d_set = loadDepartment();
+		
+		System.out.println("PATIENT: " + p_set);
+		System.out.println("STAFF: " + s_set);
+		System.out.println("DEPARTMENT: " + d_set);
+		
+		return buildHospital(d_set, s_set, p_set);
+		
+	}
+	
+	/* ######################################################################### */
+	/* _______________ SECTION 8: Cleaning hospital ___________________________ */
+	/* ######################################################################### */
+	
+	void clean() throws Throwable {
+		
+		INSERT("TRUNCATE Patient");
+		INSERT("TRUNCATE Staff");
+		INSERT("TRUNCATE Department");
+		
 
+	}
 	
 	
 

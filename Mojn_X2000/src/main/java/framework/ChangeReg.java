@@ -16,7 +16,7 @@ public class ChangeReg {
 	// Method has been overloaded to accept a person and the only instance of our hospital,
 	// such that a person can be added to the overall organization. 
 	public void add(Hospital h, Staff p) {	
-		HashSet<Staff> allStaffSet = h.getAllStaff("With and without department");
+		HashSet<Staff> allStaffSet = h.getStaffSet();
 		allStaffSet.add(p);
 		h.setAllStaff(allStaffSet);
 		
@@ -57,7 +57,7 @@ public class ChangeReg {
 		HashSet<Person> patientSet = d.getPatient();
 		if (d instanceof InPatientDepart) {
 			InPatientDepart IPD = (InPatientDepart)d;
-			if (p.getDepartment().equals(d.getName())) {
+			if (p.getDepartment().equals(d.getName()) && p.getBedLocation()!=null) {
 				patientSet.add(p);
 				IPD.beds.AllocateBed(p, p.getBedLocation());
 			}

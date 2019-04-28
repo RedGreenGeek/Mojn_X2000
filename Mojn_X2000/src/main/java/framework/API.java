@@ -276,7 +276,7 @@ public class API {
 			// removed from the specific department
 			R.remove(dd, person);
 			// removed from the overall set
-			h.getAllStaff("Overall").remove(person);
+			h.getStaffSet().remove(person);
 			// registered as with new job type.
 			String message = registerStaff(jobtype, firstName, lastName, adress, tribe, day, month ,year);
 			return message;} else {return "Invalid job type!";}
