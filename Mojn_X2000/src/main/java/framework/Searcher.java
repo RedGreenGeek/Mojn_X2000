@@ -35,7 +35,7 @@ public class Searcher {
 	}
 	
 	protected LinkedList<Person> staffSearch(String staffId, String firstName, String lastName, String birthday,String email) {
-		LinkedList<Person> pList = new LinkedList<Person>(h.getAllStaff("With and without department"));
+		LinkedList<Person> pList = new LinkedList<Person>(h.getStaffSet());
 		if (!staffId.equals("")) {
 			pList = se.id(staffId, pList);
 		}

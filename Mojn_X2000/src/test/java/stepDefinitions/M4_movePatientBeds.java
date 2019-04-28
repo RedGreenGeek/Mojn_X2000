@@ -28,7 +28,7 @@ public class M4_movePatientBeds {
 
 	@Then("^I get a good Moved to diffrent bed$")
 	public void i_get_a_good_Moved_to_diffrent_bed() {
-		assertEquals(message, "The patient was moved succesfully");
+		assertEquals("The patient was moved succesfully", message);
 	}
 
 	@When("^I am entering a Same bed no$")
@@ -38,7 +38,7 @@ public class M4_movePatientBeds {
 
 	@Then("^I get a good Moved to same bed$")
 	public void i_get_a_good_Moved_to_same_bed() {
-		assertEquals(message, "The patient was moved succesfully to the same bed");
+		assertEquals("The patient was moved succesfully to the same bed", message);
 	}
 
 	@When("^I am writing an not int bed$")
@@ -48,7 +48,7 @@ public class M4_movePatientBeds {
 
 	@Then("^I get an not int error$")
 	public void i_get_an_not_int_error() {
-		assertEquals(message, "You need to specify the bed number as an integer");
+		assertEquals("You need to specify the bed number as an integer", message);
 	}
 
 	@When("^I am writing an Out patient$")
@@ -58,7 +58,7 @@ public class M4_movePatientBeds {
 
 	@Then("^I get an Out patient error$")
 	public void i_get_an_Out_patient_error() {
-		assertEquals(message, "The department isn't an indepartment");
+		assertEquals("The department isn't an indepartment", message);
 	}
 
 	@When("^I am writing an Wrong ID$")
@@ -68,7 +68,7 @@ public class M4_movePatientBeds {
 
 	@Then("^I get an Wrong ID error$")
 	public void i_get_an_Wrong_ID_error() {
-		assertEquals(message, "The patient wasn't moved cause to invalid ID");
+		assertEquals("The patient wasn't moved cause to invalid ID", message);
 	}
 
 	@When("^I am writing an bed over max$")
@@ -78,7 +78,7 @@ public class M4_movePatientBeds {
 
 	@Then("^I get an bed max error$")
 	public void i_get_an_bed_max_error() {
-		assertEquals(message, "There aren't that many beds in the department");
+		assertEquals("There aren't that many beds in the department", message);
 	}
 
 

@@ -105,6 +105,9 @@ public class API {
 	
 	// REGISTER PATIENT TO HOSPITAL (NO DEPARTMENT)
 	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+		
+		System.out.println(Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive));
+		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
 			R.add(h, new Patient(firstName,lastName,tribe,address,day,month,year,alive,null)); // Adding patient through changereg
@@ -214,7 +217,7 @@ public class API {
 			// removed from the specific department
 			R.remove(dd, person);
 			// removed from the overall set
-			h.getAllStaff("Overall").remove(person);
+			h.getStaffSet().remove(person);
 			// registered as with new job type.
 			String message = registerStaff(jobtype, firstName, lastName, adress, tribe, day, month ,year);
 			return message;} else {return "Invalid job type!";}

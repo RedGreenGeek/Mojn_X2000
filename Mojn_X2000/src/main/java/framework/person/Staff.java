@@ -59,6 +59,10 @@ protected void setID(String jobTypeID) {
 	Staff.counter +=1; 
 }
 
+protected void setID_reload(String jobTypeID) {
+	this.serialID = jobTypeID;
+}
+
 public String getID() {
 	return serialID;
 }
