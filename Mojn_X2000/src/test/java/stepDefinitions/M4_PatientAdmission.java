@@ -83,7 +83,7 @@ public class M4_PatientAdmission {
 
 	@Then("^I get an error message invalid data$")
 	public void i_get_an_error_message_invalid_data() {
-		assertEquals(message, "Unsuccesful registration cause to invalid patient data!");
+		assertEquals(message, "Invalid patient ID");
 	}
 
 	@When("^I am entering a wrong invalid depart$")

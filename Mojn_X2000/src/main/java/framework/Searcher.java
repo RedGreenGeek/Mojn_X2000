@@ -18,7 +18,7 @@ public class Searcher {
 	}
 	
 	protected LinkedList<Person> patientSearch(String id, String firstName, String lastName, String birthday) {
-		LinkedList<Person> pList = new LinkedList<Person>(h.getAllPatient());
+		LinkedList<Person> pList = new LinkedList<Person>(h.getAllPatientSet());
 		if (!id.equals("")) {
 			pList = se.id(id, pList);
 		}

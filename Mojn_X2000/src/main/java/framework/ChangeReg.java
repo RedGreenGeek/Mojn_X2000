@@ -24,9 +24,9 @@ public class ChangeReg {
 	
 	public void add(Hospital h, Patient p) {
 		HashSet<Person> allPatientSet = h.getAllPatientSet();
-		System.out.println(allPatientSet);
+//		System.out.println(allPatientSet);
 		allPatientSet.add(p);
-		System.out.println(allPatientSet);
+//		System.out.println(allPatientSet);
 		h.setAllPatientSet(allPatientSet);
 		String message = DB.writePatient(p);
 		
@@ -62,17 +62,15 @@ public class ChangeReg {
 			InPatientDepart IPD = (InPatientDepart)d;
 			if (IPD.beds.getBedsAvailable()) {
 				patientSet.add(p);
-//				IPD.beds.AllocateBed(p);
-				
+				p.setDepartment(IPD.getName());
 			}
-			
 		}
 		else if(d instanceof OutPatientDepart) {
 			OutPatientDepart OutD = (OutPatientDepart)d;
 			OutD.EnQueue(p);
 			patientSet.add(p);
 			d.setPatient(patientSet);
-			
+			p.setDepartment(OutD.getName());
 		}
 		else {System.err.println("Only Available to InPatient and OutPatient Departments.");}
 	}

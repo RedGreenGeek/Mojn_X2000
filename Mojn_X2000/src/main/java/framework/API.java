@@ -50,15 +50,11 @@ public class API {
 		
 		
 		//------
-		System.out.println(this.registerPatient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true));
-		System.out.println(this.patientAdmission("", "ER", "1"));
-	
-		System.out.println(h.getAllPatient());
-
+		this.registerPatient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true);
+		this.patientAdmission("", "ER", "1");
 		
 		this.registerPatient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true);
 		this.patientAdmission("", "ER", "2");
-		
 		
 		
 		this.registerStaff("Doctor", "Svend","Nielsen","Doktorvej","Dansk",01,01,1901);
@@ -347,7 +343,7 @@ public class API {
 		} catch (Exception e) {return "The triage level specification wasn't an integer";}
 	
 		LinkedList<Person> pSearch = searcher.patientSearch(patientId, "", "", "");
-		if (pSearch.size()!=1) {return "Invalid patient ID";}
+		if (pSearch.size() != 1) {return "Invalid patient ID";}
 		Patient p = (Patient) pSearch.getFirst();
 		
 		LinkedList<Department> departmentSearch = searcher.departmentSearch(departmentName);
@@ -378,9 +374,8 @@ public class API {
 		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
 			return "The patient ID's isn't uniqe";
 		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
-		
+		if (p.getDepartment()==null) {return p + " was not assigned to any department.";}
 		LinkedList<Department> dSearch = searcher.departmentSearch(p.getDepartment());
-		if (dSearch.size() != 1) {return p + " was not assigned to any department.";}
 		Department d = dSearch.getFirst();
 		R.remove(d, p);
 		return p + ", has been removed succesfully from " + d;
@@ -388,8 +383,8 @@ public class API {
 	
 	//MOVE PATIENT FROM DEPARTMENT TO DEPARTMENT
 	public String movePatientDepart(String ID, String departmentName, String trilvl) {
-		if (patientAdmission(ID,departmentName,trilvl).contains("succesfully")) {
-			return "The patient was moved successfully";
+		if (patientAdmission(trilvl,departmentName,ID).contains("succesfully")) {
+			return "The patient was moved successfully!";
 		}
 		return "The patient wasn't moved";
 	}
@@ -518,7 +513,7 @@ public class API {
 	
 	//CREATES A .csv FILE CONTAINING ALL PATIENTS
 	public String getParticipationList(boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
-		new ParticipationList(new LinkedList<Person>(h.getAllPatient()), department, birthday, address, tribe);
+		new ParticipationList(new LinkedList<Person>(h.getAllAdmittedPatients()), department, birthday, address, tribe);
 		return "Participation list was created successfully.";
 	}
 	

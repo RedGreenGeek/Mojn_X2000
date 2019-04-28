@@ -60,7 +60,7 @@ public class Hospital {
 		return staffSet;
 	}
 	
-	public HashSet<Person> getAllPatient(){
+	public HashSet<Person> getAllAdmittedPatients(){
 		HashSet<Person> patientSet = new HashSet<Person>();
 		LinkedList<Department> departList = new LinkedList<Department>(this.departSet);
 		while (!departList.isEmpty()) {
