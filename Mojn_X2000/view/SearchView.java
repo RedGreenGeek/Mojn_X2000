@@ -1,8 +1,13 @@
 package application.view;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.awt.*;
-import java.awt.event.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,15 +16,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 
 import application.controller.PatientController;
-import application.controller.SearchPatientController;
+import application.controller.SearchController;
 import application.model.Session;
 
-public class SearchPatientView extends JFrame {
+public class SearchView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
 	private JLabel adressLabel;
@@ -47,10 +49,10 @@ public class SearchPatientView extends JFrame {
 	
 	private JLabel lblUser;
 	
-	private SearchPatientController controller;
+	private SearchController controller;
 
 	
-	public SearchPatientView(SearchPatientController controller) {
+	public SearchView(SearchController controller) {
 		this.controller = controller;
 		initGUI();
 	}
@@ -58,7 +60,7 @@ public class SearchPatientView extends JFrame {
 	
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Search Patients");
+		setTitle("Hospital Structur Menu");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
@@ -79,8 +81,8 @@ public class SearchPatientView extends JFrame {
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
 		idField = new JTextField(11);
+	
 		
-
 		
 		okBtn = new JButton("OK");
 		
@@ -105,7 +107,6 @@ public class SearchPatientView extends JFrame {
 				adressField.setText("");
 				msg = controller.SearchAPI(firstName, surname, adress, tribe, day, month, year, id);
 				
-
 
 				textArea.append(msg);
 				textArea.append("\n");
@@ -258,7 +259,6 @@ public class SearchPatientView extends JFrame {
 		gc.insets = new Insets(0,0,0,0);
 		
 		inputArea.add(okBtn, gc);
-		inputArea.setBorder(new EmptyBorder(10,10,10,10));
 		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
@@ -273,24 +273,21 @@ public class SearchPatientView extends JFrame {
 		
 		////////////////////// MENU TOP /////////////////////////7
 		menuTop = new JPanel();
-		menuTop.setLayout(new BorderLayout(0, 0));
+		menuTop.setLayout(new BorderLayout());
+		menuTop.setBorder(BorderFactory.createEtchedBorder());
+		
+		JPanel userPanel = new JPanel();
+		userPanel.setLayout(new GridBagLayout());
+		lblUser = new JLabel("Mojn Boss");
+		gc.insets =  new Insets(0,0,0,10);
+		userPanel.add(lblUser, gc);
 		
 		backBtn = new JButton("Back");
-		backBtn.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		
 		menuTop.add(backBtn, BorderLayout.WEST);
 		
-		lblUser = new JLabel("ID## - User");
-		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
-		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
-		menuTop.add(lblUser, BorderLayout.EAST);
-		
-		menuTop.setBorder(new EtchedBorder(10));
-		
-		JLabel lblTitle = new JLabel("Search");
-		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		menuTop.add(lblTitle, BorderLayout.CENTER);
-		
+		menuTop.add(userPanel, BorderLayout.EAST);
 		
 		
 		
