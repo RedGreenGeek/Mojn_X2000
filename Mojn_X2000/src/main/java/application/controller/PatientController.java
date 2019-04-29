@@ -3,8 +3,13 @@ package application.controller;
 import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
+import application.view.AdmitPatientView;
+import application.view.AllocatePatientView;
+import application.view.DischargePatientView;
+import application.view.EditPatientView;
 import application.view.HospitalView;
 import application.view.InventoryView;
+import application.view.MovedBedPatientView;
 import application.view.PatientView;
 import application.view.RegisterPatientView;
 import application.view.SearchPatientView;
@@ -44,19 +49,52 @@ public class PatientController {
 	}
 	
 	public void ToAllocate() {
+		AllocatePatientController SC = new AllocatePatientController(session);
+		AllocatePatientView SView = new AllocatePatientView(SC);
+		SC.setView(SView);
+
+		SC.display();
+		
+		
+		
 		
 	}
 	public void ToAdmit() {
 		
+		AdmitPatientController SC = new AdmitPatientController(session);
+		AdmitPatientView SView = new AdmitPatientView(SC);
+		SC.setView(SView);
+
+		SC.display();
+		
 	}
 	public void ToMoveBed() {
+		
+		MovedBedPatientController SC = new MovedBedPatientController(session);
+		MovedBedPatientView SView = new MovedBedPatientView(SC);
+		SC.setView(SView);
+
+		SC.display();
+		
 		
 	}
 	public void ToDischarge() {
 		
+		DischargePatientController SC = new DischargePatientController(session);
+		DischargePatientView SView = new DischargePatientView(SC);
+		SC.setView(SView);
+
+		SC.display();
+		
 	}
 	
 	public void ToEdit() {
+		EditPatientController SC = new EditPatientController(session);
+		EditPatientView SView = new EditPatientView(SC);
+		SC.setView(SView);
+
+		SC.display();
+		
 		
 	}
 	public void ToRegister() {

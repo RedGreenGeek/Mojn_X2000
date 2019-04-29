@@ -1,3 +1,6 @@
+
+
+
 package application.view;
 
 
@@ -15,28 +18,20 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import application.controller.AdmitPatientController;
+import application.controller.AllocatePatientController;
+import application.controller.DischargePatientController;
 import application.controller.PatientController;
-import application.controller.RegisterPatientController;
 import application.controller.SearchPatientController;
-import application.controller.SearchStaffController;
 import application.model.Session;
 
-public class RegisterPatientView extends JFrame {
-	private JLabel firstNameLabel;
-	private JLabel surnameLabel;
-	private JLabel adressLabel;
-	private JLabel tribeLabel;
-	private JLabel birthdayLabel;
-	private JLabel aliveLabel;
-	private JTextField firstNameField;
-	private JTextField surnameField;
-	private JTextField adressField;
-	private JTextField tribeField;
-	private JTextField dayField;
-	private JTextField monthField;
-	private JTextField yearField;
-	private JTextField aliveField;
-	private JLabel ageLabel ;
+public class AllocatePatientView extends JFrame {
+	private JLabel IDLabel;
+	private JLabel DepartNameLabel;
+
+	private JTextField idField;
+	private JTextField DepartNameField;
+
 
 
 	private JButton okBtn;
@@ -49,38 +44,29 @@ public class RegisterPatientView extends JFrame {
 	
 	private JLabel lblUser;
 	
-	private RegisterPatientController controller;
+	private AllocatePatientController controller;
 
 	
-	public RegisterPatientView(RegisterPatientController controller) {
+	public AllocatePatientView(AllocatePatientController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
 	
 	private void initGUI() {
-		setTitle("Register Patients");
+		setTitle("Allocate Patients to beds");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
-		
-		firstNameLabel = new JLabel("First name: ");
-		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
-		tribeLabel = new JLabel("Tribe: ");
-		birthdayLabel = new JLabel("Birthday: ");
-		ageLabel = new JLabel("Job type: ");
-		aliveLabel = new JLabel("alive: ");
-		firstNameField = new JTextField(11);
-		surnameField = new JTextField(11);
-		adressField = new JTextField(11);
-		tribeField = new JTextField(11);
-		dayField = new JTextField(3);
-		monthField = new JTextField(3);
-		yearField = new JTextField(4);
-		aliveField = new JTextField(11);
-		
+
+		IDLabel = new JLabel("ID: ");
+		DepartNameLabel = new JLabel("Department name: ");
+
+
+		idField = new JTextField(11);
+		DepartNameField = new JTextField(11);
+
 
 		
 		okBtn = new JButton("OK");
@@ -88,23 +74,13 @@ public class RegisterPatientView extends JFrame {
 		okBtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				String firstName = firstNameField.getText();
-				String surname = surnameField.getText();
-				String adress = adressField.getText();
-				String tribe = tribeField.getText();
-				String day = dayField.getText();
-				String month = monthField.getText();
-				String year = yearField.getText();
-				String alive = aliveField.getText();
-				firstNameField.setText("");
-				surnameField.setText("");
-				dayField.setText("");
-				monthField.setText("");
-				yearField.setText("");
-				aliveField.setText("");
-				tribeField.setText("");
-				adressField.setText("");
-				msg = controller.RegisterAPI(firstName, surname, adress, day, month, year, tribe,alive);
+				String id = idField.getText();
+				String departName = DepartNameField.getText();
+
+				idField.setText("");
+				DepartNameField.setText("");
+
+				msg = controller.AllocateToBedAPI(id,departName);
 				
 
 
@@ -132,103 +108,38 @@ public class RegisterPatientView extends JFrame {
 		
 		/////////////////////////////////// 1. linje
 		
-		gc.gridx = 0;
-		gc.gridy = 0;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(firstNameLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(firstNameField, gc);
+
 		
 		///////////////////////////// 2. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5);
-		
-		inputArea.add(surnameLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(surnameField, gc);
+
 		/////////////////////////// 3. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(adressLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(adressField, gc);
+
 		
 		/////////////////////////// 4. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+
 		
-		inputArea.add(tribeLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(tribeField, gc);
 		/////////////////////////// 5. linje
 		
 		gc.gridx = 0;
 		gc.gridy++;
-		gc.weightx = 0.1;
+		gc.weightx = 1;
 		gc.weighty = 0.1;
 		gc.fill = GridBagConstraints.NONE;
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(birthdayLabel, gc);
+		inputArea.add(DepartNameLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(dayField, gc);
+		inputArea.add(DepartNameField, gc);
 		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,38,0,0);
-		
-		inputArea.add(monthField, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,76,0,0);
-		
-		inputArea.add(yearField, gc);
+
 		
 		/////////////////////////// 6. linje
 		
@@ -240,13 +151,13 @@ public class RegisterPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(aliveLabel, gc);
+		inputArea.add(IDLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(aliveField, gc);
+		inputArea.add(idField, gc);
 		
 		
 		/////////////////////////// 7. linje
@@ -287,7 +198,7 @@ public class RegisterPatientView extends JFrame {
 		
 		menuTop.setBorder(new EtchedBorder(10));
 		
-		JLabel lblTitle = new JLabel("Register");
+		JLabel lblTitle = new JLabel("Allocate to beds");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		menuTop.add(lblTitle, BorderLayout.CENTER);

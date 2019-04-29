@@ -55,7 +55,6 @@ public class SearchStaffView extends JFrame {
 	
 	
 	private void initGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Search Staff");
 		setPreferredSize(new Dimension(800, 700));
 		

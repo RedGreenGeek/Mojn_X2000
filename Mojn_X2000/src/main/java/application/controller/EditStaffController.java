@@ -1,18 +1,20 @@
 package application.controller;
 
 import application.model.Session;
+import application.view.EditPatientView;
+import application.view.EditStaffView;
 import application.view.HospitalView;
 import application.view.RegisterPatientView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class RegisterPatientController {
-	private RegisterPatientView view;
+public class EditStaffController {
+	private EditStaffView view;
 	private Session sessionModel;
 
 	
 	
-	public RegisterPatientController(Session session) {
+	public EditStaffController(Session session) {
 		this.sessionModel = session;
 	}
 	
@@ -20,12 +22,12 @@ public class RegisterPatientController {
 		view.setVisible(true);
 	}
 	
-	public void setView(RegisterPatientView view) {
+	public void setView(EditStaffView view) {
 		this.view = view;
 		this.view.setSession(sessionModel);
 	}
 	
-	public String RegisterAPI(String firstName, String lastName,String adress ,String day, String month, String year, String tribe, String alive) {
+	public String EditAPI(String ID,String firstName, String lastName,String adress ,String day, String month, String year, String tribe, String job) {
 		API api =  API.getInstance();
 		String  birthday = "";
 		
@@ -36,8 +38,7 @@ public class RegisterPatientController {
 		if (!(day.equals(""))) {
 			  birthday = day+"-"+month+"-"+year;
 		}
-		System.out.println(birthday);
-		String a = api.registerPatient( firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), Boolean.parseBoolean(alive));
+		String a = api.changeStaff(ID,  job,  firstName,  lastName,  adress, tribe, Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
 		return a;
 		
 	}

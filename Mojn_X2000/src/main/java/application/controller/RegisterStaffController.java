@@ -3,16 +3,17 @@ package application.controller;
 import application.model.Session;
 import application.view.HospitalView;
 import application.view.RegisterPatientView;
+import application.view.RegisterStaffView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class RegisterPatientController {
-	private RegisterPatientView view;
+public class RegisterStaffController {
+	private RegisterStaffView view;
 	private Session sessionModel;
 
 	
 	
-	public RegisterPatientController(Session session) {
+	public RegisterStaffController(Session session) {
 		this.sessionModel = session;
 	}
 	
@@ -20,24 +21,24 @@ public class RegisterPatientController {
 		view.setVisible(true);
 	}
 	
-	public void setView(RegisterPatientView view) {
-		this.view = view;
+	public void setView(RegisterStaffView sView) {
+		this.view = sView;
 		this.view.setSession(sessionModel);
 	}
 	
-	public String RegisterAPI(String firstName, String lastName,String adress ,String day, String month, String year, String tribe, String alive) {
+	public String RegisterAPI(String jobtype,String firstName, String lastName,String adress ,String day, String month, String year, String tribe) {
 		API api =  API.getInstance();
 		String  birthday = "";
 		
 		if (day.equals("") || month.equals("") || year.equals("")){
-			return "Invalid Birthdate";
+			return "Invalid infomation";
 		}
 
 		if (!(day.equals(""))) {
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.registerPatient( firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), Boolean.parseBoolean(alive));
+		String a = api.registerStaff (jobtype , firstName,  lastName, adress, tribe, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year));
 		return a;
 		
 	}

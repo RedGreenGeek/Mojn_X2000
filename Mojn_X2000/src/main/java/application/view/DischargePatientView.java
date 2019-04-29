@@ -18,20 +18,15 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import application.controller.AdmitPatientController;
+import application.controller.DischargePatientController;
 import application.controller.PatientController;
 import application.controller.SearchPatientController;
 import application.model.Session;
 
-public class SearchPatientView extends JFrame {
-	private JLabel firstNameLabel;
-	private JLabel surnameLabel;
-	private JLabel birthdayLabel;
+public class DischargePatientView extends JFrame {
 	private JLabel IDLabel;
-	private JTextField firstNameField;
-	private JTextField surnameField;
-	private JTextField dayField;
-	private JTextField monthField;
-	private JTextField yearField;
+
 	private JTextField idField;
 
 
@@ -45,31 +40,25 @@ public class SearchPatientView extends JFrame {
 	
 	private JLabel lblUser;
 	
-	private SearchPatientController controller;
+	private DischargePatientController controller;
 
 	
-	public SearchPatientView(SearchPatientController controller) {
+	public DischargePatientView(DischargePatientController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
 	
 	private void initGUI() {
-		setTitle("Search Patients");
+		setTitle("Discharge Patients");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
-		
-		firstNameLabel = new JLabel("First name: ");
-		surnameLabel = new JLabel("Surname: ");
-		birthdayLabel = new JLabel("Birthday: ");
+
 		IDLabel = new JLabel("ID: ");
-		firstNameField = new JTextField(11);
-		surnameField = new JTextField(11);
-		dayField = new JTextField(3);
-		monthField = new JTextField(3);
-		yearField = new JTextField(4);
+
+
 		idField = new JTextField(11);
 		
 
@@ -79,19 +68,10 @@ public class SearchPatientView extends JFrame {
 		okBtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				String firstName = firstNameField.getText();
-				String surname = surnameField.getText();
-				String day = dayField.getText();
-				String month = monthField.getText();
-				String year = yearField.getText();
 				String id = idField.getText();
-				firstNameField.setText("");
-				surnameField.setText("");
-				dayField.setText("");
-				monthField.setText("");
-				yearField.setText("");
+
 				idField.setText("");
-				msg = controller.SearchAPI(firstName, surname, day, month, year, id);
+				msg = controller.DischargeAPI(id);
 				
 
 
@@ -119,99 +99,22 @@ public class SearchPatientView extends JFrame {
 		
 		/////////////////////////////////// 1. linje
 		
-		gc.gridx = 0;
-		gc.gridy = 0;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(firstNameLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(firstNameField, gc);
+
 		
 		///////////////////////////// 2. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5);
-		
-		inputArea.add(surnameLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(surnameField, gc);
+
 		/////////////////////////// 3. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
+
 		
 		/////////////////////////// 4. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
+
 		
 		/////////////////////////// 5. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 0.1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(birthdayLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(dayField, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,38,0,0);
-		
-		inputArea.add(monthField, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,76,0,0);
-		
-		inputArea.add(yearField, gc);
+
 		
 		/////////////////////////// 6. linje
 		
@@ -270,7 +173,7 @@ public class SearchPatientView extends JFrame {
 		
 		menuTop.setBorder(new EtchedBorder(10));
 		
-		JLabel lblTitle = new JLabel("Search");
+		JLabel lblTitle = new JLabel("Discharge");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		menuTop.add(lblTitle, BorderLayout.CENTER);

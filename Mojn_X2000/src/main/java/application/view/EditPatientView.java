@@ -15,19 +15,22 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import application.controller.EditPatientController;
 import application.controller.PatientController;
 import application.controller.RegisterPatientController;
 import application.controller.SearchPatientController;
 import application.controller.SearchStaffController;
 import application.model.Session;
 
-public class RegisterPatientView extends JFrame {
+public class EditPatientView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
 	private JLabel adressLabel;
 	private JLabel tribeLabel;
 	private JLabel birthdayLabel;
 	private JLabel aliveLabel;
+	private JLabel IDLabel;
+
 	private JTextField firstNameField;
 	private JTextField surnameField;
 	private JTextField adressField;
@@ -36,6 +39,8 @@ public class RegisterPatientView extends JFrame {
 	private JTextField monthField;
 	private JTextField yearField;
 	private JTextField aliveField;
+	private JTextField IDField;
+
 	private JLabel ageLabel ;
 
 
@@ -49,17 +54,17 @@ public class RegisterPatientView extends JFrame {
 	
 	private JLabel lblUser;
 	
-	private RegisterPatientController controller;
+	private EditPatientController controller;
 
 	
-	public RegisterPatientView(RegisterPatientController controller) {
+	public EditPatientView(EditPatientController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
 	
 	private void initGUI() {
-		setTitle("Register Patients");
+		setTitle("Edit Patients");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
@@ -72,6 +77,9 @@ public class RegisterPatientView extends JFrame {
 		birthdayLabel = new JLabel("Birthday: ");
 		ageLabel = new JLabel("Job type: ");
 		aliveLabel = new JLabel("alive: ");
+		IDLabel = new JLabel("ID: ");
+
+		
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
 		adressField = new JTextField(11);
@@ -80,6 +88,8 @@ public class RegisterPatientView extends JFrame {
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
 		aliveField = new JTextField(11);
+		IDField = new JTextField(11);
+
 		
 
 		
@@ -96,15 +106,19 @@ public class RegisterPatientView extends JFrame {
 				String month = monthField.getText();
 				String year = yearField.getText();
 				String alive = aliveField.getText();
+				String ID = IDField.getText();
+
 				firstNameField.setText("");
 				surnameField.setText("");
 				dayField.setText("");
 				monthField.setText("");
 				yearField.setText("");
 				aliveField.setText("");
+				IDField.setText("");
+
 				tribeField.setText("");
 				adressField.setText("");
-				msg = controller.RegisterAPI(firstName, surname, adress, day, month, year, tribe,alive);
+				msg = controller.EditAPI(ID,firstName, surname, adress, day, month, year, tribe,alive);
 				
 
 
@@ -251,6 +265,27 @@ public class RegisterPatientView extends JFrame {
 		
 		/////////////////////////// 7. linje
 		
+		gc.gridx = 0;
+		gc.gridy++;
+		gc.weightx = 1;
+		gc.weighty = 0.1;
+		gc.fill = GridBagConstraints.NONE;
+		gc.anchor = GridBagConstraints.LINE_END;
+		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		
+		inputArea.add(IDLabel, gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.LINE_START;
+		gc.insets = new Insets(0,0,0,0);
+		
+		inputArea.add(IDField, gc);
+		
+
+		
+		
+		/////////////////////////////8. linje:
+		
 		gc.gridx = 1;
 		gc.gridy++;
 		gc.weightx = 1;
@@ -260,6 +295,8 @@ public class RegisterPatientView extends JFrame {
 		
 		inputArea.add(okBtn, gc);
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
+		
+		
 		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
@@ -287,7 +324,7 @@ public class RegisterPatientView extends JFrame {
 		
 		menuTop.setBorder(new EtchedBorder(10));
 		
-		JLabel lblTitle = new JLabel("Register");
+		JLabel lblTitle = new JLabel("Edit");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		menuTop.add(lblTitle, BorderLayout.CENTER);

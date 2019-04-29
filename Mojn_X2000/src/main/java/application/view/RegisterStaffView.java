@@ -17,17 +17,18 @@ import javax.swing.border.EtchedBorder;
 
 import application.controller.PatientController;
 import application.controller.RegisterPatientController;
+import application.controller.RegisterStaffController;
 import application.controller.SearchPatientController;
 import application.controller.SearchStaffController;
 import application.model.Session;
 
-public class RegisterPatientView extends JFrame {
+public class RegisterStaffView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
 	private JLabel adressLabel;
 	private JLabel tribeLabel;
 	private JLabel birthdayLabel;
-	private JLabel aliveLabel;
+	private JLabel jobLabel;
 	private JTextField firstNameField;
 	private JTextField surnameField;
 	private JTextField adressField;
@@ -35,7 +36,7 @@ public class RegisterPatientView extends JFrame {
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
-	private JTextField aliveField;
+	private JTextField jobField;
 	private JLabel ageLabel ;
 
 
@@ -49,10 +50,10 @@ public class RegisterPatientView extends JFrame {
 	
 	private JLabel lblUser;
 	
-	private RegisterPatientController controller;
+	private RegisterStaffController controller;
 
 	
-	public RegisterPatientView(RegisterPatientController controller) {
+	public RegisterStaffView(RegisterStaffController controller) {
 		this.controller = controller;
 		initGUI();
 	}
@@ -71,7 +72,7 @@ public class RegisterPatientView extends JFrame {
 		tribeLabel = new JLabel("Tribe: ");
 		birthdayLabel = new JLabel("Birthday: ");
 		ageLabel = new JLabel("Job type: ");
-		aliveLabel = new JLabel("alive: ");
+		jobLabel = new JLabel("job: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
 		adressField = new JTextField(11);
@@ -79,7 +80,7 @@ public class RegisterPatientView extends JFrame {
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
-		aliveField = new JTextField(11);
+		jobField = new JTextField(11);
 		
 
 		
@@ -95,16 +96,16 @@ public class RegisterPatientView extends JFrame {
 				String day = dayField.getText();
 				String month = monthField.getText();
 				String year = yearField.getText();
-				String alive = aliveField.getText();
+				String job = jobField.getText();
 				firstNameField.setText("");
 				surnameField.setText("");
 				dayField.setText("");
 				monthField.setText("");
 				yearField.setText("");
-				aliveField.setText("");
+				jobField.setText("");
 				tribeField.setText("");
 				adressField.setText("");
-				msg = controller.RegisterAPI(firstName, surname, adress, day, month, year, tribe,alive);
+				msg = controller.RegisterAPI(job,firstName, surname, adress, day, month, year, tribe);
 				
 
 
@@ -240,13 +241,13 @@ public class RegisterPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(aliveLabel, gc);
+		inputArea.add(jobLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(aliveField, gc);
+		inputArea.add(jobField, gc);
 		
 		
 		/////////////////////////// 7. linje
