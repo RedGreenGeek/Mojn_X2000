@@ -19,6 +19,7 @@ public class API {
 	private Searcher searcher;
 	private ChangeReg R;
 	private Database DB;
+//	private Logger log;
 	
 	public static synchronized API getInstance() {
 		if (instance==null) {
@@ -31,11 +32,15 @@ public class API {
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = Database.getInstance(Database.DEFAULT);
 		
-		R = new ChangeReg();
+//		try {
+//			log = new Logger();
+//			log.write("SYSTEM","REBOOT","NONE");
+//		} catch (IOException e) {e.printStackTrace();}
 		
 		//LOAD ARTIFICIAL HOSPITAL
 		h = new Hospital();
 		searcher = new Searcher(h);
+		R = new ChangeReg();
 		
 		//------
 		InPatientDepart In = new InPatientDepart("ER",new HashSet<Person>(),new HashSet<Person>(),7);
@@ -114,7 +119,12 @@ public class API {
 		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
-			R.add(h, new Patient(firstName,lastName,tribe,address,day,month,year,alive,null)); // Adding patient through changereg
+			Patient p = new Patient(firstName,lastName,tribe,address,day,month,year,alive,null);
+			R.add(h, p); // Adding patient through changereg
+			
+			/* write to log file */
+//			log.write(userID,"REGISTERED PATIENT",p.toString());
+			
 			return "Patient registered succesfully.";
 		} else {return "Additional information is needed.";}
 	}
@@ -131,6 +141,10 @@ public class API {
 			p.setAdress(address);
 			p.setTribe(tribe);
 			p.setAlive(alive);
+			
+			/* write to log file */
+//			log.write(userID,"PATIENT DATA CHANGED",p.toString());
+			
 			return "Patient information has been changed successfully.";
 		} else {return "Illegal information changes.";}
 	}
@@ -176,6 +190,10 @@ public class API {
 			}
 			else {return "Unsuccesful registration!";}
 			R.add(h, p);
+			
+			/* write to log file */
+//			log.write(userID,"STAFF REGISTERED",p.toString());
+			
 			return "The " + jobtype + " has been registered succesfully!";
 		}else {return "Unsuccesful registration!";}
 	}
@@ -192,6 +210,10 @@ public class API {
 		}
 		R.add(departmentRes.getFirst(), (Staff) staffRes.getFirst());
 		staffRes.getFirst().setDepartment(departmentName);
+		
+		/* write to log file */
+//		log.write(userID,"ASSIGNED DEPARTMENT",staffRes.getFirst().toString());
+		
 		return "Staff added successfully to department";
 	}
 	
@@ -233,6 +255,10 @@ public class API {
 				person.setBirthDay(day, month, year);
 				person.setAdress(adress);
 				person.setTribe(tribe);
+				
+				/* write to log file */
+//				log.write(userID,"STAFF DATA CHANGED",person.toString());
+				
 				return "Staff information has been changed successfully!";
 			}
 			else {return "Illegal changes to patient. Please check that the information is correct!";}
@@ -304,6 +330,10 @@ public class API {
 		}
 		discharge(patientRes.getFirst().getID());
 		patientAdmission(p.getTriage().toString(), departmentName, patientID);
+		
+		/* write to log file */
+//		log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
+		
 		return p+" was added to bed: "+p.getBedLocation();
 	}
 	
@@ -371,6 +401,10 @@ public class API {
 			R.add(outDepart, p);
 			outDepart.EnQueue(p, triagelvl);
 		}
+		
+		/* write to log file */
+//		log.write(userID,"PATITENT ADMITTED",p.toString());
+		
 		return "The patient has been registered succesfully to " + departmentName +  "!";
 	}
 	
@@ -384,6 +418,10 @@ public class API {
 		if (p.getDepartment()==null) {return p + " was not assigned to any department.";}
 		LinkedList<Department> dSearch = searcher.departmentSearch(p.getDepartment());
 		Department d = dSearch.getFirst();
+		
+		/* write to log file */
+//		log.write(userID,"PATIENT DISCHARGED",p.toString());
+		
 		R.remove(d, p);
 		return p + ", has been removed succesfully from " + d;
 	}
@@ -391,6 +429,10 @@ public class API {
 	//MOVE PATIENT FROM DEPARTMENT TO DEPARTMENT
 	public String movePatientDepart(String ID, String departmentName, String trilvl) {
 		if (patientAdmission(trilvl,departmentName,ID).contains("succesfully")) {
+			
+			/* write to log file */
+//			log.write(userID,"PATIENT MOVED DEPARTMENT",p.toString());
+			
 			return "The patient was moved successfully!";
 		}
 		return "The patient wasn't moved";
@@ -420,12 +462,60 @@ public class API {
 			message = Department.beds.AllocateBed(p, bedNo);	
 			if (message.equals("Ok")) {
 				Department.beds.Discharge(p);
+				
+				/* write to log file */
+//				log.write(userID,"PATIENT MOVED BED",p.toString());
+				
 				return "The patient was moved succesfully";
 			}
 			if (message.equals("Same bed")) {
 				return "The patient was moved succesfully to the same bed";
 			}
 			else {return "The bed wasn't free";}
+	}
+	
+	
+	/* ______________  PASSWORD METHODS for O2 ________________    */
+	
+	//ADDS NEW PASSWORD
+	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
+		Password Pass = Password.getInstance();
+		if (Pass.checkUniqueID(staffID)) {
+			return "Password already created for this staff!";
+		}
+		if (newPassword2 == newPassword1) {
+			Pass.addPassToMap(newPassword1, staffID);
+			
+			/* write to log file */
+//			log.write(userID,"NEW USER ADDED",staffID);
+			
+			return "Password created";
+		} else{
+			return "The two passwords do not match";
+		}
+	}
+	
+	//CHANGE PASSWORD FROM KNOWN PASSWORD
+	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
+		Password Pass = Password.getInstance();
+		if (!Pass.checkUniqueID(staffID)) {
+			return "Staff ID does not exist";
+		}
+		if (Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
+			Pass.addPassToMap(newPassword1, staffID);
+			
+			/* write to log file */
+//			log.write(userID,"PASSWORD CHANGED",staffID);
+			
+			return "Password changed";
+		}
+		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
+			return "Wrong old password";
+		}
+		if (Pass.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
+			return "The 2 new passwords are not equal";
+		}
+		return "Something went wrong";
 	}
 	
 	
@@ -468,46 +558,13 @@ public class API {
 		if (next == null) {
 			return "Warning, could not retrieve next in line.";
 		}
+		
+		/* write to log file */
+//		log.write(userID,"PATIENT DEQUEUED",p.toString());
+		
 		return next.toString();
 	}
 	
-	
-	/* ______________  PASSWORD METHODS for O2 ________________    */
-	
-	//ADDS NEW PASSWORD
-	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
-		Password Pass = Password.getInstance();
-		if (Pass.checkUniqueID(staffID)) {
-			return "Password already created for this staff!";
-		}
-		if (newPassword2 == newPassword1) {
-			Pass.addPassToMap(newPassword1, staffID);
-			return "Password created";
-		} else{
-			return "The two passwords do not match";
-		}
-	}
-	
-	//CHANGE PASSWORD FROM KNOWN PASSWORD
-	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
-		Password Pass = Password.getInstance();
-		if (!Pass.checkUniqueID(staffID)) {
-			return "Staff ID does not exist";
-		}
-		if (Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
-			Pass.addPassToMap(newPassword1, staffID);
-			return "Password changed";
-		}
-		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
-			return "Wrong old password";
-		}
-		if (Pass.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
-			return "The 2 new passwords are not equal";
-		}
-		return "Something went wrong";
-
-
-	}
 	
 	
 	/* _____________ DATABASE PROPERTIES for O4 _______________ */
