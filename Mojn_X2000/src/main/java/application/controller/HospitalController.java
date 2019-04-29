@@ -3,8 +3,10 @@ package application.controller;
 import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
+import application.view.FreeBedsHospitalView;
 import application.view.HospitalView;
 import application.view.InventoryView;
+import application.view.RegisterPatientView;
 
 public class HospitalController {
 	private HospitalView view;
@@ -63,8 +65,11 @@ public class HospitalController {
 
 
 	public void ToFreeBeds() {
-		// TODO Auto-generated method stub
-		
+		FreeBedsHospitalController SC = new FreeBedsHospitalController(session);
+		FreeBedsHospitalView SView = new FreeBedsHospitalView(SC);
+		SC.setView(SView);
+
+		SC.display();		
 	}
 
 
