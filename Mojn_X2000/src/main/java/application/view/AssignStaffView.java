@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import application.controller.AssignStaffController;
 import application.controller.PatientController;
 import application.controller.RegisterPatientController;
 import application.controller.RegisterStaffController;
@@ -22,22 +23,21 @@ import application.controller.SearchPatientController;
 import application.controller.SearchStaffController;
 import application.model.Session;
 
-public class RegisterStaffView extends JFrame {
+public class AssignStaffView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
-	private JLabel adressLabel;
-	private JLabel tribeLabel;
+	private JLabel staffIDLabel;
+	private JLabel departmentNameLabel;
 	private JLabel birthdayLabel;
-	private JLabel jobLabel;
+	private JLabel emailLabel;
 	private JTextField firstNameField;
 	private JTextField surnameField;
-	private JTextField adressField;
-	private JTextField tribeField;
+	private JTextField staffIDField;
+	private JTextField departmentNameField;
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
-	private JTextField jobField;
-	private JLabel ageLabel ;
+	private JTextField emailField;
 
 
 	private JButton okBtn;
@@ -50,17 +50,17 @@ public class RegisterStaffView extends JFrame {
 	
 	private JLabel lblUser;
 	
-	private RegisterStaffController controller;
+	private AssignStaffController controller;
 
 	
-	public RegisterStaffView(RegisterStaffController controller) {
+	public AssignStaffView(AssignStaffController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
 	
 	private void initGUI() {
-		setTitle("Register Staff");
+		setTitle("Assign staff to department");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
@@ -68,19 +68,18 @@ public class RegisterStaffView extends JFrame {
 		
 		firstNameLabel = new JLabel("First name: ");
 		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
-		tribeLabel = new JLabel("Tribe: ");
+		staffIDLabel = new JLabel("Staff ID: ");
+		departmentNameLabel = new JLabel("Department Name: ");
 		birthdayLabel = new JLabel("Birthday: ");
-		ageLabel = new JLabel("Job type: ");
-		jobLabel = new JLabel("job: ");
+		emailLabel = new JLabel("email: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
-		adressField = new JTextField(11);
-		tribeField = new JTextField(11);
+		staffIDField = new JTextField(11);
+		departmentNameField = new JTextField(11);
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
-		jobField = new JTextField(11);
+		emailField = new JTextField(11);
 		
 
 		
@@ -91,21 +90,21 @@ public class RegisterStaffView extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				String firstName = firstNameField.getText();
 				String surname = surnameField.getText();
-				String adress = adressField.getText();
-				String tribe = tribeField.getText();
+				String staffID = staffIDField.getText();
+				String departmentName = departmentNameField.getText();
 				String day = dayField.getText();
 				String month = monthField.getText();
 				String year = yearField.getText();
-				String job = jobField.getText();
+				String email = emailField.getText();
 				firstNameField.setText("");
 				surnameField.setText("");
 				dayField.setText("");
 				monthField.setText("");
 				yearField.setText("");
-				jobField.setText("");
-				tribeField.setText("");
-				adressField.setText("");
-				msg = controller.RegisterAPI(job,firstName, surname, adress, day, month, year, tribe);
+				emailField.setText("");
+				departmentNameField.setText("");
+				staffIDField.setText("");
+				msg = controller.AssignStaffAPI(firstName , surname, departmentName, day, month, year, staffID, email);
 				
 
 
@@ -176,13 +175,13 @@ public class RegisterStaffView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(adressLabel, gc);
+		inputArea.add(staffIDLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(adressField, gc);
+		inputArea.add(staffIDField, gc);
 		
 		/////////////////////////// 4. linje
 		
@@ -194,13 +193,13 @@ public class RegisterStaffView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(tribeLabel, gc);
+		inputArea.add(departmentNameLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(tribeField, gc);
+		inputArea.add(departmentNameField, gc);
 		/////////////////////////// 5. linje
 		
 		gc.gridx = 0;
@@ -241,13 +240,13 @@ public class RegisterStaffView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(jobLabel, gc);
+		inputArea.add(emailLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(jobField, gc);
+		inputArea.add(emailField, gc);
 		
 		
 		/////////////////////////// 7. linje
@@ -288,7 +287,7 @@ public class RegisterStaffView extends JFrame {
 		
 		menuTop.setBorder(new EtchedBorder(10));
 		
-		JLabel lblTitle = new JLabel("Register");
+		JLabel lblTitle = new JLabel("Assign staff to department");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		menuTop.add(lblTitle, BorderLayout.CENTER);

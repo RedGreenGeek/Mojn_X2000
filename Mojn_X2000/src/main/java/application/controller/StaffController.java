@@ -3,6 +3,7 @@ package application.controller;
 import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
+import application.view.AssignStaffView;
 import application.view.EditStaffView;
 import application.view.InventoryView;
 import application.view.RegisterStaffView;
@@ -89,7 +90,11 @@ public class StaffController {
 
 
 	public void ToAssign() {
-		// TODO Auto-generated method stub
+		AssignStaffController SC = new AssignStaffController(session);
+		AssignStaffView SView = new AssignStaffView(SC);
+		SC.setView(SView);
+
+		SC.display();
 		
 	}
 
