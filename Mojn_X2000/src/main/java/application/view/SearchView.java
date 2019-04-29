@@ -7,15 +7,20 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 
 import application.controller.PatientController;
 import application.controller.SearchController;
@@ -272,26 +277,26 @@ public class SearchView extends JFrame {
 	
 		
 		////////////////////// MENU TOP /////////////////////////7
-		menuTop = new JPanel();
-		menuTop.setLayout(new BorderLayout());
-		menuTop.setBorder(BorderFactory.createEtchedBorder());
+		JMenuBar menuTop;
+		menuTop = new JMenuBar();
+		menuTop.setLayout(new BorderLayout(0, 0));
+			
 		
-		JPanel userPanel = new JPanel();
-		userPanel.setLayout(new GridBagLayout());
-		lblUser = new JLabel("Mojn Boss");
-		gc.insets =  new Insets(0,0,0,10);
-		userPanel.add(lblUser, gc);
+		lblUser = new JLabel("ID## - User");
+		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
+		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
+		menuTop.add(lblUser, BorderLayout.EAST);
+		
+		menuTop.setBorder(new EtchedBorder(10));
+		
+		JLabel lblTitle = new JLabel("Search");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		menuTop.add(lblTitle, BorderLayout.CENTER);
 		
 		backBtn = new JButton("Back");
-		
-		
+		backBtn.setHorizontalAlignment(SwingConstants.LEFT);
 		menuTop.add(backBtn, BorderLayout.WEST);
-		
-		menuTop.add(userPanel, BorderLayout.EAST);
-		
-		
-		
-		
 		
 		setLayout(new BorderLayout());
 		
