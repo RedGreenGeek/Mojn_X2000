@@ -59,7 +59,7 @@ public class ApplicationController {
 
 		PatientController.display();
 	}
-	
+	//
 	public void login() {
 		loginController = new LoginController(this);
 		loginController.display();
