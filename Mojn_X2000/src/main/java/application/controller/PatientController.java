@@ -6,7 +6,8 @@ import application.view.StaffView;
 import application.view.HospitalView;
 import application.view.InventoryView;
 import application.view.PatientView;
-import application.view.SearchView;
+import application.view.RegisterPatientView;
+import application.view.SearchPatientView;
 
 public class PatientController {
 	private PatientView view;
@@ -60,11 +61,18 @@ public class PatientController {
 	}
 	public void ToRegister() {
 		
+		RegisterPatientController SC = new RegisterPatientController(session);
+		RegisterPatientView SView = new RegisterPatientView(SC);
+		SC.setView(SView);
+
+		SC.display();
+		
+		
 	}
 	public void ToSearch() {
 		
-		SearchController SC = new SearchController(session);
-		SearchView SView = new SearchView(SC);
+		SearchPatientController SC = new SearchPatientController(session);
+		SearchPatientView SView = new SearchPatientView(SC);
 		SC.setView(SView);
 
 		SC.display();

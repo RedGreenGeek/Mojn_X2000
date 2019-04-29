@@ -1,13 +1,8 @@
 package application.view;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,27 +11,29 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 
 import application.controller.PatientController;
-import application.controller.SearchController;
+import application.controller.RegisterPatientController;
+import application.controller.SearchPatientController;
+import application.controller.SearchStaffController;
 import application.model.Session;
 
-public class SearchView extends JFrame {
+public class RegisterPatientView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
-	private JLabel adressLabel;
-	private JLabel tribeLabel;
+	private JLabel emailLabel;
 	private JLabel birthdayLabel;
 	private JLabel IDLabel;
 	private JTextField firstNameField;
 	private JTextField surnameField;
-	private JTextField adressField;
-	private JTextField tribeField;
+	private JTextField emailField;
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
 	private JTextField idField;
-	private JLabel ageLabel ;
 
 
 	private JButton okBtn;
@@ -49,10 +46,10 @@ public class SearchView extends JFrame {
 	
 	private JLabel lblUser;
 	
-	private SearchController controller;
+	private RegisterPatientController controller;
 
 	
-	public SearchView(SearchController controller) {
+	public RegisterPatientView(RegisterPatientController controller) {
 		this.controller = controller;
 		initGUI();
 	}
@@ -60,7 +57,7 @@ public class SearchView extends JFrame {
 	
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Hospital Structur Menu");
+		setTitle("Search Staff");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
@@ -68,15 +65,12 @@ public class SearchView extends JFrame {
 		
 		firstNameLabel = new JLabel("First name: ");
 		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
-		tribeLabel = new JLabel("Tribe: ");
+		emailLabel = new JLabel("Email: ");
 		birthdayLabel = new JLabel("Birthday: ");
-		ageLabel = new JLabel("Job type: ");
 		IDLabel = new JLabel("ID: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
-		adressField = new JTextField(11);
-		tribeField = new JTextField(11);
+		emailField = new JTextField(11);
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
@@ -91,8 +85,7 @@ public class SearchView extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				String firstName = firstNameField.getText();
 				String surname = surnameField.getText();
-				String adress = adressField.getText();
-				String tribe = tribeField.getText();
+				String email = emailField.getText();
 				String day = dayField.getText();
 				String month = monthField.getText();
 				String year = yearField.getText();
@@ -103,9 +96,8 @@ public class SearchView extends JFrame {
 				monthField.setText("");
 				yearField.setText("");
 				idField.setText("");
-				tribeField.setText("");
-				adressField.setText("");
-				msg = controller.SearchAPI(firstName, surname, adress, tribe, day, month, year, id);
+				emailField.setText("");
+				msg = controller.RegisterAPI(firstName, surname, email, day, month, year, id);
 				
 
 				textArea.append(msg);
@@ -175,13 +167,11 @@ public class SearchView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(adressLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(adressField, gc);
 		
 		/////////////////////////// 4. linje
 		
@@ -193,13 +183,13 @@ public class SearchView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(tribeLabel, gc);
+		inputArea.add(emailLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(tribeField, gc);
+		inputArea.add(emailField, gc);
 		/////////////////////////// 5. linje
 		
 		gc.gridx = 0;
@@ -259,6 +249,7 @@ public class SearchView extends JFrame {
 		gc.insets = new Insets(0,0,0,0);
 		
 		inputArea.add(okBtn, gc);
+		inputArea.setBorder(new EmptyBorder(10,10,10,10));
 		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
@@ -273,21 +264,24 @@ public class SearchView extends JFrame {
 		
 		////////////////////// MENU TOP /////////////////////////7
 		menuTop = new JPanel();
-		menuTop.setLayout(new BorderLayout());
-		menuTop.setBorder(BorderFactory.createEtchedBorder());
-		
-		JPanel userPanel = new JPanel();
-		userPanel.setLayout(new GridBagLayout());
-		lblUser = new JLabel("Mojn Boss");
-		gc.insets =  new Insets(0,0,0,10);
-		userPanel.add(lblUser, gc);
+		menuTop.setLayout(new BorderLayout(0, 0));
 		
 		backBtn = new JButton("Back");
-		
-		
+		backBtn.setHorizontalAlignment(SwingConstants.LEFT);
 		menuTop.add(backBtn, BorderLayout.WEST);
 		
-		menuTop.add(userPanel, BorderLayout.EAST);
+		lblUser = new JLabel("ID## - User");
+		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
+		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
+		menuTop.add(lblUser, BorderLayout.EAST);
+		
+		menuTop.setBorder(new EtchedBorder(10));
+		
+		JLabel lblTitle = new JLabel("Search");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		menuTop.add(lblTitle, BorderLayout.CENTER);
+		
 		
 		
 		
