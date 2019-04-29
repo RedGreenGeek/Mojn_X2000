@@ -5,6 +5,7 @@ import application.model.Session;
 import application.view.StaffView;
 import application.view.AdmitPatientView;
 import application.view.AllocatePatientView;
+import application.view.DepartmentMovePatientView;
 import application.view.DischargePatientView;
 import application.view.EditPatientView;
 import application.view.HospitalView;
@@ -117,8 +118,13 @@ public class PatientController {
 		
 	}
 	
-	public void ToMove() {
-		
+	public void ToDepartmentMove() {
+		DepartmentMovePatientController SC = new DepartmentMovePatientController(session);
+		DepartmentMovePatientView SView = new DepartmentMovePatientView(SC);
+		SC.setView(SView);
+
+		SC.display();
+
 	}
 	
 

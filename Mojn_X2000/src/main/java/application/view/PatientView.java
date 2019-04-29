@@ -192,7 +192,7 @@ public class PatientView extends JFrame {
 		btnMove.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.ToMove();
+				controller.ToDepartmentMove();
 			}
 		});
 		
