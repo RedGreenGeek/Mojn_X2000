@@ -9,7 +9,11 @@ private String birthday;
 private String adress;
 private String tribe;
 private boolean alive;
+<<<<<<< HEAD
 private String department = "DEPARTMENT HAS NOT BEEN SET!";
+=======
+private String department = null;
+>>>>>>> branch 'Refactor_28_04' of https://github.com/RedGreenGeek/Mojn_X2000.git
 
 @Override
 public abstract String toString();

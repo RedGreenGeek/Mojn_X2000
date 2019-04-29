@@ -28,7 +28,7 @@ public class ChangeReg {
 		allPatientSet.add(p);
 //		System.out.println(allPatientSet);
 		h.setAllPatientSet(allPatientSet);
-		DB.writePatient(p);
+//		DB.writePatient(p);
 		
 	}
 	
@@ -58,10 +58,9 @@ public class ChangeReg {
 		HashSet<Person> patientSet = d.getPatient();
 		if (d instanceof InPatientDepart) {
 			InPatientDepart IPD = (InPatientDepart)d;
-			if (p.getDepartment().equals(d.getName()) && p.getBedLocation()!=null) {
-				patientSet.add(p);
-				p.setDepartment(IPD.getName());
-			}
+			patientSet.add(p);
+			d.setPatient(patientSet);
+			p.setDepartment(d.getName());
 		}
 		else if(d instanceof OutPatientDepart) {
 			p.setDepartment(d.getName());
@@ -86,7 +85,6 @@ public class ChangeReg {
 			OutD.EnQueue(p,triageLevel);
 			patientSet.add(p);
 			d.setPatient(patientSet);
-			
 		}
 		else {System.err.println("Only OutPatient Departments have triage levels");}
 	}

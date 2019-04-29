@@ -15,13 +15,13 @@ import framework.person.staff.*;
 public class API {
 	// INIT ATTRIBUTES  
 	private static API instance;
-	private Hospital h;
+	public Hospital h;
 	private Searcher searcher;
 	private ChangeReg R;
 	private Database DB;
 	
 	public static synchronized API getInstance() {
-		if (instance==null) {
+		if (instance == null) {
 			instance = new API();
 		}
 		return instance;
@@ -404,7 +404,7 @@ public class API {
 			return "The patient wasn't moved cause to invalid ID";
 		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
 		
-		if (!(searcher.departmentSearch(p.getDepartment()).getFirst() instanceof framework.Departments.HealthCare.InPatientDepart)) {
+		if (!(searcher.departmentSearch(p.getDepartment()).getFirst() instanceof InPatientDepart)) {
 			return "The department isn't an indepartment";
 		}
 		else {Department = (InPatientDepart) searcher.departmentSearch(p.getDepartment()).getFirst();}		
