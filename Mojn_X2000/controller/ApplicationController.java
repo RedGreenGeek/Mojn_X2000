@@ -51,7 +51,7 @@ public class ApplicationController {
 
 		HospitalController.display();
 	}
-	//
+	
 	public void managePatient(Session session) {
 		PatientController = new PatientController(session);
 		PatientView PView = new PatientView(PatientController);
@@ -59,7 +59,7 @@ public class ApplicationController {
 
 		PatientController.display();
 	}
-	//
+	
 	public void login() {
 		loginController = new LoginController(this);
 		loginController.display();

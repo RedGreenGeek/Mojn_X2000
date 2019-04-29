@@ -3,20 +3,16 @@ package application.controller;
 import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
-import application.view.HospitalView;
 import application.view.InventoryView;
-import application.view.PatientView;
-import application.view.SearchPatientView;
 
-public class PatientController {
-	private PatientView view;
+public class StaffController {
+	private StaffView view;
 	private Session sessionModel;
 	private ApplicationController application;
 	private Session session;
 	
 	
-	
-	public PatientController(Session session) {
+	public StaffController(Session session) {
 		this.sessionModel = session;
 		this.session = Session.getInstance();
 		this.application = ApplicationController.getInstance();
@@ -29,51 +25,53 @@ public class PatientController {
 	public void display() {
 		view.setVisible(true);
 	}
-	public void setView(PatientView view) {
+	public void setView(StaffView view) {
 		this.view = view;
 //		this.view.setTableModel(inventoryModel);
 		this.view.setSession(sessionModel);
 	}
 	public void Back2Main() {
 
-
+		
 		view.setVisible(false);
 
 		application.manageInventory(session);
-	}
-	
-	public void ToAllocate() {
 		
 	}
-	public void ToAdmit() {
-		
-	}
-	public void ToMoveBed() {
-		
-	}
-	public void ToDischarge() {
-		
-	}
-	
-	public void ToEdit() {
-		
-	}
-	public void ToRegister() {
-		
-	}
+
+
+
+
+
 	public void ToSearch() {
 		
-		SearchPatientController SC = new SearchPatientController(session);
-		SearchPatientView SView = new SearchPatientView(SC);
-		SC.setView(SView);
+	}
 
-		SC.display();
+
+
+
+
+	public void ToEdit() {
+		// TODO Auto-generated method stub
 		
 	}
-	
-	public void ToMove() {
+
+
+
+
+
+	public void ToRegister() {
+		// TODO Auto-generated method stub
 		
 	}
-	
+
+
+
+
+
+	public void ToAssign() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

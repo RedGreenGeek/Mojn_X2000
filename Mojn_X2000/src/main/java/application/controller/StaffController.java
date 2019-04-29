@@ -4,6 +4,8 @@ import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
 import application.view.InventoryView;
+import application.view.SearchPatientView;
+import application.view.SearchStaffView;
 
 public class StaffController {
 	private StaffView view;
@@ -44,6 +46,11 @@ public class StaffController {
 
 
 	public void ToSearch() {
+		SearchStaffController SS = new SearchStaffController(session);
+		SearchStaffView SView = new SearchStaffView(SS);
+		SS.setView(SView);
+
+		SS.display();
 		
 	}
 
