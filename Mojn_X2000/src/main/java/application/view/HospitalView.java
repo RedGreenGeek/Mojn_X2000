@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
 
 import application.controller.StaffController;
 import application.controller.HospitalController;
-import application.controller.InventoryController;
+import application.controller.MainMenuController;
 import application.controller.LoginController;
 import application.model.Session;
 import application.utils.GridBagLayoutUtils;

@@ -22,19 +22,19 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-import application.controller.InventoryController;
+import application.controller.MainMenuController;
 import application.model.Session;
 import application.utils.GridBagLayoutUtils;
 
-public class InventoryView extends JFrame {
+public class MainMenuView extends JFrame {
 
 	private static final long serialVersionUID = 989075282041187452L;
-	private InventoryController controller;
+	private MainMenuController controller;
 	private JTable tblInventory;
 	private JLabel lblUser;
 	private JLabel lblMainMenu;
 	
-	public InventoryView(InventoryController controller) {
+	public MainMenuView(MainMenuController controller) {
 		this.controller = controller;
 		initGUI();
 	}

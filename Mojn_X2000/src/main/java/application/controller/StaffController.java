@@ -5,7 +5,7 @@ import application.model.Session;
 import application.view.StaffView;
 import application.view.AssignStaffView;
 import application.view.EditStaffView;
-import application.view.InventoryView;
+import application.view.MainMenuView;
 import application.view.RegisterStaffView;
 import application.view.SearchPatientView;
 import application.view.SearchStaffView;

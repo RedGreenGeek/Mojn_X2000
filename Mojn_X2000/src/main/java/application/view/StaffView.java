@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import application.controller.StaffController;
-import application.controller.InventoryController;
+import application.controller.MainMenuController;
 import application.controller.LoginController;
 import application.model.Session;
 import application.utils.GridBagLayoutUtils;

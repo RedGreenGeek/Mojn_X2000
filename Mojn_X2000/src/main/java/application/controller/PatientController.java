@@ -9,7 +9,7 @@ import application.view.DepartmentMovePatientView;
 import application.view.DischargePatientView;
 import application.view.EditPatientView;
 import application.view.HospitalView;
-import application.view.InventoryView;
+import application.view.MainMenuView;
 import application.view.MovedBedPatientView;
 import application.view.PatientView;
 import application.view.RegisterPatientView;

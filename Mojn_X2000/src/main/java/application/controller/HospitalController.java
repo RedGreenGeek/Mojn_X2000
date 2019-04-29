@@ -7,7 +7,7 @@ import application.view.FreeBedsHospitalView;
 import application.view.GetDepartmentView;
 import application.view.GetQueueView;
 import application.view.HospitalView;
-import application.view.InventoryView;
+import application.view.MainMenuView;
 import application.view.RegisterPatientView;
 import application.view.StaffDepartView;
 

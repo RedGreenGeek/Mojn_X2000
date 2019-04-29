@@ -4,26 +4,26 @@ import javax.swing.JOptionPane;
 
 import application.model.Inventory;
 import application.model.Session;
-import application.view.InventoryView;
+import application.view.MainMenuView;
 
-public class InventoryController {
+public class MainMenuController {
 	
 	private Inventory inventoryModel;
 	private Session sessionModel;
-	private InventoryView view;
+	private MainMenuView view;
 	private ApplicationController application;
 	private Session session;
 
 
 	
-	public InventoryController(Inventory inventory, Session session) {
+	public MainMenuController(Inventory inventory, Session session) {
 		this.inventoryModel = inventory;
 		this.sessionModel = session;
 		this.session = Session.getInstance();
 		this.application = ApplicationController.getInstance();
 	}
 
-	public void setView(InventoryView view) {
+	public void setView(MainMenuView view) {
 		this.view = view;
 //		this.view.setTableModel(inventoryModel);
 		this.view.setSession(sessionModel);
