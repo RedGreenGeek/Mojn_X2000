@@ -12,12 +12,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
@@ -73,20 +77,51 @@ public class InventoryView extends JFrame {
 		buttonsPanel.add(btnPatient, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,100,10));
 		
 //		 toolbar
-		JPanel centerPanel = new JPanel();
-		centerPanel.setLayout(new GridBagLayout());
+//		JPanel centerPanel = new JPanel();
+//		centerPanel.setLayout(new GridBagLayout());
+//		
+//		JPanel userPanel = new JPanel();
+//		lblUser = new JLabel();
+//		userPanel.add(lblUser, BorderLayout.EAST);
+//		
+//		
+//		centerPanel.add(lblMainMenu,GridBagLayoutUtils.constraint(2, 0, 0, 0, 50, 0, 100, 0));
+//		centerPanel.add(buttonsPanel,GridBagLayoutUtils.constraint(2, 1, 0, 0, 0, 0, 0, 0) );
+//		
+//		add(centerPanel, BorderLayout.CENTER);
+//		add(userPanel, BorderLayout.NORTH);
+//	
 		
-		JPanel userPanel = new JPanel();
-		lblUser = new JLabel();
-		userPanel.add(lblUser, BorderLayout.EAST);
+		JMenuBar menuTop;
+		menuTop = new JMenuBar();
+		menuTop.setLayout(new BorderLayout(0, 0));
+		
+		JMenu mnPassword = new JMenu();
+		mnPassword.setIcon(new ImageIcon("C:\\Users\\anton\\OneDrive\\Dokumenter\\Uni\\Uni\\4. semester\\Agil\\Exam proj\\icons\\feature.png"));
+		menuTop.add(mnPassword, BorderLayout.WEST);
+		
+		JButton btnChange = new JButton("Change Password");
+		mnPassword.add(btnChange);
+
+		JButton btnAdd = new JButton("Add Password");
+		mnPassword.add(btnAdd);				
+		
+		lblUser = new JLabel("ID## - User");
+		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
+		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
+		menuTop.add(lblUser, BorderLayout.EAST);
+		
+		menuTop.setBorder(new EtchedBorder(10));
+		
+		JLabel lblTitle = new JLabel("Patient");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		menuTop.add(lblTitle, BorderLayout.CENTER);
+		
+		add(buttonsPanel, BorderLayout.CENTER);
+		add(menuTop, BorderLayout.NORTH);
 		
 		
-		centerPanel.add(lblMainMenu,GridBagLayoutUtils.constraint(2, 0, 0, 0, 50, 0, 100, 0));
-		centerPanel.add(buttonsPanel,GridBagLayoutUtils.constraint(2, 1, 0, 0, 0, 0, 0, 0) );
-		
-		add(centerPanel, BorderLayout.CENTER);
-		add(userPanel, BorderLayout.NORTH);
-	
 		pack();
 		setLocationRelativeTo(null);
 	
