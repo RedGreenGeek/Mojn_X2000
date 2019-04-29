@@ -6,7 +6,7 @@ import framework.Person;
 public class Patient extends Person {
 	
 	private int patientID;
-	private static int counter;
+	public static int counter;
 	private Integer triage = null;
 	private Integer bed_location = null;
 	

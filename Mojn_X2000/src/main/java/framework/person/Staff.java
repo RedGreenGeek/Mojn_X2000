@@ -8,7 +8,7 @@ public abstract class Staff extends Person{
 private String email;
 private String serialID;
 private String jobType;
-private static int counter;
+public static int counter;
 private String Password;
 
 @Override

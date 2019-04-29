@@ -106,8 +106,6 @@ public class API {
 	// REGISTER PATIENT TO HOSPITAL (NO DEPARTMENT)
 	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
 		
-		System.out.println(Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive));
-		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
 			R.add(h, new Patient(firstName,lastName,tribe,address,day,month,year,alive,null)); // Adding patient through changereg
