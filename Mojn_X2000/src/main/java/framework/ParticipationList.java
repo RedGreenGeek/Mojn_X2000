@@ -12,7 +12,7 @@ public class ParticipationList {
 	ParticipationList(LinkedList<Person> ll, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException{
 		String s = this.makeString(ll,department, birthday, address, tribe);
 		String fileSeparator = System.getProperty("file.separator");
-		DateFormat dateFormat = new SimpleDateFormat("dd:MM:yy-HH.mm");
+		DateFormat dateFormat = new SimpleDateFormat("dd_MM_yy_HH_mm");
 		Date date = new Date();
         String absoluteFilePath = "ParticipationLists"+fileSeparator+dateFormat.format(date)+".csv";
         File file = new File(absoluteFilePath);
