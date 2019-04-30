@@ -11,20 +11,6 @@ private String jobType;
 public static int counter;
 private String Password;
 
-@Override
-public String toString() {
-	String s = this.getJobType() + ", " + this.getFirstName() + " " + this.getLastName() + ", \t Email: " + this.getEmail();
-	return s;
-}
-
-public void setPassword(Password P) {
-	Random r = new Random();
-	String Pass = "";
-	String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k",
-						 "k","l","m","n","o","p","q","r","s","t","u",
-						 "v","x","y","z","w"};
-	String[] ints = {"1","2","3","4","5","6","7","8","9","0"};
-	
 	@Override
 	public String toString() {
 		String s = this.getJobType() + ", " + this.getFirstName() + " " + this.getLastName() + ", \t Email: " + this.getEmail();

@@ -55,11 +55,7 @@ public class StaffController {
 
 		SS.display();
 		
-		SearchStaffController SC = new SearchStaffController(session);
-		SearchStaffView SView = new SearchStaffView(SC);
-		SC.setView(SView);
-
-		SC.display();
+	
 		
 	}
 		
