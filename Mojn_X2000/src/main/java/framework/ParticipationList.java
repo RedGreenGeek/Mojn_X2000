@@ -19,7 +19,7 @@ public class ParticipationList {
         file.delete();
         file.createNewFile();
         FileWriter fw = new FileWriter(file);
-        fw.append(s);
+        fw.append(s); 
         fw.close();
 	}
 
