@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -62,42 +63,50 @@ public class PatientView extends JFrame {
 		buttonsPanel.setLayout(new GridBagLayout());
 		
 		JButton btnSearch = new JButton("Search Patient");
+		Image searchImg = new ImageIcon(this.getClass().getResource("/Patient menu/search.png")).getImage();
+		btnSearch.setIcon(new ImageIcon(searchImg));
 		btnSearch.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnSearch.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnSearch.setIcon(new ImageIcon(path+"Patient menu\\search.png"));
 		
 		JButton btnRegister = new JButton("Register Patient");
-		btnRegister.setIcon(new ImageIcon(path+"Patient menu\\register.png"));
+		Image registerImg = new ImageIcon(this.getClass().getResource("/Patient menu/register.png")).getImage();
+		btnRegister.setIcon(new ImageIcon(registerImg));
 		btnRegister.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnRegister.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnMove = new JButton("Move Between Departs");
-		btnMove.setIcon(new ImageIcon(path+"Patient menu\\move.png"));
+		Image moveImg = new ImageIcon(this.getClass().getResource("/Patient menu/move.png")).getImage();
+		btnMove.setIcon(new ImageIcon(moveImg));
 		btnMove.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnMove.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnEdit = new JButton("Edit Patient");
-		btnEdit.setIcon(new ImageIcon(path+"Patient menu\\edit.png"));
+		Image editImg = new ImageIcon(this.getClass().getResource("/Patient menu/edit.png")).getImage();
+		btnEdit.setIcon(new ImageIcon(editImg));
 		btnEdit.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnEdit.setHorizontalTextPosition(SwingConstants.CENTER); 
 		
 		JButton btnDischarge = new JButton("Discharge Patient");
-		btnDischarge.setIcon(new ImageIcon(path+"Patient menu\\discharge.png"));
+		Image dischargeImg = new ImageIcon(this.getClass().getResource("/Patient menu/discharge.png")).getImage();
+		btnDischarge.setIcon(new ImageIcon(dischargeImg));
 		btnDischarge.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnDischarge.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnAdmit = new JButton("Admit Patient");
-		btnAdmit.setIcon(new ImageIcon(path+"Patient menu\\admit.png"));
+		Image admitImg = new ImageIcon(this.getClass().getResource("/Patient menu/admit.png")).getImage();
+		btnAdmit.setIcon(new ImageIcon(admitImg));
 		btnAdmit.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnAdmit.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnMoveBed = new JButton("Move Between Beds");
-		btnMoveBed.setIcon(new ImageIcon(path+"Patient menu\\movebed.png"));
+		Image moveBedImg = new ImageIcon(this.getClass().getResource("/Patient menu/movebed.png")).getImage();
+		btnMoveBed.setIcon(new ImageIcon(moveBedImg));
 		btnMoveBed.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnMoveBed.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnAllocate = new JButton("Allocate Patient To Bed");
-		btnAllocate.setIcon(new ImageIcon(path+"Patient menu\\allocatebed.png"));
+		Image allocateImg = new ImageIcon(this.getClass().getResource("/Patient menu/allocatebed.png")).getImage();
+		btnAllocate.setIcon(new ImageIcon(allocateImg));
 		btnAllocate.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnAllocate.setHorizontalTextPosition(SwingConstants.CENTER);
 		

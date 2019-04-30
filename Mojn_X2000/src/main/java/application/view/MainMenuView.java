@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -54,17 +55,20 @@ public class MainMenuView extends JFrame {
 		buttonsPanel.setLayout(new GridBagLayout());
 		
 		JButton btnPatient = new JButton("Patient");
+		Image patientImg = new ImageIcon(this.getClass().getResource("/Patient.png")).getImage();
+		btnPatient.setIcon(new ImageIcon(patientImg));
 		btnPatient.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnPatient.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnPatient.setIcon(new ImageIcon("C:\\Users\\Mathi\\Desktop\\4. semester\\Agile Object-Oriented Software Development\\Icons\\Patient.png"));
+		btnPatient.setHorizontalTextPosition(SwingConstants.CENTER);	
 		
 		JButton btnStaff = new JButton("Staff");
-		btnStaff.setIcon(new ImageIcon("C:\\Users\\Mathi\\Desktop\\4. semester\\Agile Object-Oriented Software Development\\Icons\\Staff.png"));
+		Image StaffImg = new ImageIcon(this.getClass().getResource("/Staff.png")).getImage();
+		btnStaff.setIcon(new ImageIcon(StaffImg));		
 		btnStaff.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnStaff.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnHospital = new JButton("Hospital");
-		btnHospital.setIcon(new ImageIcon("C:\\Users\\Mathi\\Desktop\\4. semester\\Agile Object-Oriented Software Development\\Icons\\hospital.png"));
+		Image HospitalImg = new ImageIcon(this.getClass().getResource("/hospital.png")).getImage();
+		btnHospital.setIcon(new ImageIcon(HospitalImg));		
 		btnHospital.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnHospital.setHorizontalTextPosition(SwingConstants.CENTER); 
 		

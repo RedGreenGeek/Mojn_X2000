@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -63,22 +64,26 @@ public class HospitalView extends JFrame {
 		buttonsPanel.setLayout(new GridBagLayout());
 		
 		JButton btnGetDepart = new JButton("Get Depart");
+		Image getDepartImg = new ImageIcon(this.getClass().getResource("/Hospital structur/getdepart.png")).getImage();
+		btnGetDepart.setIcon(new ImageIcon(getDepartImg));
 		btnGetDepart.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnGetDepart.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnGetDepart.setIcon(new ImageIcon(path + "Hospital structur\\getdepart.png"));
 		
 		JButton btnStaffInDepart = new JButton("Staff In Depart");
-		btnStaffInDepart.setIcon(new ImageIcon(path + "Hospital structur\\getstaff.png"));
+		Image staffInDepartImg = new ImageIcon(this.getClass().getResource("/Hospital structur/getstaff.png")).getImage();
+		btnStaffInDepart.setIcon(new ImageIcon(staffInDepartImg));
 		btnStaffInDepart.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnStaffInDepart.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnFreeBeds = new JButton("Avaliable Beds In Depart");
-		btnFreeBeds.setIcon(new ImageIcon(path + "Hospital structur\\free.png"));
+		Image freeBedsImg = new ImageIcon(this.getClass().getResource("/Hospital structur/free.png")).getImage();
+		btnFreeBeds.setIcon(new ImageIcon(freeBedsImg));
 		btnFreeBeds.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnFreeBeds.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnQueue = new JButton("Queue In Out Depart");
-		btnQueue.setIcon(new ImageIcon(path + "Hospital structur\\queue.png"));
+		Image queueImg = new ImageIcon(this.getClass().getResource("/Hospital structur/queue.png")).getImage();
+		btnQueue.setIcon(new ImageIcon(queueImg));
 		btnQueue.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnQueue.setHorizontalTextPosition(SwingConstants.CENTER); 
 		
