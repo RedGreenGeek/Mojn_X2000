@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,19 +23,19 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-import application.controller.InventoryController;
+import application.controller.MainMenuController;
 import application.model.Session;
 import application.utils.GridBagLayoutUtils;
 
-public class InventoryView extends JFrame {
+public class MainMenuView extends JFrame {
 
 	private static final long serialVersionUID = 989075282041187452L;
-	private InventoryController controller;
+	private MainMenuController controller;
 	private JTable tblInventory;
 	private JLabel lblUser;
 	private JLabel lblMainMenu;
 	
-	public InventoryView(InventoryController controller) {
+	public MainMenuView(MainMenuController controller) {
 		this.controller = controller;
 		initGUI();
 	}
@@ -54,17 +55,20 @@ public class InventoryView extends JFrame {
 		buttonsPanel.setLayout(new GridBagLayout());
 		
 		JButton btnPatient = new JButton("Patient");
+		Image patientImg = new ImageIcon(this.getClass().getResource("/Patient.png")).getImage();
+		btnPatient.setIcon(new ImageIcon(patientImg));
 		btnPatient.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnPatient.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnPatient.setIcon(new ImageIcon("C:\\Users\\Mathi\\Desktop\\4. semester\\Agile Object-Oriented Software Development\\Icons\\Patient.png"));
+		btnPatient.setHorizontalTextPosition(SwingConstants.CENTER);	
 		
 		JButton btnStaff = new JButton("Staff");
-		btnStaff.setIcon(new ImageIcon("C:\\Users\\Mathi\\Desktop\\4. semester\\Agile Object-Oriented Software Development\\Icons\\Staff.png"));
+		Image StaffImg = new ImageIcon(this.getClass().getResource("/Staff.png")).getImage();
+		btnStaff.setIcon(new ImageIcon(StaffImg));		
 		btnStaff.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnStaff.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnHospital = new JButton("Hospital");
-		btnHospital.setIcon(new ImageIcon("C:\\Users\\Mathi\\Desktop\\4. semester\\Agile Object-Oriented Software Development\\Icons\\hospital.png"));
+		Image HospitalImg = new ImageIcon(this.getClass().getResource("/hospital.png")).getImage();
+		btnHospital.setIcon(new ImageIcon(HospitalImg));		
 		btnHospital.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnHospital.setHorizontalTextPosition(SwingConstants.CENTER); 
 		

@@ -1,3 +1,6 @@
+
+
+
 package application.view;
 
 
@@ -22,19 +25,14 @@ import application.model.Session;
 public class SearchPatientView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
-	private JLabel adressLabel;
-	private JLabel tribeLabel;
 	private JLabel birthdayLabel;
 	private JLabel IDLabel;
 	private JTextField firstNameField;
 	private JTextField surnameField;
-	private JTextField adressField;
-	private JTextField tribeField;
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
 	private JTextField idField;
-	private JLabel ageLabel ;
 
 
 	private JButton okBtn;
@@ -57,7 +55,6 @@ public class SearchPatientView extends JFrame {
 	
 	
 	private void initGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Search Patients");
 		setPreferredSize(new Dimension(800, 700));
 		
@@ -66,15 +63,10 @@ public class SearchPatientView extends JFrame {
 		
 		firstNameLabel = new JLabel("First name: ");
 		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
-		tribeLabel = new JLabel("Tribe: ");
 		birthdayLabel = new JLabel("Birthday: ");
-		ageLabel = new JLabel("Job type: ");
 		IDLabel = new JLabel("ID: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
-		adressField = new JTextField(11);
-		tribeField = new JTextField(11);
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
@@ -89,8 +81,6 @@ public class SearchPatientView extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				String firstName = firstNameField.getText();
 				String surname = surnameField.getText();
-				String adress = adressField.getText();
-				String tribe = tribeField.getText();
 				String day = dayField.getText();
 				String month = monthField.getText();
 				String year = yearField.getText();
@@ -101,9 +91,7 @@ public class SearchPatientView extends JFrame {
 				monthField.setText("");
 				yearField.setText("");
 				idField.setText("");
-				tribeField.setText("");
-				adressField.setText("");
-				msg = controller.SearchAPI(firstName, surname, adress, tribe, day, month, year, id);
+				msg = controller.SearchAPI(firstName, surname, day, month, year, id);
 				
 
 
@@ -174,13 +162,11 @@ public class SearchPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(adressLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(adressField, gc);
 		
 		/////////////////////////// 4. linje
 		
@@ -192,13 +178,11 @@ public class SearchPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(tribeLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(tribeField, gc);
 		/////////////////////////// 5. linje
 		
 		gc.gridx = 0;

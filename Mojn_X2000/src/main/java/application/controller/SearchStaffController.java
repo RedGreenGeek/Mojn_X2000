@@ -1,3 +1,5 @@
+
+
 package application.controller;
 
 import application.model.Session;
@@ -28,9 +30,14 @@ public class SearchStaffController {
 		this.view.setSession(sessionModel);
 	}
 	
-	public String SearchAPI(String firstName, String surname, String adress, String email, String day, String month, String year, String id) {
+	public String SearchAPI(String firstName, String surname, String email, String day, String month, String year, String id) {
 		API api =  API.getInstance();
-		String a = api.staffSearcher(id,  firstName,  surname,  day+"-"+month+"-"+year,  email); //last is email
+		String  birthday = "";
+
+		if (!(day.equals(""))) {
+			  birthday = day+"-"+month+"-"+year;
+		}
+		String a = api.staffSearcher(id,  firstName,  surname,  birthday,  email); //last is email
 		return a;
 		
 	}

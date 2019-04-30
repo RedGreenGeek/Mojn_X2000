@@ -23,19 +23,16 @@ import application.model.Session;
 public class SearchStaffView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
-	private JLabel adressLabel;
 	private JLabel emailLabel;
 	private JLabel birthdayLabel;
 	private JLabel IDLabel;
 	private JTextField firstNameField;
 	private JTextField surnameField;
-	private JTextField adressField;
 	private JTextField emailField;
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
 	private JTextField idField;
-	private JLabel ageLabel ;
 
 
 	private JButton okBtn;
@@ -58,7 +55,6 @@ public class SearchStaffView extends JFrame {
 	
 	
 	private void initGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Search Staff");
 		setPreferredSize(new Dimension(800, 700));
 		
@@ -67,14 +63,11 @@ public class SearchStaffView extends JFrame {
 		
 		firstNameLabel = new JLabel("First name: ");
 		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
 		emailLabel = new JLabel("Email: ");
 		birthdayLabel = new JLabel("Birthday: ");
-		ageLabel = new JLabel("Job type: ");
 		IDLabel = new JLabel("ID: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
-		adressField = new JTextField(11);
 		emailField = new JTextField(11);
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
@@ -90,7 +83,6 @@ public class SearchStaffView extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				String firstName = firstNameField.getText();
 				String surname = surnameField.getText();
-				String adress = adressField.getText();
 				String email = emailField.getText();
 				String day = dayField.getText();
 				String month = monthField.getText();
@@ -103,8 +95,7 @@ public class SearchStaffView extends JFrame {
 				yearField.setText("");
 				idField.setText("");
 				emailField.setText("");
-				adressField.setText("");
-				msg = controller.SearchAPI(firstName, surname, adress, email, day, month, year, id);
+				msg = controller.SearchAPI(firstName, surname, email, day, month, year, id);
 				
 
 				textArea.append(msg);
@@ -174,13 +165,11 @@ public class SearchStaffView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(adressLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(adressField, gc);
 		
 		/////////////////////////// 4. linje
 		

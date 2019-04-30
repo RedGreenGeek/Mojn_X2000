@@ -3,8 +3,13 @@ package application.controller;
 import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
+import application.view.FreeBedsHospitalView;
+import application.view.GetDepartmentView;
+import application.view.GetQueueView;
 import application.view.HospitalView;
-import application.view.InventoryView;
+import application.view.MainMenuView;
+import application.view.RegisterPatientView;
+import application.view.StaffDepartView;
 
 public class HospitalController {
 	private HospitalView view;
@@ -45,7 +50,11 @@ public class HospitalController {
 
 
 	public void ToStaffInDepart() {
-		// TODO Auto-generated method stub
+		StaffDepartController SC = new StaffDepartController(session);
+		StaffDepartView SView = new StaffDepartView(SC);
+		SC.setView(SView);
+
+		SC.display();
 		
 	}
 
@@ -54,7 +63,11 @@ public class HospitalController {
 
 
 	public void ToGetDepart() {
-		// TODO Auto-generated method stub
+		GetDepartmentController SC = new GetDepartmentController(session);
+		GetDepartmentView SView = new GetDepartmentView(SC);
+		SC.setView(SView);
+
+		SC.display();
 		
 	}
 
@@ -63,8 +76,11 @@ public class HospitalController {
 
 
 	public void ToFreeBeds() {
-		// TODO Auto-generated method stub
-		
+		FreeBedsHospitalController SC = new FreeBedsHospitalController(session);
+		FreeBedsHospitalView SView = new FreeBedsHospitalView(SC);
+		SC.setView(SView);
+
+		SC.display();		
 	}
 
 
@@ -72,8 +88,11 @@ public class HospitalController {
 
 
 	public void ToQueue() {
-		// TODO Auto-generated method stub
-		
+		GetQueueController SC = new GetQueueController(session);
+		GetQueueView SView = new GetQueueView(SC);
+		SC.setView(SView);
+
+		SC.display();		
 	}
 
 }

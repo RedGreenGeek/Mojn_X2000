@@ -1,13 +1,8 @@
 package application.view;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,18 +11,24 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 
 import application.controller.PatientController;
-import application.controller.SearchController;
+import application.controller.RegisterPatientController;
+import application.controller.RegisterStaffController;
+import application.controller.SearchPatientController;
+import application.controller.SearchStaffController;
 import application.model.Session;
 
-public class SearchView extends JFrame {
+public class RegisterStaffView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
 	private JLabel adressLabel;
 	private JLabel tribeLabel;
 	private JLabel birthdayLabel;
-	private JLabel IDLabel;
+	private JLabel jobLabel;
 	private JTextField firstNameField;
 	private JTextField surnameField;
 	private JTextField adressField;
@@ -35,7 +36,7 @@ public class SearchView extends JFrame {
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
-	private JTextField idField;
+	private JTextField jobField;
 	private JLabel ageLabel ;
 
 
@@ -49,18 +50,17 @@ public class SearchView extends JFrame {
 	
 	private JLabel lblUser;
 	
-	private SearchController controller;
+	private RegisterStaffController controller;
 
 	
-	public SearchView(SearchController controller) {
+	public RegisterStaffView(RegisterStaffController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
 	
 	private void initGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Hospital Structur Menu");
+		setTitle("Register Staff");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
@@ -72,7 +72,7 @@ public class SearchView extends JFrame {
 		tribeLabel = new JLabel("Tribe: ");
 		birthdayLabel = new JLabel("Birthday: ");
 		ageLabel = new JLabel("Job type: ");
-		IDLabel = new JLabel("ID: ");
+		jobLabel = new JLabel("job: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
 		adressField = new JTextField(11);
@@ -80,9 +80,9 @@ public class SearchView extends JFrame {
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
-		idField = new JTextField(11);
-	
+		jobField = new JTextField(11);
 		
+
 		
 		okBtn = new JButton("OK");
 		
@@ -96,17 +96,18 @@ public class SearchView extends JFrame {
 				String day = dayField.getText();
 				String month = monthField.getText();
 				String year = yearField.getText();
-				String id = idField.getText();
+				String job = jobField.getText();
 				firstNameField.setText("");
 				surnameField.setText("");
 				dayField.setText("");
 				monthField.setText("");
 				yearField.setText("");
-				idField.setText("");
+				jobField.setText("");
 				tribeField.setText("");
 				adressField.setText("");
-				msg = controller.SearchAPI(firstName, surname, adress, tribe, day, month, year, id);
+				msg = controller.RegisterAPI(job,firstName, surname, adress, day, month, year, tribe);
 				
+
 
 				textArea.append(msg);
 				textArea.append("\n");
@@ -240,13 +241,13 @@ public class SearchView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(IDLabel, gc);
+		inputArea.add(jobLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(idField, gc);
+		inputArea.add(jobField, gc);
 		
 		
 		/////////////////////////// 7. linje
@@ -259,6 +260,7 @@ public class SearchView extends JFrame {
 		gc.insets = new Insets(0,0,0,0);
 		
 		inputArea.add(okBtn, gc);
+		inputArea.setBorder(new EmptyBorder(10,10,10,10));
 		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
@@ -273,21 +275,24 @@ public class SearchView extends JFrame {
 		
 		////////////////////// MENU TOP /////////////////////////7
 		menuTop = new JPanel();
-		menuTop.setLayout(new BorderLayout());
-		menuTop.setBorder(BorderFactory.createEtchedBorder());
-		
-		JPanel userPanel = new JPanel();
-		userPanel.setLayout(new GridBagLayout());
-		lblUser = new JLabel("Mojn Boss");
-		gc.insets =  new Insets(0,0,0,10);
-		userPanel.add(lblUser, gc);
+		menuTop.setLayout(new BorderLayout(0, 0));
 		
 		backBtn = new JButton("Back");
-		
-		
+		backBtn.setHorizontalAlignment(SwingConstants.LEFT);
 		menuTop.add(backBtn, BorderLayout.WEST);
 		
-		menuTop.add(userPanel, BorderLayout.EAST);
+		lblUser = new JLabel("ID## - User");
+		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
+		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
+		menuTop.add(lblUser, BorderLayout.EAST);
+		
+		menuTop.setBorder(new EtchedBorder(10));
+		
+		JLabel lblTitle = new JLabel("Register");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		menuTop.add(lblTitle, BorderLayout.CENTER);
+		
 		
 		
 		

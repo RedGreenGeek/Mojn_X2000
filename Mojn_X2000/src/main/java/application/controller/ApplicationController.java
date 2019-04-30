@@ -5,13 +5,13 @@ import application.model.Session;
 import application.view.StaffView;
 import framework.API;
 import application.view.HospitalView;
-import application.view.InventoryView;
+import application.view.MainMenuView;
 import application.view.PatientView;
 
 public class ApplicationController {
 	
 	private LoginController loginController;
-	private InventoryController inventoryController;
+	private MainMenuController inventoryController;
 	private StaffController StaffController;
 	private HospitalController HospitalController;
 	private PatientController PatientController;
@@ -29,8 +29,8 @@ public class ApplicationController {
 	}
 	
 	public void manageInventory(Session session) {
-		inventoryController = new InventoryController(new Inventory(), session);
-		InventoryView invView = new InventoryView(inventoryController);
+		inventoryController = new MainMenuController(new Inventory(), session);
+		MainMenuView invView = new MainMenuView(inventoryController);
 
 		inventoryController.setView(invView);
 		inventoryController.display();

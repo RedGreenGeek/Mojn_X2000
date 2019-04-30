@@ -2,17 +2,17 @@ package application.controller;
 
 import application.model.Session;
 import application.view.HospitalView;
-import application.view.SearchPatientView;
+import application.view.SearchView;
 import framework.API;
 
-public class SearchPatientController {
-	private SearchPatientView view;
+public class SearchController {
+	private SearchView view;
 	private Session sessionModel;
 	private ApplicationController application;
 	private Session session;
 	
 	
-	public SearchPatientController(Session session) {
+	public SearchController(Session session) {
 		this.sessionModel = session;
 		this.session = Session.getInstance();
 		this.application = ApplicationController.getInstance();
@@ -22,20 +22,14 @@ public class SearchPatientController {
 		view.setVisible(true);
 	}
 	
-	public void setView(SearchPatientView view) {
+	public void setView(SearchView view) {
 		this.view = view;
 		this.view.setSession(sessionModel);
 	}
 	
-	public String SearchAPI(String firstName, String surname, String day, String month, String year, String id) {
+	public String SearchAPI(String firstName, String surname, String adress, String tribe, String day, String month, String year, String id) {
 		API api =  API.getInstance();
-		String  birthday = "";
-
-		if (!(day.equals(""))) {
-			  birthday = day+"-"+month+"-"+year;
-		}
-		System.out.println(birthday);
-		String a = api.patientSearcher(id, firstName, surname, birthday);
+		String a = api.patientSearcher(id, firstName, surname, day+"-"+month+"-"+year);
 		return a;
 		
 	}

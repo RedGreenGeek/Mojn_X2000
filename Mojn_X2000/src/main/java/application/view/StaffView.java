@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import application.controller.StaffController;
-import application.controller.InventoryController;
+import application.controller.MainMenuController;
 import application.controller.LoginController;
 import application.model.Session;
 import application.utils.GridBagLayoutUtils;
@@ -31,7 +32,7 @@ public class StaffView extends JFrame {
 
 	private Session session;
 
-	
+	private String path;
 	private JLabel lblUser;
 	private JLabel lblStaff;
 	
@@ -48,7 +49,6 @@ public class StaffView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Staff Menu");
 		setPreferredSize(new Dimension(800, 700));
-		String path = "C:\\Users\\Mathi\\Desktop\\4. semester\\Agile Object-Oriented Software Development\\Icons\\";
 		
 		// Labels
 		lblStaff = new JLabel("Staff Menu");
@@ -60,22 +60,26 @@ public class StaffView extends JFrame {
 		buttonsPanel.setLayout(new GridBagLayout());
 		
 		JButton btnSearch = new JButton("Search Staff");
+		Image SearchImg = new ImageIcon(this.getClass().getResource("/Staff menu/search.png")).getImage();
+		btnSearch.setIcon(new ImageIcon(SearchImg));	
 		btnSearch.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnSearch.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnSearch.setIcon(new ImageIcon(path + "Staff menu\\search.png"));
 		
 		JButton btnRegister = new JButton("Register Staff");
-		btnRegister.setIcon(new ImageIcon(path + "Staff menu\\register.png"));
+		Image registerImg = new ImageIcon(this.getClass().getResource("/Staff menu/register.png")).getImage();
+		btnRegister.setIcon(new ImageIcon(registerImg));
 		btnRegister.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnRegister.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnAssign = new JButton("Assign to Depart");
-		btnAssign.setIcon(new ImageIcon(path + "Staff menu\\assigndepart.png"));
+		Image assignImg = new ImageIcon(this.getClass().getResource("/Staff menu/assigndepart.png")).getImage();
+		btnAssign.setIcon(new ImageIcon(assignImg));
 		btnAssign.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnAssign.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnEdit = new JButton("Edit Staff");
-		btnEdit.setIcon(new ImageIcon(path + "Staff menu\\edit.png"));
+		Image editImg = new ImageIcon(this.getClass().getResource("/Staff menu/edit.png")).getImage();
+		btnEdit.setIcon(new ImageIcon(editImg));
 		btnEdit.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnEdit.setHorizontalTextPosition(SwingConstants.CENTER); 
 		

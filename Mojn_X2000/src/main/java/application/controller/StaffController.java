@@ -3,7 +3,10 @@ package application.controller;
 import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
-import application.view.InventoryView;
+import application.view.AssignStaffView;
+import application.view.EditStaffView;
+import application.view.MainMenuView;
+import application.view.RegisterStaffView;
 import application.view.SearchPatientView;
 import application.view.SearchStaffView;
 
@@ -52,15 +55,26 @@ public class StaffController {
 
 		SS.display();
 		
+		SearchStaffController SC = new SearchStaffController(session);
+		SearchStaffView SView = new SearchStaffView(SC);
+		SC.setView(SView);
+
+		SC.display();
+		
 	}
+		
+	
 
 
 
 
 
 	public void ToEdit() {
-		// TODO Auto-generated method stub
-		
+		EditStaffController SC = new EditStaffController(session);
+		EditStaffView SView = new EditStaffView(SC);
+		SC.setView(SView);
+
+		SC.display();		
 	}
 
 
@@ -68,7 +82,11 @@ public class StaffController {
 
 
 	public void ToRegister() {
-		// TODO Auto-generated method stub
+		RegisterStaffController SC = new RegisterStaffController(session);
+		RegisterStaffView SView = new RegisterStaffView(SC);
+		SC.setView(SView);
+
+		SC.display();
 		
 	}
 
@@ -77,7 +95,11 @@ public class StaffController {
 
 
 	public void ToAssign() {
-		// TODO Auto-generated method stub
+		AssignStaffController SC = new AssignStaffController(session);
+		AssignStaffView SView = new AssignStaffView(SC);
+		SC.setView(SView);
+
+		SC.display();
 		
 	}
 
