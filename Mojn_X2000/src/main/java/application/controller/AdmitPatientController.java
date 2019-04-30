@@ -6,7 +6,7 @@ import application.view.HospitalView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class AdmitPatientController {
+public class AdmitPatientController extends Controller{
 	private AdmitPatientView view;
 	private Session sessionModel;
 
@@ -23,7 +23,6 @@ public class AdmitPatientController {
 	
 	public void setView(AdmitPatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String AdmitAPI(String triLvl, String departmentName, String patientId) {

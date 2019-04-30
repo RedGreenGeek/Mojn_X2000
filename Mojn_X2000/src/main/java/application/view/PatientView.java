@@ -32,8 +32,7 @@ public class PatientView extends JFrame {
 	private static final long serialVersionUID = 12347L;
 	private PatientController controller;
 	private Session session;
-	private String path = "C:\\Users\\Mathi\\Desktop\\4. semester\\Agile Object-Oriented Software Development\\Icons\\";
-
+	private MenuTopView menuTop = new MenuTopView("Main Menu");
 
 	
 	
@@ -131,24 +130,11 @@ public class PatientView extends JFrame {
 		buttonsPanel.add(btnAllocate, GridBagLayoutUtils.constraint(4, 2, 0, 0, 0,10,50,10));}
 		
 		
-		
-		
-//		 toolbar
-		JPanel centerPanel = new JPanel();
-		centerPanel.setLayout(new GridBagLayout());
-		
-		JPanel userPanel = new JPanel();
-		lblUser = new JLabel();
-		userPanel.add(lblUser, BorderLayout.EAST);
-		
-		
-		centerPanel.add(lblPatient,GridBagLayoutUtils.constraint(2, 0, 0, 0, 50, 0, 100, 0));
-		centerPanel.add(buttonsPanel,GridBagLayoutUtils.constraint(2, 1, 0, 0, 0, 0, 0, 0) );
-		centerPanel.add(btnBack,GridBagLayoutUtils.constraint(2, 3, 0, 0, 0, 0, 0, 0) );
-		
-		
-		add(centerPanel, BorderLayout.CENTER);
-		add(userPanel, BorderLayout.NORTH);
+		// toolbar
+		add(buttonsPanel, BorderLayout.CENTER);
+		add(menuTop, BorderLayout.NORTH);
+		menuTop.setSession(controller.getSessionModel());
+		add(btnBack, BorderLayout.SOUTH);
 	
 		pack();
 		setLocationRelativeTo(null);
@@ -220,10 +206,10 @@ public class PatientView extends JFrame {
 	}
 	
 	
-	public void setSession(Session sessionModel) {
-		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-	
-	}
+//	public void setSession(Session sessionModel) {
+//		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
+//	
+//	}
 }
 	
 	

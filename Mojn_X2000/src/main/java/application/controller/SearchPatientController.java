@@ -5,7 +5,7 @@ import application.view.HospitalView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class SearchPatientController {
+public class SearchPatientController  extends Controller{
 	private SearchPatientView view;
 	private Session sessionModel;
 	private ApplicationController application;

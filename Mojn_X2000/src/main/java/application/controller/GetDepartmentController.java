@@ -11,7 +11,7 @@ import application.view.HospitalView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class GetDepartmentController {
+public class GetDepartmentController  extends Controller{
 	private GetDepartmentView view;
 	private Session sessionModel;
 

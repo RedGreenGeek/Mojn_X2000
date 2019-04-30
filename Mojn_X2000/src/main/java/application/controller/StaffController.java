@@ -10,7 +10,7 @@ import application.view.RegisterStaffView;
 import application.view.SearchPatientView;
 import application.view.SearchStaffView;
 
-public class StaffController {
+public class StaffController  extends Controller{
 	private StaffView view;
 	private Session sessionModel;
 	private ApplicationController application;

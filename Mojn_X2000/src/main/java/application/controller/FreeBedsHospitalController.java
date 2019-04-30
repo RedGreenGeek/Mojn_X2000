@@ -10,7 +10,7 @@ import application.view.MovedBedPatientView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class FreeBedsHospitalController {
+public class FreeBedsHospitalController  extends Controller{
 	private FreeBedsHospitalView view;
 	private Session sessionModel;
 

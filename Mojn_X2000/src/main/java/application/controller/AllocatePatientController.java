@@ -8,7 +8,7 @@ import application.view.HospitalView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class AllocatePatientController {
+public class AllocatePatientController  extends Controller{
 	private AllocatePatientView view;
 	private Session sessionModel;
 

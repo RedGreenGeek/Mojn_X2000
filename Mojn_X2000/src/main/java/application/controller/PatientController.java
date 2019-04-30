@@ -15,7 +15,7 @@ import application.view.PatientView;
 import application.view.RegisterPatientView;
 import application.view.SearchPatientView;
 
-public class PatientController {
+public class PatientController  extends Controller{
 	private PatientView view;
 	private Session sessionModel;
 	private ApplicationController application;
@@ -39,7 +39,7 @@ public class PatientController {
 	public void setView(PatientView view) {
 		this.view = view;
 //		this.view.setTableModel(inventoryModel);
-		this.view.setSession(sessionModel);
+//		this.view.setSession(sessionModel);
 	}
 	public void Back2Main() {
 

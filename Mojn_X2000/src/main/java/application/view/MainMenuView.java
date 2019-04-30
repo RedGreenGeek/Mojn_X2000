@@ -34,6 +34,7 @@ public class MainMenuView extends JFrame {
 	private JTable tblInventory;
 	private JLabel lblUser;
 	private JLabel lblMainMenu;
+	private MenuTopView menuTop = new MenuTopView("Main Menu");
 	
 	public MainMenuView(MainMenuController controller) {
 		this.controller = controller;
@@ -45,9 +46,6 @@ public class MainMenuView extends JFrame {
 		setTitle("Main Menu");
 		setPreferredSize(new Dimension(800, 700));
 		
-		// Labels
-		lblMainMenu = new JLabel("Main Menu");
-		lblMainMenu.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
 		// buttons
 		
@@ -76,20 +74,10 @@ public class MainMenuView extends JFrame {
 		buttonsPanel.add(btnStaff, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,100,10));
 		buttonsPanel.add(btnPatient, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,100,10));
 		
-//		 toolbar
-		JPanel centerPanel = new JPanel();
-		centerPanel.setLayout(new GridBagLayout());
-		
-		JPanel userPanel = new JPanel();
-		lblUser = new JLabel();
-		userPanel.add(lblUser, BorderLayout.EAST);
-		
-		
-		centerPanel.add(lblMainMenu,GridBagLayoutUtils.constraint(2, 0, 0, 0, 50, 0, 100, 0));
-		centerPanel.add(buttonsPanel,GridBagLayoutUtils.constraint(2, 1, 0, 0, 0, 0, 0, 0) );
-		
-		add(centerPanel, BorderLayout.CENTER);
-		add(userPanel, BorderLayout.NORTH);
+		// toolbar
+		add(buttonsPanel, BorderLayout.CENTER);
+		add(menuTop, BorderLayout.NORTH);
+		menuTop.setSession(controller.getSession());
 	
 		pack();
 		setLocationRelativeTo(null);
@@ -120,13 +108,5 @@ public class MainMenuView extends JFrame {
 		});
 		
 	}
-//	
-//	public void setTableModel(TableModel model) {
-//		tblInventory.setModel(model);
-//	}
 
-	public void setSession(Session sessionModel) {
-		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-	
-	}
 }

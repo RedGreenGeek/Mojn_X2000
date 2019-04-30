@@ -7,7 +7,7 @@ import application.view.RegisterPatientView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class EditPatientController {
+public class EditPatientController  extends Controller{
 	private EditPatientView view;
 	private Session sessionModel;
 

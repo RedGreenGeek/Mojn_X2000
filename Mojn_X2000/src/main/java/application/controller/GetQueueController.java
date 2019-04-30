@@ -11,7 +11,7 @@ import application.view.SearchPatientView;
 import application.view.StaffDepartView;
 import framework.API;
 
-public class GetQueueController {
+public class GetQueueController  extends Controller{
 	private GetQueueView view;
 	private Session sessionModel;
 

@@ -11,7 +11,7 @@ import application.view.MainMenuView;
 import application.view.RegisterPatientView;
 import application.view.StaffDepartView;
 
-public class HospitalController {
+public class HospitalController  extends Controller{
 	private HospitalView view;
 	private Session sessionModel;
 	private ApplicationController application;

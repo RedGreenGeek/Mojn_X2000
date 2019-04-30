@@ -7,7 +7,7 @@ import application.view.RegisterStaffView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class RegisterStaffController {
+public class RegisterStaffController  extends Controller{
 	private RegisterStaffView view;
 	private Session sessionModel;
 

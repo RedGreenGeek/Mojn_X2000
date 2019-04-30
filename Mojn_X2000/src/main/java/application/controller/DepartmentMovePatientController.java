@@ -10,7 +10,7 @@ import application.view.MovedBedPatientView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class DepartmentMovePatientController {
+public class DepartmentMovePatientController  extends Controller{
 	private DepartmentMovePatientView view;
 	private Session sessionModel;
 

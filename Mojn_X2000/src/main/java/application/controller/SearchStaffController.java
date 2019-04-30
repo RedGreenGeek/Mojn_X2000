@@ -8,7 +8,7 @@ import application.view.SearchPatientView;
 import application.view.SearchStaffView;
 import framework.API;
 
-public class SearchStaffController {
+public class SearchStaffController  extends Controller{
 	private SearchStaffView view;
 	private Session sessionModel;
 	private ApplicationController application;

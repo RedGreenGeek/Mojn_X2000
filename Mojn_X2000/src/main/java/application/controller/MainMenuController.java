@@ -6,7 +6,7 @@ import application.model.Inventory;
 import application.model.Session;
 import application.view.MainMenuView;
 
-public class MainMenuController {
+public class MainMenuController  extends Controller{
 	
 	private Inventory inventoryModel;
 	private Session sessionModel;
