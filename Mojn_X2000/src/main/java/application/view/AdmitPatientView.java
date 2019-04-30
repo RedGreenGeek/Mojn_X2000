@@ -6,27 +6,20 @@ package application.view;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 
 import application.controller.AdmitPatientController;
-import application.controller.PatientController;
-import application.controller.SearchPatientController;
-import application.model.Session;
 
 public class AdmitPatientView extends JFrame {
+
+	private static final long serialVersionUID = 989075342041187452L;
 	private JLabel triLvlLabel;
 	private JLabel departmentNameLabel;
-	private JLabel birthdayLabel;
 	private JLabel IDLabel;
 	private JTextField triLvlField;
 	private JTextField departmentNameField;
@@ -34,14 +27,11 @@ public class AdmitPatientView extends JFrame {
 
 
 	private JButton okBtn;
-	private JButton backBtn;
-	private JTextArea textArea;
 	private JPanel inputArea;
 	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
-	private JLabel lblUser;
 	
 	private AdmitPatientController controller;
 
@@ -85,8 +75,8 @@ public class AdmitPatientView extends JFrame {
 				
 
 
-				textArea.append(msg);
-				textArea.append("\n");
+				textPanel.textArea.append(msg);
+				textPanel.textArea.append("\n");
 
 				
 
@@ -210,7 +200,7 @@ public class AdmitPatientView extends JFrame {
 		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
-setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 		
 		add(inputArea, BorderLayout.WEST);
 		add(textPanel, BorderLayout.CENTER);
@@ -219,7 +209,7 @@ setLayout(new BorderLayout());
 		pack();
 		setLocationRelativeTo(null);
 		
-		menuTop.setSession(controller.getSessionModel());
+		menuTop.setSession(controller.getSession());
 		
 		menuTop.backBtn.addActionListener(new ActionListener() {
 			@Override
@@ -229,15 +219,6 @@ setLayout(new BorderLayout());
 		});
 	}
 	
-	
-	
-	
-	
-	
-	
-//	public void setSession(Session sessionModel) {
-//		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-//	
-//	}
+
 
 }

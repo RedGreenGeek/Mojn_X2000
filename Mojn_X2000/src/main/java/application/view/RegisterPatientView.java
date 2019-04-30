@@ -36,18 +36,14 @@ public class RegisterPatientView extends JFrame {
 	private JTextField monthField;
 	private JTextField yearField;
 	private JTextField aliveField;
-	private JLabel ageLabel ;
 
 
 	private JButton okBtn;
-	private JButton backBtn;
-	private JTextArea textArea;
 	private JPanel inputArea;
-	private JPanel textPanel;
-	private JPanel menuTop;
+	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department", "back");
+	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
-	private JLabel lblUser;
 	
 	private RegisterPatientController controller;
 
@@ -70,7 +66,6 @@ public class RegisterPatientView extends JFrame {
 		adressLabel = new JLabel("Adress: ");
 		tribeLabel = new JLabel("Tribe: ");
 		birthdayLabel = new JLabel("Birthday: ");
-		ageLabel = new JLabel("Job type: ");
 		aliveLabel = new JLabel("alive: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
@@ -107,10 +102,8 @@ public class RegisterPatientView extends JFrame {
 				msg = controller.RegisterAPI(firstName, surname, adress, day, month, year, tribe,alive);
 				
 
-
-				textArea.append(msg);
-				textArea.append("\n");
-
+				textPanel.textArea.append(msg);
+				textPanel.textArea.append("\n");
 				
 
 ;			}
@@ -263,40 +256,6 @@ public class RegisterPatientView extends JFrame {
 		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
-		textPanel = new JPanel();
-		textPanel.setLayout(new BorderLayout());
-		textArea = new JTextArea();	
-		textArea.setEditable(false);
-		
-		textPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
-		
-	
-		
-		////////////////////// MENU TOP /////////////////////////7
-		menuTop = new JPanel();
-		menuTop.setLayout(new BorderLayout(0, 0));
-		
-		backBtn = new JButton("Back");
-		backBtn.setHorizontalAlignment(SwingConstants.LEFT);
-		menuTop.add(backBtn, BorderLayout.WEST);
-		
-		lblUser = new JLabel("ID## - User");
-		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
-		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
-		menuTop.add(lblUser, BorderLayout.EAST);
-		
-		menuTop.setBorder(new EtchedBorder(10));
-		
-		JLabel lblTitle = new JLabel("Register");
-		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		menuTop.add(lblTitle, BorderLayout.CENTER);
-		
-		
-		
-		
-		
-		
 		setLayout(new BorderLayout());
 		
 		add(inputArea, BorderLayout.WEST);
@@ -306,24 +265,14 @@ public class RegisterPatientView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		
+		menuTop.setSession(controller.getSession());
 		
-		backBtn.addActionListener(new ActionListener() {
+		menuTop.backBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.Back2Main();
 			}
 		});
-	}
-	
-	
-	
-	
-	
-	
-	
-	public void setSession(Session sessionModel) {
-		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-	
 	}
 
 }

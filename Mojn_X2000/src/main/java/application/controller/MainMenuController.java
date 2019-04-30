@@ -6,10 +6,9 @@ import application.model.Inventory;
 import application.model.Session;
 import application.view.MainMenuView;
 
-public class MainMenuController  extends Controller{
+public class MainMenuController extends Controller{
 	
 	private Inventory inventoryModel;
-	private Session sessionModel;
 	private MainMenuView view;
 	private ApplicationController application;
 	private Session session;
@@ -22,11 +21,14 @@ public class MainMenuController  extends Controller{
 		this.session = Session.getInstance();
 		this.application = ApplicationController.getInstance();
 	}
-
+//	public Session getSession(){
+//		return sessionModel;
+//	}
+	
 	public void setView(MainMenuView view) {
 		this.view = view;
 //		this.view.setTableModel(inventoryModel);
-		this.view.setSession(sessionModel);
+//		this.view.setSession(sessionModel);
 	}
 
 	public void display() {

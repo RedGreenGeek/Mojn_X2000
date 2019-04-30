@@ -33,10 +33,6 @@ public class PatientView extends JFrame {
 	private PatientController controller;
 	private Session session;
 	private MenuTopView menuTop = new MenuTopView("Main Menu");
-
-	
-	
-	private JLabel lblUser;
 	private JLabel lblPatient;
 	
 	
@@ -133,7 +129,7 @@ public class PatientView extends JFrame {
 		// toolbar
 		add(buttonsPanel, BorderLayout.CENTER);
 		add(menuTop, BorderLayout.NORTH);
-		menuTop.setSession(controller.getSessionModel());
+		menuTop.setSession(controller.getSession());
 		add(btnBack, BorderLayout.SOUTH);
 	
 		pack();

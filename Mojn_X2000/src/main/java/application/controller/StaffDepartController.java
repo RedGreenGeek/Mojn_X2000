@@ -12,7 +12,6 @@ import framework.API;
 
 public class StaffDepartController  extends Controller{
 	private StaffDepartView view;
-	private Session sessionModel;
 
 	
 	
@@ -27,7 +26,6 @@ public class StaffDepartController  extends Controller{
 	
 	public void setView(StaffDepartView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String GetDepartStaffAPI( String departmentName) {

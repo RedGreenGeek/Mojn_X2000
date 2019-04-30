@@ -8,7 +8,6 @@ import framework.API;
 
 public class RegisterPatientController  extends Controller{
 	private RegisterPatientView view;
-	private Session sessionModel;
 
 	
 	
@@ -22,7 +21,6 @@ public class RegisterPatientController  extends Controller{
 	
 	public void setView(RegisterPatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String RegisterAPI(String firstName, String lastName,String adress ,String day, String month, String year, String tribe, String alive) {

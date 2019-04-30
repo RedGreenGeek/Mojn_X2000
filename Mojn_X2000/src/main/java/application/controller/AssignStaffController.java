@@ -9,7 +9,6 @@ import framework.API;
 
 public class AssignStaffController  extends Controller{
 	private AssignStaffView view;
-	private Session sessionModel;
 
 	
 	
@@ -23,7 +22,6 @@ public class AssignStaffController  extends Controller{
 	
 	public void setView(AssignStaffView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String AssignStaffAPI(String firstName, String lastName,String departmentName ,String day, String month, String year, String staffID, String email) {

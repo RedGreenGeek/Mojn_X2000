@@ -8,7 +8,6 @@ import framework.API;
 
 public class AdmitPatientController extends Controller{
 	private AdmitPatientView view;
-	private Session sessionModel;
 
 	
 	

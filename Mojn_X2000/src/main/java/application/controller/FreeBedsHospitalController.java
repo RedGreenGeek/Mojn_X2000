@@ -12,7 +12,6 @@ import framework.API;
 
 public class FreeBedsHospitalController  extends Controller{
 	private FreeBedsHospitalView view;
-	private Session sessionModel;
 
 	
 	
@@ -27,7 +26,6 @@ public class FreeBedsHospitalController  extends Controller{
 	
 	public void setView(FreeBedsHospitalView sView) {
 		this.view = sView;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String FreeBedsAPI(String departmentName) {

@@ -9,7 +9,6 @@ import framework.API;
 
 public class RegisterStaffController  extends Controller{
 	private RegisterStaffView view;
-	private Session sessionModel;
 
 	
 	
@@ -23,7 +22,6 @@ public class RegisterStaffController  extends Controller{
 	
 	public void setView(RegisterStaffView sView) {
 		this.view = sView;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String RegisterAPI(String jobtype,String firstName, String lastName,String adress ,String day, String month, String year, String tribe) {

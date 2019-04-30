@@ -12,7 +12,6 @@ import framework.API;
 
 public class DepartmentMovePatientController  extends Controller{
 	private DepartmentMovePatientView view;
-	private Session sessionModel;
 
 	
 	
@@ -27,7 +26,6 @@ public class DepartmentMovePatientController  extends Controller{
 	
 	public void setView(DepartmentMovePatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String MoveDepartmentAPI( String patientId, String departmentName , String trilvl) {

@@ -9,8 +9,6 @@ import framework.API;
 
 public class DischargePatientController  extends Controller{
 	private DischargePatientView view;
-	private Session sessionModel;
-
 	
 	
 	public DischargePatientController(Session session) {
@@ -24,7 +22,6 @@ public class DischargePatientController  extends Controller{
 	
 	public void setView(DischargePatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String DischargeAPI( String patientId) {

@@ -31,9 +31,8 @@ public class StaffView extends JFrame {
 	private StaffController controller;
 
 	private Session session;
+	private MenuTopView menuTop = new MenuTopView("Staff Menu");
 
-	private String path;
-	private JLabel lblUser;
 	private JLabel lblStaff;
 	
 	
@@ -104,21 +103,10 @@ public class StaffView extends JFrame {
 		
 		
 //		 toolbar
-		JPanel centerPanel = new JPanel();
-		centerPanel.setLayout(new GridBagLayout());
-		
-		JPanel userPanel = new JPanel();
-		lblUser = new JLabel();
-		userPanel.add(lblUser, BorderLayout.EAST);
-		
-		
-		centerPanel.add(lblStaff,GridBagLayoutUtils.constraint(2, 0, 0, 0, 50, 0, 100, 0));
-		centerPanel.add(buttonsPanel,GridBagLayoutUtils.constraint(2, 1, 0, 0, 0, 0, 0, 0) );
-		centerPanel.add(btnBack,GridBagLayoutUtils.constraint(2, 3, 0, 0, 0, 0, 0, 0) );
-		
-		
-		add(centerPanel, BorderLayout.CENTER);
-		add(userPanel, BorderLayout.NORTH);
+		add(buttonsPanel, BorderLayout.CENTER);
+		add(menuTop, BorderLayout.NORTH);
+		menuTop.setSession(controller.getSession());
+		add(btnBack, BorderLayout.SOUTH);
 	
 		pack();
 		setLocationRelativeTo(null);
@@ -162,10 +150,10 @@ public class StaffView extends JFrame {
 	}
 	
 	
-	public void setSession(Session sessionModel) {
-		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-	
-	}
+//	public void setSession(Session sessionModel) {
+//		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
+//	
+//	}
 }
 	
 	

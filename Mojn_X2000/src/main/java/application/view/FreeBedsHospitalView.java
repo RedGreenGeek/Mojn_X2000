@@ -28,6 +28,7 @@ import application.controller.SearchPatientController;
 import application.model.Session;
 
 public class FreeBedsHospitalView extends JFrame {
+	private static final long serialVersionUID = 989187452L;
 	private JLabel departNameLabel;
 
 	private JTextField departNameField;
@@ -35,14 +36,11 @@ public class FreeBedsHospitalView extends JFrame {
 
 
 	private JButton okBtn;
-	private JButton backBtn;
-	private JTextArea textArea;
 	private JPanel inputArea;
-	private JPanel textPanel;
-	private JPanel menuTop;
+	private MenuTopView menuTop = new MenuTopView("Check available beds in Department", "back");
+	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
-	private JLabel lblUser;
 	
 	private FreeBedsHospitalController controller;
 
@@ -80,8 +78,8 @@ public class FreeBedsHospitalView extends JFrame {
 				
 
 
-				textArea.append(msg);
-				textArea.append("\n");
+				textPanel.textArea.append(msg);
+				textPanel.textArea.append("\n");
 
 				
 
@@ -155,40 +153,6 @@ public class FreeBedsHospitalView extends JFrame {
 		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
-		textPanel = new JPanel();
-		textPanel.setLayout(new BorderLayout());
-		textArea = new JTextArea();	
-		textArea.setEditable(false);
-		
-		textPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
-		
-	
-		
-		////////////////////// MENU TOP /////////////////////////7
-		menuTop = new JPanel();
-		menuTop.setLayout(new BorderLayout(0, 0));
-		
-		backBtn = new JButton("Back");
-		backBtn.setHorizontalAlignment(SwingConstants.LEFT);
-		menuTop.add(backBtn, BorderLayout.WEST);
-		
-		lblUser = new JLabel("ID## - User");
-		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
-		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
-		menuTop.add(lblUser, BorderLayout.EAST);
-		
-		menuTop.setBorder(new EtchedBorder(10));
-		
-		JLabel lblTitle = new JLabel("Available beds Check");
-		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		menuTop.add(lblTitle, BorderLayout.CENTER);
-		
-		
-		
-		
-		
-		
 		setLayout(new BorderLayout());
 		
 		add(inputArea, BorderLayout.WEST);
@@ -198,24 +162,15 @@ public class FreeBedsHospitalView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		
+		menuTop.setSession(controller.getSession());
 		
-		backBtn.addActionListener(new ActionListener() {
+		menuTop.backBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.Back2Main();
 			}
 		});
 	}
-	
-	
-	
-	
-	
-	
-	
-	public void setSession(Session sessionModel) {
-		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-	
-	}
+
 
 }

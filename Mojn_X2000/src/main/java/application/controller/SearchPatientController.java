@@ -7,7 +7,6 @@ import framework.API;
 
 public class SearchPatientController  extends Controller{
 	private SearchPatientView view;
-	private Session sessionModel;
 	private ApplicationController application;
 	private Session session;
 	
@@ -24,7 +23,6 @@ public class SearchPatientController  extends Controller{
 	
 	public void setView(SearchPatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String SearchAPI(String firstName, String surname, String day, String month, String year, String id) {

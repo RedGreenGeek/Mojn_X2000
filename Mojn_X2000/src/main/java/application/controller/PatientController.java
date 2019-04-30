@@ -15,9 +15,8 @@ import application.view.PatientView;
 import application.view.RegisterPatientView;
 import application.view.SearchPatientView;
 
-public class PatientController  extends Controller{
+public class PatientController extends Controller{
 	private PatientView view;
-	private Session sessionModel;
 	private ApplicationController application;
 	private Session session;
 	
@@ -48,7 +47,9 @@ public class PatientController  extends Controller{
 
 		application.manageInventory(session);
 	}
-	
+//	public Session getSession(){
+//		return sessionModel;
+//	}
 	public void ToAllocate() {
 		AllocatePatientController SC = new AllocatePatientController(session);
 		AllocatePatientView SView = new AllocatePatientView(SC);

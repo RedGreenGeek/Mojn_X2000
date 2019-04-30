@@ -31,9 +31,6 @@ public class MainMenuView extends JFrame {
 
 	private static final long serialVersionUID = 989075282041187452L;
 	private MainMenuController controller;
-	private JTable tblInventory;
-	private JLabel lblUser;
-	private JLabel lblMainMenu;
 	private MenuTopView menuTop = new MenuTopView("Main Menu");
 	
 	public MainMenuView(MainMenuController controller) {
