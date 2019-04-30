@@ -15,14 +15,14 @@ import framework.person.staff.*;
 public class API {
 	// INIT ATTRIBUTES  
 	private static API instance;
-	private Hospital h;
+	public Hospital h;
 	private Searcher searcher;
 	private ChangeReg R;
 	private Database DB;
 //	private Logger log;
 	
 	public static synchronized API getInstance() {
-		if (instance==null) {
+		if (instance == null) {
 			instance = new API();
 		}
 		return instance;
@@ -114,8 +114,6 @@ public class API {
 	
 	// REGISTER PATIENT TO HOSPITAL (NO DEPARTMENT)
 	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
-		
-		System.out.println(Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive));
 		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
@@ -452,7 +450,7 @@ public class API {
 			return "The patient wasn't moved cause to invalid ID";
 		}else {p = (Patient) searcher.patientSearch(ID, "", "", "").getFirst();}
 		
-		if (!(searcher.departmentSearch(p.getDepartment()).getFirst() instanceof framework.Departments.HealthCare.InPatientDepart)) {
+		if (!(searcher.departmentSearch(p.getDepartment()).getFirst() instanceof InPatientDepart)) {
 			return "The department isn't an indepartment";
 		}
 		else {Department = (InPatientDepart) searcher.departmentSearch(p.getDepartment()).getFirst();}		

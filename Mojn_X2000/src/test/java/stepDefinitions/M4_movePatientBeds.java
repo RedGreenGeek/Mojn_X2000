@@ -2,6 +2,8 @@ package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+
 import cucumber.api.java.en.*;
 import framework.API;
 
@@ -9,7 +11,6 @@ public class M4_movePatientBeds {
 	API api = API.getInstance();
 	String message;
 	String ID = "6";
-	
 	
 	@Given("^that we have a hospital with indepartments$")
 	public void that_we_have_a_hospital_with_indepartments() {
@@ -23,17 +24,18 @@ public class M4_movePatientBeds {
 
 	@When("^I am entering a Diffrent bed no$")
 	public void i_am_entering_a_Diffrent_bed_no() {
-		message = api.movePatientBed("3", "2");
+		message = api.movePatientBed("2", "2");
 	}
 
 	@Then("^I get a good Moved to diffrent bed$")
-	public void i_get_a_good_Moved_to_diffrent_bed() {
+	public void i_get_a_good_Moved_to_diffrent_bed() throws IOException {
+		message = api.movePatientBed("2", "4");
 		assertEquals("The patient was moved succesfully", message);
 	}
 
 	@When("^I am entering a Same bed no$")
 	public void i_am_entering_a_Same_bed_no() {
-		message = api.movePatientBed("3", "2");
+		message = api.movePatientBed("2", "2");
 	}
 
 	@Then("^I get a good Moved to same bed$")
@@ -43,7 +45,7 @@ public class M4_movePatientBeds {
 
 	@When("^I am writing an not int bed$")
 	public void i_am_writing_an_not_int_bed() {
-		message = api.movePatientBed("3", "dfgas");
+		message = api.movePatientBed("1", "dfgas");
 	}
 
 	@Then("^I get an not int error$")
@@ -53,7 +55,7 @@ public class M4_movePatientBeds {
 
 	@When("^I am writing an Out patient$")
 	public void i_am_writing_an_Out_patient() {
-		message = api.movePatientBed("4", "2");
+		message = api.movePatientBed("1", "2");
 	}
 
 	@Then("^I get an Out patient error$")
@@ -73,13 +75,11 @@ public class M4_movePatientBeds {
 
 	@When("^I am writing an bed over max$")
 	public void i_am_writing_an_bed_over_max() {
-		message = api.movePatientBed("3", "200");
+		message = api.movePatientBed("2", "200");
 	}
 
 	@Then("^I get an bed max error$")
 	public void i_get_an_bed_max_error() {
 		assertEquals("There aren't that many beds in the department", message);
 	}
-
-
 }

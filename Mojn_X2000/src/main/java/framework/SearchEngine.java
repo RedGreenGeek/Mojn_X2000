@@ -17,6 +17,7 @@ public class SearchEngine {
 				dList.removeFirst();
 			}
 		}
+
 		return res;
 	}
 	

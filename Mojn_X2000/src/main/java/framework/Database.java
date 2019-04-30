@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import framework.Departments.AdminDepart;
@@ -119,6 +118,16 @@ public class Database {
 	/* _______________ SECTION 3: Writing all objects to database ______________ */
 	/* ######################################################################### */
 	
+	protected String writeCounters(int staff_counter, int patient_counter) {
+		
+		String query = "TRUNCATE Additional";
+		String query1 = String.format("INSERT INTO Additional (staff_counter, patient_counter) VALUES (%d,%d)", staff_counter, patient_counter);
+		
+		INSERT(query);
+		return INSERT(query1);
+
+	}
+	
 	protected String writePatient(Patient p) {
 		
 		String firstName = p.getFirstName();
@@ -221,8 +230,6 @@ public class Database {
 			
 			int max = ((InPatientDepart) department).get_max_beds();
 			
-			System.out.println("MAX: " + max);
-			
 			int use = ((InPatientDepart) department).get_beds_in_use();
 			
 			query = String.format("INSERT IGNORE INTO Department (name, beds_max, beds_use, type) VALUES (\"%s\", \"%d\", \"%d\", \"%s\")", name, max, use, "IPD");
@@ -290,7 +297,8 @@ public class Database {
 		
 		try {
 		
-			char jobtype = rs.getString("id").charAt(0);
+			String jobid = rs.getString("id");
+			char jobtype = jobid.charAt(0);
 			String first_name = rs.getString("first_name");
 			String last_name = rs.getString("last_name");
 			String address = rs.getString("address");
@@ -302,28 +310,28 @@ public class Database {
 			
 			if (jobtype == 'C') {
 				
-				employee = new Clerk(first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
+				employee = new Clerk(jobid, first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
 				
 			}
 			
 			else if (jobtype == 'D') {
 				
 				
-				employee = new Doctor(first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
+				employee = new Doctor(jobid, first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
 					
 			}
 			
 			else if (jobtype == 'I') {
 				
 				
-				employee = new ICTOfficer(first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
+				employee = new ICTOfficer(jobid, first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
 				
 			}
 			
 			else if (jobtype == 'N') {
 				
 				
-				employee = new Nurse(first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
+				employee = new Nurse(jobid, first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
 				
 				
 			} else {return null;}
@@ -380,10 +388,29 @@ public class Database {
 	/* _______________ SECTION 5: Loading objects  _____________________________ */
 	/* ######################################################################### */
 	
+	public int loadStaffCounter() throws Throwable {
+		
+		ResultSet rs = GET("SELECT * FROM Additional");
+		rs.next();
+		int result = rs.getInt("staff_counter");
+		
+		return result;
+		
+	}
+	
+	public int loadPatientCounter() throws Throwable {
+		
+		ResultSet rs = GET("SELECT * FROM Additional");
+		rs.next();
+		int result = rs.getInt("patient_counter");
+		
+		return result;
+		
+	}
+	
 	public HashSet<Staff> loadStaff() throws Throwable {
 		
 		HashSet<Staff> staffset = new HashSet<Staff>();
-		System.out.println(staffset.equals(null));
 		ResultSet rs = GET("SELECT * FROM Staff");
 		
 		while(rs.next()) {
@@ -432,10 +459,13 @@ public class Database {
 	/* _______________ SECTION 6: Connector  ___________________________________ */
 	/* ######################################################################### */
 	
-	Hospital buildHospital(HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
-		
-		Hospital hospital = new Hospital();
+	Hospital buildHospital(int staff_counter, int patient_counter, HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
 
+		Hospital hospital = new Hospital();
+		
+		Patient.counter = patient_counter;
+		Staff.counter = staff_counter;
+		
 		hospital.setDepartSet(departmentset);
 		
 		Searcher s = new Searcher(hospital);
@@ -445,10 +475,10 @@ public class Database {
 		
 		while (!staffList.isEmpty()) {
 			Staff pat = staffList.getFirst();
-			System.out.println("Patient department: " + pat.getDepartment());
-			
-			LinkedList<Department> d_list = s.departmentSearch(pat.getDepartment());
-			
+			LinkedList<Department> d_list = new LinkedList<Department>();
+
+			d_list = s.departmentSearch(pat.getDepartment());
+
 			if (!d_list.isEmpty()) {
 				Department d = d_list.getFirst();
 				Staff s1 = staffList.removeFirst();
@@ -486,7 +516,7 @@ public class Database {
 		hospital.setAllStaff(staffset);
 		
 		return hospital;
-		
+
 
 	}
 	
@@ -499,12 +529,9 @@ public class Database {
 		HashSet<Patient> p_set = loadPatient();
 		HashSet<Staff> s_set = loadStaff();
 		HashSet<Department> d_set = loadDepartment();
-		
-		System.out.println("PATIENT: " + p_set);
-		System.out.println("STAFF: " + s_set);
-		System.out.println("DEPARTMENT: " + d_set);
-		
-		return buildHospital(d_set, s_set, p_set);
+		int staff_counter = loadStaffCounter();
+		int patient_counter = loadPatientCounter();
+		return buildHospital(staff_counter, patient_counter, d_set, s_set, p_set);
 		
 	}
 	
