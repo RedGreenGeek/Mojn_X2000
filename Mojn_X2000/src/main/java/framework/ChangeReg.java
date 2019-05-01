@@ -18,13 +18,19 @@ public class ChangeReg {
 		HashSet<Staff> allStaffSet = h.getStaffSet();
 		allStaffSet.add(p);
 		h.setAllStaff(allStaffSet);
+		
+		//Adding staff to database
+		DB.writeStaff(p);
+		
 	}
 	
 	protected void add(Hospital h, Patient p) {
 		HashSet<Patient> allPatientSet = h.getAllPatientSet();
 		allPatientSet.add(p);
 		h.setAllPatientSet(allPatientSet);
-//		DB.writePatient(p);
+		
+		//Adding patient to database
+		DB.writePatient(p);
 		
 	}
 	
@@ -32,57 +38,78 @@ public class ChangeReg {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.add(d);
 		h.setDepartSet(departSet);
+		
+		// Writing department to database
+		DB.writeDepartment(d);
+		
 	}
 	
 	protected void remove(Hospital h, Department d) {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.remove(d);
 		h.setDepartSet(departSet);
+		
+		//Removing department from database
+		DB.deleteDepartment(d);
 	}
 	
 	protected void add(Department d, Staff s) {
 		HashSet<Person> staffSet = d.getStaff();
 		staffSet.add(s);
 		d.setStaff(staffSet);
+		
+		//Writing changes to database
+		DB.writeStaff(s);
 	}
 	
 	protected void remove(Department d, Staff s) {
 		HashSet<Person> staffSet = d.getStaff();
 		staffSet.remove(s);
 		d.setStaff(staffSet);
+		
+		//Changing attribute department for the specific staff and writing changes to database
+		s.setDepartment(d.getName());
+		DB.writeStaff(s);
+		
 	}
 	
 	public void add(Department d, Patient p) {
-		HashSet<Person> patientSet = d.getPatient();
-		if (d instanceof InPatientDepart) {
-			InPatientDepart IPD = (InPatientDepart)d;
-			patientSet.add(p);
-			d.setPatient(patientSet);
-			p.setDepartment(d.getName());
-		}
-		else if(d instanceof OutPatientDepart) {
-			p.setDepartment(d.getName());
-			OutPatientDepart OutD = (OutPatientDepart) d;
-			if (p.getTriage()==null) {
-				OutD.EnQueue(p);
-			}
-			else {
-				OutD.EnQueue(p,p.getTriage());
-			}
-			patientSet.add(p);
-			d.setPatient(patientSet);
-			p.setDepartment(OutD.getName());
-		}
+		
+	  HashSet<Person> patientSet = d.getPatient();
+	  p.setDepartment(d.getName());
+	  patientSet.add(p);
+	  d.setPatient(patientSet);
+	  
+	  if (d instanceof InPatientDepart) {
+	   ((InPatientDepart) d).beds.AllocateBed(p);
+	   DB.deletePatient(p);
+	   DB.writePatient(p);
+
+	  }
+	  else if(d instanceof OutPatientDepart) {
+	   ((OutPatientDepart) d).EnQueue(p,p.getTriage());
+	   DB.deletePatient(p);
+	   DB.writePatient(p);
+	   
+	   
+	  }
+	 
 	}
 	
-	protected void add(Department d, Patient p,int triageLevel) {
+	protected void add(Department d, Patient p, int triage) {
 		HashSet<Person> patientSet = d.getPatient();
 
 		if(d instanceof OutPatientDepart) {
 			OutPatientDepart OutD = (OutPatientDepart)d;
-			OutD.EnQueue(p,triageLevel);
+			OutD.EnQueue(p,triage);
 			patientSet.add(p);
 			d.setPatient(patientSet);
+			p.setBedLocation(null);
+			
+			// Deleting patient to update columns that should be null
+			DB.deletePatient(p);
+			DB.writePatient(p);
+			
 		}
 		else {System.err.println("Only OutPatient Departments have triage levels");}
 	}
@@ -91,5 +118,15 @@ public class ChangeReg {
 		HashSet<Person> patientSet = d.getPatient();
 		patientSet.remove(p);
 		d.setPatient(patientSet);
+		
+		// Setting department to null
+		p.setDepartment(null);
+		
+		// To insert the value null in department_name column, delete the patient and write the patient again
+		DB.deletePatient(p);
+		DB.writePatient(p);
+		
+		
+		
 	}
 }

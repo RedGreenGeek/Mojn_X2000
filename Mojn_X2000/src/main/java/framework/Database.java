@@ -220,7 +220,7 @@ public class Database {
 		
 	}
 	
-	public String writeDepartment(Department department) throws Throwable {
+	public String writeDepartment(Department department) {
 		
 		String query;
 		String name = department.getName();

@@ -1,7 +1,7 @@
 package framework.Departments.HealthCare;
 
 import framework.Person;
-import framework.person.Patient;
+import framework.person.*;
 
 public class Beds {
 	protected Person[] beds;
@@ -11,21 +11,21 @@ public class Beds {
 		this.beds = new Person[maxBeds];
 		this.bedsInUse = 0;
 	}
-	
+
 	public String AllocateBed(Person patient) {
-		String message = "-1";
-		int i=0;
-		for (Person p: beds) {
-			i++;
-			if (p == null) {
-				p = patient;
-				bedsInUse++;
-				message = beds.toString();
-				((Patient) patient).setBedLocation(i);				
-				break;
-			}
-		}
-		return message;
+	    String message = "-1";
+	    int i=0;
+	    for (Person p: beds) {
+	      i++;
+	      if (p == null) {
+	        p = patient;
+	        bedsInUse++;
+	        message = beds.toString();
+	        ((Patient) patient).setBedLocation(i);        
+	        break;
+	      }
+	    }
+	    return message;
 	}
 	
 	public String AllocateBed(Person patient, int bedNo) {
