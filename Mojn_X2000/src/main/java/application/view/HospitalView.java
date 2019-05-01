@@ -24,7 +24,7 @@ public class HospitalView extends JFrame {
 	private static final long serialVersionUID = 12347L;
 	private HospitalController controller;
 	private Session session;
-	private MenuTopView menuTop = new MenuTopView("Hospital Menu");
+	private MenuTopView menuTop = new MenuTopView("Hospital kgfgdf Menu");
 
 
 	
@@ -97,6 +97,7 @@ public class HospitalView extends JFrame {
 		
 		
 //		 toolbar
+		
 		add(buttonsPanel, BorderLayout.CENTER);
 		add(menuTop, BorderLayout.NORTH);
 		menuTop.setSession(controller.getSession());
@@ -149,7 +150,7 @@ public class HospitalView extends JFrame {
 				controller.ToChangePassword();
 			}
 		});
-		
+
 	}
 	
 	

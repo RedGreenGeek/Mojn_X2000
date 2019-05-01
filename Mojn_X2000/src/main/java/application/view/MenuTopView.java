@@ -14,21 +14,14 @@ public class MenuTopView extends JMenuBar {
 	JLabel lblUser;
 	JButton backBtn;
 	JLabel lblTitle;
-	JButton btnAdd;
-	JButton btnChange;
-//	public void actionBackBtn(Controller controller) {
-//		backBtn.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				controller.Back2Main();
-//			}
-//		});
-//	}
-	
-	
-	
+	JButton btnAdd = new JButton("Add Password");;
+	JButton btnChange = new JButton("Change Password");;
+	JMenu mnPassword;
+	Session session;
 	
 	public MenuTopView(String title) {
+		this.session = Session.getInstance();
+		System.out.println(session.getRole());
 		setLayout(new BorderLayout(0, 0));
 		
 		lblTitle = new JLabel();
@@ -36,18 +29,16 @@ public class MenuTopView extends JMenuBar {
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		add(lblTitle, BorderLayout.CENTER);
-
-		JMenu mnPassword = new JMenu();
-		Image featureImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/feature.png")).getImage();
-		mnPassword.setIcon(new ImageIcon(featureImg));
-		add(mnPassword, BorderLayout.WEST);
-
-		btnChange = new JButton("Change Password");
-		mnPassword.add(btnChange);
-
-		btnAdd = new JButton("Add Password");
-		mnPassword.add(btnAdd);				
-
+		if (session.getRole().equals("ICT-Officer") || session.getRole().equals("Clerk") ) {
+			mnPassword = new JMenu();
+			Image featureImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/feature.png")).getImage();
+			mnPassword.setIcon(new ImageIcon(featureImg));
+			add(mnPassword, BorderLayout.WEST);
+				if (session.getRole().equals("ICT-Officer")){
+					mnPassword.add(btnChange);
+				}
+			mnPassword.add(btnAdd);				
+		}
 		lblUser = new JLabel();
 		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
 		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
