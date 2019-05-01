@@ -89,5 +89,20 @@ public class HospitalController  extends Controller{
 
 		SC.display();		
 	}
+	public void ToAddPassword() {
+		AddPasswordController SC = new AddPasswordController(session);
+		AddPasswordView SView = new AddPasswordView(SC);
+		SC.setView(SView);
 
+		SC.display();
+
+		}
+	public void ToChangePassword() {
+		ChangePasswordController SC = new ChangePasswordController(session);
+		ChangePasswordView SView = new ChangePasswordView(SC);
+		SC.setView(SView);
+
+		SC.display();
+
+		}
 }

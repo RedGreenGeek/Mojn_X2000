@@ -481,11 +481,13 @@ public class API {
 	
 	//ADDS NEW PASSWORD
 	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
-		if (Pas.checkUniqueID(staffID)) {
+		Password Pass = Password.getInstance();
+		
+		if (Pass.checkUniqueID(staffID)) {
 			return "Password already created for this staff!";
 		}
-		if (newPassword2 == newPassword1) {
-			Pas.addPassToMap(newPassword1, staffID);
+		if (newPassword1.equals(newPassword2) ) {
+			Pass.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 //			log.write(userID,"NEW USER ADDED",staffID);
@@ -498,21 +500,24 @@ public class API {
 	
 	//CHANGE PASSWORD FROM KNOWN PASSWORD
 	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
-		if (!Pas.checkUniqueID(staffID)) {
+		Password Pass = Password.getInstance();
+		if (!Pass.checkUniqueID(staffID)) {
+			System.out.println("fuck");
 			return "Staff ID does not exist";
+			
 		}
-		if (Pas.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
-			Pas.addPassToMap(newPassword1, staffID);
+		if (Pass.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
+			Pass.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 //			log.write(userID,"PASSWORD CHANGED",staffID);
 			
 			return "Password changed";
 		}
-		if (!Pas.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
+		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2)  ) {
 			return "Wrong old password";
 		}
-		if (Pas.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
+		if (Pass.checkPassword(oldPassword, staffID) && !newPassword1.equals(newPassword2) ) {
 			return "The 2 new passwords are not equal";
 		}
 		return "Something went wrong";

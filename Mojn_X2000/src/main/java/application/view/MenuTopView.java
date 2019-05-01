@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+import application.controller.Controller;
 import application.model.Session;
 
 public class MenuTopView extends JMenuBar {
@@ -13,6 +14,19 @@ public class MenuTopView extends JMenuBar {
 	JLabel lblUser;
 	JButton backBtn;
 	JLabel lblTitle;
+	JButton btnAdd;
+	JButton btnChange;
+//	public void actionBackBtn(Controller controller) {
+//		backBtn.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				controller.Back2Main();
+//			}
+//		});
+//	}
+	
+	
+	
 	
 	public MenuTopView(String title) {
 		setLayout(new BorderLayout(0, 0));
@@ -24,13 +38,14 @@ public class MenuTopView extends JMenuBar {
 		add(lblTitle, BorderLayout.CENTER);
 
 		JMenu mnPassword = new JMenu();
-		mnPassword.setIcon(new ImageIcon("C:\\Users\\anton\\OneDrive\\Dokumenter\\Uni\\Uni\\4. semester\\Agil\\Exam proj\\icons\\feature.png"));
+		Image featureImg = new ImageIcon(this.getClass().getResource("/feature.png")).getImage();
+		mnPassword.setIcon(new ImageIcon(featureImg));
 		add(mnPassword, BorderLayout.WEST);
 
-		JButton btnChange = new JButton("Change Password");
+		btnChange = new JButton("Change Password");
 		mnPassword.add(btnChange);
 
-		JButton btnAdd = new JButton("Add Password");
+		btnAdd = new JButton("Add Password");
 		mnPassword.add(btnAdd);				
 
 		lblUser = new JLabel();
@@ -44,9 +59,9 @@ public class MenuTopView extends JMenuBar {
 		
 	}
 	
-	public MenuTopView(String title, Object back) {
+	public MenuTopView(String title, String back) {
 		setLayout(new BorderLayout(0, 0));
-			
+
 		lblUser = new JLabel();
 		lblUser.setBorder(new EmptyBorder(0, 0, 0, 10));
 		lblUser.setHorizontalAlignment(SwingConstants.CENTER);
@@ -61,11 +76,13 @@ public class MenuTopView extends JMenuBar {
 		
 		backBtn = new JButton("Back");
 		backBtn.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		
 		add(backBtn, BorderLayout.WEST);
 		
 
 		
-
+																																																																																																																																																																																			
 		
 	}
 	

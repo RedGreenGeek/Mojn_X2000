@@ -25,7 +25,7 @@ public class PatientView extends JFrame {
 	private static final long serialVersionUID = 12347L;
 	private PatientController controller;
 	private Session session;
-	private MenuTopView menuTop = new MenuTopView("Main Menu");
+	private MenuTopView menuTop = new MenuTopView("Patient menu");
 	private JLabel lblPatient;
 	
 	
@@ -187,7 +187,19 @@ public class PatientView extends JFrame {
 			}
 		});
 		
-	
+		menuTop.btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToAddPassword();
+			}
+		});
+		
+		menuTop.btnChange.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			controller.ToChangePassword();
+			}
+		});
 		
 		
 		
