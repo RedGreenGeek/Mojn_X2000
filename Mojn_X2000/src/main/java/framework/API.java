@@ -33,6 +33,8 @@ public class API {
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = Database.getInstance(Database.DEFAULT);
 		Pas = Password.getInstance();
+		searcher = new Searcher(h);
+		R = new ChangeReg();
 		Pas.addPassToMap("I", "I");
 //		try {
 //			log = new Logger();
@@ -46,11 +48,6 @@ public class API {
 		} catch(Throwable t){
 			System.out.println("System was not able to boot. Contact System Administrator!");
 		}
-		
-		searcher = new Searcher(h);
-		R = new ChangeReg();
-		
-		
 		
 		Pas.addPassToMap("password", "IT4");
 		Pas.addPassToMap("password", "C5");
@@ -291,6 +288,7 @@ public class API {
 		if (!depart.beds.getBedsAvailable()) {
 			return "No beds available in department: " + departmentName;
 		}
+		
 		discharge(patientRes.getFirst().getID());
 		patientAdmission("", departmentName, patientID);
 		
@@ -328,7 +326,7 @@ public class API {
 		}
 		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
 		
-		return "Department: " + departmentName+" currently have "+depart.beds.getBedsInUse()+" beds in use.";
+		return "Department: " + departmentName+" currently have "+ depart.beds.getBedsInUse() + " beds in use.";
 	}
 	
 	
@@ -355,7 +353,7 @@ public class API {
 		   return "The department is an administrativ department";
 		  }
 		  discharge(p.getID());
-		  if (d instanceof framework.Departments.HealthCare.InPatientDepart) {
+		  if (d instanceof InPatientDepart) {
 		   InPatientDepart inDepart = (InPatientDepart) d;
 		   R.add(inDepart, p);
 		  } else {

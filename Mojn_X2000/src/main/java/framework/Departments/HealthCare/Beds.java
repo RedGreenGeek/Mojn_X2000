@@ -39,6 +39,7 @@ public class Beds {
 		if (beds[index] == null) {
 			beds[index] = patient;
 			bedsInUse++;
+			System.out.println("BEDS IN USE: " + bedsInUse);
 			((Patient) patient).setBedLocation(bedNo); 
 			return "Ok";
 		}

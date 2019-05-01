@@ -82,13 +82,21 @@ public class ChangeReg {
 	  
 	  if (d instanceof InPatientDepart) {
 	   ((InPatientDepart) d).beds.AllocateBed(p);
+	   
+	   // Deleting patient to ensure that the patients triage level is set to null in case he/she is moved from an out patient department. 
 	   DB.deletePatient(p);
 	   DB.writePatient(p);
+	   
+	   // Writing department to update beds in use. Will update all values. 
+	   DB.writeDepartment(d);
 
 	  }
 	  else if(d instanceof OutPatientDepart) {
 	   ((OutPatientDepart) d).EnQueue(p,p.getTriage());
+	   
+	   // Deleting patient to ensure that the bed number is set to null in case the patient was moved from an in patient department. 
 	   DB.deletePatient(p);
+	   // Writing patient to get all values updated. 
 	   DB.writePatient(p);
 	   
 	   
