@@ -25,7 +25,7 @@ public class M1_searchPatient {
 	public void i_get_a_list_the_patients_maching_my_search_data() {
 		assertNotEquals(message, "No match to search parameters!");
 	}
-
+	// dsgdf
 	@When("^I am entering search data not matching patient$")
 	public void i_am_entering_search_data_not_matching_patient() {
 		String birthday = "01-01-9999";
