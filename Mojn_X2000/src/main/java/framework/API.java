@@ -19,7 +19,7 @@ public class API {
 	private Searcher searcher;
 	private ChangeReg R;
 	private Database DB;
-	private Password Pas = Password.getInstance();
+	private Password Pas;
 //	private Logger log;
 	
 	public static synchronized API getInstance() {
@@ -32,7 +32,7 @@ public class API {
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = Database.getInstance(Database.DEFAULT);
-		
+		Pas = Password.getInstance();
 //		try {
 //			log = new Logger();
 //			log.write("SYSTEM","REBOOT","NONE");

@@ -14,7 +14,9 @@ public class Password {
 	}
 
 	private Password() {
-		this.PassMap = new HashMap<String,String>();		
+		this.PassMap = new HashMap<String,String>();
+		PassMap.put("I", "I");
+		PassMap.put("I", "admin");
 	}
 	
 	public void addPassToMap(String Pass, String StaffId) {
