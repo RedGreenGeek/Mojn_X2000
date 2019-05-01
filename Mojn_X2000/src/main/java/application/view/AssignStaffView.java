@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import application.controller.AssignStaffController;
 
-public class AssignStaffView extends JFrame {
+public class AssignStaffView extends JFrame{
 	private static final long serialVersionUID = 989075282041120552L;
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
@@ -29,15 +29,16 @@ public class AssignStaffView extends JFrame {
 	private JTextField yearField;
 	private JTextField emailField;
 
-
+	
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Assign Staff", "back");
+	private AssignStaffController controller;
+	private MenuTopView menuTop = new MenuTopView("Assign Staff", "Back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
 	
-	private AssignStaffController controller;
+	
 
 	
 	public AssignStaffView(AssignStaffController controller) {
@@ -261,12 +262,12 @@ public class AssignStaffView extends JFrame {
 		
 		menuTop.setSession(controller.getSession());
 		
-		menuTop.backBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.Back2Main();
-			}
-		});
+//		menuTop.backBtn.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				controller.Back2Main();
+//			}
+//		});
 		
 	}
 	

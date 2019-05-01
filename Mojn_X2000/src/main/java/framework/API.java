@@ -497,11 +497,14 @@ public class API {
 	
 	//CHANGE PASSWORD FROM KNOWN PASSWORD
 	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
+		System.out.println(oldPassword + " " +newPassword1 + " "+ newPassword2 + " "+staffID + " ");
 		Password Pass = Password.getInstance();
 		if (!Pass.checkUniqueID(staffID)) {
+			System.out.println("fuck");
 			return "Staff ID does not exist";
+			
 		}
-		if (Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
+		if (Pass.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
 			Pass.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
@@ -509,10 +512,10 @@ public class API {
 			
 			return "Password changed";
 		}
-		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
+		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2)  ) {
 			return "Wrong old password";
 		}
-		if (Pass.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
+		if (Pass.checkPassword(oldPassword, staffID) && !newPassword1.equals(newPassword2) ) {
 			return "The 2 new passwords are not equal";
 		}
 		return "Something went wrong";

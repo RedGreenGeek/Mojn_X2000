@@ -143,6 +143,19 @@ public class HospitalView extends JFrame {
 				controller.ToGetDepart();
 			}
 		});
+		menuTop.btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToAddPassword();
+			}
+		});
+		
+		menuTop.btnChange.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToChangePassword();
+			}
+		});
 		
 	}
 	

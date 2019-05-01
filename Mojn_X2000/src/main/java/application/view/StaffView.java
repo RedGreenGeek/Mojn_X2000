@@ -146,6 +146,25 @@ public class StaffView extends JFrame {
 				controller.ToSearch();
 			}
 		});
+		menuTop.btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToSearch();
+			}
+		});
+		menuTop.btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToAddPassword();
+			}
+		});
+		
+		menuTop.btnChange.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToChangePassword();
+			}
+		});
 		
 	}
 	

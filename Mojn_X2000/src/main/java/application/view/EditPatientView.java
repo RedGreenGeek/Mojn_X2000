@@ -46,7 +46,7 @@ public class EditPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department", "back");
+	private MenuTopView menuTop = new MenuTopView("Edit a patient information", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

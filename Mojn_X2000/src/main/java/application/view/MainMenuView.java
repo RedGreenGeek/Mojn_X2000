@@ -104,6 +104,20 @@ public class MainMenuView extends JFrame {
 			}
 		});
 		
+		menuTop.btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToAddPassword();
+			}
+		});
+		
+		menuTop.btnChange.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToChangePassword();
+			}
+		});
+		
 	}
 
 }

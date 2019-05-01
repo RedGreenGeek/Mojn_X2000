@@ -37,7 +37,7 @@ public class MovedBedPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department", "back");
+	private MenuTopView menuTop = new MenuTopView("Move a patient to another bed", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

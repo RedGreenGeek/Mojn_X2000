@@ -33,7 +33,7 @@ public class StaffDepartView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department", "back");
+	private MenuTopView menuTop = new MenuTopView("Get all staff in a department", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

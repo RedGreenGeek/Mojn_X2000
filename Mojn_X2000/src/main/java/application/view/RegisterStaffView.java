@@ -41,7 +41,7 @@ public class RegisterStaffView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department", "back");
+	private MenuTopView menuTop = new MenuTopView("Register a staff", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

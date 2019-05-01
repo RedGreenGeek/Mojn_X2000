@@ -1,6 +1,3 @@
-
-
-
 package application.view;
 
 
@@ -18,56 +15,67 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import application.controller.AddPasswordController;
+import application.controller.ChangePasswordController;
+import application.controller.EditPatientController;
 import application.controller.PatientController;
+import application.controller.RegisterPatientController;
 import application.controller.SearchPatientController;
+import application.controller.SearchStaffController;
 import application.model.Session;
 
-public class SearchPatientView extends JFrame {
-	private JLabel firstNameLabel;
-	private JLabel surnameLabel;
-	private JLabel birthdayLabel;
+public class ChangePasswordView extends JFrame {
+	private static final long serialVersionUID = 985282041187452L;
+	private JLabel NewPass1Label;
+	private JLabel NewPass2Label;
+	private JLabel OldPass1Label;
+
 	private JLabel IDLabel;
-	private JTextField firstNameField;
-	private JTextField surnameField;
-	private JTextField dayField;
-	private JTextField monthField;
-	private JTextField yearField;
-	private JTextField idField;
+
+	private JTextField NewPass1Field;
+	private JTextField NewPass2Field;
+	private JTextField OldPass1Field;
+
+	private JTextField IDField;
+
 
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Search after a patient", "back");
+	private MenuTopView menuTop = new MenuTopView("Add password to a staff", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
 	
-	private SearchPatientController controller;
+	private ChangePasswordController controller;
 
 	
-	public SearchPatientView(SearchPatientController controller) {
+	public ChangePasswordView(ChangePasswordController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
 	
 	private void initGUI() {
-		setTitle("Search Patients");
+		setTitle("Change password of a staff");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
 		
-		firstNameLabel = new JLabel("First name: ");
-		surnameLabel = new JLabel("Surname: ");
-		birthdayLabel = new JLabel("Birthday: ");
+		OldPass1Label = new JLabel("Old password: ");
+		NewPass1Label = new JLabel("Wanted password: ");
+		NewPass2Label = new JLabel("Repeat password: ");
+		
 		IDLabel = new JLabel("ID: ");
-		firstNameField = new JTextField(11);
-		surnameField = new JTextField(11);
-		dayField = new JTextField(3);
-		monthField = new JTextField(3);
-		yearField = new JTextField(4);
-		idField = new JTextField(11);
+
+		
+		NewPass1Field = new JTextField(11);
+		NewPass2Field = new JTextField(11);
+		OldPass1Field = new JTextField(11);
+		
+		IDField = new JTextField(11);
+
 		
 
 		
@@ -76,19 +84,21 @@ public class SearchPatientView extends JFrame {
 		okBtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				String firstName = firstNameField.getText();
-				String surname = surnameField.getText();
-				String day = dayField.getText();
-				String month = monthField.getText();
-				String year = yearField.getText();
-				String id = idField.getText();
-				firstNameField.setText("");
-				surnameField.setText("");
-				dayField.setText("");
-				monthField.setText("");
-				yearField.setText("");
-				idField.setText("");
-				msg = controller.SearchAPI(firstName, surname, day, month, year, id);
+				String NewPass1 = NewPass1Field.getText();
+				String NewPass2 = NewPass2Field.getText();
+				String oldPassword = OldPass1Field.getText();
+
+		
+				String ID = IDField.getText();
+
+				NewPass1Field.setText("");
+				NewPass2Field.setText("");
+				OldPass1Field.setText("");
+
+		
+				IDField.setText("");
+
+				msg = controller.ChangePasswordAPI(NewPass1, NewPass2,ID, oldPassword);
 				
 
 
@@ -124,13 +134,13 @@ public class SearchPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(firstNameLabel, gc);
+		inputArea.add(NewPass1Label, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(firstNameField, gc);
+		inputArea.add(NewPass1Field, gc);
 		
 		///////////////////////////// 2. linje
 		
@@ -142,75 +152,41 @@ public class SearchPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5);
 		
-		inputArea.add(surnameLabel, gc);
+		inputArea.add(NewPass2Label, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(surnameField, gc);
+		inputArea.add(NewPass2Field, gc);
 		/////////////////////////// 3. linje
-		
 		gc.gridx = 0;
 		gc.gridy++;
 		gc.weightx = 1;
 		gc.weighty = 0.1;
 		gc.fill = GridBagConstraints.NONE;
 		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		gc.insets = new Insets(0,0,0,5);
 		
+		inputArea.add(OldPass1Label, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
+		inputArea.add(OldPass1Field, gc);
 		
 		/////////////////////////// 4. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
 		
 		/////////////////////////// 5. linje
-		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 0.1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(birthdayLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(dayField, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,38,0,0);
-		
-		inputArea.add(monthField, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,76,0,0);
-		
-		inputArea.add(yearField, gc);
+	
 		
 		/////////////////////////// 6. linje
+		
+		
+		
+		/////////////////////////// 7. linje
 		
 		gc.gridx = 0;
 		gc.gridy++;
@@ -226,10 +202,12 @@ public class SearchPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(idField, gc);
+		inputArea.add(IDField, gc);
+		
+
 		
 		
-		/////////////////////////// 7. linje
+		/////////////////////////////8. linje:
 		
 		gc.gridx = 1;
 		gc.gridy++;
@@ -240,6 +218,8 @@ public class SearchPatientView extends JFrame {
 		
 		inputArea.add(okBtn, gc);
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
+		
+		
 		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
@@ -260,6 +240,9 @@ public class SearchPatientView extends JFrame {
 				controller.Back2Main();
 			}
 		});
+		
+
+	
 	}
 
 }
