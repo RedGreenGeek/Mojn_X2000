@@ -547,6 +547,40 @@ public class Database {
 
 	}
 	
+	/* ######################################################################### */
+	/* _______________ SECTION 9: Deleting data      ___________________________ */
+	/* ######################################################################### */
+	
+	
+	// Deletes the patient from the database utilizing that id's are unique
+	
+	void deletePatient(Patient patient) {
+		
+		String id = patient.getID();
+		String query = String.format("DELETE FROM Patient WHERE id = %s", id);
+		INSERT(query);
+		
+	}
+	
+	// Deletes the patient from the database utilizing that id's are unique
+	
+	void deleteStaff(Staff staff) {
+		
+		String id = staff.getID();
+		String query = String.format("DELETE FROM Staff WHERE id = %s", id);
+		INSERT(query);
+		
+	}
+	
+	// Deletes the department from the database utilizing that the names are unique
+	
+	void deleteDepartment(Department department) {
+		
+		String name = department.getName();
+		String query = String.format("DELETE FROM Department WHERE name = \"%s\" ", name);
+		INSERT(query);
+		
+	}
 	
 
 }
