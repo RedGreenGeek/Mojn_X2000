@@ -570,6 +570,7 @@ public class Database {
 		String query = String.format("DELETE FROM Staff WHERE id = %s", id);
 		INSERT(query);
 		
+		
 	}
 	
 	// Deletes the department from the database utilizing that the names are unique
