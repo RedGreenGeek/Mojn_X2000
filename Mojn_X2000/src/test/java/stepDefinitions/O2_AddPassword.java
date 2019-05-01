@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import cucumber.api.java.en.*;
 import framework.API;
-import framework.Searcher;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,9 +9,6 @@ public class O2_AddPassword {
 	
 	API api = API.getInstance();
 	String message;
-	
-
-	
 	
 	@Given("^with a staff ID & a password$")
 	public void with_a_staff_ID_a_password()

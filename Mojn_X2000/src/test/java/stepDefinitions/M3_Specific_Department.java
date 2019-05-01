@@ -2,7 +2,6 @@ package stepDefinitions;
 
 import static org.junit.Assert.*;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 
 import cucumber.api.java.en.*;
@@ -10,8 +9,8 @@ import framework.API;
 
 public class M3_Specific_Department {
 	API api;
-	LinkedList<String> departments;
-	LinkedList<String> ERStaff;
+	String departments;
+	String ERStaff;
 	
 	@Given("^that we are on a Hospital$")
 	public void that_we_are_on_a_Hospital()  {
@@ -28,7 +27,7 @@ public class M3_Specific_Department {
 	    dTest.add("Pediatric");
 	    dTest.add("Cardio");
 	    
-	    assertEquals(new HashSet<String>(departments),new HashSet<String>(dTest));
+	    assertTrue(departments.contains("IT") && departments.contains("ER") && departments.contains("Pediatric") && departments.contains("Cardio"));
 	}
 
 	@Given("^I want to see who is working in a specific department$")
@@ -53,6 +52,6 @@ public class M3_Specific_Department {
 
 	@Then("^I get a message that the department is not found$")
 	public void i_get_a_message_that_the_department_is_not_found()  {
-	    assertEquals(ERStaff.getFirst(),"No or multiple department(s) match your search criterion");
+	    assertEquals(ERStaff,"No or multiple department(s) match your search criterion");
 	}
 }

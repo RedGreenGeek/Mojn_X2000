@@ -1,7 +1,6 @@
 package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 import cucumber.api.java.en.*;
 import framework.API;

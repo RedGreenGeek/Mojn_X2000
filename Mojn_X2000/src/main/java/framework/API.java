@@ -285,25 +285,25 @@ public class API {
 	/* _____________ HEALTH FACILITY MANAGMENT for M3 ______________ */
 	
 	//GET ALL DEPARTMENTS
-	public LinkedList<String> getDepartments() {
+	public String getDepartments() {
 		LinkedList<Department> ds = new LinkedList<Department>(h.getDepartSet());
-		LinkedList<String> dlist = new LinkedList<String>();
+		String res = "";
 		while (!ds.isEmpty()) {
-			dlist.add(ds.removeFirst().toString());
+			res += ds.removeFirst().toString()+"\n";
 		}
-		return dlist;
+		return res;
 	}
 	
 	//GET STAFF LIST OF GIVEN DEPARTMETN
-	public LinkedList<String> getDeparmentStaff(String departmentName) {
+	public String getDeparmentStaff(String departmentName) {
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
-		LinkedList<String> res = new LinkedList<String>();
+		String res = "";
 		if (resList.size()==1) {
 			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getStaff());
 			while (!sList.isEmpty()) {
-				res.add(sList.removeFirst().toString());
+				res += sList.removeFirst().toString()+"\n";
 			}
-		} else {res.add("No or multiple department(s) match your search criterion");}
+		} else {res = "No or multiple department(s) match your search criterion";}
 		return res;
 	}
 	
@@ -522,23 +522,21 @@ public class API {
 	/* _____________ PATIENT WAITING O3 ______________ */
 	
 	//GET WAITING QUEUE OF GIVEN DEPARTMENT
-	public LinkedList<String> getQueue(String departmentName) {
+	public String getQueue(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		OutPatientDepart outDepart;
-		LinkedList<String> res = new LinkedList<String>();
 		if (departmentRes.size() != 1) {
-			res.add("Warning, could not retrieve queue of given department.");
-			return res;
+			return "Warning, could not retrieve queue of given department.";
 		}
 		try {
 			outDepart = (OutPatientDepart) departmentRes.getFirst();
 		} catch (ClassCastException e) {
-			res.add("Warning, could not retrieve queue of given department.");
-			return res;
+			return "Warning, could not retrieve queue of given department.";
 		}
 		ArrayList<Person> queue = outDepart.PrintQueue();
+		String res = "";
 		for (int i = 0; i<queue.size(); i++) {
-			res.add(queue.get(i).toString());
+			res += (queue.get(i).toString())+"\n";
 		}
 		return res;
 	}

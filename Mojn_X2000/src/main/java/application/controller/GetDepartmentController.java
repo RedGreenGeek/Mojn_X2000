@@ -1,6 +1,5 @@
 package application.controller;
 
-import java.util.LinkedList;
 
 import application.model.Session;
 import application.view.GetDepartmentView;
@@ -28,16 +27,10 @@ public class GetDepartmentController  extends Controller{
 		API api =  API.getInstance();
 
 
-		LinkedList<String> a = api.getDepartments();
-		
-		return a.toString();
-		
+		return api.getDepartments();
 	}
 
 	public void Back2Main() {
-		view.setVisible(false);
-		
-		
+		view.setVisible(false);	
 	}
-
 }

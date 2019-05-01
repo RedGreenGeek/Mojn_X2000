@@ -3,14 +3,12 @@ package stepDefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.LinkedList;
-
 import cucumber.api.java.en.*;
 import framework.API;
 
 public class O3_getQueueList {
 	API api = API.getInstance();
-	LinkedList<String> message;
+	String message;
 	String departmentName;
 	
 	
@@ -26,7 +24,7 @@ public class O3_getQueueList {
 
 	@Then("^I get a list of the current queue$")
 	public void i_get_a_list_of_the_current_queue() {
-	    assertTrue(!message.getFirst().contains("Warning") && message.getFirst()!=null);
+	    assertTrue(!message.contains("Warning") && message!=null);
 	}
 
 	@When("^I am entering non unique department name$")
@@ -36,7 +34,7 @@ public class O3_getQueueList {
 
 	@Then("^I get a error message$")
 	public void i_get_a_error_message() {
-		assertEquals(message.getFirst(),"Warning, could not retrieve queue of given department.");
+		assertEquals(message,"Warning, could not retrieve queue of given department.");
 	}
 
 	@When("^I am entering unique department name of non out patient department$")
