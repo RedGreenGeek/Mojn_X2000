@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.Session;
+import application.view.AddPasswordView;
 import application.view.AdmitPatientView;
 import application.view.AllocatePatientView;
 import application.view.ChangePasswordView;

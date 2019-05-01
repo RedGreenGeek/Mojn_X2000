@@ -1,6 +1,5 @@
 package application.controller;
 
-import application.model.Inventory;
 import application.model.Session;
 import application.view.AddPasswordView;
 import application.view.ChangePasswordView;

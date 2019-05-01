@@ -33,6 +33,7 @@ public class API {
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = Database.getInstance(Database.DEFAULT);
 		Pas = Password.getInstance();
+		Pas.addPassToMap("I", "I");
 //		try {
 //			log = new Logger();
 //			log.write("SYSTEM","REBOOT","NONE");

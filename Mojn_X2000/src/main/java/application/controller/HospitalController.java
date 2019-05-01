@@ -1,6 +1,8 @@
 package application.controller;
 
 import application.model.Session;
+import application.view.AddPasswordView;
+import application.view.ChangePasswordView;
 import application.view.FreeBedsHospitalView;
 import application.view.GetDepartmentView;
 import application.view.GetQueueView;

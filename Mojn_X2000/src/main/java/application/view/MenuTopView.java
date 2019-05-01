@@ -38,7 +38,7 @@ public class MenuTopView extends JMenuBar {
 		add(lblTitle, BorderLayout.CENTER);
 
 		JMenu mnPassword = new JMenu();
-		Image featureImg = new ImageIcon(this.getClass().getResource("/feature.png")).getImage();
+		Image featureImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/feature.png")).getImage();
 		mnPassword.setIcon(new ImageIcon(featureImg));
 		add(mnPassword, BorderLayout.WEST);
 
