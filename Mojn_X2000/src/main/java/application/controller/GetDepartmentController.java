@@ -1,14 +1,9 @@
 package application.controller;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import application.model.Session;
-import application.view.AdmitPatientView;
-import application.view.DischargePatientView;
 import application.view.GetDepartmentView;
-import application.view.HospitalView;
-import application.view.SearchPatientView;
 import framework.API;
 
 public class GetDepartmentController  extends Controller{

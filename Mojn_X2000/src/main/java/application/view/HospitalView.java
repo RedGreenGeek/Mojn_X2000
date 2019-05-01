@@ -1,6 +1,5 @@
 package application.view;
 
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,16 +12,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import application.controller.StaffController;
 import application.controller.HospitalController;
-import application.controller.MainMenuController;
-import application.controller.LoginController;
 import application.model.Session;
 import application.utils.GridBagLayoutUtils;
 

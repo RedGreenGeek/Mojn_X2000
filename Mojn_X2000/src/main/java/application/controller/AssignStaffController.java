@@ -2,9 +2,6 @@ package application.controller;
 
 import application.model.Session;
 import application.view.AssignStaffView;
-import application.view.HospitalView;
-import application.view.RegisterPatientView;
-import application.view.SearchPatientView;
 import framework.API;
 
 public class AssignStaffController  extends Controller{

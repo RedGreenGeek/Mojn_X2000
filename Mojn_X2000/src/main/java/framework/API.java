@@ -19,6 +19,7 @@ public class API {
 	private Searcher searcher;
 	private ChangeReg R;
 	private Database DB;
+	private Password Pas = Password.getInstance();
 //	private Logger log;
 	
 	public static synchronized API getInstance() {
@@ -70,7 +71,6 @@ public class API {
 		
 
 		//------
-		Password Pas = Password.getInstance();
 		
 		//
 		this.registerPatient("Søren","Sørensen","Hellerup","Ventre",24,9,97,true);
@@ -85,7 +85,6 @@ public class API {
 		this.registerStaff("Nurse", "Helle","Thorning","Herlev","Gucci",02,02,1960);
 		this.assignStaffDepartment("Cardio", "", "Helle", "Thorning", "", "");
 		
-		Pas.addPassToMap("asd", "N3");
 		Pas.addPassToMap("password", "IT4");
 		Pas.addPassToMap("password", "C5");
 		Pas.addPassToMap("password", "D2");
@@ -475,14 +474,18 @@ public class API {
 	
 	/* ______________  PASSWORD METHODS for O2 ________________    */
 	
+	//CHECK IF PASSWORD MATCH USERID
+	public boolean passwordMatch(String password, String userID) {
+		return this.Pas.checkPassword(password, userID);
+	}
+	
 	//ADDS NEW PASSWORD
 	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
-		Password Pass = Password.getInstance();
-		if (Pass.checkUniqueID(staffID)) {
+		if (Pas.checkUniqueID(staffID)) {
 			return "Password already created for this staff!";
 		}
 		if (newPassword2 == newPassword1) {
-			Pass.addPassToMap(newPassword1, staffID);
+			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 //			log.write(userID,"NEW USER ADDED",staffID);
@@ -495,22 +498,21 @@ public class API {
 	
 	//CHANGE PASSWORD FROM KNOWN PASSWORD
 	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
-		Password Pass = Password.getInstance();
-		if (!Pass.checkUniqueID(staffID)) {
+		if (!Pas.checkUniqueID(staffID)) {
 			return "Staff ID does not exist";
 		}
-		if (Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
-			Pass.addPassToMap(newPassword1, staffID);
+		if (Pas.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
+			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 //			log.write(userID,"PASSWORD CHANGED",staffID);
 			
 			return "Password changed";
 		}
-		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
+		if (!Pas.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
 			return "Wrong old password";
 		}
-		if (Pass.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
+		if (Pas.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
 			return "The 2 new passwords are not equal";
 		}
 		return "Something went wrong";

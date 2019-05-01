@@ -1,7 +1,5 @@
 package application.controller;
 
-import javax.swing.JOptionPane;
-
 import application.model.Inventory;
 import application.model.Session;
 import application.view.MainMenuView;
@@ -35,13 +33,8 @@ public class MainMenuController extends Controller{
 		view.setVisible(true);
 	}
 	public void Change2Staff() {
-
-		
 		view.setVisible(false);
-
 		application.manageStaff(session);
-
-		
 	}
 	public void Change2Hospital() {
 

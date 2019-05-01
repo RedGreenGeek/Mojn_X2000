@@ -1,7 +1,6 @@
 package application.controller;
 
 import application.model.Session;
-import application.view.HospitalView;
 import application.view.SearchPatientView;
 import framework.API;
 

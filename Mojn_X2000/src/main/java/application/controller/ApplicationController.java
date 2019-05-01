@@ -3,7 +3,6 @@ package application.controller;
 import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
-import framework.API;
 import application.view.HospitalView;
 import application.view.MainMenuView;
 import application.view.PatientView;
@@ -20,8 +19,6 @@ public class ApplicationController {
 
 	
 	public static synchronized ApplicationController getInstance() {
-		API api =  API.getInstance();
-
 		if (self == null){
 			self = new ApplicationController();
 		}

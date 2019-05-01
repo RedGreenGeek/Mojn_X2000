@@ -3,12 +3,7 @@ package application.controller;
 import java.util.LinkedList;
 
 import application.model.Session;
-import application.view.AdmitPatientView;
-import application.view.DischargePatientView;
 import application.view.GetQueueView;
-import application.view.HospitalView;
-import application.view.SearchPatientView;
-import application.view.StaffDepartView;
 import framework.API;
 
 public class GetQueueController  extends Controller{

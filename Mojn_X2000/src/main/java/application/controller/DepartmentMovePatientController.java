@@ -1,13 +1,7 @@
 package application.controller;
 
 import application.model.Session;
-import application.view.AdmitPatientView;
-import application.view.AllocatePatientView;
 import application.view.DepartmentMovePatientView;
-import application.view.DischargePatientView;
-import application.view.HospitalView;
-import application.view.MovedBedPatientView;
-import application.view.SearchPatientView;
 import framework.API;
 
 public class DepartmentMovePatientController  extends Controller{
@@ -38,9 +32,6 @@ public class DepartmentMovePatientController  extends Controller{
 	}
 
 	public void Back2Main() {
-		view.setVisible(false);
-		
-		
+		view.setVisible(false);	
 	}
-
 }

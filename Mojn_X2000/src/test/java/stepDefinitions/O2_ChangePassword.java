@@ -15,12 +15,12 @@ public class O2_ChangePassword {
 
 	@When("^I am entering the staff-ID, old password and new wanted password twice$")
 	public void i_am_entering_the_staff_ID_old_password_and_new_wanted_password_twice() {
-		message = api.ChangePassword("asd" , "asd2", "asd2", "N3");
+		message = api.ChangePassword("password" , "asd2", "asd2", "N3");
 	}
 
 	@Then("^I get a message that my password was correctly changed$")
 	public void i_get_a_message_that_my_password_was_correctly_changed(){
-		assertEquals(message,"Password changed");
+		assertEquals("Password changed",message);
 	}
 
 	@When("^I am entering the staff-ID, wrong old password and new wanted password twice$")

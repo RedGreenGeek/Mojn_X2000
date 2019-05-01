@@ -60,7 +60,6 @@ public class Database {
 	private void EstablishConnection() {
 
 		try {
-
 			// 1. Get connection to MySQL database
 
 			myConnection = DriverManager.getConnection(URL, username, password);
