@@ -74,6 +74,7 @@ public class SearchPatientView extends JFrame {
 		okBtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
+				textPanel.textArea.setText("");
 				String firstName = firstNameField.getText();
 				String surname = surnameField.getText();
 				String day = dayField.getText();
@@ -93,7 +94,7 @@ public class SearchPatientView extends JFrame {
 
 
 				textPanel.textArea.append(msg);
-				textPanel.textArea.append("\n");
+				
 
 				
 
