@@ -40,7 +40,8 @@ public class MenuTopView extends JMenuBar {
 		add(lblTitle, BorderLayout.CENTER);
 
 		JMenu mnPassword = new JMenu();
-		mnPassword.setIcon(new ImageIcon("C:\\Users\\anton\\OneDrive\\Dokumenter\\Uni\\Uni\\4. semester\\Agil\\Exam proj\\icons\\feature.png"));
+		Image featureImg = new ImageIcon(this.getClass().getResource("/feature.png")).getImage();
+		mnPassword.setIcon(new ImageIcon(featureImg));
 		add(mnPassword, BorderLayout.WEST);
 
 		btnChange = new JButton("Change Password");

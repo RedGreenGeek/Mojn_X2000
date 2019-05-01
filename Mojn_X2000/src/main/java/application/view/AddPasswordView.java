@@ -89,7 +89,7 @@ public class AddPasswordView extends JFrame {
 		
 				IDField.setText("");
 
-				msg = controller.AddPasswordAPI(ID,NewPass1, NewPass2);
+				msg = controller.AddPasswordAPI(NewPass1, NewPass2,ID);
 				
 
 
