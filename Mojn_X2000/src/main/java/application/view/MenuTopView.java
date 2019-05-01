@@ -7,6 +7,7 @@ import javax.swing.border.*;
 
 import application.controller.Controller;
 import application.model.Session;
+import application.model.Session.JobTypes;
 
 public class MenuTopView extends JMenuBar {
 
@@ -21,7 +22,6 @@ public class MenuTopView extends JMenuBar {
 	
 	public MenuTopView(String title) {
 		this.session = Session.getInstance();
-		System.out.println(session.getRole());
 		setLayout(new BorderLayout(0, 0));
 		
 		lblTitle = new JLabel();
@@ -29,12 +29,12 @@ public class MenuTopView extends JMenuBar {
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		add(lblTitle, BorderLayout.CENTER);
-		if (session.getRole().equals("ICT-Officer") || session.getRole().equals("Clerk") ) {
+		if (session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Clerk ) {
 			mnPassword = new JMenu();
 			Image featureImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/feature.png")).getImage();
 			mnPassword.setIcon(new ImageIcon(featureImg));
 			add(mnPassword, BorderLayout.WEST);
-				if (session.getRole().equals("ICT-Officer")){
+				if (session.getRole() == JobTypes.ICTOfficer){
 					mnPassword.add(btnChange);
 				}
 			mnPassword.add(btnAdd);				

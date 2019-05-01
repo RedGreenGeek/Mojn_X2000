@@ -7,6 +7,7 @@ import application.view.FreeBedsHospitalView;
 import application.view.GetDepartmentView;
 import application.view.GetQueueView;
 import application.view.HospitalView;
+import application.view.ParticipationListView;
 import application.view.StaffDepartView;
 
 public class HospitalController  extends Controller{
@@ -30,8 +31,6 @@ public class HospitalController  extends Controller{
 	}
 	public void setView(HospitalView view) {
 		this.view = view;
-//		this.view.setTableModel(inventoryModel);
-//		this.view.setSession(sessionModel);
 	}
 	public void Back2Main() {
 
@@ -107,4 +106,11 @@ public class HospitalController  extends Controller{
 		SC.display();
 
 		}
+	public void ToParticipationList() {
+		ParticipationListController SC = new ParticipationListController(session);
+		ParticipationListView SView = new ParticipationListView(SC);
+		SC.setView(SView);
+
+		SC.display();
+	}
 }

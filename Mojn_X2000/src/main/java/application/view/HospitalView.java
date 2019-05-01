@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 
 import application.controller.HospitalController;
 import application.model.Session;
+import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
 public class HospitalView extends JFrame {
@@ -24,7 +25,7 @@ public class HospitalView extends JFrame {
 	private static final long serialVersionUID = 12347L;
 	private HospitalController controller;
 	private Session session;
-	private MenuTopView menuTop = new MenuTopView("Hospital kgfgdf Menu");
+	private MenuTopView menuTop = new MenuTopView("Hospital Menu");
 
 
 	
@@ -79,6 +80,10 @@ public class HospitalView extends JFrame {
 		btnQueue.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnQueue.setHorizontalTextPosition(SwingConstants.CENTER); 
 		
+		JButton btnParticipationList = new JButton("Get participation list");
+		
+		
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -86,8 +91,9 @@ public class HospitalView extends JFrame {
 		
 		buttonsPanel.add(btnQueue, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnFreeBeds, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
+		buttonsPanel.add(btnParticipationList, GridBagLayoutUtils.constraint(1, 2, 0, 0, 0,10,50,10));
 
-		if(session.getRole() == "Clerk" || session.getRole() == "ICT-Officer" ) {
+		if(session.getRole()==JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnStaffInDepart, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnGetDepart, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));}
 		
@@ -135,6 +141,12 @@ public class HospitalView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.ToGetDepart();
+			}
+		});
+		btnParticipationList.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToParticipationList();
 			}
 		});
 		menuTop.btnAdd.addActionListener(new ActionListener() {

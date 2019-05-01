@@ -3,7 +3,11 @@ package application.view;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,6 +26,8 @@ public class LoginView extends JFrame {
 	private JTextField txtLogin;
 	private JPasswordField txtPass;
 	private LoginController controller;
+	
+	
 
 	public LoginView(LoginController controller) {
 		this.controller = controller;
@@ -38,6 +44,7 @@ public class LoginView extends JFrame {
 		txtPass = new JPasswordField(15);
 		btnLogin = new JButton("Login");
 		
+
 		
 		btnLogin.addActionListener(new ActionListener() {
 			@Override
@@ -45,6 +52,10 @@ public class LoginView extends JFrame {
 				controller.validateCredentials(txtLogin.getText(), String.valueOf(txtPass.getPassword()));
 			}
 		});
+		// to listen to the enter key
+		getRootPane().setDefaultButton(btnLogin);
+		
+
 		
 		add(new JLabel("Username:"), GridBagLayoutUtils.constraint(0, 0, 1, 1,  5));
 		add(txtLogin, GridBagLayoutUtils.constraint(1, 0,  1, 1, 5));
@@ -56,7 +67,22 @@ public class LoginView extends JFrame {
 		setLocationRelativeTo(null);
 	}
 	
+	public void keyPressed(KeyEvent evt) {
+
+	        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+
+	        	btnLogin.doClick();
+
+	        }
+
+	}
+	
 	public void showError() {
 		JOptionPane.showMessageDialog(this, "Wrong username/password combination", "Login error", JOptionPane.ERROR_MESSAGE);
 	}
+}
+
+class MyKeyListener extends KeyAdapter {
+
+
 }

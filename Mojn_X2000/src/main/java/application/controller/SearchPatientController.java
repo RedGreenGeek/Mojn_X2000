@@ -24,7 +24,7 @@ public class SearchPatientController  extends Controller{
 		this.view = view;
 	}
 	
-	public String SearchAPI(String firstName, String surname, String day, String month, String year, String id) {
+	public String SearchAPI(String firstName, String surname, String day, String month, String year, String id, String depart) {
 		API api =  API.getInstance();
 		String  birthday = "";
 
@@ -32,7 +32,7 @@ public class SearchPatientController  extends Controller{
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.patientSearcher(id, firstName, surname, birthday);
+		String a = api.patientSearcher(id, firstName, surname, birthday, depart);
 		return a;
 		
 	}
