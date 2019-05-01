@@ -5,7 +5,7 @@ public abstract class Department {
 	
 	private HashSet<Person> staffSet = new HashSet<Person>();
 
-	private String departName = null;
+	private String departName;
 	
 	protected  String getName(){
 		return departName;
