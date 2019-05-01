@@ -8,7 +8,6 @@ public class MovedBedPatientController  extends Controller{
 	private MovedBedPatientView view;
 
 	
-	
 	public MovedBedPatientController(Session session) {
 		this.sessionModel = session;
 
@@ -26,15 +25,11 @@ public class MovedBedPatientController  extends Controller{
 		API api =  API.getInstance();
 
 
-		String a = api.movePatientBed(patientId,  newBed);
+		String a = api.movePatientBed(this.getSession().getPassword(),this.getSession().getUsername(), patientId,  newBed);
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

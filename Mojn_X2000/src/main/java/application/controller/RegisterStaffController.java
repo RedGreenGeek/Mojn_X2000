@@ -6,8 +6,6 @@ import framework.API;
 
 public class RegisterStaffController  extends Controller{
 	private RegisterStaffView view;
-
-	
 	
 	public RegisterStaffController(Session session) {
 		this.sessionModel = session;
@@ -33,15 +31,11 @@ public class RegisterStaffController  extends Controller{
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.registerStaff (jobtype , firstName,  lastName, adress, tribe, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year));
+		String a = api.registerStaff (this.getSession().getPassword(),this.getSession().getUsername(), jobtype , firstName,  lastName, adress, tribe, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year));
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

@@ -8,10 +8,8 @@ public class DepartmentMovePatientController  extends Controller{
 	private DepartmentMovePatientView view;
 
 	
-	
 	public DepartmentMovePatientController(Session session) {
 		this.sessionModel = session;
-
 	}
 	
 	public void display() {
@@ -25,10 +23,8 @@ public class DepartmentMovePatientController  extends Controller{
 	public String MoveDepartmentAPI( String patientId, String departmentName , String trilvl) {
 		API api =  API.getInstance();
 
-
-		String a = api.movePatientDepart( patientId,  departmentName,  trilvl);
-		return a;
-		
+		String a = api.movePatientDepart(this.getSession().getPassword(),this.getSession().getUsername(), patientId,  departmentName,  trilvl);
+		return a;		
 	}
 
 	public void Back2Main() {

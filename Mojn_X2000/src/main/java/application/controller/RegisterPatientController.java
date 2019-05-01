@@ -8,7 +8,6 @@ public class RegisterPatientController  extends Controller{
 	private RegisterPatientView view;
 
 	
-	
 	public RegisterPatientController(Session session) {
 		this.sessionModel = session;
 	}
@@ -33,15 +32,11 @@ public class RegisterPatientController  extends Controller{
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.registerPatient( firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), Boolean.parseBoolean(alive));
+		String a = api.registerPatient(this.getSession().getPassword(),this.getSession().getUsername(), firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), Boolean.parseBoolean(alive));
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

@@ -6,14 +6,10 @@ import framework.API;
 
 public class SearchPatientController  extends Controller{
 	private SearchPatientView view;
-	private ApplicationController application;
-	private Session session;
 	
 	
 	public SearchPatientController(Session session) {
 		this.sessionModel = session;
-		this.session = Session.getInstance();
-		this.application = ApplicationController.getInstance();
 	}
 	
 	public void display() {
@@ -32,15 +28,11 @@ public class SearchPatientController  extends Controller{
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.patientSearcher(id, firstName, surname, birthday);
+		String a = api.patientSearcher(this.getSession().getPassword(),this.getSession().getUsername(), id, firstName, surname, birthday);
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

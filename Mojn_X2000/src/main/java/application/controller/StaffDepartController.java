@@ -6,8 +6,6 @@ import framework.API;
 
 public class StaffDepartController  extends Controller{
 	private StaffDepartView view;
-
-	
 	
 	public StaffDepartController(Session session) {
 		this.sessionModel = session;
@@ -24,7 +22,7 @@ public class StaffDepartController  extends Controller{
 	public String GetDepartStaffAPI( String departmentName) {
 		API api =  API.getInstance();
 
-		return api.getDeparmentStaff(departmentName);
+		return api.getDeparmentStaff(this.getSession().getPassword(),this.getSession().getUsername(), departmentName);
 	}
 
 	public void Back2Main() {

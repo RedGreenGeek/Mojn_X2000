@@ -10,7 +10,6 @@ public class DischargePatientController  extends Controller{
 	
 	public DischargePatientController(Session session) {
 		this.sessionModel = session;
-
 	}
 	
 	public void display() {
@@ -24,16 +23,11 @@ public class DischargePatientController  extends Controller{
 	public String DischargeAPI( String patientId) {
 		API api =  API.getInstance();
 
-
-		String a = api.discharge( patientId);
+		String a = api.discharge(this.getSession().getPassword(),this.getSession().getUsername(), patientId);
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

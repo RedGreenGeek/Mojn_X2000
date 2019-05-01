@@ -12,13 +12,9 @@ public final class Session {
 		}
 		return self; 
 	}
-
-	
-
 	
 	public void setRole(String Role) {
 		char first = Role.charAt(0);
-		
 		if (first == 'D') {
 			role = "Doctor";
 					}
@@ -33,9 +29,6 @@ public final class Session {
 		if (first == 'N') {
 			role = "Nurse";
 		}
-		
-		
-
 	}
 
 	public void setUser(User user) {
@@ -48,5 +41,9 @@ public final class Session {
 	
 	public String getRole() {
 		return role;
+	}
+
+	public String getPassword() {
+		return user.getPassword();
 	}
 }

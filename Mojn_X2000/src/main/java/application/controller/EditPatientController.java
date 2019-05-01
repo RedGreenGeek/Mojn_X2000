@@ -8,7 +8,6 @@ public class EditPatientController  extends Controller{
 	private EditPatientView view;
 
 	
-	
 	public EditPatientController(Session session) {
 		this.sessionModel = session;
 	}
@@ -33,15 +32,11 @@ public class EditPatientController  extends Controller{
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.changePatient(ID,  firstName,  lastName,  tribe,  adress, Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year), Boolean.parseBoolean(alive));
+		String a = api.changePatient(this.getSession().getPassword(),this.getSession().getUsername(), ID,  firstName,  lastName,  tribe,  adress, Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year), Boolean.parseBoolean(alive));
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

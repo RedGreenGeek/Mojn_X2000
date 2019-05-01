@@ -6,12 +6,9 @@ import framework.API;
 
 public class AdmitPatientController extends Controller{
 	private AdmitPatientView view;
-
-	
 	
 	public AdmitPatientController(Session session) {
 		this.sessionModel = session;
-
 	}
 	
 	public void display() {
@@ -26,17 +23,12 @@ public class AdmitPatientController extends Controller{
 		API api =  API.getInstance();
 		String  birthday = "";
 
-
 		System.out.println(birthday);
-		String a = api.patientAdmission( triLvl,  departmentName,  patientId);
+		String a = api.patientAdmission(this.getSession().getPassword(),this.getSession().getUsername(), triLvl,  departmentName,  patientId);
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

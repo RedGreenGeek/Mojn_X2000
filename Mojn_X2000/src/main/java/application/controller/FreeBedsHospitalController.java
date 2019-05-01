@@ -6,8 +6,6 @@ import framework.API;
 
 public class FreeBedsHospitalController  extends Controller{
 	private FreeBedsHospitalView view;
-
-	
 	
 	public FreeBedsHospitalController(Session session) {
 		this.sessionModel = session;
@@ -26,15 +24,11 @@ public class FreeBedsHospitalController  extends Controller{
 		API api =  API.getInstance();
 
 
-		String a = api.bedsAvailable( departmentName);
+		String a = api.bedsAvailable(this.getSession().getPassword(),this.getSession().getUsername(), departmentName);
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

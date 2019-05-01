@@ -7,11 +7,8 @@ import framework.API;
 public class AllocatePatientController  extends Controller{
 	private AllocatePatientView view;
 
-	
-	
 	public AllocatePatientController(Session session) {
 		this.sessionModel = session;
-
 	}
 	
 	public void display() {
@@ -26,16 +23,11 @@ public class AllocatePatientController  extends Controller{
 	public String AllocateToBedAPI( String patientId, String departmentName) {
 		API api =  API.getInstance();
 
-
-		String a = api.allocateToBed( departmentName,  patientId);
+		String a = api.allocateToBed(this.getSession().getPassword(),this.getSession().getUsername(), departmentName,  patientId);
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

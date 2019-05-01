@@ -22,6 +22,7 @@ public class LoginController {
 		session.setRole(username);
 		User user = new User();
 		user.setUsername(username);
+		user.setPassword(password);
 		if ((!username.isEmpty()) && API.getInstance().passwordMatch(password,user.getUsername())) {
 			session.setUser(user);
 			view.setVisible(false);

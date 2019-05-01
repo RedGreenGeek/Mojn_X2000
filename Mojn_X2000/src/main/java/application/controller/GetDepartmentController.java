@@ -9,7 +9,6 @@ public class GetDepartmentController  extends Controller{
 	private GetDepartmentView view;
 
 	
-	
 	public GetDepartmentController(Session session) {
 		this.sessionModel = session;
 
@@ -26,8 +25,7 @@ public class GetDepartmentController  extends Controller{
 	public String GetDepartmentAPI() {
 		API api =  API.getInstance();
 
-
-		return api.getDepartments();
+		return api.getDepartments(this.getSession().getPassword(),this.getSession().getUsername());
 	}
 
 	public void Back2Main() {

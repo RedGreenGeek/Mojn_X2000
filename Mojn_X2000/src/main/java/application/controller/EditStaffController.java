@@ -6,8 +6,6 @@ import framework.API;
 
 public class EditStaffController  extends Controller{
 	private EditStaffView view;
-
-	
 	
 	public EditStaffController(Session session) {
 		this.sessionModel = session;
@@ -28,15 +26,11 @@ public class EditStaffController  extends Controller{
 			return "Invalid Birthdate";
 		}
 
-		String a = api.changeStaff(ID,  job,  firstName,  lastName,  adress, tribe, Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
+		String a = api.changeStaff(this.getSession().getPassword(),this.getSession().getUsername(), ID,  job,  firstName,  lastName,  adress, tribe, Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }
