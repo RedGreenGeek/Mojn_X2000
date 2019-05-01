@@ -32,7 +32,6 @@ public class RegisterPatientController  extends Controller{
 		if (!(day.equals(""))) {
 			  birthday = day+"-"+month+"-"+year;
 		}
-		System.out.println(birthday);
 		String a = api.registerPatient( firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), alive);
 		return a;
 		

@@ -68,6 +68,7 @@ public class RegisterPatientView extends JFrame {
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
 		aliveField = new JCheckBox();
+		aliveField.setSelected(true);
 		
 
 		

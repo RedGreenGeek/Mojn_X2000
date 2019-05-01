@@ -4,6 +4,7 @@ package application.view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +19,6 @@ public class EditPatientView extends JFrame {
 	private JLabel surnameLabel;
 	private JLabel adressLabel;
 	private JLabel tribeLabel;
-	private JLabel birthdayLabel;
 	private JLabel aliveLabel;
 	private JLabel IDLabel;
 
@@ -26,10 +26,8 @@ public class EditPatientView extends JFrame {
 	private JTextField surnameField;
 	private JTextField adressField;
 	private JTextField tribeField;
-	private JTextField dayField;
-	private JTextField monthField;
-	private JTextField yearField;
-	private JTextField aliveField;
+
+	private JCheckBox aliveField;
 	private JTextField IDField;
 
 
@@ -61,7 +59,6 @@ public class EditPatientView extends JFrame {
 		surnameLabel = new JLabel("Surname: ");
 		adressLabel = new JLabel("Adress: ");
 		tribeLabel = new JLabel("Tribe: ");
-		birthdayLabel = new JLabel("Birthday: ");
 		aliveLabel = new JLabel("alive: ");
 		IDLabel = new JLabel("ID: ");
 
@@ -70,10 +67,9 @@ public class EditPatientView extends JFrame {
 		surnameField = new JTextField(11);
 		adressField = new JTextField(11);
 		tribeField = new JTextField(11);
-		dayField = new JTextField(3);
-		monthField = new JTextField(3);
-		yearField = new JTextField(4);
-		aliveField = new JTextField(11);
+
+		aliveField = new JCheckBox();
+		aliveField.setSelected(true);
 		IDField = new JTextField(11);
 
 		
@@ -88,23 +84,19 @@ public class EditPatientView extends JFrame {
 				String surname = surnameField.getText();
 				String adress = adressField.getText();
 				String tribe = tribeField.getText();
-				String day = dayField.getText();
-				String month = monthField.getText();
-				String year = yearField.getText();
-				String alive = aliveField.getText();
+
+				boolean alive = aliveField.isSelected();
 				String ID = IDField.getText();
 
 				firstNameField.setText("");
 				surnameField.setText("");
-				dayField.setText("");
-				monthField.setText("");
-				yearField.setText("");
+	
 				aliveField.setText("");
 				IDField.setText("");
 
 				tribeField.setText("");
 				adressField.setText("");
-				msg = controller.EditAPI(ID,firstName, surname, adress, day, month, year, tribe,alive);
+				msg = controller.EditAPI(ID,firstName, surname, adress, tribe,alive);
 				
 
 
@@ -201,34 +193,8 @@ public class EditPatientView extends JFrame {
 		
 		inputArea.add(tribeField, gc);
 		/////////////////////////// 5. linje
-		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 0.1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(birthdayLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(dayField, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,38,0,0);
-		
-		inputArea.add(monthField, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,76,0,0);
-		
-		inputArea.add(yearField, gc);
+
+	
 		
 		/////////////////////////// 6. linje
 		
