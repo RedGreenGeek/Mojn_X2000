@@ -441,11 +441,10 @@ public class API {
 		if (d instanceof framework.Departments.HealthCare.InPatientDepart) {
 			InPatientDepart inDepart = (InPatientDepart) d;
 			R.add(inDepart, p);
-			inDepart.beds.AllocateBed(p);
 		} else {
 			OutPatientDepart outDepart = (OutPatientDepart) d;
+			p.setTriage(triagelvl);
 			R.add(outDepart, p);
-			outDepart.EnQueue(p, triagelvl);
 		}
 		
 		/* write to log file */

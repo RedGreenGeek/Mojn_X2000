@@ -54,24 +54,15 @@ public class ChangeReg {
 	
 	public void add(Department d, Patient p) {
 		HashSet<Person> patientSet = d.getPatient();
+		p.setDepartment(d.getName());
+		patientSet.add(p);
+		d.setPatient(patientSet);
+		
 		if (d instanceof InPatientDepart) {
-			InPatientDepart IPD = (InPatientDepart)d;
-			patientSet.add(p);
-			d.setPatient(patientSet);
-			p.setDepartment(d.getName());
+			((InPatientDepart) d).beds.AllocateBed(p);
 		}
 		else if(d instanceof OutPatientDepart) {
-			p.setDepartment(d.getName());
-			OutPatientDepart OutD = (OutPatientDepart) d;
-			if (p.getTriage()==null) {
-				OutD.EnQueue(p);
-			}
-			else {
-				OutD.EnQueue(p,p.getTriage());
-			}
-			patientSet.add(p);
-			d.setPatient(patientSet);
-			p.setDepartment(OutD.getName());
+			((OutPatientDepart) d).EnQueue(p,p.getTriage());
 		}
 	}
 	
