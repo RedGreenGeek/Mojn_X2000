@@ -605,4 +605,31 @@ public class API {
 		new ParticipationList(new LinkedList<Person>(dList.getFirst().getPatient()), department, birthday, address, tribe);
 		return "Participation list was created successfully.";
 	}
+	
+	
+	
+	/* ______________  EXTRA FEATURES for O7 ________________    */
+	
+	public String addDepartment(String type, String departmentName, String maxBed) {
+		LinkedList<Department> dList =new LinkedList<Department>(h.getDepartSet());
+		while (!dList.isEmpty()) {
+			Department d = dList.removeFirst();
+			if (d.getName()!=null && d.getName().toLowerCase().equals(departmentName.toLowerCase())) {
+				return "Department name must be unique!";
+			}
+		}
+		if (type.toLowerCase().equals("admin")) {
+			R.add(this.h,new AdminDepart(departmentName));
+		}
+		else if (type.toLowerCase().equals("inpatient")) {
+			try {
+				R.add(this.h,new InPatientDepart(departmentName, Integer.parseInt(maxBed)));
+			} catch (Exception e) { return "maxBeds must be a integer!";} 
+		}
+		else if (type.toLowerCase().equals("outpatient")) {
+			R.add(this.h, new OutPatientDepart(departmentName));
+		}
+		else {return "Invalid department type. It must be admin, inPatient, or outPatient!";}
+		return "The department was added!";
+	}
 }
