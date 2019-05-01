@@ -18,13 +18,15 @@ public class ChangeReg {
 		HashSet<Staff> allStaffSet = h.getStaffSet();
 		allStaffSet.add(p);
 		h.setAllStaff(allStaffSet);
+		DB.writeStaff(p);
+		
 	}
 	
 	protected void add(Hospital h, Patient p) {
 		HashSet<Patient> allPatientSet = h.getAllPatientSet();
 		allPatientSet.add(p);
 		h.setAllPatientSet(allPatientSet);
-//		DB.writePatient(p);
+		DB.writePatient(p);
 		
 	}
 	
@@ -32,6 +34,7 @@ public class ChangeReg {
 		HashSet<Department> departSet = h.getDepartSet();
 		departSet.add(d);
 		h.setDepartSet(departSet);
+		DB.writeDepartment(d);
 	}
 	
 	protected void remove(Hospital h, Department d) {
