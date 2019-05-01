@@ -1,6 +1,5 @@
 package application.controller;
 
-import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
 import framework.API;
@@ -11,7 +10,7 @@ import application.view.PatientView;
 public class ApplicationController {
 	
 	private LoginController loginController;
-	private MainMenuController inventoryController;
+	private MainMenuController MainMenuController;
 	private StaffController StaffController;
 	private HospitalController HospitalController;
 	private PatientController PatientController;
@@ -29,11 +28,11 @@ public class ApplicationController {
 	}
 	
 	public void manageInventory(Session session) {
-		inventoryController = new MainMenuController(new Inventory(), session);
-		MainMenuView invView = new MainMenuView(inventoryController);
+		MainMenuController = new MainMenuController( session);
+		MainMenuView invView = new MainMenuView(MainMenuController);
 
-		inventoryController.setView(invView);
-		inventoryController.display();
+		MainMenuController.setView(invView);
+		MainMenuController.display();
 	}
 	public void manageStaff(Session session) {
 		StaffController = new StaffController(session);
