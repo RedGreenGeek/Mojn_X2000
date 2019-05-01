@@ -14,7 +14,7 @@ public class O3_getNextInQueue {
 	@Given("^we ask for next person in queue$")
 	public void we_ask_for_next_person_in_queue() {
 		departmentName = "Cardio";
-	    message = api.getNextInQueue(departmentName);
+	    message = api.getNextInQueue("admin","I",departmentName);
 	}
 
 	@Then("^I get the next patient in queue$")
@@ -24,7 +24,7 @@ public class O3_getNextInQueue {
 	
 	@When("^I am entering non unique department names$")
 	public void i_am_entering_non_unique_department_names() {
-	    message = api.getNextInQueue("John Cena");
+	    message = api.getNextInQueue("admin","I","John Cena");
 	}
 
 	@Then("^I get an error message$")
@@ -34,6 +34,6 @@ public class O3_getNextInQueue {
 
 	@When("^I am entering a unique department name of non out patient department$")
 	public void i_am_entering_a_unique_department_name_of_non_out_patient_department() {
-	    message = api.getNextInQueue("ER");
+	    message = api.getNextInQueue("admin","I","ER");
 	}
 }

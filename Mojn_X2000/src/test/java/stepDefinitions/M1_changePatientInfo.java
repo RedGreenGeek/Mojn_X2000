@@ -21,7 +21,7 @@ public class M1_changePatientInfo {
 
 	@When("^I am changing the given info to something valid$")
 	public void i_am_changing_the_given_info_to_something_valid() {
-	    message=ui.changePatient(patientID, "Søren", "Sørensen", "SF", "Hellerup", 02, 02, 1902, true);
+	    message=ui.changePatient("admin","I",patientID, "Søren", "Sørensen", "SF", "Hellerup", 02, 02, 1902, true);
 	}
 
 	@Then("^I get a message that the change was succesful$")

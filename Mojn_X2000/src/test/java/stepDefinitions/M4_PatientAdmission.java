@@ -28,7 +28,7 @@ public class M4_PatientAdmission {
 	public void i_am_entering_a_existing_In_depart() {
 		String departmentName = "ER";
 		String trilvl = "";
-		message = api.patientAdmission(trilvl, departmentName, "2");
+		message = api.patientAdmission("admin","I",trilvl, departmentName, "2");
 	}
 	
 	@Then("^I get a message with a positiv In feed$")
@@ -41,7 +41,7 @@ public class M4_PatientAdmission {
 	public void i_am_entering_a_existing_Out_depart() {
 		String department = "Cardio";
 		String trilvl = "2";
-		message = api.patientAdmission(trilvl, department, "1");
+		message = api.patientAdmission("admin","I",trilvl, department, "1");
 	}
 	
 	@Then("^I get a message with a positiv Out feed$")
@@ -53,7 +53,7 @@ public class M4_PatientAdmission {
 	public void i_am_entering_a_wrong_Admin_depart() {
 		String department = "IT";
 		String trilvl = "";
-		message = api.patientAdmission(trilvl, department,"4");
+		message = api.patientAdmission("admin","I",trilvl, department,"4");
 	}
 
 	@Then("^I get an error message Admin depart$")
@@ -65,7 +65,7 @@ public class M4_PatientAdmission {
 	public void i_am_entering_a_wrong_trilvl() {
 		String department = "ER";
 		String trilvl = "wer";
-		message = api.patientAdmission(trilvl, department,"5");
+		message = api.patientAdmission("admin","I",trilvl, department,"5");
 	}
 
 	@Then("^I get an error message trilvl$")
@@ -77,7 +77,7 @@ public class M4_PatientAdmission {
 	public void i_am_entering_a_wrong_Person_value() {
 		String department = "ER";
 		String trilvl = "";
-		message = api.patientAdmission(trilvl, department,"4243");
+		message = api.patientAdmission("admin","I",trilvl, department,"4243");
 	}
 
 	@Then("^I get an error message invalid data$")
@@ -89,7 +89,7 @@ public class M4_PatientAdmission {
 	public void i_am_entering_a_wrong_invalid_depart() {
 		String department = "ERsfdgsfg343tr";
 		String trilvl = "";
-		message = api.patientAdmission(trilvl, department,"2");
+		message = api.patientAdmission("admin","I",trilvl, department,"2");
 	}
 
 	@Then("^I get an error message invalid depart$")

@@ -14,7 +14,8 @@ public class Password {
 	}
 
 	private Password() {
-		this.PassMap = new HashMap<String,String>();		
+		this.PassMap = new HashMap<String,String>();
+		this.PassMap.put("I", "admin");
 	}
 	
 	public void addPassToMap(String Pass, String StaffId) {
@@ -55,6 +56,12 @@ public class Password {
 		    	this.hashValue = (hashValue+(charVal * i * 8191 ) * prime);  	
 		}
 	}
-	
-	
+
+	public int getClearence(String password, String userID) {
+		if (!this.checkPassword(password,userID)) { return 0;}
+		if (userID.charAt(0)=='C') {return 1;}
+		if (userID.charAt(0)=='N') {return 2;}
+		if (userID.charAt(0)=='D') {return 3;}
+		return 4;
+	}
 }

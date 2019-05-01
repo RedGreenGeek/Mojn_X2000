@@ -31,7 +31,7 @@ public class O5_participationList {
 
 	@Then("^I get a csv containing information of all patients$")
 	public void i_get_a_csv_containing_information_of_all_patients() throws IOException {
-	    message = api.getParticipationList(departmentName,birthday,address,tribe);
+	    message = api.getParticipationList("admin","I",departmentName,birthday,address,tribe);
 	    
 	    assertEquals(message,"Participation list was created successfully.");
 	}
@@ -43,7 +43,7 @@ public class O5_participationList {
 
 	@Then("^I get a csv containing information of patients from that department$")
 	public void i_get_a_csv_containing_information_of_patients_from_that_department() throws IOException {
-		message = api.getParticipationList("ER", departmentName,birthday,address,tribe);
+		message = api.getParticipationList("admin","I","ER", departmentName,birthday,address,tribe);
 	    
 		assertEquals(message,"Participation list was created successfully.");
 	}
@@ -55,7 +55,7 @@ public class O5_participationList {
 
 	@Then("^I get message saying there was an error$")
 	public void i_get_message_saying_there_was_an_error() throws IOException {
-		message = api.getParticipationList("klm", departmentName,birthday,address,tribe);
+		message = api.getParticipationList("admin","I","klm", departmentName,birthday,address,tribe);
 	    
 		assertEquals(message,"Warning, an error occured, no list was created.");
 	}

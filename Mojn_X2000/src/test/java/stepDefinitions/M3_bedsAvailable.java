@@ -24,18 +24,18 @@ public class M3_bedsAvailable {
 
 	@When("^I am entering the request$")
 	public void i_am_entering_the_request()  {
-	    message = api.bedsAvailable(departmentName);
+	    message = api.bedsAvailable("admin","I",departmentName);
 	}
 
 	@Then("^I get a message with a statement that there is available beds$")
 	public void i_get_a_message_with_a_statement_that_there_is_available_beds()  {
-		message = api.bedsAvailable(departmentName);
+		message = api.bedsAvailable("admin","I",departmentName);
 		assertTrue(message.contains("Beds available in department"));
 	}
 
 	@Then("^I get a message with a statement that there is no available beds$")
 	public void i_get_a_message_with_a_statement_that_there_is_no_available_beds()  {
-		message = api.bedsAvailable("Pediatric");
+		message = api.bedsAvailable("admin","I","Pediatric");
 		assertEquals(message,"No beds available in department: Pediatric");
 	}
 }

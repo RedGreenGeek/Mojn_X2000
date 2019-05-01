@@ -19,7 +19,7 @@ public class O3_getQueueList {
 
 	@When("^I am entering unique department name of a out patient department$")
 	public void i_am_entering_unique_department_name_of_a_out_patient_department() {
-	    message = api.getQueue(departmentName);
+	    message = api.getQueue("admin","I",departmentName);
 	}
 
 	@Then("^I get a list of the current queue$")
@@ -29,7 +29,7 @@ public class O3_getQueueList {
 
 	@When("^I am entering non unique department name$")
 	public void i_am_entering_non_unique_department_name() {
-		message = api.getQueue("Cardio42");
+		message = api.getQueue("admin","I","Cardio42");
 	}
 
 	@Then("^I get a error message$")
@@ -39,6 +39,6 @@ public class O3_getQueueList {
 
 	@When("^I am entering unique department name of non out patient department$")
 	public void i_am_entering_unique_department_name_of_non_out_patient_department() {
-		message = api.getQueue("ER");
+		message = api.getQueue("admin","I","ER");
 	}
 }

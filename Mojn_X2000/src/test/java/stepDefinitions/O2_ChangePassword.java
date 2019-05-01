@@ -15,7 +15,7 @@ public class O2_ChangePassword {
 
 	@When("^I am entering the staff-ID, old password and new wanted password twice$")
 	public void i_am_entering_the_staff_ID_old_password_and_new_wanted_password_twice() {
-		message = api.ChangePassword("password" , "asd2", "asd2", "N3");
+		message = api.ChangePassword("admin","I","password" , "asd2", "asd2", "N3");
 	}
 
 	@Then("^I get a message that my password was correctly changed$")
@@ -25,7 +25,7 @@ public class O2_ChangePassword {
 
 	@When("^I am entering the staff-ID, wrong old password and new wanted password twice$")
 	public void i_am_entering_the_staff_ID_wrong_old_password_and_new_wanted_password_twice(){
-		message = api.ChangePassword("notRight" , "asd2", "asd2", "N3");
+		message = api.ChangePassword("admin","I","notRight" , "asd2", "asd2", "N3");
 
 	}
 
@@ -37,7 +37,7 @@ public class O2_ChangePassword {
 
 	@When("^I am entering the staff-ID, old password, new wanted password and a wrong new wanted password$")
 	public void i_am_entering_the_staff_ID_wrong_old_password_new_wanted_password_and_a_wrong_new_wanted_password(){
-		message = api.ChangePassword("asd2" , "asd5", "asd3", "N3");
+		message = api.ChangePassword("admin","I","asd2" , "asd5", "asd3", "N3");
 
 	}
 
@@ -52,7 +52,7 @@ public class O2_ChangePassword {
 	
 	@When("^I am entering a wrong staff id, wanted password twice and old password$")
 	public void i_am_entering_a_wrong_staff_id_wanted_password_twice_and_old_password(){
-		message = api.ChangePassword("asd2" , "asd5", "asd5", "N9999");
+		message = api.ChangePassword("admin","I","asd2" , "asd5", "asd5", "N9999");
 	}
 
 	@Then("^I get a message that my password was not added, as the Staff does not exist$")
