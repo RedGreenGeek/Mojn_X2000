@@ -14,14 +14,14 @@ public class Beds {
 
 	public String AllocateBed(Person patient) {
 	    String message = "-1";
-	    int i=0;
-	    for (Person p: beds) {
-	      i++;
-	      if (p == null) {
-	        p = patient;
+
+	    for (int i=0; i<beds.length; i++) {
+	      if (beds[i] == null) {
+	        beds[i] = patient;
 	        bedsInUse++;
 	        message = beds.toString();
-	        ((Patient) patient).setBedLocation(i);        
+	        ((Patient) patient).setBedLocation(i+1); 
+	        beds[i]=patient;
 	        break;
 	      }
 	    }
@@ -39,6 +39,7 @@ public class Beds {
 		if (beds[index] == null) {
 			beds[index] = patient;
 			bedsInUse++;
+			((Patient) patient).setBedLocation(bedNo); 
 			return "Ok";
 		}
 		else {return "Error";}

@@ -326,7 +326,7 @@ public class API {
 			return "No beds available in department: " + departmentName;
 		}
 		discharge(patientRes.getFirst().getID());
-		patientAdmission(p.getTriage().toString(), departmentName, patientID);
+		patientAdmission("", departmentName, patientID);
 		
 		/* write to log file */
 //		log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());

@@ -29,7 +29,7 @@ public class M4_movePatientBeds {
 
 	@Then("^I get a good Moved to diffrent bed$")
 	public void i_get_a_good_Moved_to_diffrent_bed() throws IOException {
-		message = api.movePatientBed("2", "4");
+		message = api.movePatientBed("2", "7");
 		assertEquals("The patient was moved succesfully", message);
 	}
 

@@ -115,12 +115,16 @@ public class ChangeReg {
 	}
 	
 	 public void remove(Department d, Patient p) {
+			// Setting department, triage and BedNo to null
+		p.setBedLocation(null);
+		p.setTriage(null);
+		p.setDepartment(null);
 		HashSet<Person> patientSet = d.getPatient();
 		patientSet.remove(p);
 		d.setPatient(patientSet);
 		
-		// Setting department to null
-		p.setDepartment(null);
+
+
 		
 		// To insert the value null in department_name column, delete the patient and write the patient again
 		DB.deletePatient(p);
