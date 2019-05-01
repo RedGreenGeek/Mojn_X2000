@@ -11,9 +11,8 @@ import application.view.MainMenuView;
 import application.view.RegisterPatientView;
 import application.view.StaffDepartView;
 
-public class HospitalController {
+public class HospitalController  extends Controller{
 	private HospitalView view;
-	private Session sessionModel;
 	private ApplicationController application;
 	private Session session;
 	
@@ -34,7 +33,7 @@ public class HospitalController {
 	public void setView(HospitalView view) {
 		this.view = view;
 //		this.view.setTableModel(inventoryModel);
-		this.view.setSession(sessionModel);
+//		this.view.setSession(sessionModel);
 	}
 	public void Back2Main() {
 

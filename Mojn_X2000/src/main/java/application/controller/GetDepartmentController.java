@@ -11,9 +11,8 @@ import application.view.HospitalView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class GetDepartmentController {
+public class GetDepartmentController  extends Controller{
 	private GetDepartmentView view;
-	private Session sessionModel;
 
 	
 	
@@ -28,7 +27,6 @@ public class GetDepartmentController {
 	
 	public void setView(GetDepartmentView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String GetDepartmentAPI() {

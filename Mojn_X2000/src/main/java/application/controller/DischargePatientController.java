@@ -7,10 +7,8 @@ import application.view.HospitalView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class DischargePatientController {
+public class DischargePatientController  extends Controller{
 	private DischargePatientView view;
-	private Session sessionModel;
-
 	
 	
 	public DischargePatientController(Session session) {
@@ -24,7 +22,6 @@ public class DischargePatientController {
 	
 	public void setView(DischargePatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String DischargeAPI( String patientId) {

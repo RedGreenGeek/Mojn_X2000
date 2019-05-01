@@ -8,9 +8,8 @@ import application.view.HospitalView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class AllocatePatientController {
+public class AllocatePatientController  extends Controller{
 	private AllocatePatientView view;
-	private Session sessionModel;
 
 	
 	
@@ -25,7 +24,7 @@ public class AllocatePatientController {
 	
 	public void setView(AllocatePatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
+//		this.view.setSession(sessionModel);
 	}
 	
 	public String AllocateToBedAPI( String patientId, String departmentName) {

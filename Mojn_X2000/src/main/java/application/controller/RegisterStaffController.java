@@ -7,9 +7,8 @@ import application.view.RegisterStaffView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class RegisterStaffController {
+public class RegisterStaffController  extends Controller{
 	private RegisterStaffView view;
-	private Session sessionModel;
 
 	
 	
@@ -23,7 +22,6 @@ public class RegisterStaffController {
 	
 	public void setView(RegisterStaffView sView) {
 		this.view = sView;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String RegisterAPI(String jobtype,String firstName, String lastName,String adress ,String day, String month, String year, String tribe) {

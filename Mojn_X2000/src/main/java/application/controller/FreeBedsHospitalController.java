@@ -10,9 +10,8 @@ import application.view.MovedBedPatientView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class FreeBedsHospitalController {
+public class FreeBedsHospitalController  extends Controller{
 	private FreeBedsHospitalView view;
-	private Session sessionModel;
 
 	
 	
@@ -27,7 +26,6 @@ public class FreeBedsHospitalController {
 	
 	public void setView(FreeBedsHospitalView sView) {
 		this.view = sView;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String FreeBedsAPI(String departmentName) {

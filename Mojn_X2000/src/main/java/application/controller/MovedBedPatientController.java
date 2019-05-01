@@ -9,9 +9,8 @@ import application.view.MovedBedPatientView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class MovedBedPatientController {
+public class MovedBedPatientController  extends Controller{
 	private MovedBedPatientView view;
-	private Session sessionModel;
 
 	
 	
@@ -26,7 +25,6 @@ public class MovedBedPatientController {
 	
 	public void setView(MovedBedPatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String MovedBedAPI( String patientId, String newBed) {

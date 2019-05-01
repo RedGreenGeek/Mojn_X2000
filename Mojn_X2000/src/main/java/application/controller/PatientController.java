@@ -15,9 +15,8 @@ import application.view.PatientView;
 import application.view.RegisterPatientView;
 import application.view.SearchPatientView;
 
-public class PatientController {
+public class PatientController extends Controller{
 	private PatientView view;
-	private Session sessionModel;
 	private ApplicationController application;
 	private Session session;
 	
@@ -39,7 +38,7 @@ public class PatientController {
 	public void setView(PatientView view) {
 		this.view = view;
 //		this.view.setTableModel(inventoryModel);
-		this.view.setSession(sessionModel);
+//		this.view.setSession(sessionModel);
 	}
 	public void Back2Main() {
 
@@ -48,7 +47,9 @@ public class PatientController {
 
 		application.manageInventory(session);
 	}
-	
+//	public Session getSession(){
+//		return sessionModel;
+//	}
 	public void ToAllocate() {
 		AllocatePatientController SC = new AllocatePatientController(session);
 		AllocatePatientView SView = new AllocatePatientView(SC);

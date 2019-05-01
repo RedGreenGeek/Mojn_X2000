@@ -7,9 +7,8 @@ import application.view.RegisterPatientView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class EditPatientController {
+public class EditPatientController  extends Controller{
 	private EditPatientView view;
-	private Session sessionModel;
 
 	
 	
@@ -23,7 +22,6 @@ public class EditPatientController {
 	
 	public void setView(EditPatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String EditAPI(String ID,String firstName, String lastName,String adress ,String day, String month, String year, String tribe, String alive) {

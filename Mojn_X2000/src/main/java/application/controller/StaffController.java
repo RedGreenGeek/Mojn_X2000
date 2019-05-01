@@ -10,9 +10,8 @@ import application.view.RegisterStaffView;
 import application.view.SearchPatientView;
 import application.view.SearchStaffView;
 
-public class StaffController {
+public class StaffController  extends Controller{
 	private StaffView view;
-	private Session sessionModel;
 	private ApplicationController application;
 	private Session session;
 	
@@ -33,7 +32,7 @@ public class StaffController {
 	public void setView(StaffView view) {
 		this.view = view;
 //		this.view.setTableModel(inventoryModel);
-		this.view.setSession(sessionModel);
+//		this.view.setSession(sessionModel);
 	}
 	public void Back2Main() {
 

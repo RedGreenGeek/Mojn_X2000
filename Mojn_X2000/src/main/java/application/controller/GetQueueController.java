@@ -11,9 +11,8 @@ import application.view.SearchPatientView;
 import application.view.StaffDepartView;
 import framework.API;
 
-public class GetQueueController {
+public class GetQueueController  extends Controller{
 	private GetQueueView view;
-	private Session sessionModel;
 
 	
 	
@@ -28,7 +27,6 @@ public class GetQueueController {
 	
 	public void setView(GetQueueView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String GetQueueAPI( String departmentName) {

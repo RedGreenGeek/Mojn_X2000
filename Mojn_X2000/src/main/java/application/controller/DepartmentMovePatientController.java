@@ -10,9 +10,8 @@ import application.view.MovedBedPatientView;
 import application.view.SearchPatientView;
 import framework.API;
 
-public class DepartmentMovePatientController {
+public class DepartmentMovePatientController  extends Controller{
 	private DepartmentMovePatientView view;
-	private Session sessionModel;
 
 	
 	
@@ -27,7 +26,6 @@ public class DepartmentMovePatientController {
 	
 	public void setView(DepartmentMovePatientView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String MoveDepartmentAPI( String patientId, String departmentName , String trilvl) {

@@ -8,9 +8,8 @@ import application.view.SearchPatientView;
 import application.view.SearchStaffView;
 import framework.API;
 
-public class SearchStaffController {
+public class SearchStaffController  extends Controller{
 	private SearchStaffView view;
-	private Session sessionModel;
 	private ApplicationController application;
 	private Session session;
 	
@@ -27,7 +26,6 @@ public class SearchStaffController {
 	
 	public void setView(SearchStaffView view) {
 		this.view = view;
-		this.view.setSession(sessionModel);
 	}
 	
 	public String SearchAPI(String firstName, String surname, String email, String day, String month, String year, String id) {
