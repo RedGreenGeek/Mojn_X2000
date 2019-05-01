@@ -1,14 +1,8 @@
 package application.controller;
 
-import java.util.Iterator;
-import java.util.LinkedList;
 
 import application.model.Session;
-import application.view.AdmitPatientView;
-import application.view.DischargePatientView;
 import application.view.GetDepartmentView;
-import application.view.HospitalView;
-import application.view.SearchPatientView;
 import framework.API;
 
 public class GetDepartmentController  extends Controller{
@@ -33,16 +27,10 @@ public class GetDepartmentController  extends Controller{
 		API api =  API.getInstance();
 
 
-		LinkedList<String> a = api.getDepartments();
-		
-		return a.toString();
-		
+		return api.getDepartments();
 	}
 
 	public void Back2Main() {
-		view.setVisible(false);
-		
-		
+		view.setVisible(false);	
 	}
-
 }

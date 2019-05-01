@@ -1,12 +1,7 @@
 package application.controller;
 
 import application.model.Session;
-import application.view.AdmitPatientView;
-import application.view.AllocatePatientView;
-import application.view.DischargePatientView;
-import application.view.HospitalView;
 import application.view.MovedBedPatientView;
-import application.view.SearchPatientView;
 import framework.API;
 
 public class MovedBedPatientController  extends Controller{

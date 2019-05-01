@@ -180,8 +180,4 @@ public class AllocatePatientView extends JFrame {
 			}
 		});
 	}
-	
-	
-
-
 }

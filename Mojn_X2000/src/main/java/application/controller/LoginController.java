@@ -4,7 +4,6 @@ import application.model.Session;
 import application.model.User;
 import application.view.LoginView;
 import framework.API;
-import framework.Password.Password;
 
 public class LoginController {
 
@@ -23,8 +22,7 @@ public class LoginController {
 		session.setRole(username);
 		User user = new User();
 		user.setUsername(username);
-		user.load();
-		if ((!username.isEmpty()) && user.passwordMatches(password)) {
+		if ((!username.isEmpty()) && API.getInstance().passwordMatch(password,user.getUsername())) {
 			session.setUser(user);
 			view.setVisible(false);
 			application.manageInventory(session);

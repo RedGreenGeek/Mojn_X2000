@@ -3,23 +3,16 @@ package application.view;
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 
-import application.controller.PatientController;
-import application.controller.SearchPatientController;
 import application.controller.SearchStaffController;
-import application.model.Session;
 
+@SuppressWarnings("serial")
 public class SearchStaffView extends JFrame {
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;

@@ -1,31 +1,15 @@
-
-
-
 package application.view;
-
 
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 
-import application.controller.AdmitPatientController;
-import application.controller.AllocatePatientController;
-import application.controller.DischargePatientController;
 import application.controller.FreeBedsHospitalController;
-import application.controller.MovedBedPatientController;
-import application.controller.PatientController;
-import application.controller.SearchPatientController;
-import application.model.Session;
 
 public class FreeBedsHospitalView extends JFrame {
 	private static final long serialVersionUID = 989187452L;

@@ -1,13 +1,10 @@
 package application.controller;
 
-import application.model.Inventory;
 import application.model.Session;
 import application.view.StaffView;
 import application.view.AssignStaffView;
 import application.view.EditStaffView;
-import application.view.MainMenuView;
 import application.view.RegisterStaffView;
-import application.view.SearchPatientView;
 import application.view.SearchStaffView;
 
 public class StaffController  extends Controller{

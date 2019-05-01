@@ -19,6 +19,7 @@ public class API {
 	private Searcher searcher;
 	private ChangeReg R;
 	private Database DB;
+	private Password Pas;
 //	private Logger log;
 	
 	public static synchronized API getInstance() {
@@ -31,7 +32,7 @@ public class API {
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = Database.getInstance(Database.DEFAULT);
-		
+		Pas = Password.getInstance();
 //		try {
 //			log = new Logger();
 //			log.write("SYSTEM","REBOOT","NONE");
@@ -70,7 +71,6 @@ public class API {
 		
 
 		//------
-		Password Pas = Password.getInstance();
 		
 		//
 		this.registerPatient("Søren","Sørensen","Hellerup","Ventre",24,9,97,true);
@@ -85,7 +85,6 @@ public class API {
 		this.registerStaff("Nurse", "Helle","Thorning","Herlev","Gucci",02,02,1960);
 		this.assignStaffDepartment("Cardio", "", "Helle", "Thorning", "", "");
 		
-		Pas.addPassToMap("asd", "N3");
 		Pas.addPassToMap("password", "IT4");
 		Pas.addPassToMap("password", "C5");
 		Pas.addPassToMap("password", "D2");
@@ -286,25 +285,25 @@ public class API {
 	/* _____________ HEALTH FACILITY MANAGMENT for M3 ______________ */
 	
 	//GET ALL DEPARTMENTS
-	public LinkedList<String> getDepartments() {
+	public String getDepartments() {
 		LinkedList<Department> ds = new LinkedList<Department>(h.getDepartSet());
-		LinkedList<String> dlist = new LinkedList<String>();
+		String res = "";
 		while (!ds.isEmpty()) {
-			dlist.add(ds.removeFirst().toString());
+			res += ds.removeFirst().toString()+"\n";
 		}
-		return dlist;
+		return res;
 	}
 	
 	//GET STAFF LIST OF GIVEN DEPARTMETN
-	public LinkedList<String> getDeparmentStaff(String departmentName) {
+	public String getDeparmentStaff(String departmentName) {
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
-		LinkedList<String> res = new LinkedList<String>();
+		String res = "";
 		if (resList.size()==1) {
 			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getStaff());
 			while (!sList.isEmpty()) {
-				res.add(sList.removeFirst().toString());
+				res += sList.removeFirst().toString()+"\n";
 			}
-		} else {res.add("No or multiple department(s) match your search criterion");}
+		} else {res = "No or multiple department(s) match your search criterion";}
 		return res;
 	}
 	
@@ -475,14 +474,18 @@ public class API {
 	
 	/* ______________  PASSWORD METHODS for O2 ________________    */
 	
+	//CHECK IF PASSWORD MATCH USERID
+	public boolean passwordMatch(String password, String userID) {
+		return this.Pas.checkPassword(password, userID);
+	}
+	
 	//ADDS NEW PASSWORD
 	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
-		Password Pass = Password.getInstance();
-		if (Pass.checkUniqueID(staffID)) {
+		if (Pas.checkUniqueID(staffID)) {
 			return "Password already created for this staff!";
 		}
 		if (newPassword2 == newPassword1) {
-			Pass.addPassToMap(newPassword1, staffID);
+			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 //			log.write(userID,"NEW USER ADDED",staffID);
@@ -495,22 +498,21 @@ public class API {
 	
 	//CHANGE PASSWORD FROM KNOWN PASSWORD
 	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
-		Password Pass = Password.getInstance();
-		if (!Pass.checkUniqueID(staffID)) {
+		if (!Pas.checkUniqueID(staffID)) {
 			return "Staff ID does not exist";
 		}
-		if (Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
-			Pass.addPassToMap(newPassword1, staffID);
+		if (Pas.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
+			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 //			log.write(userID,"PASSWORD CHANGED",staffID);
 			
 			return "Password changed";
 		}
-		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
+		if (!Pas.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
 			return "Wrong old password";
 		}
-		if (Pass.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
+		if (Pas.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
 			return "The 2 new passwords are not equal";
 		}
 		return "Something went wrong";
@@ -520,23 +522,21 @@ public class API {
 	/* _____________ PATIENT WAITING O3 ______________ */
 	
 	//GET WAITING QUEUE OF GIVEN DEPARTMENT
-	public LinkedList<String> getQueue(String departmentName) {
+	public String getQueue(String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		OutPatientDepart outDepart;
-		LinkedList<String> res = new LinkedList<String>();
 		if (departmentRes.size() != 1) {
-			res.add("Warning, could not retrieve queue of given department.");
-			return res;
+			return "Warning, could not retrieve queue of given department.";
 		}
 		try {
 			outDepart = (OutPatientDepart) departmentRes.getFirst();
 		} catch (ClassCastException e) {
-			res.add("Warning, could not retrieve queue of given department.");
-			return res;
+			return "Warning, could not retrieve queue of given department.";
 		}
 		ArrayList<Person> queue = outDepart.PrintQueue();
+		String res = "";
 		for (int i = 0; i<queue.size(); i++) {
-			res.add(queue.get(i).toString());
+			res += (queue.get(i).toString())+"\n";
 		}
 		return res;
 	}

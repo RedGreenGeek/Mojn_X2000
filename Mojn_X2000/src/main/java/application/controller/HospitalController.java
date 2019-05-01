@@ -1,14 +1,10 @@
 package application.controller;
 
-import application.model.Inventory;
 import application.model.Session;
-import application.view.StaffView;
 import application.view.FreeBedsHospitalView;
 import application.view.GetDepartmentView;
 import application.view.GetQueueView;
 import application.view.HospitalView;
-import application.view.MainMenuView;
-import application.view.RegisterPatientView;
 import application.view.StaffDepartView;
 
 public class HospitalController  extends Controller{

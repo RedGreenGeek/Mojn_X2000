@@ -1,15 +1,11 @@
 package application.controller;
 
-import application.model.Inventory;
 import application.model.Session;
-import application.view.StaffView;
 import application.view.AdmitPatientView;
 import application.view.AllocatePatientView;
 import application.view.DepartmentMovePatientView;
 import application.view.DischargePatientView;
 import application.view.EditPatientView;
-import application.view.HospitalView;
-import application.view.MainMenuView;
 import application.view.MovedBedPatientView;
 import application.view.PatientView;
 import application.view.RegisterPatientView;

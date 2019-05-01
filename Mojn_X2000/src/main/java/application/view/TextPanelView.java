@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class TextPanelView extends JPanel{
 	JTextArea textArea;
 	TextPanelView(){
