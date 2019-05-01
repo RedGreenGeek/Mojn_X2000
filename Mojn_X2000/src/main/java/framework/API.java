@@ -154,7 +154,7 @@ public class API {
 		while (!persons.isEmpty()) {
 			message += "\n"+persons.removeFirst().toString();
 		}
-		if (message.equals("ID\tJob\tDepartment\tSurname\tName")) {
+		if (message.equals("ID\tDepartment\tSurname\tName\tBedNo/Triage")) {
 			return "No match to search parameters!";
 		} else {return message; }
 	}
