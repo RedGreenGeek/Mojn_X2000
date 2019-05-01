@@ -370,40 +370,39 @@ public class API {
 	
 	//ADMIT EXSISTING PATIENT TO DEPARTMENT
 	public String patientAdmission(String trilvl, String departmentName, String patientId) {
-		//CHECK TRIAGE LEVEL
-		int triagelvl = 1;
-		try {
-			if (!trilvl.equals("")) {triagelvl = Integer.parseInt(trilvl);}
-		} catch (Exception e) {return "The triage level specification wasn't an integer";}
-	
-		LinkedList<Person> pSearch = searcher.patientSearch(patientId, "", "", "");
-		if (pSearch.size() != 1) {return "Invalid patient ID";}
-		Patient p = (Patient) pSearch.getFirst();
-		
-		LinkedList<Department> departmentSearch = searcher.departmentSearch(departmentName);
-		if (departmentSearch.size() != 1 ) {
-			return "The department specification is ambigious";
-		}
-		Department d = departmentSearch.getFirst();
-		if (d instanceof framework.Departments.AdminDepart) {
-			return "The department is an administrativ department";
-		}
-		discharge(p.getID());
-		if (d instanceof framework.Departments.HealthCare.InPatientDepart) {
-			InPatientDepart inDepart = (InPatientDepart) d;
-			R.add(inDepart, p);
-			inDepart.beds.AllocateBed(p);
-		} else {
-			OutPatientDepart outDepart = (OutPatientDepart) d;
-			R.add(outDepart, p);
-			outDepart.EnQueue(p, triagelvl);
-		}
-		
-		/* write to log file */
-//		log.write(userID,"PATITENT ADMITTED",p.toString());
-		
-		return "The patient has been registered succesfully to " + departmentName +  "!";
-	}
+		  //CHECK TRIAGE LEVEL
+		  int triagelvl = 1;
+		  try {
+		   if (!trilvl.equals("")) {triagelvl = Integer.parseInt(trilvl);}
+		  } catch (Exception e) {return "The triage level specification wasn't an integer";}
+		 
+		  LinkedList<Person> pSearch = searcher.patientSearch(patientId, "", "", "");
+		  if (pSearch.size() != 1) {return "Invalid patient ID";}
+		  Patient p = (Patient) pSearch.getFirst();
+		  
+		  LinkedList<Department> departmentSearch = searcher.departmentSearch(departmentName);
+		  if (departmentSearch.size() != 1 ) {
+		   return "The department specification is ambigious";
+		  }
+		  Department d = departmentSearch.getFirst();
+		  if (d instanceof framework.Departments.AdminDepart) {
+		   return "The department is an administrativ department";
+		  }
+		  discharge(p.getID());
+		  if (d instanceof framework.Departments.HealthCare.InPatientDepart) {
+		   InPatientDepart inDepart = (InPatientDepart) d;
+		   R.add(inDepart, p);
+		  } else {
+		   OutPatientDepart outDepart = (OutPatientDepart) d;
+		   p.setTriage(triagelvl);
+		   R.add(outDepart, p);
+		  }
+		  
+		  /* write to log file */
+		//  log.write(userID,"PATITENT ADMITTED",p.toString());
+		  
+		  return "The patient has been registered succesfully to " + departmentName +  "!";
+		 }
 	
 	// The input to this function should be specified in the GUI so when
 	// I search for the patient and click remove this function is given the patient ID
