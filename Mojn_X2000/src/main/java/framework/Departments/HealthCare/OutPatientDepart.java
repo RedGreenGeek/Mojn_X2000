@@ -50,9 +50,7 @@ public class OutPatientDepart extends HCDepart {
 	public void EnQueue(Person P, int triageLevel) {
 		Pair p = new Pair(P,triageLevel);
 		this.queue.add(p);
-		Patient p1 = (Patient) P;
-		p1.setTriage(triageLevel);
-		
+		((Patient) P).setTriage(triageLevel);
 	}
 	public void EnQueue(Person P) {
 		this.EnQueue(P,1);

@@ -397,6 +397,7 @@ public class API {
 			OutPatientDepart outDepart = (OutPatientDepart) d;
 			R.add(outDepart, p);
 			outDepart.EnQueue(p, triagelvl);
+			p.setTriage(triagelvl);
 		}
 		
 		/* write to log file */
