@@ -165,6 +165,19 @@ public class API {
 			return "No match to search parameters!";
 		} else {return message; }
 	}
+	
+	//GET PATIENT LIST OF GIVEN DEPARTMETN
+	public String getDeparmentPatient(String departmentName) {
+		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
+		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
+		if (resList.size()==1) {
+			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getPatient());
+			while (!sList.isEmpty()) {
+				res += "\n"+sList.removeFirst().toString();
+			}
+		} else {res = "No or multiple department(s) match your search criterion";}
+		return res;
+	}
 
 	
 	
