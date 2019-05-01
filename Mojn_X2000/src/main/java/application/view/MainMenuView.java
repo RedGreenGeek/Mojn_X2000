@@ -50,19 +50,19 @@ public class MainMenuView extends JFrame {
 		buttonsPanel.setLayout(new GridBagLayout());
 		
 		JButton btnPatient = new JButton("Patient");
-		Image patientImg = new ImageIcon(this.getClass().getResource("/Patient.png")).getImage();
+		Image patientImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Patient.png")).getImage();
 		btnPatient.setIcon(new ImageIcon(patientImg));
 		btnPatient.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnPatient.setHorizontalTextPosition(SwingConstants.CENTER);	
 		
 		JButton btnStaff = new JButton("Staff");
-		Image StaffImg = new ImageIcon(this.getClass().getResource("/Staff.png")).getImage();
+		Image StaffImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Staff.png")).getImage();
 		btnStaff.setIcon(new ImageIcon(StaffImg));		
 		btnStaff.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnStaff.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnHospital = new JButton("Hospital");
-		Image HospitalImg = new ImageIcon(this.getClass().getResource("/hospital.png")).getImage();
+		Image HospitalImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/hospital.png")).getImage();
 		btnHospital.setIcon(new ImageIcon(HospitalImg));		
 		btnHospital.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnHospital.setHorizontalTextPosition(SwingConstants.CENTER); 
