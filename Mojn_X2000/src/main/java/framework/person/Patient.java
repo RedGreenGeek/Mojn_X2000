@@ -51,7 +51,7 @@ public class Patient extends Person {
 	    this.patientID = patientID;
 	}
 	
-	public void setTriage(int triage) {
+	public void setTriage(Integer triage) {
 		this.triage = triage;
 	}
 	
