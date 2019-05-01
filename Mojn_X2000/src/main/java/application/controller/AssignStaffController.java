@@ -36,6 +36,6 @@ public class AssignStaffController  extends Controller{
 	}
 
 	public void Back2Main() {
-		view.setVisible(false);
+		view.setVisible(false);	
 	}
 }

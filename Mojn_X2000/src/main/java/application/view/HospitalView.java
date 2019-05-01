@@ -56,25 +56,25 @@ public class HospitalView extends JFrame {
 		buttonsPanel.setLayout(new GridBagLayout());
 		
 		JButton btnGetDepart = new JButton("Get Depart");
-		Image getDepartImg = new ImageIcon(this.getClass().getResource("/Hospital structur/getdepart.png")).getImage();
+		Image getDepartImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/getdepart.png")).getImage();
 		btnGetDepart.setIcon(new ImageIcon(getDepartImg));
 		btnGetDepart.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnGetDepart.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnStaffInDepart = new JButton("Staff In Depart");
-		Image staffInDepartImg = new ImageIcon(this.getClass().getResource("/Hospital structur/getstaff.png")).getImage();
+		Image staffInDepartImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/getstaff.png")).getImage();
 		btnStaffInDepart.setIcon(new ImageIcon(staffInDepartImg));
 		btnStaffInDepart.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnStaffInDepart.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnFreeBeds = new JButton("Avaliable Beds In Depart");
-		Image freeBedsImg = new ImageIcon(this.getClass().getResource("/Hospital structur/free.png")).getImage();
+		Image freeBedsImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/free.png")).getImage();
 		btnFreeBeds.setIcon(new ImageIcon(freeBedsImg));
 		btnFreeBeds.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnFreeBeds.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnQueue = new JButton("Queue In Out Depart");
-		Image queueImg = new ImageIcon(this.getClass().getResource("/Hospital structur/queue.png")).getImage();
+		Image queueImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/queue.png")).getImage();
 		btnQueue.setIcon(new ImageIcon(queueImg));
 		btnQueue.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnQueue.setHorizontalTextPosition(SwingConstants.CENTER); 
@@ -134,6 +134,19 @@ public class HospitalView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.ToGetDepart();
+			}
+		});
+		menuTop.btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToAddPassword();
+			}
+		});
+		
+		menuTop.btnChange.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToChangePassword();
 			}
 		});
 		

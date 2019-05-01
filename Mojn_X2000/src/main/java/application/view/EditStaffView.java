@@ -36,7 +36,7 @@ public class EditStaffView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Edit Staff", "back");
+	private MenuTopView menuTop = new MenuTopView("Edit Staff information", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
