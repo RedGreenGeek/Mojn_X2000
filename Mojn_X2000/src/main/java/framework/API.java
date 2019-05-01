@@ -128,16 +128,19 @@ public class API {
 	}
 	
 	// CHANGE EXISTING PATIENT 
-	public String changePatient(String ID, String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+	public String changePatient(String ID, String firstName, String lastName, String tribe, String address, boolean alive) {
 		LinkedList<Person> patientSearch = searcher.patientSearch(ID, "", "", "");
 		if (patientSearch.size() != 1) {return "No patient with that ID found.";}
 		Patient p = (Patient) patientSearch.getFirst();
-		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
-			p.setFirstName(firstName);
-			p.setLastName(lastName);
-			p.setBirthDay(day, month, year);
-			p.setAdress(address);
-			p.setTribe(tribe);
+		if (Person.isValidPersonData(firstName, lastName, 01, 01, 1997, address, tribe, alive)) {
+			if (!firstName.isEmpty()) {
+			p.setFirstName(firstName);}
+			if (!lastName.isEmpty()) {
+			p.setLastName(lastName);}
+			if (!address.isEmpty()) {
+			p.setAdress(address);}
+			if (!tribe.isEmpty()) {
+			p.setTribe(tribe);} 
 			p.setAlive(alive);
 			
 			/* write to log file */
