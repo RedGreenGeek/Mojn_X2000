@@ -18,18 +18,18 @@ public class M1_searchPatient {
 	@When("^I am entering search data matching patient$")
 	public void i_am_entering_search_data_matching_patient() {
 		String firstName = "Jens";
-		message = api.patientSearcher("", firstName, "", "");
+		message = api.patientSearcher("", firstName, "", "", "");
 	}
 
 	@Then("^I get a list the patients maching my search data$")
 	public void i_get_a_list_the_patients_maching_my_search_data() {
 		assertNotEquals(message, "No match to search parameters!");
 	}
-
+	// dsgdf
 	@When("^I am entering search data not matching patient$")
 	public void i_am_entering_search_data_not_matching_patient() {
 		String birthday = "01-01-9999";
-		message = api.patientSearcher("", "", "", birthday);
+		message = api.patientSearcher("", "", "", birthday, "");
 	}
 
 	@Then("^I recieve a message that no patients are maching the data$")

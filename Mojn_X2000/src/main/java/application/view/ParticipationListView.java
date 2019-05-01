@@ -3,6 +3,8 @@ package application.view;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -11,63 +13,66 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import application.controller.RegisterPatientController;
+import application.controller.DischargePatientController;
+import application.controller.ParticipationListController;
 
-@SuppressWarnings("serial")
-public class RegisterPatientView extends JFrame {
-	private JLabel firstNameLabel;
-	private JLabel surnameLabel;
-	private JLabel adressLabel;
+
+public class ParticipationListView extends JFrame {
+	private static final long serialVersionUID = 9890752820411452L;
+	private JLabel departmentNameLabel;
+	private JLabel departLabel;
+	private JLabel birthLabel;
+	private JLabel addressLabel;
 	private JLabel tribeLabel;
-	private JLabel birthdayLabel;
-	private JLabel aliveLabel;
-	private JTextField firstNameField;
-	private JTextField surnameField;
-	private JTextField adressField;
-	private JTextField tribeField;
-	private JTextField dayField;
-	private JTextField monthField;
-	private JTextField yearField;
-	private JCheckBox aliveField;
+
+	
+	private JCheckBox departBox;
+	private JCheckBox birthBox;
+	private JCheckBox addressBox;
+	private JCheckBox tribeBox;
+
+
+
+	private JTextField departmentNameField;
 
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Register a patient", "back");
+	private MenuTopView menuTop = new MenuTopView("Save participation list", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
 	
-	private RegisterPatientController controller;
+	private ParticipationListController controller;
 
 	
-	public RegisterPatientView(RegisterPatientController controller) {
+	public ParticipationListView(ParticipationListController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
 	
 	private void initGUI() {
-		setTitle("Register Patients");
+		setTitle("Participation list");
 		setPreferredSize(new Dimension(800, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
+
+		departmentNameLabel = new JLabel("Department name: ");
+		departLabel = new JLabel("Departments? ");
+		birthLabel = new JLabel("Birthday? ");
+		addressLabel = new JLabel("Adress? ");
+		tribeLabel = new JLabel("Tribe? ");
+
+
+
+		departmentNameField = new JTextField(11);
+		departBox = new JCheckBox();
+		birthBox = new JCheckBox();
+		addressBox = new JCheckBox();
+		tribeBox = new JCheckBox();
 		
-		firstNameLabel = new JLabel("First name: ");
-		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
-		tribeLabel = new JLabel("Tribe: ");
-		birthdayLabel = new JLabel("Birthday: ");
-		aliveLabel = new JLabel("alive: ");
-		firstNameField = new JTextField(11);
-		surnameField = new JTextField(11);
-		adressField = new JTextField(11);
-		tribeField = new JTextField(11);
-		dayField = new JTextField(3);
-		monthField = new JTextField(3);
-		yearField = new JTextField(4);
-		aliveField = new JCheckBox();
 		
 
 		
@@ -76,27 +81,25 @@ public class RegisterPatientView extends JFrame {
 		okBtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent event) {
-				String firstName = firstNameField.getText();
-				String surname = surnameField.getText();
-				String adress = adressField.getText();
-				String tribe = tribeField.getText();
-				String day = dayField.getText();
-				String month = monthField.getText();
-				String year = yearField.getText();
-				Boolean alive = aliveField.isSelected();
-				firstNameField.setText("");
-				surnameField.setText("");
-				dayField.setText("");
-				monthField.setText("");
-				yearField.setText("");
-				aliveField.setText("");
-				tribeField.setText("");
-				adressField.setText("");
-				msg = controller.RegisterAPI(firstName, surname, adress, day, month, year, tribe, alive);
+				String departments = departmentNameField.getText();
+				boolean departs = departBox.isSelected();
+				boolean birthday = birthBox.isSelected();
+				boolean adress = addressBox.isSelected();
+				boolean tribe = tribeBox.isSelected();
+
+
+				departmentNameField.setText("");
+				try {
+					msg = controller.ParticipationListAPI(departments, departs, birthday, adress, tribe);
+				} catch (IOException e) {
+					System.out.println("?");
+				}
 				
+
 
 				textPanel.textArea.append(msg);
 				textPanel.textArea.append("\n");
+
 				
 
 ;			}
@@ -118,41 +121,9 @@ public class RegisterPatientView extends JFrame {
 		
 		/////////////////////////////////// 1. linje
 		
-		gc.gridx = 0;
-		gc.gridy = 0;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(firstNameLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(firstNameField, gc);
+
 		
 		///////////////////////////// 2. linje
-		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5);
-		
-		inputArea.add(surnameLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(surnameField, gc);
-		/////////////////////////// 3. linje
-		
 		gc.gridx = 0;
 		gc.gridy++;
 		gc.weightx = 1;
@@ -161,13 +132,33 @@ public class RegisterPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(adressLabel, gc);
+		inputArea.add(departLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(adressField, gc);
+		inputArea.add(departBox, gc);
+		
+
+		/////////////////////////// 3. linje
+		
+
+		gc.gridx = 0;
+		gc.gridy++;
+		gc.weightx = 1;
+		gc.weighty = 0.1;
+		gc.fill = GridBagConstraints.NONE;
+		gc.anchor = GridBagConstraints.LINE_END;
+		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		
+		inputArea.add(addressLabel, gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.LINE_START;
+		gc.insets = new Insets(0,0,0,0);
+		
+		inputArea.add(addressBox, gc);
 		
 		/////////////////////////// 4. linje
 		
@@ -185,36 +176,28 @@ public class RegisterPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(tribeField, gc);
+		inputArea.add(tribeBox, gc);
+
+		
 		/////////////////////////// 5. linje
 		
 		gc.gridx = 0;
 		gc.gridy++;
-		gc.weightx = 0.1;
+		gc.weightx = 1;
 		gc.weighty = 0.1;
 		gc.fill = GridBagConstraints.NONE;
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(birthdayLabel, gc);
+		inputArea.add(birthLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(dayField, gc);
+		inputArea.add(birthBox, gc);
 		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,38,0,0);
-		
-		inputArea.add(monthField, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,76,0,0);
-		
-		inputArea.add(yearField, gc);
+
 		
 		/////////////////////////// 6. linje
 		
@@ -226,13 +209,13 @@ public class RegisterPatientView extends JFrame {
 		gc.anchor = GridBagConstraints.LINE_END;
 		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(aliveLabel, gc);
+		inputArea.add(departmentNameLabel, gc);
 		
 		gc.gridx = 1;
 		gc.anchor = GridBagConstraints.LINE_START;
 		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(aliveField, gc);
+		inputArea.add(departmentNameField, gc);
 		
 		
 		/////////////////////////// 7. linje

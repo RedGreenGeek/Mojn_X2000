@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 
 import application.controller.PatientController;
 import application.model.Session;
+import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
 public class PatientView extends JFrame {
@@ -105,14 +106,14 @@ public class PatientView extends JFrame {
 		
 		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));
 		
-		if(session.getRole() == "Nurse" || session.getRole() == "ICT-Officer" ) {
+		if(session.getRole() == JobTypes.Nurse || session.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));}
 		
-		if(session.getRole() == "Clerk" || session.getRole() == "ICT-Officer" ) {
+		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnSearch, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnAdmit, GridBagLayoutUtils.constraint(2, 2, 0, 0, 0,10,50,10));}
 
-		if(session.getRole() == "Doctor" || session.getRole() == "ICT-Officer" || session.getRole() == "Nurse" ) {
+		if(session.getRole() == JobTypes.Doctor || session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Nurse ) {
 		buttonsPanel.add(btnMove, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnDischarge, GridBagLayoutUtils.constraint(1, 2, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnMoveBed, GridBagLayoutUtils.constraint(3, 2, 0, 0, 0,10,50,10));	

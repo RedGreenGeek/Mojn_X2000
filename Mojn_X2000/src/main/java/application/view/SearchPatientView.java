@@ -21,12 +21,14 @@ public class SearchPatientView extends JFrame {
 	private JLabel surnameLabel;
 	private JLabel birthdayLabel;
 	private JLabel IDLabel;
+	private JLabel departLabel;
 	private JTextField firstNameField;
 	private JTextField surnameField;
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
 	private JTextField idField;
+	private JTextField departField;
 
 
 	private JButton okBtn;
@@ -56,12 +58,14 @@ public class SearchPatientView extends JFrame {
 		surnameLabel = new JLabel("Surname: ");
 		birthdayLabel = new JLabel("Birthday: ");
 		IDLabel = new JLabel("ID: ");
+		departLabel= new JLabel("Department: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
 		idField = new JTextField(11);
+		departField = new JTextField(11);
 		
 
 		
@@ -76,13 +80,15 @@ public class SearchPatientView extends JFrame {
 				String month = monthField.getText();
 				String year = yearField.getText();
 				String id = idField.getText();
+				String depart = departField.getText();
 				firstNameField.setText("");
 				surnameField.setText("");
 				dayField.setText("");
 				monthField.setText("");
 				yearField.setText("");
 				idField.setText("");
-				msg = controller.SearchAPI(firstName, surname, day, month, year, id);
+				departField.setText("");
+				msg = controller.SearchAPI(firstName, surname, day, month, year, id, depart);
 				
 
 
@@ -221,6 +227,23 @@ public class SearchPatientView extends JFrame {
 		gc.insets = new Insets(0,0,0,0);
 		
 		inputArea.add(idField, gc);
+		 
+		/////////////////////////////// 8. linje
+		gc.gridx = 0;
+		gc.gridy++;
+		gc.weightx = 1;
+		gc.weighty = 0.1;
+		gc.fill = GridBagConstraints.NONE;
+		gc.anchor = GridBagConstraints.LINE_END;
+		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		
+		inputArea.add(departLabel, gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.LINE_START;
+		gc.insets = new Insets(0,0,0,0);
+		
+		inputArea.add(departField, gc);
 		
 		
 		/////////////////////////// 7. linje

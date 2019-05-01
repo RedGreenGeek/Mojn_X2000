@@ -3,7 +3,7 @@ package application.model;
 public final class Session {
 
 	private User user;
-	private String role;
+	private JobTypes role;
 	private static Session self;
 	
 	public static synchronized Session getInstance() {
@@ -13,25 +13,27 @@ public final class Session {
 		return self; 
 	}
 
-	
+	public enum JobTypes{
+		Doctor,Clerk, ICTOfficer , Nurse;
+	}
 
 	
 	public void setRole(String Role) {
 		char first = Role.charAt(0);
 		
 		if (first == 'D') {
-			role = "Doctor";
+			role = JobTypes.Doctor;
 					}
 		if (first == 'C') {
-			role = "Clerk";
+			role = JobTypes.Clerk;
 		}
 		
 		if (first == 'I') {
-			role = "ICT-Officer";
+			role = JobTypes.ICTOfficer;
 		}
 		
 		if (first == 'N') {
-			role = "Nurse";
+			role = JobTypes.Nurse;
 		}
 		
 		
@@ -46,7 +48,7 @@ public final class Session {
 		return user.getUsername();
 	}
 	
-	public String getRole() {
+	public JobTypes getRole() {
 		return role;
 	}
 }

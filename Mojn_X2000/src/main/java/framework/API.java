@@ -148,8 +148,19 @@ public class API {
 	}
 	
 	// PATIENT SEARCH 'PATIENT ATBs.' -> String (patient info)
-	public String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
+	public String patientSearcher(String patientID, String firstName, String lastName, String birthday, String department) {
 		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
+		if (!department.equals("")) {
+			@SuppressWarnings("unchecked")
+			LinkedList<Person> p2 = (LinkedList<Person>) persons.clone();
+			persons.clear();
+				while (!p2.isEmpty()) {
+				Person p = p2.removeFirst();
+				if (p.getDepartment().equals(department)) {
+					persons.add(p);
+				}
+			}
+		}
 		String message = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
 		while (!persons.isEmpty()) {
 			message += "\n"+persons.removeFirst().toString();
@@ -157,7 +168,7 @@ public class API {
 		if (message.equals("ID\tDepartment\tSurname\tName\tBedNo/Triage")) {
 			return "No match to search parameters!";
 		} else {return message; }
-	}
+		}
 	
 	//GET PATIENT LIST OF GIVEN DEPARTMETN
 	public String getDeparmentPatient(String departmentName) {

@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 
 import application.controller.StaffController;
 import application.model.Session;
+import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
 public class StaffView extends JFrame {
@@ -82,10 +83,10 @@ public class StaffView extends JFrame {
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		
-		if(session.getRole() == "ICT-Officer" ) {
+		if(session.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));}
 		
-		if(session.getRole() == "Clerk" || session.getRole() == "ICT-Officer" ) {
+		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnAssign, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
 	}

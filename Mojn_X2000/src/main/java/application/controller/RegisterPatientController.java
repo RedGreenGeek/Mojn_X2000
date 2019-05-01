@@ -21,7 +21,7 @@ public class RegisterPatientController  extends Controller{
 		this.view = view;
 	}
 	
-	public String RegisterAPI(String firstName, String lastName,String adress ,String day, String month, String year, String tribe, String alive) {
+	public String RegisterAPI(String firstName, String lastName,String adress ,String day, String month, String year, String tribe, boolean alive) {
 		API api =  API.getInstance();
 		String  birthday = "";
 		
@@ -33,7 +33,7 @@ public class RegisterPatientController  extends Controller{
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.registerPatient( firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), Boolean.parseBoolean(alive));
+		String a = api.registerPatient( firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), alive);
 		return a;
 		
 	}
