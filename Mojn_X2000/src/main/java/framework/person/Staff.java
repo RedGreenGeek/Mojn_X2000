@@ -13,8 +13,7 @@ private String Password;
 
 	@Override
 	public String toString() {
-		String s = this.getJobType() + ", " + this.getFirstName() + " " + this.getLastName() + ", \t Email: " + this.getEmail();
-		return s;
+		return this.getID() + "\t" + this.getJobType() + "\t" + this.getDepartment() + "\t" + this.getLastName() + this.getFirstName();
 	}
 	
 	protected void setPassword(Password P) {
