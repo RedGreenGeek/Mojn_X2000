@@ -150,18 +150,11 @@ public class API {
 	// PATIENT SEARCH 'PATIENT ATBs.' -> String (patient info)
 	public String patientSearcher(String patientID, String firstName, String lastName, String birthday) {
 		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
-		String[] list = new String[persons.size()+1];
-		list[0] = "First name | Last name | Address | Birthday |  ID ";
-		Patient s;
-		String message = "";
-		for (int i = 0; i<persons.size(); i++) {
-			s = (Patient) persons.get(i);
-			list[i+1] = s.getFirstName() + " | " + s.getLastName() + " | " + s.getAdress() + " | " + s.getBirthday() + " | " + s.getID();
+		String message = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
+		while (!persons.isEmpty()) {
+			message += "\n"+persons.removeFirst().toString();
 		}
-		for (int i = 0; i<list.length; i++) {
-			message = message + list[i] + "\n";
-		}
-		if (message.equals(list[0] + "\n")) {
+		if (message.equals("ID\tJob\tDepartment\tSurname\tName")) {
 			return "No match to search parameters!";
 		} else {return message; }
 	}
@@ -279,18 +272,11 @@ public class API {
 	//STAFF SEARCH
 	public String staffSearcher(String staffID, String firstName, String lastName, String birthday, String email) {
 		LinkedList<Person> persons = searcher.staffSearch(staffID,firstName, lastName, birthday, email);
-		String[] list = new String[persons.size()+1];
-		list[0] = "First name | Last name | Address | Birthday |  ID  | Job type ";
-		Staff s;
-		String message = "";
-		for (int i = 0; i<persons.size(); i++) {
-			s = (Staff) persons.get(i);
-			list[i+1] = s.getFirstName() + " | " + s.getLastName() + " | " + s.getAdress() + " | " + s.getBirthday() + " | " + s.getID() + " | " + s.getJobType();
+		String message = "ID\tJob\tDepartment\tSurname\tName";
+		while (!persons.isEmpty()) {
+			message += "\n"+persons.removeFirst().toString();
 		}
-		for (int i = 0; i<list.length; i++) {
-			message = message + list[i] + "\n";
-		}
-		if (message.equals(list[0] + "\n")) {
+		if (message.equals("ID\tJob\tDepartment\tSurname\tName")) {
 			return "No match to search parameters!";
 		} else {return message; }
 	}
@@ -311,11 +297,11 @@ public class API {
 	//GET STAFF LIST OF GIVEN DEPARTMETN
 	public String getDeparmentStaff(String departmentName) {
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
-		String res = "";
+		String res = "ID\tJob\tDepartment\tSurname\tName";
 		if (resList.size()==1) {
 			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getStaff());
 			while (!sList.isEmpty()) {
-				res += sList.removeFirst().toString()+"\n";
+				res += "\n"+sList.removeFirst().toString();
 			}
 		} else {res = "No or multiple department(s) match your search criterion";}
 		return res;
@@ -579,7 +565,7 @@ public class API {
 		/* write to log file */
 //		log.write(userID,"PATIENT DEQUEUED",p.toString());
 		
-		return next.toString();
+		return "ID\tDepartment\tSurname\tName\tBedNo/Triage\n"+next.toString();
 	}
 	
 	
