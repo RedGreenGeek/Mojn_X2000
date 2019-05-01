@@ -85,7 +85,6 @@ public class API {
 		this.registerStaff("Nurse", "Helle","Thorning","Herlev","Gucci",02,02,1960);
 		this.assignStaffDepartment("Cardio", "", "Helle", "Thorning", "", "");
 		
-		Pas.addPassToMap("asd", "N3");
 		Pas.addPassToMap("password", "IT4");
 		Pas.addPassToMap("password", "C5");
 		Pas.addPassToMap("password", "D2");
