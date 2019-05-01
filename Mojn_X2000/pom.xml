@@ -57,8 +57,7 @@
   			<configuration>
   				<archive>
   					<manifest>
-  						 <mainClass>Hospital.Mojn_X2000.Main.mojn		 
-  						 </mainClass>
+  						 <mainClass>application.controller.ApplicationController</mainClass>
   					</manifest>
   				</archive>
   				<descriptorRefs>

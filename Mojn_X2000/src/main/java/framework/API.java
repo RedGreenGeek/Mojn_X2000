@@ -19,7 +19,7 @@ public class API {
 	private Searcher searcher;
 	private ChangeReg R;
 	private Database DB;
-	private Password Pas = Password.getInstance();
+	private Password Pas;
 //	private Logger log;
 	
 	public static synchronized API getInstance() {
@@ -32,7 +32,8 @@ public class API {
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = Database.getInstance(Database.DEFAULT);
-		
+		Pas = Password.getInstance();
+		Pas.addPassToMap("I", "I");
 //		try {
 //			log = new Logger();
 //			log.write("SYSTEM","REBOOT","NONE");
@@ -172,6 +173,19 @@ public class API {
 		if (message.equals(list[0] + "\n")) {
 			return "No match to search parameters!";
 		} else {return message; }
+	}
+	
+	//GET PATIENT LIST OF GIVEN DEPARTMETN
+	public String getDeparmentPatient(String departmentName) {
+		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
+		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
+		if (resList.size()==1) {
+			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getPatient());
+			while (!sList.isEmpty()) {
+				res += "\n"+sList.removeFirst().toString();
+			}
+		} else {res = "No or multiple department(s) match your search criterion";}
+		return res;
 	}
 
 	
@@ -550,8 +564,8 @@ public class API {
 		if (Pas.checkUniqueID(staffID)) {
 			return "Password already created for this staff!";
 		}
-		if (newPassword2 == newPassword1) {
-			Pas.addPassToMap(newPassword1, staffID);
+		if (newPassword1.equals(newPassword2) ) {
+			Pass.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 //			log.write(userID,"NEW USER ADDED",staffID);
@@ -570,19 +584,20 @@ public class API {
 		
 		if (!Pas.checkUniqueID(staffID)) {
 			return "Staff ID does not exist";
+			
 		}
-		if (Pas.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2 ) {
-			Pas.addPassToMap(newPassword1, staffID);
+		if (Pass.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
+			Pass.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 //			log.write(userID,"PASSWORD CHANGED",staffID);
 			
 			return "Password changed";
 		}
-		if (!Pas.checkPassword(oldPassword, staffID) && newPassword1 == newPassword2  ) {
+		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2)  ) {
 			return "Wrong old password";
 		}
-		if (Pas.checkPassword(oldPassword, staffID) && (newPassword1 != newPassword2)  ) {
+		if (Pass.checkPassword(oldPassword, staffID) && !newPassword1.equals(newPassword2) ) {
 			return "The 2 new passwords are not equal";
 		}
 		return "Something went wrong";

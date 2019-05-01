@@ -1,32 +1,26 @@
 package application.controller;
 
-import application.model.Inventory;
 import application.model.Session;
+import application.view.AddPasswordView;
+import application.view.ChangePasswordView;
 import application.view.MainMenuView;
 
 public class MainMenuController extends Controller{
 	
-	private Inventory inventoryModel;
 	private MainMenuView view;
 	private ApplicationController application;
 	private Session session;
 
 
 	
-	public MainMenuController(Inventory inventory, Session session) {
-		this.inventoryModel = inventory;
+	public MainMenuController( Session session) {
 		this.sessionModel = session;
 		this.session = Session.getInstance();
 		this.application = ApplicationController.getInstance();
 	}
-//	public Session getSession(){
-//		return sessionModel;
-//	}
 	
 	public void setView(MainMenuView view) {
 		this.view = view;
-//		this.view.setTableModel(inventoryModel);
-//		this.view.setSession(sessionModel);
 	}
 
 	public void display() {
@@ -50,4 +44,20 @@ public class MainMenuController extends Controller{
 
 		application.managePatient(session);
 	}
+	public void ToAddPassword() {
+		AddPasswordController SC = new AddPasswordController(session);
+		AddPasswordView SView = new AddPasswordView(SC);
+		SC.setView(SView);
+
+		SC.display();
+
+		}
+	public void ToChangePassword() {
+		ChangePasswordController SC = new ChangePasswordController(session);
+		ChangePasswordView SView = new ChangePasswordView(SC);
+		SC.setView(SView);
+
+		SC.display();
+
+		}
 }

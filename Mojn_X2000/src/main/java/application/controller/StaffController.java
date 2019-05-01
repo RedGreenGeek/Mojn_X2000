@@ -2,7 +2,9 @@ package application.controller;
 
 import application.model.Session;
 import application.view.StaffView;
+import application.view.AddPasswordView;
 import application.view.AssignStaffView;
+import application.view.ChangePasswordView;
 import application.view.EditStaffView;
 import application.view.RegisterStaffView;
 import application.view.SearchStaffView;
@@ -94,5 +96,20 @@ public class StaffController  extends Controller{
 		SC.display();
 		
 	}
+	public void ToAddPassword() {
+		AddPasswordController SC = new AddPasswordController(session);
+		AddPasswordView SView = new AddPasswordView(SC);
+		SC.setView(SView);
 
+		SC.display();
+
+		}
+	public void ToChangePassword() {
+		ChangePasswordController SC = new ChangePasswordController(session);
+		ChangePasswordView SView = new ChangePasswordView(SC);
+		SC.setView(SView);
+
+		SC.display();
+
+		}
 }
