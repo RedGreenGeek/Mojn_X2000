@@ -212,8 +212,33 @@ public class API {
 			// removed from the overall set
 			h.getStaffSet().remove(person);
 			// registered as with new job type.
-			String message = registerStaff(jobtype, firstName, lastName, adress, tribe, day, month ,year);
-			return message;} else {return "Invalid job type!";}
+			person.setFirstName(firstName);
+			person.setLastName(lastName);
+			person.setTribe(tribe);
+			person.setAdress(adress);
+			person.setBirthDay(day, month, year);
+			String id = person.getJobType();
+			id.replaceAll("N", "").replaceAll("D", "").replaceAll("IT", "").replaceAll("C", "");
+			
+			if (jobtype.equals("Nurse")) {
+				id = "N"+id;
+			}
+			if (jobtype.equals("Doctor")) {
+				id = "D"+id;
+			}
+			if (jobtype.equals("Clerk")) {
+				id = "C"+id;
+			}
+			if (jobtype.equals("ICTOfficer")) {
+				id = "IT"+id;
+			}
+			
+			person.setID(id);
+			person.setJobType(jobtype);
+		
+			
+			return "The "+jobtype+" has been registered succesfully!";
+			} else {return "Invalid job type!";}
 		}
 		else {
 			if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
