@@ -116,6 +116,7 @@ public class ChangeReg {
 	
 	 public void remove(Department d, Patient p) {
 			// Setting department, triage and BedNo to null
+		((InPatientDepart) d).beds.Discharge(p);
 		p.setBedLocation(null);
 		p.setTriage(null);
 		p.setDepartment(null);
