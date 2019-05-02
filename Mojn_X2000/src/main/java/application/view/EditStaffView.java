@@ -33,23 +33,18 @@ public class EditStaffView extends JFrame {
 	private JTextField jobField;
 	private JTextField IDField;
 
-
-
 	private JButton okBtn;
 	private JPanel inputArea;
 	private MenuTopView menuTop = new MenuTopView("Edit Staff information", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
-	
 	private EditStaffController controller;
-
 	
 	public EditStaffView(EditStaffController controller) {
 		this.controller = controller;
 		initGUI();
 	}
-	
 	
 	private void initGUI() {
 		setTitle("Edit Staff");
@@ -65,7 +60,6 @@ public class EditStaffView extends JFrame {
 		birthdayLabel = new JLabel("Birthday: ");
 		jobLabel = new JLabel("job: ");
 		IDLabel = new JLabel("ID: ");
-
 		
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
@@ -76,9 +70,6 @@ public class EditStaffView extends JFrame {
 		yearField = new JTextField(4);
 		jobField = new JTextField(11);
 		IDField = new JTextField(11);
-
-		
-
 		
 		okBtn = new JButton("OK");
 		
@@ -106,25 +97,17 @@ public class EditStaffView extends JFrame {
 				tribeField.setText("");
 				adressField.setText("");
 				msg = controller.EditAPI(ID,firstName, surname, adress, day, month, year,tribe,job);
-				
-
 
 				textPanel.textArea.append(msg);
 				textPanel.textArea.append("\n");
 
-				
-
-;			}
+			}
 			
 		});
 		
-
-		
 		layoutComponents();
-
 		
 	} // her ender constructoren
-	
 	
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
@@ -136,7 +119,6 @@ public class EditStaffView extends JFrame {
 		inputArea.add(firstNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
 		///////////////////////////// 2. linje
-		
 		
 		y = y+1;
 		
@@ -150,7 +132,6 @@ public class EditStaffView extends JFrame {
 		
 		inputArea.add(adressLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
 		
-		
 		inputArea.add(adressField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
 		/////////////////////////// 4. linje
@@ -158,7 +139,6 @@ public class EditStaffView extends JFrame {
 		y = y + 1;
 		
 		inputArea.add(tribeLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-
 		
 		inputArea.add(tribeField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		/////////////////////////// 5. linje
@@ -188,8 +168,6 @@ public class EditStaffView extends JFrame {
 		inputArea.add(IDLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
 		
 		inputArea.add(IDField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
-		
-		
 		
 		/////////////////////////// 7. linje
 		

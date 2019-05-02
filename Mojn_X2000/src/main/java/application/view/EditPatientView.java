@@ -27,11 +27,8 @@ public class EditPatientView extends JFrame {
 	private JTextField surnameField;
 	private JTextField adressField;
 	private JTextField tribeField;
-
 	private JCheckBox aliveBox;
 	private JTextField IDField;
-
-
 
 	private JButton okBtn;
 	private JPanel inputArea;
@@ -62,7 +59,6 @@ public class EditPatientView extends JFrame {
 		tribeLabel = new JLabel("Tribe: ");
 		aliveLabel = new JLabel("alive: ");
 		IDLabel = new JLabel("ID: ");
-
 		
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
@@ -73,9 +69,6 @@ public class EditPatientView extends JFrame {
 		aliveBox.setSelected(true);
 		IDField = new JTextField(11);
 
-		
-
-		
 		okBtn = new JButton("OK");
 		
 		okBtn.addActionListener(new ActionListener() {
@@ -97,25 +90,17 @@ public class EditPatientView extends JFrame {
 				tribeField.setText("");
 				adressField.setText("");
 				msg = controller.EditAPI(ID,firstName, surname, adress, tribe,alive);
-				
-
 
 				textPanel.textArea.append(msg);
 				textPanel.textArea.append("\n");
 
-				
-
-;			}
+			}
 			
 		});
 		
-
-		
 		layoutComponents();
-
 		
 	} // her ender constructoren
-	
 	
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
@@ -175,11 +160,6 @@ public class EditPatientView extends JFrame {
 		
 		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
-		
-		
-		
-		
-		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
 		setLayout(new BorderLayout());
