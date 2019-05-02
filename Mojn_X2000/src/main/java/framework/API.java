@@ -92,6 +92,8 @@ public class API {
 			p.setTribe(tribe);} 
 			p.setAlive(alive);
 			
+			//Write to database 
+			DB.writePatient(p);
 			/* write to log file */
 //			log.write(userID,"PATIENT DATA CHANGED",p.toString());
 			
