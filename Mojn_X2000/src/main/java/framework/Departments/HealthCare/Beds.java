@@ -33,7 +33,7 @@ public class Beds {
 		System.out.println("Number of beds: " + beds.length);
 		System.out.println("Bed number: " + index);
 		 
-		if (beds[index].equals(patient)) {
+		if (patient.equals(beds[index])) {
 			return "Same bed";
 		}
 		if (beds[index] == null) {
