@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import application.controller.DepartmentMovePatientController;
+import application.utils.GridBagLayoutUtils;
 
 
 public class DepartmentMovePatientView extends JFrame {
@@ -100,90 +101,33 @@ public class DepartmentMovePatientView extends JFrame {
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
 		
-		GridBagConstraints gc = new GridBagConstraints();
+		int y = 0;
 		
-		/////////////////////////////////// 1. linje
+		inputArea.add(triLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
 		
-
+		inputArea.add(triField,  GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		///////////////////////////// 2. linje
+		/////////////////////////// 7. linje
+		y = y +1;
 		
-
-		/////////////////////////// 3. linje
+		inputArea.add(departNameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
 		
-
+		inputArea.add(departNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		/////////////////////////// 4. linje
+		/////////////////////////// 7. linje
+		y = y +1;
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		inputArea.add(IDLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
 		
-		inputArea.add(triLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(triField, gc);
-		
-
-		
-		/////////////////////////// 5. linje
-		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(departNameLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(departNameField, gc);
-		
-
-		
-		/////////////////////////// 6. linje
-		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(IDLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(idField, gc);
+		inputArea.add(idField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
 		
 		/////////////////////////// 7. linje
 		
-		gc.gridx = 1;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 1;
-		gc.anchor = GridBagConstraints.FIRST_LINE_START;
-		gc.insets = new Insets(0,0,0,0);
+		y = y+1;
 		
-		inputArea.add(okBtn, gc);
+		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
-		
 		
 		//////////////////////////// TEXT AREA //////////////////////////////7
 		setLayout(new BorderLayout());

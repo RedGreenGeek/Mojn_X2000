@@ -208,10 +208,6 @@ public class PatientView extends JFrame {
 	}
 	
 	
-//	public void setSession(Session sessionModel) {
-//		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-//	
-//	}
 }
 	
 	
