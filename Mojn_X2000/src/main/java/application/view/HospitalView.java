@@ -21,41 +21,33 @@ import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
 public class HospitalView extends JFrame {
-
 	private static final long serialVersionUID = 12347L;
 	private HospitalController controller;
 	private Session session;
 	private MenuTopView menuTop = new MenuTopView("Hospital Menu");
-
-
 	
-	
-	private JLabel lblUser;
 	private JLabel lblHospital;
-	
-	
+
+	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public HospitalView(HospitalController controller) {
 		this.controller = controller;
 		initGUI();
 	}
-	
-	
-
+	// All components of the window are defined
 	private void initGUI() {
 		this.session = Session.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Hospital Structur Menu");
 		setPreferredSize(new Dimension(800, 700));
 		
-		// Labels
 		lblHospital = new JLabel("Hospital Structur Menu");
 		lblHospital.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
-		// buttons
-		
+		// A panel for the buttons are defined
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new GridBagLayout());
 		
+		// All the buttons are defined and a icon added
 		JButton btnGetDepart = new JButton("Get Depart");
 		Image getDepartImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/getdepart.png")).getImage();
 		btnGetDepart.setIcon(new ImageIcon(getDepartImg));
@@ -82,12 +74,10 @@ public class HospitalView extends JFrame {
 		
 		JButton btnParticipationList = new JButton("Get participation list");
 		
-		
-		
 		JButton btnBack = new JButton("Back");
 		btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
-		
+
 		
 		buttonsPanel.add(btnQueue, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnFreeBeds, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
@@ -97,22 +87,8 @@ public class HospitalView extends JFrame {
 		buttonsPanel.add(btnStaffInDepart, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnGetDepart, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));}
 		
-
 		
-		
-		
-		
-//		 toolbar
-		
-		add(buttonsPanel, BorderLayout.CENTER);
-		add(menuTop, BorderLayout.NORTH);
-		menuTop.setSession(controller.getSession());
-		add(btnBack, BorderLayout.SOUTH);
-	
-		pack();
-		setLocationRelativeTo(null);
-		
-		
+		// Listeners are defined
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -162,16 +138,16 @@ public class HospitalView extends JFrame {
 				controller.ToChangePassword();
 			}
 		});
+		
+		// All components are added to the frame
+		add(buttonsPanel, BorderLayout.CENTER);
+		add(menuTop, BorderLayout.NORTH);
+		menuTop.setSession(controller.getSession());
+		add(btnBack, BorderLayout.SOUTH);
+	
+		pack();
+		setLocationRelativeTo(null);
 
 	}
 	
-	
-	public void setSession(Session sessionModel) {
-		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-	
-	}
 }
-	
-	
-
-	

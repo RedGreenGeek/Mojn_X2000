@@ -23,7 +23,7 @@ import application.utils.GridBagLayoutUtils;
 
 public class StaffView extends JFrame {
 
-	private static final long serialVersionUID = 100L;
+	private static final long serialVersionUID = 1023456780L;
 	private StaffController controller;
 
 	private Session session;
@@ -31,29 +31,28 @@ public class StaffView extends JFrame {
 
 	private JLabel lblStaff;
 	
-	
+	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public StaffView(StaffController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
-	
-
+	// All components of the window are defined
 	private void initGUI() {
 		this.session = Session.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Staff Menu");
 		setPreferredSize(new Dimension(800, 700));
 		
-		// Labels
+		
 		lblStaff = new JLabel("Staff Menu");
 		lblStaff.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
-		// buttons
-		
+		// A panel for the buttons are defined
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new GridBagLayout());
 		
+		// buttons
 		JButton btnSearch = new JButton("Search Staff");
 		Image SearchImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Staff menu/search.png")).getImage();
 		btnSearch.setIcon(new ImageIcon(SearchImg));	
@@ -82,32 +81,7 @@ public class StaffView extends JFrame {
 		btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
 		
-		
-		if(session.getRole() == JobTypes.ICTOfficer ) {
-		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));}
-		
-		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
-		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));
-		buttonsPanel.add(btnAssign, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
-	}
-		
-		buttonsPanel.add(btnSearch, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));
-		
-
-		
-		
-		
-		
-//		 toolbar
-		add(buttonsPanel, BorderLayout.CENTER);
-		add(menuTop, BorderLayout.NORTH);
-		menuTop.setSession(controller.getSession());
-		add(btnBack, BorderLayout.SOUTH);
-	
-		pack();
-		setLocationRelativeTo(null);
-	
-		
+		//Listeners:
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -157,10 +131,27 @@ public class StaffView extends JFrame {
 			}
 		});
 		
+		// Buttons are added to the button panel and the users clearance is checked
+		if(session.getRole() == JobTypes.ICTOfficer ) {
+		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));}
+		
+		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
+		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));
+		buttonsPanel.add(btnAssign, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
+	}
+		
+		buttonsPanel.add(btnSearch, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));
+		
+		
+		// all the components are added to the frame
+		add(buttonsPanel, BorderLayout.CENTER);
+		add(menuTop, BorderLayout.NORTH);
+		menuTop.setSession(controller.getSession());
+		add(btnBack, BorderLayout.SOUTH);
+	
+		pack();
+		setLocationRelativeTo(null);
+		
 	}
 	
 }
-	
-	
-
-	

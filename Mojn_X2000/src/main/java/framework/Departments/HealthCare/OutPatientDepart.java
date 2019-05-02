@@ -1,12 +1,7 @@
 package framework.Departments.HealthCare;
 import java.util.ArrayList;
-//
-
 import java.util.HashSet;
 import java.util.PriorityQueue;
-
-import framework.ChangeReg;
-import framework.Department;
 import framework.Person;
 import framework.Departments.HCDepart;
 import framework.person.Patient;

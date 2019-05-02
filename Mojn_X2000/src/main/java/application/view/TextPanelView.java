@@ -6,8 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-@SuppressWarnings("serial")
+// This class sets up the text output area where the user can see the response messages
 public class TextPanelView extends JPanel{
+	private static final long serialVersionUID = 13467823463542368L;
 	JTextArea textArea;
 	TextPanelView(){
 		setLayout(new BorderLayout());

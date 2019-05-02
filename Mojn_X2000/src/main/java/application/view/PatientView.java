@@ -22,35 +22,33 @@ import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
 public class PatientView extends JFrame {
-
-	private static final long serialVersionUID = 12347L;
+	private static final long serialVersionUID = 1233547847L;
 	private PatientController controller;
 	private Session session;
 	private MenuTopView menuTop = new MenuTopView("Patient menu");
 	private JLabel lblPatient;
 	
-	
+	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public PatientView(PatientController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
-	
+	// All components of the window are defined
 	private void initGUI() {
 		this.session = Session.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Patient Menu");
 		setPreferredSize(new Dimension(800, 800));
 		
-		// Labels
 		lblPatient = new JLabel("Patient Menu");
 		lblPatient.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
-		// buttons
-		
+		// A panel for the buttons are defined
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new GridBagLayout());
 		
+		// buttons
 		JButton btnSearch = new JButton("Search Patient");
 		Image searchImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Patient menu/search.png")).getImage();
 		btnSearch.setIcon(new ImageIcon(searchImg));
@@ -103,32 +101,6 @@ public class PatientView extends JFrame {
 		btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
 		
-		
-		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));
-		
-		if(session.getRole() == JobTypes.Nurse || session.getRole() == JobTypes.ICTOfficer ) {
-		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));}
-		
-		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
-		buttonsPanel.add(btnSearch, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));
-		buttonsPanel.add(btnAdmit, GridBagLayoutUtils.constraint(2, 2, 0, 0, 0,10,50,10));}
-
-		if(session.getRole() == JobTypes.Doctor || session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Nurse ) {
-		buttonsPanel.add(btnMove, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
-		buttonsPanel.add(btnDischarge, GridBagLayoutUtils.constraint(1, 2, 0, 0, 0,10,50,10));
-		buttonsPanel.add(btnMoveBed, GridBagLayoutUtils.constraint(3, 2, 0, 0, 0,10,50,10));	
-		buttonsPanel.add(btnAllocate, GridBagLayoutUtils.constraint(4, 2, 0, 0, 0,10,50,10));}
-		
-		
-		// toolbar
-		add(buttonsPanel, BorderLayout.CENTER);
-		add(menuTop, BorderLayout.NORTH);
-		menuTop.setSession(controller.getSession());
-		add(btnBack, BorderLayout.SOUTH);
-	
-		pack();
-		setLocationRelativeTo(null);
-	
 		//Listeners:
 		btnBack.addActionListener(new ActionListener() {
 			@Override
@@ -202,14 +174,32 @@ public class PatientView extends JFrame {
 			}
 		});
 		
+		// Buttons are added to the button panel and the users clearance is checked
+		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));
+		
+		if(session.getRole() == JobTypes.Nurse || session.getRole() == JobTypes.ICTOfficer ) {
+		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));}
+		
+		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
+		buttonsPanel.add(btnSearch, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));
+		buttonsPanel.add(btnAdmit, GridBagLayoutUtils.constraint(2, 2, 0, 0, 0,10,50,10));}
+
+		if(session.getRole() == JobTypes.Doctor || session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Nurse ) {
+		buttonsPanel.add(btnMove, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
+		buttonsPanel.add(btnDischarge, GridBagLayoutUtils.constraint(1, 2, 0, 0, 0,10,50,10));
+		buttonsPanel.add(btnMoveBed, GridBagLayoutUtils.constraint(3, 2, 0, 0, 0,10,50,10));	
+		buttonsPanel.add(btnAllocate, GridBagLayoutUtils.constraint(4, 2, 0, 0, 0,10,50,10));}
 		
 		
+		// all the components are added to the frame
+		add(buttonsPanel, BorderLayout.CENTER);
+		add(menuTop, BorderLayout.NORTH);
+		menuTop.setSession(controller.getSession());
+		add(btnBack, BorderLayout.SOUTH);
+	
+		pack();
+		setLocationRelativeTo(null);
 		
 	}
 	
-	
 }
-	
-	
-
-	

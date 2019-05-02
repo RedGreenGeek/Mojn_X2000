@@ -1,6 +1,3 @@
-
-
-
 package application.view;
 
 
@@ -16,12 +13,11 @@ import javax.swing.border.EmptyBorder;
 import application.controller.GetQueueController;
 import application.utils.GridBagLayoutUtils;
 
-@SuppressWarnings("serial")
 public class GetQueueView extends JFrame {
+	private static final long serialVersionUID = 34267876543345L;
 	private JLabel departmentNameLabel;
 
 	private JTextField departmentNameField;
-
 
 	private JButton okBtn;
 	private JPanel inputArea;
@@ -29,16 +25,14 @@ public class GetQueueView extends JFrame {
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
-	
 	private GetQueueController controller;
 
-	
+	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public GetQueueView(GetQueueController controller) {
 		this.controller = controller;
 		initGUI();
 	}
-	
-	
+	// All components of the window are defined
 	private void initGUI() {
 		setTitle("Get queue from department");
 		setPreferredSize(new Dimension(800, 700));
@@ -48,59 +42,48 @@ public class GetQueueView extends JFrame {
 
 		departmentNameLabel = new JLabel("Department Name: ");
 
-
 		departmentNameField = new JTextField(11);
 		
-
+		menuTop.setSession(controller.getSession());
 		
-		okBtn = new JButton("OK");
-		
-		okBtn.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent event) {
-				String departmentName = departmentNameField.getText();
-
-				departmentNameField.setText("");
-				msg = controller.GetQueueAPI(departmentName);
-				
-
-
-				textPanel.textArea.append(msg);
-				textPanel.textArea.append("\n");
-
-				
-
-;			}
-			
+		// Listeners to the buttons are defined
+		menuTop.backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.Back2Main();
+			}
 		});
 		
-
-		
+		okBtn = new JButton("OK");
+		okBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				String departmentName = departmentNameField.getText();
+				departmentNameField.setText("");
+				msg = controller.GetQueueAPI(departmentName);
+				textPanel.textArea.append(msg);
+				textPanel.textArea.append("\n");
+			}
+		});
 		layoutComponents();
-
-		
-	} // her ender constructoren
+	} 
 	
-	
+	// All the components are organized by use of a grid layout and a border layout
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
 		
+		/////////////////////////// 1. line
 		int y = 0;
 
 		inputArea.add(departmentNameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
-		
 		inputArea.add(departmentNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		
-		/////////////////////////// 7. linje
-		
+		/////////////////////////// 2. line
 		y = y+1;
 		
 		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
 		
-		
-		//////////////////////////// TEXT AREA //////////////////////////////7
+		// All components are added to the frame
 		setLayout(new BorderLayout());
 		
 		add(inputArea, BorderLayout.WEST);
@@ -109,15 +92,5 @@ public class GetQueueView extends JFrame {
 	
 		pack();
 		setLocationRelativeTo(null);
-		
-		menuTop.setSession(controller.getSession());
-		
-		menuTop.backBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.Back2Main();
-			}
-		});
 	}
-
 }

@@ -1,6 +1,5 @@
 package application.view;
 
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JButton;
@@ -13,14 +12,15 @@ import javax.swing.border.EmptyBorder;
 import application.controller.RegisterStaffController;
 import application.utils.GridBagLayoutUtils;
 
-@SuppressWarnings("serial")
 public class RegisterStaffView extends JFrame {
+	private static final long serialVersionUID = 86464139876543L;
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
 	private JLabel adressLabel;
 	private JLabel tribeLabel;
 	private JLabel birthdayLabel;
 	private JLabel jobLabel;
+	
 	private JTextField firstNameField;
 	private JTextField surnameField;
 	private JTextField adressField;
@@ -30,13 +30,11 @@ public class RegisterStaffView extends JFrame {
 	private JTextField yearField;
 	private JTextField jobField;
 
-
 	private JButton okBtn;
 	private JPanel inputArea;
 	private MenuTopView menuTop = new MenuTopView("Register a staff", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
-	
 	
 	private RegisterStaffController controller;
 
