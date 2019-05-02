@@ -38,7 +38,7 @@ public class OutPatientDepart extends HCDepart {
 	    	  }
 	      }
 	      
-	      public Person getID() {
+	      public Person getPatient() {
 	        return this.P;
 	      }
 	}
@@ -73,9 +73,10 @@ public class OutPatientDepart extends HCDepart {
 	
 	public Person DeQueue() {
 		if (!queue.isEmpty()) {
-			ChangeReg r = new ChangeReg();
-			Person p = this.queue.poll().getID();
-			r.remove((Department)this,(Patient)p);
+			Person p = this.queue.poll().getPatient();
+			HashSet<Person> patientSet = super.getPatient();
+			patientSet.remove(p);
+			super.setPatient(patientSet);
 			return p;
 		}
 		return null;
@@ -85,7 +86,7 @@ public class OutPatientDepart extends HCDepart {
 		java.util.Iterator<Pair> Q = this.queue.iterator();
 		ArrayList<Person> PList = new ArrayList<Person>();
 		while(Q.hasNext()) {
-			PList.add(Q.next().getID());
+			PList.add(Q.next().getPatient());
 		}
 		return PList;
 	}
