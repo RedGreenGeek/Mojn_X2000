@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import application.controller.EditPatientController;
+import application.utils.GridBagLayoutUtils;
 
 public class EditPatientView extends JFrame {
 	private static final long serialVersionUID = 985282041187452L;
@@ -27,7 +28,7 @@ public class EditPatientView extends JFrame {
 	private JTextField adressField;
 	private JTextField tribeField;
 
-	private JCheckBox aliveField;
+	private JCheckBox aliveBox;
 	private JTextField IDField;
 
 
@@ -68,8 +69,8 @@ public class EditPatientView extends JFrame {
 		adressField = new JTextField(11);
 		tribeField = new JTextField(11);
 
-		aliveField = new JCheckBox();
-		aliveField.setSelected(true);
+		aliveBox = new JCheckBox();
+		aliveBox.setSelected(true);
 		IDField = new JTextField(11);
 
 		
@@ -85,13 +86,12 @@ public class EditPatientView extends JFrame {
 				String adress = adressField.getText();
 				String tribe = tribeField.getText();
 
-				boolean alive = aliveField.isSelected();
+				boolean alive = aliveBox.isSelected();
 				String ID = IDField.getText();
 
 				firstNameField.setText("");
 				surnameField.setText("");
 	
-				aliveField.setText("");
 				IDField.setText("");
 
 				tribeField.setText("");
@@ -120,133 +120,65 @@ public class EditPatientView extends JFrame {
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
 		
-		GridBagConstraints gc = new GridBagConstraints();
+		int y = 0;
+
+		inputArea.add(firstNameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
 		
-		/////////////////////////////////// 1. linje
-		
-		gc.gridx = 0;
-		gc.gridy = 0;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
-		
-		inputArea.add(firstNameLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(firstNameField, gc);
+		inputArea.add(firstNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
 		///////////////////////////// 2. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5);
 		
-		inputArea.add(surnameLabel, gc);
+		y = y+1;
 		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
+		inputArea.add(surnameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
 		
-		inputArea.add(surnameField, gc);
+		inputArea.add(surnameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
+		
 		/////////////////////////// 3. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		y = y + 1;
 		
-		inputArea.add(adressLabel, gc);
+		inputArea.add(adressLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
 		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
 		
-		inputArea.add(adressField, gc);
+		inputArea.add(adressField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
 		/////////////////////////// 4. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		y = y + 1;
 		
-		inputArea.add(tribeLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(tribeField, gc);
-		/////////////////////////// 5. linje
+		inputArea.add(tribeLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
 
-	
 		
-		/////////////////////////// 6. linje
+		inputArea.add(tribeField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
+		/////////////////////////// 5. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
 		
-		inputArea.add(aliveLabel, gc);
+		y = y + 1;
 		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
+		inputArea.add(aliveLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
 		
-		inputArea.add(aliveField, gc);
+		inputArea.add(aliveBox,  GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
+		
+		/////////////////////////// 7. linje
+		
+		y = y +1;
+		
+		inputArea.add(IDLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
+		
+		inputArea.add(IDField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
+		
 		
 		
 		/////////////////////////// 7. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		y = y+1;
 		
-		inputArea.add(IDLabel, gc);
-		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(IDField, gc);
-		
-
-		
-		
-		/////////////////////////////8. linje:
-		
-		gc.gridx = 1;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 1;
-		gc.anchor = GridBagConstraints.FIRST_LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(okBtn, gc);
+		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
+		
+		
 		
 		
 		
