@@ -410,9 +410,9 @@ public class Database {
 	
 	public int loadStaffCounter() throws Throwable {
 		
-		ResultSet rs = GET("SELECT * FROM Additional");
+		ResultSet rs = GET("SELECT COUNT(*) FROM Staff");
 		rs.next();
-		int result = rs.getInt("staff_counter");
+		int result = rs.getInt(1);
 		
 		return result;
 		
@@ -420,9 +420,9 @@ public class Database {
 	
 	public int loadPatientCounter() throws Throwable {
 		
-		ResultSet rs = GET("SELECT * FROM Additional");
+		ResultSet rs = GET("SELECT COUNT(*) FROM Patient");
 		rs.next();
-		int result = rs.getInt("patient_counter");
+		int result = rs.getInt(1);
 		
 		return result;
 		
