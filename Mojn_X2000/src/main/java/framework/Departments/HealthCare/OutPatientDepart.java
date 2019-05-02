@@ -3,6 +3,7 @@ import java.util.ArrayList;
 //
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 import framework.ChangeReg;
@@ -12,8 +13,7 @@ import framework.Departments.HCDepart;
 import framework.person.Patient;
 
 public class OutPatientDepart extends HCDepart {
-	
-	class Pair implements Comparable<Pair> {
+	private class Pair {
 	      Person P;
 	      int triageLevel;
 	      
@@ -22,49 +22,40 @@ public class OutPatientDepart extends HCDepart {
 	        this.triageLevel = triageLevel;
 	      }
 	      
-	      
-	      public int compareTo(Pair pair) {
-	    	  if (pair.triageLevel<this.triageLevel) {
-	    		  return -1;
-	    	  }
-	    	  else if (pair.triageLevel>this.triageLevel) {
-	    		  return 1;
-	    	  }
-	    	  else if (pair.P.equals(this.P)) {
-	    		  return 0;
-	    	  }
-	    	  else {
-	    		  return -1;
-	    	  }
-	      }
-	      
 	      public Person getPatient() {
 	        return this.P;
 	      }
 	}
 
-	private PriorityQueue<Pair> queue;
+	private LinkedList<Pair> queue;
 	
-	public void removeFromQueue(Patient p) {
-		queue.remove(new Pair(p,p.getTriage()));
-	}
 	
 	public OutPatientDepart(String departName, HashSet<Person> staffSet, HashSet<Person> patientSet) {
 		super.setName(departName);
 		super.setStaff(staffSet); 
 		super.setPatient(patientSet);
-		this.queue = new PriorityQueue<Pair>(1);
+		this.queue = new LinkedList<Pair>();
 	}
 	
 	public OutPatientDepart(String departName) {
 		super.setName(departName);
-		this.queue = new PriorityQueue<Pair>(1);
+		this.queue = new LinkedList<Pair>();
 	}
 	
 	public void EnQueue(Person P, int triageLevel) {
 		Pair p = new Pair(P,triageLevel);
-		this.queue.add(p);
 		((Patient) P).setTriage(triageLevel);
+		
+		boolean added = false;
+		for (int i = 0; i<this.queue.size(); i++) {
+			if (this.queue.get(i)==null || (this.queue.get(i).triageLevel) <= (p.triageLevel)) {
+				this.queue.add(i, p);
+				added = true;
+			}
+		}	
+		if (!added) {
+			this.queue.addLast(p);
+		}
 	}
 	
 	public void EnQueue(Person P) {
@@ -73,7 +64,7 @@ public class OutPatientDepart extends HCDepart {
 	
 	public Person DeQueue() {
 		if (!queue.isEmpty()) {
-			Person p = this.queue.poll().getPatient();
+			Person p = this.queue.removeFirst().getPatient();
 			HashSet<Person> patientSet = super.getPatient();
 			patientSet.remove(p);
 			super.setPatient(patientSet);
@@ -89,5 +80,14 @@ public class OutPatientDepart extends HCDepart {
 			PList.add(Q.next().getPatient());
 		}
 		return PList;
+	}
+	
+
+	public void removeFromQueue(Patient p) {
+		for (int i = 0; i<this.queue.size(); i++) {
+			if (p.equals(this.queue.get(i).P)) {
+				this.queue.remove(i);
+			}
+		}
 	}
 }
