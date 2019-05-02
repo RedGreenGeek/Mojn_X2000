@@ -44,7 +44,7 @@ private String Password;
 		return this.Password;
 	}
 	
-	protected void setJobType(String jobType) {
+	public void setJobType(String jobType) {
 		this.jobType = jobType;
 	}
 	
@@ -52,7 +52,7 @@ private String Password;
 		return this.jobType;
 	}
 	
-	protected void setID(String jobTypeID) {
+	public void setID(String jobTypeID) {
 		this.serialID = jobTypeID + Staff.counter;
 		Staff.counter +=1; 
 	}

@@ -33,6 +33,8 @@ public class API {
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = Database.getInstance(Database.DEFAULT);
 		Pas = Password.getInstance();
+		searcher = new Searcher(h);
+		R = new ChangeReg();
 		Pas.addPassToMap("I", "I");
 //		try {
 //			log = new Logger();
@@ -40,71 +42,18 @@ public class API {
 //		} catch (IOException e) {e.printStackTrace();}
 		
 		//LOAD ARTIFICIAL HOSPITAL
-		h = new Hospital();
-		searcher = new Searcher(h);
-		R = new ChangeReg();
 		
-		//------
-		InPatientDepart In = new InPatientDepart("ER",new HashSet<Person>(),new HashSet<Person>(),7);
-		InPatientDepart In2 = new InPatientDepart("Pediatric",new HashSet<Person>(),new HashSet<Person>(),2);
-		OutPatientDepart Out = new OutPatientDepart("Cardio",new HashSet<Person>(),new HashSet<Person>());
-		AdminDepart A = new AdminDepart("IT",new HashSet<Person>());
-		
-		R.add(h, In);
-		R.add(h, In2);
-		R.add(h, Out);
-		R.add(h, A);
-		
-		
-		//------
-		this.registerPatient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true);
-		this.patientAdmission("", "ER", "1");
-		
-		this.registerPatient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true);
-		this.patientAdmission("", "ER", "2");
-		
-		
-		this.registerStaff("Doctor", "Svend","Nielsen","Doktorvej","Dansk",01,01,1901);
-		this.assignStaffDepartment("ER", "", "Svend", "Nielsen", "", "");
-		
-		this.registerStaff("Nurse", "Jonna","Nielsen","Ikke-doktorvej","Tysk",02,02,1902);
-		this.assignStaffDepartment("ER", "", "Jonna", "Nielsen", "", "");
-		
-
-		//------
-		
-		//
-		this.registerPatient("Søren","Sørensen","Hellerup","Ventre",24,9,97,true);
-		this.patientAdmission("", "Cardio", "3");
-		
-		this.registerPatient("Lars","Larsen","Nordvestjylland","Jysk",20,12,1950,true);
-		this.patientAdmission("", "Cardio", "4");
-		
-		this.registerStaff("Doctor", "Lars","Løkke","Græsted","Ventre",01,01,1950);
-		this.assignStaffDepartment("Cardio", "", "Lars", "Løkke", "", "");
-		
-		this.registerStaff("Nurse", "Helle","Thorning","Herlev","Gucci",02,02,1960);
-		this.assignStaffDepartment("Cardio", "", "Helle", "Thorning", "", "");
+		try {
+		h = DB.boot();
+		} catch(Throwable t){
+			System.out.println("System was not able to boot. Contact System Administrator!");
+		}
 		
 		Pas.addPassToMap("password", "IT4");
 		Pas.addPassToMap("password", "C5");
 		Pas.addPassToMap("password", "D2");
 		Pas.addPassToMap("password", "N3");
 		
-		//------
-		this.registerStaff("ICTOfficer", "Jens","Hansen","Norway","Indian",29,2,1996);
-		this.assignStaffDepartment("IT", "", "Jens", "Hansen", "", "");
-		
-		this.registerStaff("Clerk", "Mads", "Hansen", "Uganda","Black-rocks Clan",23,4,2000);
-		this.assignStaffDepartment("IT", "", "Mads", "Hansen", "", "");
-		
-		
-		//------
-		this.registerPatient("Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true);
-		this.patientAdmission("", "Pediatric", "5");
-		
-		this.registerPatient("Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true);
-		this.patientAdmission("", "Pediatric", "6");
 		//LOADING COMPLETE
 	}
 	
@@ -263,8 +212,33 @@ public class API {
 			// removed from the overall set
 			h.getStaffSet().remove(person);
 			// registered as with new job type.
-			String message = registerStaff(jobtype, firstName, lastName, adress, tribe, day, month ,year);
-			return message;} else {return "Invalid job type!";}
+			person.setFirstName(firstName);
+			person.setLastName(lastName);
+			person.setTribe(tribe);
+			person.setAdress(adress);
+			person.setBirthDay(day, month, year);
+			String id = person.getJobType();
+			id.replaceAll("N", "").replaceAll("D", "").replaceAll("IT", "").replaceAll("C", "");
+			
+			if (jobtype.equals("Nurse")) {
+				id = "N"+id;
+			}
+			if (jobtype.equals("Doctor")) {
+				id = "D"+id;
+			}
+			if (jobtype.equals("Clerk")) {
+				id = "C"+id;
+			}
+			if (jobtype.equals("ICTOfficer")) {
+				id = "IT"+id;
+			}
+			
+			person.setID(id);
+			person.setJobType(jobtype);
+		
+			
+			return "The "+jobtype+" has been registered succesfully!";
+			} else {return "Invalid job type!";}
 		}
 		else {
 			if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
@@ -339,6 +313,7 @@ public class API {
 		if (!depart.beds.getBedsAvailable()) {
 			return "No beds available in department: " + departmentName;
 		}
+		
 		discharge(patientRes.getFirst().getID());
 		patientAdmission("", departmentName, patientID);
 		
@@ -376,7 +351,7 @@ public class API {
 		}
 		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
 		
-		return "Department: " + departmentName+" currently have "+depart.beds.getBedsInUse()+" beds in use.";
+		return "Department: " + departmentName+" currently have "+ depart.beds.getBedsInUse() + " beds in use.";
 	}
 	
 	
@@ -403,7 +378,7 @@ public class API {
 		   return "The department is an administrativ department";
 		  }
 		  discharge(p.getID());
-		  if (d instanceof framework.Departments.HealthCare.InPatientDepart) {
+		  if (d instanceof InPatientDepart) {
 		   InPatientDepart inDepart = (InPatientDepart) d;
 		   R.add(inDepart, p);
 		  } else {
