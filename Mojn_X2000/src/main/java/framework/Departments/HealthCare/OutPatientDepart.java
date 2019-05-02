@@ -81,12 +81,4 @@ public class OutPatientDepart extends HCDepart {
 		}
 		return PList;
 	}
-
-	public void removeFromQueue(Patient p) {
-		for (int i = 0; i<this.queue.size(); i++) {
-			if (p.equals(this.queue.get(i).P)) {
-				this.queue.remove(i);
-			}
-		}
-	}
 }
