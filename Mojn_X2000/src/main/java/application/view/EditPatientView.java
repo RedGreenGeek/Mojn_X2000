@@ -127,8 +127,6 @@ public class EditPatientView extends JFrame {
 		inputArea.add(firstNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
 		///////////////////////////// 2. linje
-		
-		
 		y = y+1;
 		
 		inputArea.add(surnameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
