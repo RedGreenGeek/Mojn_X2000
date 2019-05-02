@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import application.controller.GetDepartmentController;
+import application.utils.GridBagLayoutUtils;
 
 
 @SuppressWarnings("serial")
@@ -73,42 +74,9 @@ public class GetDepartmentView extends JFrame {
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
 		
-		GridBagConstraints gc = new GridBagConstraints();
+		int y = 0;
 		
-		/////////////////////////////////// 1. linje
-		
-
-		
-		///////////////////////////// 2. linje
-		
-
-		/////////////////////////// 3. linje
-		
-
-		
-		/////////////////////////// 4. linje
-		
-
-		
-		/////////////////////////// 5. linje
-		
-
-		
-		/////////////////////////// 6. linje
-		
-
-		
-		
-		/////////////////////////// 7. linje
-		
-		gc.gridx = 1;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 1;
-		gc.anchor = GridBagConstraints.FIRST_LINE_START;
-		gc.insets = new Insets(0,0,0,0);
-		
-		inputArea.add(okBtn, gc);
+		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
 		
 		
