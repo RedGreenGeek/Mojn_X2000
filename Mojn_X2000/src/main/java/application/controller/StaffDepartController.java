@@ -24,7 +24,7 @@ public class StaffDepartController  extends Controller{
 	public String GetDepartStaffAPI( String departmentName) {
 		API api =  API.getInstance();
 
-		return api.getDeparmentStaff(departmentName);
+		return api.getDeparmentStaff(this.sessionModel.getPassword(),this.sessionModel.getUsername(), departmentName);
 	}
 
 	public void Back2Main() {

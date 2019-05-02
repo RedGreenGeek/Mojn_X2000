@@ -18,17 +18,11 @@ public class PatientController extends Controller{
 	private ApplicationController application;
 	private Session session;
 	
-	
-	
 	public PatientController(Session session) {
 		this.sessionModel = session;
 		this.session = Session.getInstance();
 		this.application = ApplicationController.getInstance();
 	}
-
-
-
-	
 	
 	public void display() {
 		view.setVisible(true);
@@ -55,10 +49,8 @@ public class PatientController extends Controller{
 
 		SC.display();
 		
-		
-		
-		
 	}
+	
 	public void ToAdmit() {
 		
 		AdmitPatientController SC = new AdmitPatientController(session);
@@ -68,6 +60,7 @@ public class PatientController extends Controller{
 		SC.display();
 		
 	}
+	
 	public void ToMoveBed() {
 		
 		MovedBedPatientController SC = new MovedBedPatientController(session);
@@ -141,6 +134,4 @@ public class PatientController extends Controller{
 		SC.display();
 
 		}
-	
-
 }

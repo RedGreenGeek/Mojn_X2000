@@ -26,9 +26,8 @@ public class DepartmentMovePatientController  extends Controller{
 		API api =  API.getInstance();
 
 
-		String a = api.movePatientDepart( patientId,  departmentName,  trilvl);
+		String a = api.movePatientDepart(this.sessionModel.getPassword(),this.sessionModel.getUsername(), patientId,  departmentName,  trilvl);
 		return a;
-		
 	}
 
 	public void Back2Main() {

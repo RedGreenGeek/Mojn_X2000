@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import application.controller.DischargePatientController;
 import application.controller.ParticipationListController;
 import application.utils.GridBagLayoutUtils;
 

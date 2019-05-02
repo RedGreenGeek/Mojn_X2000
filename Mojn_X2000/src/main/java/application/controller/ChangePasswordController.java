@@ -1,7 +1,6 @@
 package application.controller;
 
 import application.model.Session;
-import application.view.AddPasswordView;
 import application.view.ChangePasswordView;
 import framework.API;
 
@@ -26,7 +25,7 @@ public class ChangePasswordController extends Controller {
 		API api =  API.getInstance();
 
 
-		String a = api.ChangePassword( oldPassword ,  newPassword1,  newPassword2,  staffID);
+		String a = api.ChangePassword(this.sessionModel.getPassword(),this.sessionModel.getUsername(), oldPassword ,  newPassword1,  newPassword2,  staffID);
 		return a;
 		
 	}

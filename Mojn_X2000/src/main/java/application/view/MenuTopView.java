@@ -5,7 +5,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import application.controller.Controller;
 import application.model.Session;
 import application.model.Session.JobTypes;
 

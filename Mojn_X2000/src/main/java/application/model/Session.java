@@ -35,9 +35,6 @@ public final class Session {
 		if (first == 'N') {
 			role = JobTypes.Nurse;
 		}
-		
-		
-
 	}
 
 	public void setUser(User user) {
@@ -50,5 +47,13 @@ public final class Session {
 	
 	public JobTypes getRole() {
 		return role;
+	}
+
+	public void setPassword(String password) {
+		this.user.setPassword(password);
+	}
+
+	public String getPassword() {
+		return this.user.getPassword();
 	}
 }

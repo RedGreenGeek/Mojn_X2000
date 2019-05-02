@@ -8,14 +8,10 @@ import framework.API;
 
 public class SearchStaffController  extends Controller{
 	private SearchStaffView view;
-	private ApplicationController application;
-	private Session session;
 	
 	
 	public SearchStaffController(Session session) {
 		this.sessionModel = session;
-		this.session = Session.getInstance();
-		this.application = ApplicationController.getInstance();
 	}
 	
 	public void display() {
@@ -33,7 +29,7 @@ public class SearchStaffController  extends Controller{
 		if (!(day.equals(""))) {
 			  birthday = day+"-"+month+"-"+year;
 		}
-		String a = api.staffSearcher(id,  firstName,  surname,  birthday,  email); //last is email
+		String a = api.staffSearcher(this.sessionModel.getPassword(),this.sessionModel.getUsername(), id,  firstName,  surname,  birthday,  email); //last is email
 		return a;
 		
 	}
@@ -41,7 +37,5 @@ public class SearchStaffController  extends Controller{
 	public void Back2Main() {
 		view.setVisible(false);
 		
-		
 	}
-
 }

@@ -27,15 +27,12 @@ public class AllocatePatientController  extends Controller{
 		API api =  API.getInstance();
 
 
-		String a = api.allocateToBed( departmentName,  patientId);
+		String a = api.allocateToBed(this.sessionModel.getPassword(),this.sessionModel.getUsername(), departmentName,  patientId);
 		return a;
 		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
-		
-		
 	}
-
 }

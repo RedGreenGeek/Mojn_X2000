@@ -23,7 +23,7 @@ public class GetQueueController  extends Controller{
 	public String GetQueueAPI( String departmentName) {
 		API api =  API.getInstance();
 
-		return api.getQueue( departmentName);
+		return api.getQueue(this.sessionModel.getPassword(),this.sessionModel.getUsername(), departmentName);
 	}
 
 	public void Back2Main() {

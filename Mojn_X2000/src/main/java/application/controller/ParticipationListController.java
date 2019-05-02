@@ -3,7 +3,6 @@ package application.controller;
 import java.io.IOException;
 
 import application.model.Session;
-import application.view.DischargePatientView;
 import application.view.ParticipationListView;
 import framework.API;
 
@@ -28,9 +27,8 @@ public class ParticipationListController  extends Controller{
 		API api =  API.getInstance();
 
 
-		String a = api.getParticipationList( department,depart ,birthday, address, tribe);
-		return a;
-		
+		String a = api.getParticipationList(this.sessionModel.getPassword(),this.sessionModel.getUsername(), department,depart ,birthday, address, tribe);
+		return a;	
 	}
 
 	public void Back2Main() {
@@ -38,5 +36,4 @@ public class ParticipationListController  extends Controller{
 		
 		
 	}
-
 }

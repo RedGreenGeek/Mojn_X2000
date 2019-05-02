@@ -33,7 +33,7 @@ public class RegisterStaffController  extends Controller{
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.registerStaff (jobtype , firstName,  lastName, adress, tribe, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year));
+		String a = api.registerStaff(this.sessionModel.getPassword(),this.sessionModel.getUsername(), jobtype , firstName,  lastName, adress, tribe, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year));
 		return a;
 		
 	}
@@ -41,7 +41,5 @@ public class RegisterStaffController  extends Controller{
 	public void Back2Main() {
 		view.setVisible(false);
 		
-		
 	}
-
 }

@@ -33,7 +33,7 @@ public class AssignStaffController  extends Controller{
 			  birthday = day+"-"+month+"-"+year;
 		}
 		System.out.println(birthday);
-		String a = api.assignStaffDepartment( departmentName,  staffID,  firstName,  lastName,  birthday,  email);
+		String a = api.assignStaffDepartment(this.sessionModel.getPassword(),this.sessionModel.getUsername(), departmentName,  staffID,  firstName,  lastName,  birthday,  email);
 		return a;
 		
 	}

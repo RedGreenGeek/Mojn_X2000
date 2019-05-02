@@ -24,6 +24,7 @@ public class LoginController {
 		user.setUsername(username);
 		if ((!username.isEmpty()) && API.getInstance().passwordMatch(password,user.getUsername())) {
 			session.setUser(user);
+			session.setPassword(password);
 			view.setVisible(false);
 			application.manageInventory(session);
 		} else {

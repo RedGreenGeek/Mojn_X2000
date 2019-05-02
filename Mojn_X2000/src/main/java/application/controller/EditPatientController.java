@@ -7,8 +7,6 @@ import framework.API;
 public class EditPatientController  extends Controller{
 	private EditPatientView view;
 
-	
-	
 	public EditPatientController(Session session) {
 		this.sessionModel = session;
 	}
@@ -25,9 +23,8 @@ public class EditPatientController  extends Controller{
 		API api =  API.getInstance();
 		
 
-		String a = api.changePatient(ID,  firstName,  lastName,  tribe,  adress, alive);
+		String a = api.changePatient(this.sessionModel.getPassword(),this.sessionModel.getUsername(),ID,  firstName,  lastName,  tribe,  adress, alive);
 		return a;
-		
 	}
 
 	public void Back2Main() {
@@ -35,5 +32,4 @@ public class EditPatientController  extends Controller{
 		
 		
 	}
-
 }

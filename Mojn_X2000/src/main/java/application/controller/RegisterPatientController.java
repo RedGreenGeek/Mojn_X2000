@@ -32,15 +32,12 @@ public class RegisterPatientController  extends Controller{
 		if (!(day.equals(""))) {
 			  birthday = day+"-"+month+"-"+year;
 		}
-		String a = api.registerPatient( firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), alive);
+		String a = api.registerPatient(this.sessionModel.getPassword(),this.sessionModel.getUsername(), firstName,  lastName, tribe,  adress, Integer.parseInt(day),Integer.parseInt(month), Integer.parseInt(year), alive);
 		return a;
-		
 	}
 
 	public void Back2Main() {
 		view.setVisible(false);
 		
-		
 	}
-
 }

@@ -22,28 +22,21 @@ public class HospitalController  extends Controller{
 		this.application = ApplicationController.getInstance();
 	}
 
-
-
-	
-	
 	public void display() {
 		view.setVisible(true);
 	}
+	
 	public void setView(HospitalView view) {
 		this.view = view;
 	}
+	
 	public void Back2Main() {
 
 		
 		view.setVisible(false);
 
 		application.manageInventory(session);
-		
 	}
-
-
-
-
 
 	public void ToStaffInDepart() {
 		StaffDepartController SC = new StaffDepartController(session);

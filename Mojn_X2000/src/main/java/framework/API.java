@@ -62,7 +62,7 @@ public class API {
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
 	
 	// REGISTER PATIENT TO HOSPITAL (NO DEPARTMENT)
-	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+	public String registerPatient(String password, String userID, String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
 		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
@@ -77,7 +77,7 @@ public class API {
 	}
 	
 	// CHANGE EXISTING PATIENT 
-	public String changePatient(String ID, String firstName, String lastName, String tribe, String address, boolean alive) {
+	public String changePatient(String password, String userID, String ID, String firstName, String lastName, String tribe, String address, boolean alive) {
 		LinkedList<Person> patientSearch = searcher.patientSearch(ID, "", "", "");
 		if (patientSearch.size() != 1) {return "No patient with that ID found.";}
 		Patient p = (Patient) patientSearch.getFirst();
@@ -102,7 +102,7 @@ public class API {
 	}
 	
 	// PATIENT SEARCH 'PATIENT ATBs.' -> String (patient info)
-	public String patientSearcher(String patientID, String firstName, String lastName, String birthday, String department) {
+	public String patientSearcher(String password, String userID, String patientID, String firstName, String lastName, String birthday, String department) {
 		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
 		if (!department.equals("")) {
 			@SuppressWarnings("unchecked")
@@ -124,8 +124,9 @@ public class API {
 		} else {return message; }
 		}
 	
+	
 	//GET PATIENT LIST OF GIVEN DEPARTMETN
-	public String getDeparmentPatient(String departmentName) {
+	public String getDeparmentPatient(String password, String userID, String departmentName) {
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
 		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
 		if (resList.size()==1) {
@@ -142,7 +143,7 @@ public class API {
 	/* _____________ STAFF REGISTRATION for M2 ______________ */
 	
 	//registerStaff takes staff ATBs, adds staff to hospital (no department)
-	public String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+	public String registerStaff(String password, String userID, String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
 		Staff p;
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
 			if (jobtype.equals("Clerk")) {
@@ -167,8 +168,9 @@ public class API {
 		}else {return "Unsuccesful registration!";}
 	}
 	
+	
 	//ASSIGN STAFF TO DEPARTMENT
-	public String assignStaffDepartment(String departmentName, String staffID, String firstName, String lastName, String birthday, String email) {
+	public String assignStaffDepartment(String password, String userID, String departmentName, String staffID, String firstName, String lastName, String birthday, String email) {
 		LinkedList<Person> staffRes = searcher.staffSearch(staffID, firstName, lastName, birthday, email);
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (staffRes.size()!=1 || departmentRes.size()!=1) {
@@ -187,7 +189,7 @@ public class API {
 	}
 	
 	//CHANGE STAFF FROM ID -> TO ATBs
-	public String changeStaff (String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+	public String changeStaff (String password, String userID, String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
 		if (searcher.staffSearch(StaffID, "", "", "", "").size() == 0) {
 			return "The ID does not match an employee!";
 		}
@@ -260,7 +262,7 @@ public class API {
 	}
 	
 	//STAFF SEARCH
-	public String staffSearcher(String staffID, String firstName, String lastName, String birthday, String email) {
+	public String staffSearcher(String password, String userID, String staffID, String firstName, String lastName, String birthday, String email) {
 		LinkedList<Person> persons = searcher.staffSearch(staffID,firstName, lastName, birthday, email);
 		String message = "ID\tJob\tDepartment\tSurname\tName";
 		while (!persons.isEmpty()) {
@@ -275,7 +277,7 @@ public class API {
 	/* _____________ HEALTH FACILITY MANAGMENT for M3 ______________ */
 	
 	//GET ALL DEPARTMENTS
-	public String getDepartments() {
+	public String getDepartments(String password, String userID) {
 		LinkedList<Department> ds = new LinkedList<Department>(h.getDepartSet());
 		String res = "";
 		while (!ds.isEmpty()) {
@@ -285,7 +287,7 @@ public class API {
 	}
 	
 	//GET STAFF LIST OF GIVEN DEPARTMETN
-	public String getDeparmentStaff(String departmentName) {
+	public String getDeparmentStaff(String password, String userID, String departmentName) {
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
 		String res = "ID\tJob\tDepartment\tSurname\tName";
 		if (resList.size()==1) {
@@ -298,7 +300,7 @@ public class API {
 	}
 	
 	//ALLOCATE EXSISTING PATIENT TO BED
-	public String allocateToBed(String departmentName, String patientID) {
+	public String allocateToBed(String password, String userID, String departmentName, String patientID) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		LinkedList<Person> patientRes = searcher.patientSearch(patientID,"","","");
 		if (departmentRes.size()!=1) {
@@ -316,8 +318,8 @@ public class API {
 			return "No beds available in department: " + departmentName;
 		}
 		
-		discharge(patientRes.getFirst().getID());
-		patientAdmission("", departmentName, patientID);
+		discharge("I","I",patientRes.getFirst().getID());
+		patientAdmission("I","I","", departmentName, patientID);
 		
 		/* write to log file */
 //		log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
@@ -326,7 +328,7 @@ public class API {
 	}
 	
 	//BEDS AVAILABLE IN GIVEN DEPARTMENT (Y/N)
-	public String bedsAvailable(String departmentName) {
+	public String bedsAvailable(String password, String userID, String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
 			return "No or multiple department(s) match your search criterion";
@@ -343,7 +345,7 @@ public class API {
 	}
 	
 	//HOW MANY BEDS IN USE IN GIVEN DEPARTMENT
-	public String bedsInUse(String departmentName) {
+	public String bedsInUse(String password, String userID, String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
 			return "No or multiple department(s) match your search criterion";
@@ -360,7 +362,7 @@ public class API {
 	/* _____________ PATIENT ADMISSION for M4 ______________ */
 	
 	//ADMIT EXSISTING PATIENT TO DEPARTMENT
-	public String patientAdmission(String trilvl, String departmentName, String patientId) {
+	public String patientAdmission(String password, String userID, String trilvl, String departmentName, String patientId) {
 		  //CHECK TRIAGE LEVEL
 		  int triagelvl = 1;
 		  try {
@@ -379,7 +381,7 @@ public class API {
 		  if (d instanceof framework.Departments.AdminDepart) {
 		   return "The department is an administrativ department";
 		  }
-		  discharge(p.getID());
+		  discharge("I","I",p.getID());
 		  if (d instanceof InPatientDepart) {
 		   InPatientDepart inDepart = (InPatientDepart) d;
 		   R.add(inDepart, p);
@@ -397,7 +399,7 @@ public class API {
 	
 	// The input to this function should be specified in the GUI so when
 	// I search for the patient and click remove this function is given the patient ID
-	public String discharge(String ID) {
+	public String discharge(String password, String userID, String ID) {
 		Patient p;
 		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
 			return "The patient ID's isn't uniqe";
@@ -414,8 +416,8 @@ public class API {
 	}
 	
 	//MOVE PATIENT FROM DEPARTMENT TO DEPARTMENT
-	public String movePatientDepart(String ID, String departmentName, String trilvl) {
-		if (patientAdmission(trilvl,departmentName,ID).contains("succesfully")) {
+	public String movePatientDepart(String password, String userID, String ID, String departmentName, String trilvl) {
+		if (patientAdmission("I","I",trilvl,departmentName,ID).contains("succesfully")) {
 			
 			/* write to log file */
 //			log.write(userID,"PATIENT MOVED DEPARTMENT",p.toString());
@@ -426,7 +428,7 @@ public class API {
 	}
 	
 	//MOVE A PATIENT TO A NEW BED
-	public String movePatientBed(String ID, String newBed) {
+	public String movePatientBed(String password, String userID, String ID, String newBed) {
 		InPatientDepart Department;
 		Patient p;
 		String message;
@@ -470,7 +472,7 @@ public class API {
 	}
 	
 	//ADDS NEW PASSWORD
-	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
+	public String AddPassword(String password, String userID, String newPassword1, String newPassword2, String staffID) {
 		Password Pass = Password.getInstance();
 		
 		if (Pass.checkUniqueID(staffID)) {
@@ -489,7 +491,7 @@ public class API {
 	}
 	
 	//CHANGE PASSWORD FROM KNOWN PASSWORD
-	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
+	public String ChangePassword(String password, String userID, String oldPassword , String newPassword1, String newPassword2, String staffID) {
 		Password Pass = Password.getInstance();
 		if (!Pass.checkUniqueID(staffID)) {
 			System.out.println("fuck");
@@ -517,7 +519,7 @@ public class API {
 	/* _____________ PATIENT WAITING O3 ______________ */
 	
 	//GET WAITING QUEUE OF GIVEN DEPARTMENT
-	public String getQueue(String departmentName) {
+	public String getQueue(String password, String userID, String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		OutPatientDepart outDepart;
 		if (departmentRes.size() != 1) {
@@ -537,7 +539,7 @@ public class API {
 	}
 	
 	//GET NEXT IN QUEUE (METHOD DEQUEUES PATIENT!)
-	public String getNextInQueue(String departmentName) {
+	public String getNextInQueue(String password, String userID, String departmentName) {
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		OutPatientDepart outDepart;
 		if (departmentRes.size() != 1) {
@@ -571,13 +573,13 @@ public class API {
 	/* ______________  PARTICIPATION LIST for O5 ________________    */
 	
 	//CREATES A .csv FILE CONTAINING ALL PATIENTS
-	public String getParticipationList(boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
+	public String getParticipationList(String password, String userID, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
 		new ParticipationList(new LinkedList<Person>(h.getAllAdmittedPatients()), department, birthday, address, tribe);
 		return "Participation list was created successfully.";
 	}
 	
 	//CREATES A .csv FILE CONTAINING ALL PATIENTS OF GIVEN DEPARTMENT
-	public String getParticipationList(String departmentName, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
+	public String getParticipationList(String password, String userID, String departmentName, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
 		LinkedList<Department> dList = searcher.departmentSearch(departmentName);
 		if (dList.size() != 1 || !(dList.getFirst() instanceof HCDepart)) {
 			return "Warning, an error occured, no list was created.";
@@ -590,7 +592,7 @@ public class API {
 	
 	/* ______________  EXTRA FEATURES for O7 ________________    */
 	
-	public String addDepartment(String type, String departmentName, String maxBed) {
+	public String addDepartment(String password, String userID, String type, String departmentName, String maxBed) {
 		LinkedList<Department> dList =new LinkedList<Department>(h.getDepartSet());
 		while (!dList.isEmpty()) {
 			Department d = dList.removeFirst();

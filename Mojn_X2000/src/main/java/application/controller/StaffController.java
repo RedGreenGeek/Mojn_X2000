@@ -21,8 +21,6 @@ public class StaffController  extends Controller{
 		this.application = ApplicationController.getInstance();
 	}
 
-
-
 	
 	
 	public void display() {
@@ -43,23 +41,13 @@ public class StaffController  extends Controller{
 	}
 
 
-
-
-
 	public void ToSearch() {
 		SearchStaffController SS = new SearchStaffController(session);
 		SearchStaffView SView = new SearchStaffView(SS);
 		SS.setView(SView);
 
-		SS.display();
-		
-	
-		
+		SS.display();	
 	}
-		
-	
-
-
 
 
 
@@ -72,9 +60,6 @@ public class StaffController  extends Controller{
 	}
 
 
-
-
-
 	public void ToRegister() {
 		RegisterStaffController SC = new RegisterStaffController(session);
 		RegisterStaffView SView = new RegisterStaffView(SC);
@@ -83,9 +68,6 @@ public class StaffController  extends Controller{
 		SC.display();
 		
 	}
-
-
-
 
 
 	public void ToAssign() {
