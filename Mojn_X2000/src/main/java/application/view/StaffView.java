@@ -21,6 +21,7 @@ import application.model.Session;
 import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
+// This is the view file for the staff menu.
 public class StaffView extends JFrame {
 
 	private static final long serialVersionUID = 100L;
@@ -28,7 +29,6 @@ public class StaffView extends JFrame {
 
 	private Session session;
 	private MenuTopView menuTop = new MenuTopView("Staff Menu");
-
 	private JLabel lblStaff;
 	
 	
@@ -50,7 +50,6 @@ public class StaffView extends JFrame {
 		lblStaff.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
 		// buttons
-		
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new GridBagLayout());
 		
@@ -83,6 +82,7 @@ public class StaffView extends JFrame {
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		
+		// Clearance check and the buttons are added to a common panel.
 		if(session.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));}
 		
@@ -98,7 +98,7 @@ public class StaffView extends JFrame {
 		
 		
 		
-//		 toolbar
+//		All panels and the back button are added to the frame
 		add(buttonsPanel, BorderLayout.CENTER);
 		add(menuTop, BorderLayout.NORTH);
 		menuTop.setSession(controller.getSession());
@@ -107,7 +107,7 @@ public class StaffView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	
-		
+// 		listeners are added to all the buttons		
 		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -159,11 +159,6 @@ public class StaffView extends JFrame {
 		
 	}
 	
-	
-//	public void setSession(Session sessionModel) {
-//		lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
-//	
-//	}
 }
 	
 	

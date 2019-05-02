@@ -22,7 +22,18 @@ public class GridBagLayoutUtils {
 		c.ipady = pady;	
 		c.insets = new Insets(inset, inset, inset, inset);
 		return c;
-// sdfds
 	}
+	
+	public static GridBagConstraints constraint(int x, int y, double weightx, double weighty, int top, int left, int bottom, int right, int anchor) {
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = x;
+		c.gridy = y;
+		c.weightx = weightx;
+		c.weighty = weighty;	
+		c.anchor = anchor;
+		c.insets = new Insets(top, left, bottom, right);
+		return c;
+	}
+
 }
 //adaefdsafsd

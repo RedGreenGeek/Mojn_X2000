@@ -14,7 +14,7 @@ public final class Session {
 	}
 
 	public enum JobTypes{
-		Doctor,Clerk, ICTOfficer , Nurse;
+		Doctor,Clerk, ICTOfficer, Nurse;
 	}
 
 	

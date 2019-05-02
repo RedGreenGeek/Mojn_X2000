@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+// This class is the text out put area all functions has to communicate with the user.
 @SuppressWarnings("serial")
 public class TextPanelView extends JPanel{
 	JTextArea textArea;
