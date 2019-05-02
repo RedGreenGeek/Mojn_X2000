@@ -35,7 +35,7 @@ public class M4_movePatientBeds {
 
 	@When("^I am entering a Same bed no$")
 	public void i_am_entering_a_Same_bed_no() {
-		message = api.movePatientBed("2", "2");
+		message = api.movePatientBed("2", "7");
 	}
 
 	@Then("^I get a good Moved to same bed$")
