@@ -12,7 +12,7 @@ public class AdminDepart extends Department {
 	}
 	
 	public AdminDepart(String departName) {
-		new AdminDepart(departName, new HashSet<Person>());
+		this(departName, new HashSet<Person>());
 	}
 	
 

@@ -117,16 +117,6 @@ public class Database {
 	/* _______________ SECTION 3: Writing all objects to database ______________ */
 	/* ######################################################################### */
 	
-	protected String writeCounters(int staff_counter, int patient_counter) {
-		
-		String query = "TRUNCATE Additional";
-		String query1 = String.format("INSERT INTO Additional (staff_counter, patient_counter) VALUES (%d,%d)", staff_counter, patient_counter);
-		
-		INSERT(query);
-		return INSERT(query1);
-
-	}
-	
 	protected String writePatient(Patient p) {
 		
 		String firstName = p.getFirstName();
@@ -142,50 +132,61 @@ public class Database {
 		
 		String query;
 		
-		if (triage != null && bed_location != null) {
+		if (department == null) {
+			
+			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, null,\"%s\", \"%s\", null, null) ",
+					id, firstName, lastName, birthday, alive, address, tribe);
+			 
+			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
+					+ "alive = %b, Department_name = null, address = \"%s\", tribe = \"%s\", triage = null, bed = null", id, firstName, lastName, birthday, alive, address, tribe);
+			
+			query = query1 + query2;
+			
+		} else if (triage != null && bed_location != null) {
 
 			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", %d, %d) ",
 					id, firstName, lastName, birthday, alive, 
 					department, address, tribe, triage, bed_location);
 			 
 			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
-					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", triage = \"%d\", bed = \"%d\"", id, firstName, lastName, birthday, alive, 
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", triage = %d, bed = %d", id, firstName, lastName, birthday, alive, 
 					department, address, tribe, triage, bed_location);
 			
 			query = query1 + query2;
 		
 		} else if (triage == null && bed_location != null) {
 			
-			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", %d) ",
+			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", null, %d) ",
 					id, firstName, lastName, birthday, alive, 
 					department, address, tribe, bed_location);
 			 
 			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
-					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", bed = \"%d\"", id, firstName, lastName, birthday, alive, 
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", triage = null, bed = %d", id, firstName, lastName, birthday, alive, 
 					department, address, tribe, bed_location);
 			
 			query = query1 + query2;
 			
 		} else if (triage != null && bed_location == null) {
 			
-			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", %d) ",
+			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", %d, null) ",
 					id, firstName, lastName, birthday, alive, 
 					department, address, tribe, triage);
 			 
 			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
-					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", triage = \"%d\"", id, firstName, lastName, birthday, alive, 
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", triage = %d, bed = null", id, firstName, lastName, birthday, alive, 
 					department, address, tribe, triage);
 			
 			query = query1 + query2;
 			
+		// When both triage and bed are null, the following query will be send
 		} else {
 			
-			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\") ",
+			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\",\"%s\", null, null) ",
 					id, firstName, lastName, birthday, alive, 
 					department, address, tribe);
 			 
 			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
-					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\"", id, firstName, lastName, birthday, alive, 
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\", triage = null, bed = null", id, firstName, lastName, birthday, alive, 
 					department, address, tribe);
 			
 			query = query1 + query2;
@@ -207,14 +208,31 @@ public class Database {
 		String tribe = s.getTribe();
 		boolean alive = s.isAlive();
 		
-		String query1 = String.format("INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\", \"%s\", %b)",
-				id, firstName, lastName, birthday, department, address, tribe, alive);
-		 
-		String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
-				+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\"", id, firstName, lastName, birthday, alive, 
-				department, address, tribe);
+		String query;
 		
-		String query = query1 + query2;
+		if (department != null) {
+
+			String query1 = String.format("INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", \"%s\" ,\"%s\", \"%s\", %b)",
+					id, firstName, lastName, birthday, department, address, tribe, alive);
+			 
+			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
+					+ "alive = %b, Department_name = \"%s\", address = \"%s\", tribe = \"%s\"", id, firstName, lastName, birthday, alive, 
+					department, address, tribe);
+			
+			query = query1 + query2;
+		
+		} else {
+			
+			String query1 = String.format("INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", null ,\"%s\", \"%s\", %b)",
+					id, firstName, lastName, birthday, department, address, tribe, alive);
+			 
+			String query2 =  String.format(" ON DUPLICATE KEY UPDATE id = \"%s\", first_name = \"%s\", last_name = \"%s\", birthday = \"%s\","
+					+ "alive = %b, Department_name = null, address = \"%s\", tribe = \"%s\"", id, firstName, lastName, birthday, alive, 
+					department, address, tribe);
+			
+			query = query1 + query2;
+			
+		}
 
 		return INSERT(query);
 		
@@ -222,7 +240,6 @@ public class Database {
 	
 	public String writeDepartment(Department department) {
 		
-		String query;
 		String name = department.getName();
 		
 		if (department instanceof InPatientDepart ) {
@@ -231,7 +248,11 @@ public class Database {
 			
 			int use = ((InPatientDepart) department).get_beds_in_use();
 			
-			query = String.format("INSERT IGNORE INTO Department (name, beds_max, beds_use, type) VALUES (\"%s\", \"%d\", \"%d\", \"%s\")", name, max, use, "IPD");
+			String query1 = String.format("INSERT INTO Department (name, beds_max, beds_use, type) VALUES (\"%s\", \"%d\", \"%d\", \"%s\")", name, max, use, "IPD");
+			
+			String query2 =  String.format(" ON DUPLICATE KEY UPDATE beds_max = \"%d\", beds_use = \"%d\" ", max, use);
+			
+			String query = query1 + query2;
 			
 			return INSERT(query);
 			
@@ -239,7 +260,7 @@ public class Database {
 		
 		else if (department instanceof AdminDepart ) {
 			
-			query = String.format("INSERT IGNORE INTO Department (name, type) VALUES (\"%s\", \"%s\")", name, "AMD");
+			String query = String.format("INSERT IGNORE INTO Department (name, type) VALUES (\"%s\", \"%s\")", name, "AMD");
 			
 			return INSERT(query);
 			
@@ -247,7 +268,7 @@ public class Database {
 		
 		else if (department instanceof OutPatientDepart ) {
 			
-			query = String.format("INSERT IGNORE INTO Department (name, type) VALUES (\"%s\", \"%s\")", name, "OPD");
+			String query = String.format("INSERT IGNORE INTO Department (name, type) VALUES (\"%s\", \"%s\")", name, "OPD");
 			
 			return INSERT(query);
 			
