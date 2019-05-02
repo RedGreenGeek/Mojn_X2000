@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import application.controller.AllocatePatientController;
+import application.utils.GridBagLayoutUtils;
 
 public class AllocatePatientView extends JFrame {
 	private static final long serialVersionUID = 989075282561187452L;
@@ -111,54 +112,33 @@ public class AllocatePatientView extends JFrame {
 		
 		/////////////////////////// 5. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		int y = 0;
 		
-		inputArea.add(DepartNameLabel, gc);
+		inputArea.add(DepartNameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
+
 		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
+		inputArea.add(DepartNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		inputArea.add(DepartNameField, gc);
 		
 
 		
 		/////////////////////////// 6. linje
 		
-		gc.gridx = 0;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 0.1;
-		gc.fill = GridBagConstraints.NONE;
-		gc.anchor = GridBagConstraints.LINE_END;
-		gc.insets = new Insets(0,0,0,5); // (top, left, bottom, right)
+		y = y + 1;
 		
-		inputArea.add(IDLabel, gc);
+		inputArea.add(IDLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
 		
-		gc.gridx = 1;
-		gc.anchor = GridBagConstraints.LINE_START;
-		gc.insets = new Insets(0,0,0,0);
+		inputArea.add(idField,  GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		inputArea.add(idField, gc);
 		
 		
 		/////////////////////////// 7. linje
 		
-		gc.gridx = 1;
-		gc.gridy++;
-		gc.weightx = 1;
-		gc.weighty = 1;
-		gc.anchor = GridBagConstraints.FIRST_LINE_START;
-		gc.insets = new Insets(0,0,0,0);
+		y = y+1;
 		
-		inputArea.add(okBtn, gc);
+		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
+		
 		
 		
 		setLayout(new BorderLayout());
