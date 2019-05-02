@@ -22,9 +22,20 @@ public class OutPatientDepart extends HCDepart {
 	        this.triageLevel = triageLevel;
 	      }
 	      
-
+	      
 	      public int compareTo(Pair pair) {
-	        return Integer.compare(pair.triageLevel,triageLevel);
+	    	  if (pair.triageLevel<this.triageLevel) {
+	    		  return -1;
+	    	  }
+	    	  else if (pair.triageLevel>this.triageLevel) {
+	    		  return 1;
+	    	  }
+	    	  else if (pair.P.equals(this.P)) {
+	    		  return 0;
+	    	  }
+	    	  else {
+	    		  return -1;
+	    	  }
 	      }
 	      
 	      public Person getID() {
