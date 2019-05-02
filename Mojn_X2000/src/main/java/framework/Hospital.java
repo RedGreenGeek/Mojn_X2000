@@ -17,30 +17,37 @@ public class Hospital {
 	public Hospital() {
 	}
 	
+	//Retrieve all patients registered at the hospital.
 	public HashSet<Patient> getAllPatientSet() {
 		return allPatientSet;
 	}
-
+	
+	//Write changes to all patient registered at the hospital.
 	protected void setAllPatientSet(HashSet<Patient> allPatientSet) {
 		this.allPatientSet = allPatientSet;
 	}
 	
+	//Make it possible to overwrite, for addind new departments.
 	protected void setDepartSet(HashSet<Department> departSet) {
 		this.departSet = departSet;
 	}
 	
+	//Retrieve the departments in the hospital.
 	protected HashSet<Department> getDepartSet() {
 		return this.departSet;
 	}
 	
+	//Retrieves the staff in the hospital.
 	protected HashSet<Staff> getStaffSet(){
 		return this.allStaffSet;
 	}
 	
+	//Sets the staff in the hospital.
 	protected void setAllStaff(HashSet<Staff> allStaffSet){
 		this.allStaffSet = allStaffSet;
 	}
 	
+	//Retrieve all staff member currently employed at a department.
 	protected HashSet<Person> getAllStaff(){
 		HashSet<Person> staffSet = new HashSet<Person>();
 		LinkedList<Department> departList = new LinkedList<Department>(this.departSet);
@@ -50,6 +57,7 @@ public class Hospital {
 		return staffSet;
 	}
 	
+	//Retrieve all patient currently admitted to the hospital.
 	protected HashSet<Person> getAllAdmittedPatients(){
 		HashSet<Person> patientSet = new HashSet<Person>();
 		LinkedList<Department> departList = new LinkedList<Department>(this.departSet);
