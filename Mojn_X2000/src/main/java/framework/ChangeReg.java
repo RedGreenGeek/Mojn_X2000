@@ -115,8 +115,13 @@ public class ChangeReg {
 	}
 	
 	 public void remove(Department d, Patient p) {
-			// Setting department, triage and BedNo to null
-		((InPatientDepart) d).beds.Discharge(p);
+		// Setting department, triage and BedNo to null
+		if (d instanceof InPatientDepart) {
+			((InPatientDepart) d).beds.Discharge(p);
+		}
+		if (d instanceof OutPatientDepart) {
+			((OutPatientDepart) d).removeFromQueue(p);
+		}
 		p.setBedLocation(null);
 		p.setTriage(null);
 		p.setDepartment(null);
@@ -124,14 +129,9 @@ public class ChangeReg {
 		patientSet.remove(p);
 		d.setPatient(patientSet);
 		
-
-
 		
 		// To insert the value null in department_name column, delete the patient and write the patient again
 		DB.deletePatient(p);
 		DB.writePatient(p);
-		
-		
-		
 	}
 }

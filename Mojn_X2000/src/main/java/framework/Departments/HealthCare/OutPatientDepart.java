@@ -30,11 +30,14 @@ public class OutPatientDepart extends HCDepart {
 	      public Person getID() {
 	        return this.P;
 	      }
-
 	}
 
-	public PriorityQueue<Pair> queue;
-		
+	private PriorityQueue<Pair> queue;
+	
+	public void removeFromQueue(Patient p) {
+		queue.remove(new Pair(p,p.getTriage()));
+	}
+	
 	public OutPatientDepart(String departName, HashSet<Person> staffSet, HashSet<Person> patientSet) {
 		super.setName(departName);
 		super.setStaff(staffSet); 
@@ -52,6 +55,7 @@ public class OutPatientDepart extends HCDepart {
 		this.queue.add(p);
 		((Patient) P).setTriage(triageLevel);
 	}
+	
 	public void EnQueue(Person P) {
 		this.EnQueue(P,1);
 	}
@@ -71,7 +75,6 @@ public class OutPatientDepart extends HCDepart {
 		ArrayList<Person> PList = new ArrayList<Person>();
 		while(Q.hasNext()) {
 			PList.add(Q.next().getID());
-			
 		}
 		return PList;
 	}
