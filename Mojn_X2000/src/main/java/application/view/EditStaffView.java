@@ -19,7 +19,6 @@ public class EditStaffView extends JFrame {
 	private JLabel surnameLabel;
 	private JLabel adressLabel;
 	private JLabel tribeLabel;
-	private JLabel birthdayLabel;
 	private JLabel jobLabel;
 	private JLabel IDLabel;
 
@@ -27,9 +26,6 @@ public class EditStaffView extends JFrame {
 	private JTextField surnameField;
 	private JTextField adressField;
 	private JTextField tribeField;
-	private JTextField dayField;
-	private JTextField monthField;
-	private JTextField yearField;
 	private JTextField jobField;
 	private JTextField IDField;
 
@@ -57,7 +53,6 @@ public class EditStaffView extends JFrame {
 		surnameLabel = new JLabel("Surname: ");
 		adressLabel = new JLabel("Adress: ");
 		tribeLabel = new JLabel("Tribe: ");
-		birthdayLabel = new JLabel("Birthday: ");
 		jobLabel = new JLabel("job: ");
 		IDLabel = new JLabel("ID: ");
 		
@@ -65,9 +60,6 @@ public class EditStaffView extends JFrame {
 		surnameField = new JTextField(11);
 		adressField = new JTextField(11);
 		tribeField = new JTextField(11);
-		dayField = new JTextField(3);
-		monthField = new JTextField(3);
-		yearField = new JTextField(4);
 		jobField = new JTextField(11);
 		IDField = new JTextField(11);
 		
@@ -80,23 +72,17 @@ public class EditStaffView extends JFrame {
 				String surname = surnameField.getText();
 				String adress = adressField.getText();
 				String tribe = tribeField.getText();
-				String day = dayField.getText();
-				String month = monthField.getText();
-				String year = yearField.getText();
 				String job = jobField.getText();
 				String ID = IDField.getText();
 
 				firstNameField.setText("");
 				surnameField.setText("");
-				dayField.setText("");
-				monthField.setText("");
-				yearField.setText("");
 				jobField.setText("");
 				IDField.setText("");
 
 				tribeField.setText("");
 				adressField.setText("");
-				msg = controller.EditAPI(ID,firstName, surname, adress, day, month, year,tribe,job);
+				msg = controller.EditAPI(ID,firstName, surname, adress,tribe,job);
 
 				textPanel.textArea.append(msg);
 				textPanel.textArea.append("\n");
@@ -143,17 +129,6 @@ public class EditStaffView extends JFrame {
 		inputArea.add(tribeField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		/////////////////////////// 5. linje
 		
-		y = y+1;
-		
-		inputArea.add(birthdayLabel, GridBagLayoutUtils.constraint(0, y, 0.1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
-		
-		inputArea.add(dayField, GridBagLayoutUtils.constraint(1, y, 0.1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
-		
-		inputArea.add(monthField, GridBagLayoutUtils.constraint(1, y, 0.1, 0.1, 0, 38, 0, 0, GridBagConstraints.LINE_START));
-		
-		inputArea.add(yearField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 76, 0, 0, GridBagConstraints.LINE_START));
-		
-		/////////////////////////// 6. linje
 		
 		y = y + 1;
 		

@@ -21,14 +21,10 @@ public class EditStaffController  extends Controller{
 		this.view = view;
 	}
 	
-	public String EditAPI(String ID,String firstName, String lastName,String adress ,String day, String month, String year, String tribe, String job) {
+	public String EditAPI(String ID,String firstName, String lastName,String adress , String tribe, String job) {
 		API api =  API.getInstance();
-		
-		if (day.equals("") || month.equals("") || year.equals("")){
-			return "Invalid Birthdate";
-		}
-
-		String a = api.changeStaff(ID,  job,  firstName,  lastName,  adress, tribe, Integer.parseInt(day), Integer.parseInt(month), Integer.parseInt(year));
+		// essential that the day, month and year are set to 0 because then the API doesn't change the birthday.
+		String a = api.changeStaff(ID,  job,  firstName,  lastName,  adress, tribe,0,0,0);
 		return a;
 		
 	}
