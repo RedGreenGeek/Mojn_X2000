@@ -57,6 +57,20 @@ public class Password {
 		    	this.hashValue = (hashValue+(charVal * i * 8191 ) * prime);  	
 		}
 	}
-	
-	
+
+	public int getClearence(String password, String userID) {
+		if (checkPassword(password,userID)) {
+			if (userID.charAt(0)=='C') {
+				return 1;
+			}
+			else if (userID.charAt(0)=='N') {
+				return 2;
+			}
+			else if (userID.charAt(0)=='D') {
+				return 3;
+			}
+			else { return 4;}
+		}
+		return 0;
+	}
 }
