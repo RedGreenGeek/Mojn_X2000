@@ -36,10 +36,8 @@ public class API {
 		searcher = new Searcher(h);
 		R = new ChangeReg();
 		Pas.addPassToMap("I", "I");
-		try {
-			log = new Logger();
-			log.write("SYSTEM","REBOOT","NONE");
-		} catch (IOException e) {e.printStackTrace();}
+		log = Logger.getInstance();
+		log.write("SYSTEM","REBOOT","NONE");
 		
 		//LOAD ARTIFICIAL HOSPITAL
 		
@@ -74,11 +72,8 @@ public class API {
 			R.add(h, p); // Adding patient through changereg
 			
 			/* write to log file */
-			try {
-				log.write(userID,"REGISTERED PATIENT",p.toString());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			log.write(userID,"REGISTERED PATIENT",p.toString());
+
 			
 			return "Patient registered succesfully.";
 		} else {return "Additional information is needed.";}
@@ -107,11 +102,8 @@ public class API {
 			//Write to database 
 			DB.writePatient(p);
 			/* write to log file */
-			try {
-				log.write(userID,"PATIENT DATA CHANGED",p.toString());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			log.write(userID,"PATIENT DATA CHANGED",p.toString());
+
 			
 			return "Patient information has been changed successfully.";
 		} else {return "Illegal information changes.";}
@@ -190,11 +182,8 @@ public class API {
 			R.add(h, p);
 			
 			/* write to log file */
-			try {
-				log.write(userID,"STAFF REGISTERED",p.toString());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			log.write(userID,"STAFF REGISTERED",p.toString());
+
 			
 			return "The " + jobtype + " has been registered succesfully!";
 		}else {return "Unsuccesful registration!";}
@@ -219,11 +208,8 @@ public class API {
 		staffRes.getFirst().setDepartment(departmentName);
 		
 		/* write to log file */
-		try {
-			log.write(userID,"ASSIGNED DEPARTMENT",staffRes.getFirst().toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		log.write(userID,"ASSIGNED DEPARTMENT",staffRes.getFirst().toString());
+
 		
 		return "Staff added successfully to department";
 	}
@@ -288,11 +274,8 @@ public class API {
 				person.setTribe(tribe);
 				
 				/* write to log file */
-				try {
-					log.write(userID,"STAFF DATA CHANGED",person.toString());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				log.write(userID,"STAFF DATA CHANGED",person.toString());
+
 				
 				return "Staff information has been changed successfully!";
 			}
@@ -377,11 +360,8 @@ public class API {
 		patientAdmission("I","I","", departmentName, patientID);
 		
 		/* write to log file */
-		try {
-			log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
+
 		
 		return p+" was added to bed: "+p.getBedLocation();
 	}
@@ -463,11 +443,8 @@ public class API {
 		  }
 		  
 		  /* write to log file */
-		  try {
-			log.write(userID,"PATITENT ADMITTED",p.toString());
-		  } catch (IOException e) {
-			e.printStackTrace();
-		  }
+		  log.write(userID,"PATITENT ADMITTED",p.toString());
+		
 		  
 		  return "The patient has been registered succesfully to " + departmentName +  "!";
 		 }
@@ -488,11 +465,8 @@ public class API {
 		Department d = dSearch.getFirst();
 		
 		/* write to log file */
-		try {
-			log.write(userID,"PATIENT DISCHARGED",p.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		log.write(userID,"PATIENT DISCHARGED",p.toString());
+
 		
 		R.remove(d, p);
 		return p + ", has been removed succesfully from " + d;
@@ -540,11 +514,8 @@ public class API {
 				Department.beds.Discharge(p);
 				
 				/* write to log file */
-				try {
-					log.write(userID,"PATIENT MOVED BED",p.toString());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				log.write(userID,"PATIENT MOVED BED",p.toString());
+			
 				
 				return "The patient was moved succesfully";
 			}
@@ -580,11 +551,7 @@ public class API {
 			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
-			try {
-				log.write(userID,"NEW USER ADDED",staffID);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			log.write(userID,"NEW USER ADDED",staffID);
 			
 			return "Password created";
 		} else{
@@ -610,11 +577,8 @@ public class API {
 			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
-			try {
-				log.write(userID,"PASSWORD CHANGED",staffID);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			log.write(userID,"PASSWORD CHANGED",staffID);
+
 			
 			return "Password changed";
 		}
@@ -670,11 +634,7 @@ public class API {
 		}
 		
 		/* write to log file */
-		try {
-			log.write(userID,"PATIENT DEQUEUED",next.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		log.write(userID,"PATIENT DEQUEUED",next.toString());
 		
 		return "ID\tDepartment\tSurname\tName\tBedNo/Triage\n"+next.toString();
 	}
@@ -746,11 +706,8 @@ public class API {
 		else {return "Invalid department type. It must be admin, inPatient, or outPatient!";}
 		
 		/* write to log file */
-		try {
-			log.write(userID,"DEPARTMENT ADDED",departmentName);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		log.write(userID,"DEPARTMENT ADDED",departmentName);
+		
 		
 		return "The department was added!";
 	}
