@@ -22,7 +22,8 @@ import framework.person.staff.Nurse;
 public class Database {
 	
 	private static Database instance;
-	public static String DEFAULT = "mydb";
+	public static String DEFAULT = "local";
+	public static String REMOTE = "remote";
 	private String driver_host;
 	private String URL;
 	private String database;
@@ -36,17 +37,38 @@ public class Database {
 	/* ______________ SECTION 1: Connection and singleton-creation _____________ */
 	/* ######################################################################### */
 
+	// The constructor has been made private in order to make the singleton design-pattern. 
+	// In this way multiple connections to the database are avoided. 
+	// The input to the constructor is given in order to distinguish between the local and the remote database. 
+	
 	private Database(String name_of_database) {
+		
+		if (name_of_database.equals("local")) {
 
-		this.driver_host = "jdbc:mysql://localhost:3306/";
-		this.database = name_of_database;
-		this.username = "root";
-		this.password = "AGILE2019";
-		this.URL = driver_host + database;
+			this.driver_host = "jdbc:mysql://localhost:3306/";
+			this.database = "mydb";
+			this.username = "root";
+			this.password = "AGILE2019";
+			this.URL = driver_host + database;
+	
+			EstablishConnection();
+			
+		} else if (name_of_database.equals("remote")) {
+			
+			this.driver_host = "jdbc:mysql://remotemysql.com:3306/";
+			this.database = "NgJ59PJEgK ";
+			this.username = "NgJ59PJEgK ";
+			this.password = "k0LOT2B4MF";
+			this.URL = driver_host + database;
+	
+			EstablishConnection();
 
-		EstablishConnection();
-
+		} else {System.out.println("Database connection not recognized!");};
+			
 	}
+	
+	// The method getInstance ensures that only 1 instance of the database is created.
+	// It can be called statically, which is needed since the constructor cannot be accessed outside of the class.
 	
 	public static synchronized Database getInstance(String name_of_database) {
 		
@@ -59,26 +81,28 @@ public class Database {
 		}
 	}
 	
+	// Establish connection is the method that is called upon construction of the instance. 
+	// In case of errors with driver or port connected, the exception is thrown, and the stack trace is printed. 
+	
 	private void EstablishConnection() {
 
 		try {
-			// 1. Get connection to MySQL database
 
 			myConnection = DriverManager.getConnection(URL, username, password);
 
-			// 2. Create a statement  ->  connect to database
 			Statement myStatement = myConnection.createStatement();
 			myStatement.executeUpdate("USE " + database + ";");
 
 			myStatement.close();
-			
-			System.out.println("Successful connection to database!");
+
 		}
 
 		catch (Exception e) {
 			System.out.println("Connecting to database failed!");
 		}
 	}
+	
+	// If the getInstance() has been called, and the connection has been established, the isConnected() will return true. 
 	
 	public boolean isConnected() {
 		return myConnection != null;
@@ -87,6 +111,9 @@ public class Database {
 	/* ######################################################################### */
 	/* _______________ SECTION 2: Adding two types of queries __________________ */
 	/* ######################################################################### */
+	
+	// GET() takes care of all queries to the MySQL database, where data needs to be extracted. 
+	// It is made separately due to a difference in the statements are handled by the driver. 
 	
 	private ResultSet GET(String query) {
 		
@@ -101,6 +128,8 @@ public class Database {
 		return null;
 		
 	}
+	
+	// INSERT takes care of all queries where data needs to be inserted or updated. 
 	
 	private String INSERT(String query) {
 		
@@ -120,6 +149,10 @@ public class Database {
 	/* _______________ SECTION 3: Writing all objects to database ______________ */
 	/* ######################################################################### */
 	
+	// writePatient() takes a patient as input, dissembles the patient into simple data structures, and writes the data to the database.
+	// In case a patient with same primary key (i.e. 'id') exists in the database, all data is updated.
+	// This is needed when patient information is edited. 
+	
 	protected String writePatient(Patient p) {
 		
 		String firstName = p.getFirstName();
@@ -135,6 +168,9 @@ public class Database {
 		
 		String query;
 		
+		// In case the patient is not assigned to a department, he or she cannot have any triage level or bed number. 
+		// Therefore these are written into the database with the value being null. 
+		
 		if (department == null) {
 			
 			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, null,\"%s\", \"%s\", null, null) ",
@@ -144,6 +180,9 @@ public class Database {
 					+ "alive = %b, Department_name = null, address = \"%s\", tribe = \"%s\", triage = null, bed = null", id, firstName, lastName, birthday, alive, address, tribe);
 			
 			query = query1 + query2;
+			
+		// In case the patient has both triage and bed (which should NOT be the case), both are written into the database. 
+		// The rest of the 'else if' follow the same procedure. 
 			
 		} else if (triage != null && bed_location != null) {
 
@@ -156,7 +195,8 @@ public class Database {
 					department, address, tribe, triage, bed_location);
 			
 			query = query1 + query2;
-		
+
+			
 		} else if (triage == null && bed_location != null) {
 			
 			String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\", \"%s\", null, %d) ",
@@ -200,6 +240,9 @@ public class Database {
 		
 	}
 	
+	// writeStaff() takes a staff as input, dissembles the staff into simple data structures, and writes the data to the database.
+	// Since staff do not have triage levels or bed locations, and therefore the method contains less statements. 
+	
 	public String writeStaff(Staff s) {
 		
 		String id = s.getID();
@@ -240,6 +283,8 @@ public class Database {
 		return INSERT(query);
 		
 	}
+	
+	// writeDepartment() contains a if-statement for each department type. 
 	
 	public String writeDepartment(Department department) {
 		
