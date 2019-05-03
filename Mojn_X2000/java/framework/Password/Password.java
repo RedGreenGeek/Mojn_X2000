@@ -2,29 +2,34 @@ package framework.Password;
 import java.util.HashMap;
 
 public class Password {
+	//Create private variables to store password values in
 	private HashMap<String, String> PassMap;
 	private long hashValue;
 	private static Password self;
 	
+	//Create the password as static synchronized, so the same instance can be passed around
 	public static synchronized Password getInstance() {
 		if (self == null){
 			self = new Password();
 		}
 		return self; 
 	}
-
+	
+	//Hardcode some Admin users into the password storage
 	private Password() {
 		this.PassMap = new HashMap<String,String>();
 		PassMap.put("I", "I");
 		PassMap.put("I", "admin");
 	}
 	
+	//Public method that adds a hashed password to a map
 	public void addPassToMap(String Pass, String StaffId) {
 		HashPassword(Pass);
 		String key = String.valueOf(this.hashValue);
 		this.PassMap.put(StaffId, key);
 	}
 	
+	//method to check if a StaffId exists in the password storage
 	public boolean checkUniqueID(String StaffID) {
 		String value = this.PassMap.get(StaffID);
 
@@ -33,31 +38,35 @@ public class Password {
 		} else {return true;}
 	}
 
-	
+	//Checks if entered password entered is equal to the password stored for a StaffId
 	public boolean checkPassword(String EnterPass, String StaffId) {
+		//Security - if one were to enter null as password, access would always be granted!
 		if (EnterPass == null) {
 			return false;
 		}
+		//Hash the entered password
 		HashPassword(EnterPass);
 		String key = String.valueOf(this.hashValue);
-
+		//Checks if the value in the password storage is equal to the hashed entered password
 		if (this.PassMap.get(StaffId).equals( key)) {
 			return true;
 		}
 		else {return false;}
 	}
 	
+	//Hash a password (string) so it gets a unique Long value
 	private void HashPassword(String Pass) {
+		//hashing is done using primes, to ensure unique long values.
 		long prime = 2147483647;
 		this.hashValue = 127;
-		
+		//Iterate over the string, and map different string values to long values
 		for (int i = 0; i < Pass.length(); i++){
 		    char c = Pass.charAt(i);   
 		    int charVal = (int) c;
 		    	this.hashValue = (hashValue+(charVal * i * 8191 ) * prime);  	
 		}
 	}
-
+	//Simple clearance function mapping StaffID (called userID) to different integer values representing clearance.
 	public int getClearence(String password, String userID) {
 		if (checkPassword(password,userID)) {
 			if (userID.charAt(0)=='C') {
