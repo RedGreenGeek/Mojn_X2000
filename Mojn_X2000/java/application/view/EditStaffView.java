@@ -14,12 +14,11 @@ import application.controller.EditStaffController;
 import application.utils.GridBagLayoutUtils;
 
 public class EditStaffView extends JFrame {
-	private static final long serialVersionUID = 98907528204452L;
+	private static final long serialVersionUID = 9890754679504452L;
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
 	private JLabel adressLabel;
 	private JLabel tribeLabel;
-	private JLabel birthdayLabel;
 	private JLabel jobLabel;
 	private JLabel IDLabel;
 
@@ -27,9 +26,6 @@ public class EditStaffView extends JFrame {
 	private JTextField surnameField;
 	private JTextField adressField;
 	private JTextField tribeField;
-	private JTextField dayField;
-	private JTextField monthField;
-	private JTextField yearField;
 	private JTextField jobField;
 	private JTextField IDField;
 
@@ -41,12 +37,14 @@ public class EditStaffView extends JFrame {
 	
 	private EditStaffController controller;
 	
+	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public EditStaffView(EditStaffController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
 	private void initGUI() {
+		// All components of the window are defined
 		setTitle("Edit Staff");
 		setPreferredSize(new Dimension(800, 700));
 		
@@ -57,7 +55,6 @@ public class EditStaffView extends JFrame {
 		surnameLabel = new JLabel("Surname: ");
 		adressLabel = new JLabel("Adress: ");
 		tribeLabel = new JLabel("Tribe: ");
-		birthdayLabel = new JLabel("Birthday: ");
 		jobLabel = new JLabel("job: ");
 		IDLabel = new JLabel("ID: ");
 		
@@ -65,122 +62,89 @@ public class EditStaffView extends JFrame {
 		surnameField = new JTextField(11);
 		adressField = new JTextField(11);
 		tribeField = new JTextField(11);
-		dayField = new JTextField(3);
-		monthField = new JTextField(3);
-		yearField = new JTextField(4);
 		jobField = new JTextField(11);
 		IDField = new JTextField(11);
 		
-		okBtn = new JButton("OK");
+		menuTop.setSession(controller.getSession());
 		
+		// Listeners to the buttons are defined
+		menuTop.backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.Back2Main();
+			}
+		});
+		
+		okBtn = new JButton("OK");
 		okBtn.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent event) {
 				String firstName = firstNameField.getText();
 				String surname = surnameField.getText();
 				String adress = adressField.getText();
 				String tribe = tribeField.getText();
-				String day = dayField.getText();
-				String month = monthField.getText();
-				String year = yearField.getText();
 				String job = jobField.getText();
 				String ID = IDField.getText();
-
 				firstNameField.setText("");
 				surnameField.setText("");
-				dayField.setText("");
-				monthField.setText("");
-				yearField.setText("");
 				jobField.setText("");
 				IDField.setText("");
-
 				tribeField.setText("");
 				adressField.setText("");
-				msg = controller.EditAPI(ID,firstName, surname, adress, day, month, year,tribe,job);
-
+				msg = controller.EditAPI(ID,firstName, surname, adress,tribe,job);
 				textPanel.textArea.append(msg);
 				textPanel.textArea.append("\n");
-
 			}
-			
 		});
-		
 		layoutComponents();
-		
-	} // her ender constructoren
-	
+	} 
+	// All the components are organized by use of a grid layout and a border layout
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
 		
+		///////////////////////////// 1. line
 		int y = 0;
 
 		inputArea.add(firstNameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
-		
 		inputArea.add(firstNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		///////////////////////////// 2. linje
-		
+		///////////////////////////// 2. line
 		y = y+1;
 		
 		inputArea.add(surnameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-		
 		inputArea.add(surnameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		/////////////////////////// 3. linje
-		
+		/////////////////////////// 3. line
 		y = y + 1;
 		
 		inputArea.add(adressLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-		
 		inputArea.add(adressField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		/////////////////////////// 4. linje
-		
+		/////////////////////////// 4. line
 		y = y + 1;
 		
 		inputArea.add(tribeLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-		
 		inputArea.add(tribeField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
-		/////////////////////////// 5. linje
 		
-		y = y+1;
-		
-		inputArea.add(birthdayLabel, GridBagLayoutUtils.constraint(0, y, 0.1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
-		
-		inputArea.add(dayField, GridBagLayoutUtils.constraint(1, y, 0.1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
-		
-		inputArea.add(monthField, GridBagLayoutUtils.constraint(1, y, 0.1, 0.1, 0, 38, 0, 0, GridBagConstraints.LINE_START));
-		
-		inputArea.add(yearField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 76, 0, 0, GridBagConstraints.LINE_START));
-		
-		/////////////////////////// 6. linje
-		
+		/////////////////////////// 5. line
 		y = y + 1;
 		
 		inputArea.add(jobLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-		
 		inputArea.add(jobField,  GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		/////////////////////////// 7. linje
-		
+		/////////////////////////// 6. line
 		y = y +1;
 		
 		inputArea.add(IDLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
-		
 		inputArea.add(IDField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		/////////////////////////// 7. linje
-		
+		/////////////////////////// 7. line
 		y = y+1;
 		
 		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
 		
-		
-		
-		
-		//////////////////////////// TEXT AREA //////////////////////////////7
-	setLayout(new BorderLayout());
+		// All components are added to the frame
+		setLayout(new BorderLayout());
 		
 		add(inputArea, BorderLayout.WEST);
 		add(textPanel, BorderLayout.CENTER);
@@ -188,15 +152,5 @@ public class EditStaffView extends JFrame {
 	
 		pack();
 		setLocationRelativeTo(null);
-		
-		menuTop.setSession(controller.getSession());
-		
-		menuTop.backBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.Back2Main();
-			}
-		});
 	}
-
 }

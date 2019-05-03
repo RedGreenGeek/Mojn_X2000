@@ -3,6 +3,7 @@ package application.utils;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+// This is a class with three different constructors that specifies how a component should be layout in a grid layout
 public class GridBagLayoutUtils {
 
 	public static GridBagConstraints constraint(int x, int y, int padx, int pady, int top, int left, int bottom, int right) {
@@ -34,4 +35,3 @@ public class GridBagLayoutUtils {
 		return c;
 	}
 }
-//adaefdsafsd

@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.Session;
+import application.view.AddDepartView;
 import application.view.AddPasswordView;
 import application.view.ChangePasswordView;
 import application.view.FreeBedsHospitalView;
@@ -79,6 +80,14 @@ public class HospitalController  extends Controller{
 		ParticipationListController SC = new ParticipationListController(sessionModel);
 		ParticipationListView SView = new ParticipationListView(SC);
 		SC.setView(SView);
+		SC.display();
+	}
+	
+	public void ToAddDepart() {
+		AddDepartController SC = new AddDepartController(session);
+		AddDepartView SView = new AddDepartView(SC);
+		SC.setView(SView);
+
 		SC.display();
 	}
 }

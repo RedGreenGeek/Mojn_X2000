@@ -1,8 +1,4 @@
-
-
-
 package application.view;
-
 
 import java.awt.*;
 import java.awt.event.*;
@@ -14,25 +10,22 @@ import javax.swing.border.EmptyBorder;
 import application.controller.GetDepartmentController;
 import application.utils.GridBagLayoutUtils;
 
-
-@SuppressWarnings("serial")
 public class GetDepartmentView extends JFrame {
+	private static final long serialVersionUID = 43556572341L;
 	private JButton okBtn;
 	private JPanel inputArea;
 	private MenuTopView menuTop = new MenuTopView("Get all departments", "back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
-	
 	private GetDepartmentController controller;
 
-	
+	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public GetDepartmentView(GetDepartmentController controller) {
 		this.controller = controller;
 		initGUI();
 	}
-	
-	
+	// All components of the window are defined
 	private void initGUI() {
 		setTitle("Get Departments");
 		setPreferredSize(new Dimension(800, 700));
@@ -40,47 +33,38 @@ public class GetDepartmentView extends JFrame {
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
 
-
+		menuTop.setSession(controller.getSession());
 		
-
-		
-		okBtn = new JButton("Get Departments");
-		
-		okBtn.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent event) {
-
-				msg = controller.GetDepartmentAPI();
-				
-
-
-				textPanel.textArea.append(msg);
-				textPanel.textArea.append("\n");
-
-				
-
-;			}
-			
+		// Listeners to the buttons are defined
+		menuTop.backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.Back2Main();
+			}
 		});
 		
-
-		
+		okBtn = new JButton("Get Departments");
+		okBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				msg = controller.GetDepartmentAPI();
+				textPanel.textArea.append(msg);
+				textPanel.textArea.append("\n");
+			}
+			
+		});
 		layoutComponents();
-
-		
-	} // her ender constructoren
-	
-	
+	}
+	// All the components are organized by use of a grid layout and a border layout
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
 		
+		/////////////////////////// 1. line
 		int y = 0;
 		
 		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
 		
-		
-		//////////////////////////// TEXT AREA //////////////////////////////7
+		// All components are added to the frame
 		setLayout(new BorderLayout());
 		
 		add(inputArea, BorderLayout.WEST);
@@ -89,15 +73,6 @@ public class GetDepartmentView extends JFrame {
 	
 		pack();
 		setLocationRelativeTo(null);
-		
-		menuTop.setSession(controller.getSession());
-		
-		menuTop.backBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.Back2Main();
-			}
-		});
 	}
 
 }
