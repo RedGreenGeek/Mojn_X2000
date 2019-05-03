@@ -8,6 +8,7 @@ import application.view.FreeBedsHospitalView;
 import application.view.GetDepartmentView;
 import application.view.GetQueueView;
 import application.view.HospitalView;
+import application.view.NextInQueueView;
 import application.view.ParticipationListView;
 import application.view.StaffDepartView;
 
@@ -87,7 +88,13 @@ public class HospitalController  extends Controller{
 		AddDepartController SC = new AddDepartController(sessionModel);
 		AddDepartView SView = new AddDepartView(SC);
 		SC.setView(SView);
-
+		SC.display();
+	}
+	
+	public void ToNextInQueue() {
+		NextInQueueController SC = new NextInQueueController(sessionModel);
+		NextInQueueView SView = new NextInQueueView(SC);
+		SC.setView(SView);
 		SC.display();
 	}
 }

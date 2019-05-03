@@ -633,6 +633,7 @@ public class API {
 			return "Warning, could not retrieve next in line.";
 		}
 		
+		
 		/* write to log file */
 		log.write(userID,"PATIENT DEQUEUED",next.toString());
 		

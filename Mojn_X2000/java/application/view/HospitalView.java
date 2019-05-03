@@ -84,6 +84,12 @@ public class HospitalView extends JFrame {
 		btnAddDepart.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnAddDepart.setHorizontalTextPosition(SwingConstants.CENTER);
 		
+		JButton btnNextInQueue = new JButton("Next in queue");
+		Image nextInQueueImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/line.png")).getImage();
+		btnNextInQueue.setIcon(new ImageIcon(nextInQueueImg));
+		btnNextInQueue.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnNextInQueue.setHorizontalTextPosition(SwingConstants.CENTER);
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -98,6 +104,10 @@ public class HospitalView extends JFrame {
 		
 		if ( session.getRole() == JobTypes.ICTOfficer) {
 			buttonsPanel.add(btnAddDepart, GridBagLayoutUtils.constraint(2, 2, 0, 0, 0,10,50,10));
+		}
+		
+		if(session.getRole() == JobTypes.Doctor || session.getRole() == JobTypes.ICTOfficer) {
+			buttonsPanel.add(btnNextInQueue, GridBagLayoutUtils.constraint(3, 2, 0, 0, 0,10,50,10));
 		}
 		
 		
@@ -142,6 +152,12 @@ public class HospitalView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.ToAddDepart();
+			}
+		});
+		btnNextInQueue.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToNextInQueue();
 			}
 		});
 		
