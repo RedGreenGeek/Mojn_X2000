@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import framework.Departments.AdminDepart;
@@ -27,6 +28,7 @@ public class Database {
 	private String database;
 	private String username;
 	private String password;
+	
 	
 	private Connection myConnection;
 	
@@ -92,6 +94,7 @@ public class Database {
 			Statement st = myConnection.createStatement();	
 			return st.executeQuery(query);
 		} catch(Exception e) {
+			System.out.println("Could not load from database. Please see the stack trace below ..");
 			e.printStackTrace();
 		}
 		
@@ -290,6 +293,8 @@ public class Database {
 	public Patient makePatient(ResultSet rs) {
 		
 		try {
+			
+			
 		
 			String firstName = rs.getString("first_name");
 			String lastName = rs.getString("last_name");
@@ -307,6 +312,7 @@ public class Database {
 		} catch (Exception e) {
 			
 			System.out.println("Something went wrong when trying to read patient from database!");
+			e.printStackTrace();
 			
 			return null;
 			
@@ -326,8 +332,11 @@ public class Database {
 			String[] birthday = rs.getString("birthday").split("-");
 			String department = rs.getString("Department_name"); // We need to put that employee back into an department
 			Staff employee;
-	
 			
+			if (department == null) {
+				System.out.println("DEPARTMENT IS NULL!");
+			}
+
 			if (jobtype == 'C') {
 				
 				employee = new Clerk(jobid, first_name, last_name, address, tribe, Integer.parseInt(birthday[0]), Integer.parseInt(birthday[1]), Integer.parseInt(birthday[2]), department);
@@ -361,6 +370,7 @@ public class Database {
 		} catch (Exception e) {
 			
 			System.out.println("Something went wrong when reading staff from database!");
+			e.printStackTrace();
 			
 			return null;
 
@@ -410,9 +420,9 @@ public class Database {
 	
 	public int loadStaffCounter() throws Throwable {
 		
-		ResultSet rs = GET("SELECT * FROM Additional");
+		ResultSet rs = GET("SELECT COUNT(*) FROM Staff");
 		rs.next();
-		int result = rs.getInt("staff_counter");
+		int result = rs.getInt(1);
 		
 		return result;
 		
@@ -420,9 +430,9 @@ public class Database {
 	
 	public int loadPatientCounter() throws Throwable {
 		
-		ResultSet rs = GET("SELECT * FROM Additional");
+		ResultSet rs = GET("SELECT COUNT(*) FROM Patient");
 		rs.next();
-		int result = rs.getInt("patient_counter");
+		int result = rs.getInt(1);
 		
 		return result;
 		
@@ -481,12 +491,30 @@ public class Database {
 	
 	Hospital buildHospital(int staff_counter, int patient_counter, HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
 
+		
+		System.out.println(staffset);
 		Hospital hospital = new Hospital();
 		
 		Patient.counter = patient_counter;
 		Staff.counter = staff_counter;
 		
 		hospital.setDepartSet(departmentset);
+		hospital.setAllPatientSet(patientset);
+		hospital.setAllStaff(staffset);
+		
+		Iterator<Department> I_d = departmentset.iterator();
+		
+		System.out.println("STATUS OF DEPARTMENTS BEFORE BUILT!!!!");
+		
+		while (I_d.hasNext()) {
+			
+			Department d = I_d.next();
+			
+			System.out.println(d.getName() + " with patients: " + d.getPatient());
+			System.out.println(d.getName() + " with staff: " + d.getStaff());
+			
+			
+		}
 		
 		Searcher s = new Searcher(hospital);
 		ChangeReg R = new ChangeReg();
@@ -494,46 +522,64 @@ public class Database {
 		LinkedList<Staff> staffList = new LinkedList<Staff>(staffset);
 		
 		while (!staffList.isEmpty()) {
-			Staff pat = staffList.getFirst();
-			LinkedList<Department> d_list = new LinkedList<Department>();
+			Staff staff = staffList.removeFirst();
 
-			d_list = s.departmentSearch(pat.getDepartment());
-
-			if (!d_list.isEmpty()) {
-				Department d = d_list.getFirst();
-				Staff s1 = staffList.removeFirst();
-				R.add(d, s1);
-			}
-			
-			else {
-				Staff s1 = staffList.removeFirst();
-				System.out.println("No matches on department: " + pat.getDepartment());
-			}
-
+			// If staff does not belong to a department, we should not search for a department. Thus skip and add to hospital.
+			if (!(staff.getDepartment() == null)) {
+				LinkedList<Department> d_list = new LinkedList<Department>();
+	
+				d_list = s.departmentSearch(staff.getDepartment());
+	
+				if (!d_list.isEmpty()) {
+					Department d = d_list.getFirst();
+					R.add(d, staff);
+				}
+				
+				else {
+					System.out.println("ERROR: No matches on department: " + staff.getDepartment() + " with staff id  " + staff.getID());
+				}
+			}		
 		}
 		
 		LinkedList<Patient> patientList = new LinkedList<Patient>(patientset);
 		
 		while (!patientList.isEmpty()) {
-			LinkedList<Department> d = s.departmentSearch(patientList.getFirst().getDepartment());
 			
-			if (!d.isEmpty()) {
-				Department d_res = d.getFirst();
-				Patient p1 = patientList.removeFirst();
-				R.add(d_res, p1);
-			}
+			Patient patient = patientList.removeFirst();
+			System.out.println(patient);
+			LinkedList<Department> d = s.departmentSearch(patient.getDepartment());
 			
-			else {
-				Patient p1 = patientList.removeFirst();
-				System.out.println("No matches on department: " + p1.getDepartment());
+			// If patient does not belong to a department, we should not search for a department. Thus skip and add to hospital.
+			if (!(patient.getDepartment() == null)) {
+			
+				if (!d.isEmpty()) {
+					Department d_res = d.getFirst();
+					R.add(d_res, patient);
+					System.out.println(d_res.getPatient());
+				}
+				
+				else {
+					System.out.println("ERROR: No matches on department: " + patient.getDepartment() + " with staff id  " + patient.getID());
+				}
 			}
-
 		}
 		
+		System.out.println("Built succesfully!");
 		
-		hospital.setDepartSet(departmentset);
-		hospital.setAllPatientSet(patientset);
-		hospital.setAllStaff(staffset);
+		Iterator<Department> iter = departmentset.iterator();
+		
+		System.out.println("STATUS OF DEPARTMENTS AFTER BUILT!!!!");
+		
+		while (iter.hasNext()) {
+			
+			Department d = iter.next();
+			
+			System.out.println(d.getName() + " with patients: " + d.getPatient());
+			System.out.println(d.getName() + " with staff: " + d.getStaff());
+			
+			
+		}
+		
 		
 		return hospital;
 
@@ -544,14 +590,23 @@ public class Database {
 	/* _______________ SECTION 7: Rebooting hospital ___________________________ */
 	/* ######################################################################### */
 	
-	Hospital boot() throws Throwable {
+	Hospital boot() {
 		
-		HashSet<Patient> p_set = loadPatient();
-		HashSet<Staff> s_set = loadStaff();
-		HashSet<Department> d_set = loadDepartment();
-		int staff_counter = loadStaffCounter();
-		int patient_counter = loadPatientCounter();
-		return buildHospital(staff_counter, patient_counter, d_set, s_set, p_set);
+		try {
+			
+			HashSet<Patient> p_set = loadPatient();
+			HashSet<Staff> s_set = loadStaff();
+			HashSet<Department> d_set = loadDepartment();
+			int staff_counter = loadStaffCounter();
+			int patient_counter = loadPatientCounter();
+			return buildHospital(staff_counter, patient_counter, d_set, s_set, p_set);
+
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			System.out.println("System could not boot. Please see stack trace to find error!");
+			e.printStackTrace();
+			return null;
+		}
 		
 	}
 	
