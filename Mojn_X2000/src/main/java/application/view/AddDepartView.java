@@ -93,7 +93,7 @@ public class AddDepartView extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				String DepartName = DepartNameField.getText();
 				String MaxBeds;
-				String departType;
+				String departType = "";
 				
 				if (!maxBedField.getText().equals("")) {
 					 MaxBeds = maxBedField.getText();
@@ -104,7 +104,10 @@ public class AddDepartView extends JFrame {
 				}
 				if (Outdepart.isSelected()) {
 					 departType = "outpatient";
-				} else { departType = "admin";}
+				} 
+				if (Admindepart.isSelected()) {
+					departType = "admin";
+				}
 				
 				DepartNameField.setText("");
 				maxBedField.setText("");
@@ -131,16 +134,13 @@ public class AddDepartView extends JFrame {
 		int y = 0;
 		
 		inputArea.add(NameDepartLabel , GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-		
 		inputArea.add(DepartNameField,  GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
 		/////////////////////////// 2. line
 		y = y +1;
 		
 		inputArea.add(maxBedLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
-		
 		inputArea.add(maxBedField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
-		
 		
 		/////////////////////////// 3. line
 		y = y +1;
@@ -167,7 +167,6 @@ public class AddDepartView extends JFrame {
 	
 		pack();
 		setLocationRelativeTo(null);
-		
 
 	}
 
