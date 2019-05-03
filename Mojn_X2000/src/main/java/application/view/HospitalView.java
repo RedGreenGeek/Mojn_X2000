@@ -74,6 +74,12 @@ public class HospitalView extends JFrame {
 		
 		JButton btnParticipationList = new JButton("Get participation list");
 		
+		JButton btnAddDepart = new JButton("Add department");
+		Image addDepartImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/add.png")).getImage();
+		btnAddDepart.setIcon(new ImageIcon(addDepartImg));
+		btnAddDepart.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnAddDepart.setHorizontalTextPosition(SwingConstants.CENTER);
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -86,6 +92,10 @@ public class HospitalView extends JFrame {
 		if(session.getRole()==JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnStaffInDepart, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnGetDepart, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));}
+		
+		if ( session.getRole() == JobTypes.ICTOfficer) {
+			buttonsPanel.add(btnAddDepart, GridBagLayoutUtils.constraint(2, 2, 0, 0, 0,10,50,10));
+		}
 		
 		
 		// Listeners are defined
@@ -125,6 +135,14 @@ public class HospitalView extends JFrame {
 				controller.ToParticipationList();
 			}
 		});
+		btnAddDepart.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.ToAddDepart();
+			}
+		});
+		
+		
 		menuTop.btnAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
