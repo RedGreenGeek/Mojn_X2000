@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Logger {
 	private static Logger instance = null;
-	private String filePath = "ParticipationLists"+System.getProperty("file.separator")+"log.csv";
+	private String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "ParticipationLists"+System.getProperty("file.separator")+"log.csv";
 	public static synchronized Logger getInstance() {
 		if (instance==null) {
 			instance = new Logger();
