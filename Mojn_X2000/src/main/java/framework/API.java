@@ -1,7 +1,7 @@
 package framework;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.LinkedList;
 
 import framework.Departments.AdminDepart;
 import framework.Departments.HCDepart;
@@ -20,7 +20,7 @@ public class API {
 	private ChangeReg R;
 	private Database DB;
 	private Password Pas;
-//	private Logger log;
+	private Logger log;
 	
 	public static synchronized API getInstance() {
 		if (instance == null) {
@@ -36,10 +36,8 @@ public class API {
 		searcher = new Searcher(h);
 		R = new ChangeReg();
 		Pas.addPassToMap("I", "I");
-//		try {
-//			log = new Logger();
-//			log.write("SYSTEM","REBOOT","NONE");
-//		} catch (IOException e) {e.printStackTrace();}
+		log = Logger.getInstance();
+		log.write("SYSTEM","REBOOT","NONE");
 		
 		//LOAD ARTIFICIAL HOSPITAL
 		
@@ -57,12 +55,16 @@ public class API {
 		//LOADING COMPLETE
 	}
 	
-
+	
 	
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
 	
 	// REGISTER PATIENT TO HOSPITAL (NO DEPARTMENT)
-	public String registerPatient(String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+	public String registerPatient(String password, String userID, String firstName, String lastName, String tribe, String address, int day, int month, int year, boolean alive) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, address, tribe, alive)) {
 			// Adding to hospital  ->  The changereg R makes sure to handle database communication
@@ -70,14 +72,19 @@ public class API {
 			R.add(h, p); // Adding patient through changereg
 			
 			/* write to log file */
-//			log.write(userID,"REGISTERED PATIENT",p.toString());
+			log.write(userID,"REGISTERED PATIENT",p.toString());
+
 			
 			return "Patient registered succesfully.";
 		} else {return "Additional information is needed.";}
 	}
 	
 	// CHANGE EXISTING PATIENT 
-	public String changePatient(String ID, String firstName, String lastName, String tribe, String address, boolean alive) {
+	public String changePatient(String password, String userID, String ID, String firstName, String lastName, String tribe, String address, boolean alive) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Person> patientSearch = searcher.patientSearch(ID, "", "", "");
 		if (patientSearch.size() != 1) {return "No patient with that ID found.";}
 		Patient p = (Patient) patientSearch.getFirst();
@@ -95,14 +102,19 @@ public class API {
 			//Write to database 
 			DB.writePatient(p);
 			/* write to log file */
-//			log.write(userID,"PATIENT DATA CHANGED",p.toString());
+			log.write(userID,"PATIENT DATA CHANGED",p.toString());
+
 			
 			return "Patient information has been changed successfully.";
 		} else {return "Illegal information changes.";}
 	}
 	
 	// PATIENT SEARCH 'PATIENT ATBs.' -> String (patient info)
-	public String patientSearcher(String patientID, String firstName, String lastName, String birthday, String department) {
+	public String patientSearcher(String password, String userID, String patientID, String firstName, String lastName, String birthday, String department) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Person> persons = searcher.patientSearch(patientID, firstName, lastName, birthday);
 		if (!department.equals("")) {
 			@SuppressWarnings("unchecked")
@@ -124,8 +136,13 @@ public class API {
 		} else {return message; }
 		}
 	
+	
 	//GET PATIENT LIST OF GIVEN DEPARTMETN
-	public String getDeparmentPatient(String departmentName) {
+	public String getDeparmentPatient(String password, String userID, String departmentName) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
 		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
 		if (resList.size()==1) {
@@ -142,7 +159,11 @@ public class API {
 	/* _____________ STAFF REGISTRATION for M2 ______________ */
 	
 	//registerStaff takes staff ATBs, adds staff to hospital (no department)
-	public String registerStaff (String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+	public String registerStaff(String password, String userID, String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		Staff p;
 		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
 			if (jobtype.equals("Clerk")) {
@@ -161,14 +182,20 @@ public class API {
 			R.add(h, p);
 			
 			/* write to log file */
-//			log.write(userID,"STAFF REGISTERED",p.toString());
+			log.write(userID,"STAFF REGISTERED",p.toString());
+
 			
 			return "The " + jobtype + " has been registered succesfully!";
 		}else {return "Unsuccesful registration!";}
 	}
 	
+	
 	//ASSIGN STAFF TO DEPARTMENT
-	public String assignStaffDepartment(String departmentName, String staffID, String firstName, String lastName, String birthday, String email) {
+	public String assignStaffDepartment(String password, String userID, String departmentName, String staffID, String firstName, String lastName, String birthday, String email) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Person> staffRes = searcher.staffSearch(staffID, firstName, lastName, birthday, email);
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (staffRes.size()!=1 || departmentRes.size()!=1) {
@@ -181,13 +208,18 @@ public class API {
 		staffRes.getFirst().setDepartment(departmentName);
 		
 		/* write to log file */
-//		log.write(userID,"ASSIGNED DEPARTMENT",staffRes.getFirst().toString());
+		log.write(userID,"ASSIGNED DEPARTMENT",staffRes.getFirst().toString());
+
 		
 		return "Staff added successfully to department";
 	}
 	
 	//CHANGE STAFF FROM ID -> TO ATBs
-	public String changeStaff (String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+	public String changeStaff (String password, String userID, String StaffID ,String jobtype ,String firstName, String lastName,String adress, String tribe, int day, int month, int year) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		if (searcher.staffSearch(StaffID, "", "", "", "").size() == 0) {
 			return "The ID does not match an employee!";
 		}
@@ -222,22 +254,13 @@ public class API {
 			String id = person.getJobType();
 			id.replaceAll("N", "").replaceAll("D", "").replaceAll("IT", "").replaceAll("C", "");
 			
-			if (jobtype.equals("Nurse")) {
-				id = "N"+id;
-			}
-			if (jobtype.equals("Doctor")) {
-				id = "D"+id;
-			}
-			if (jobtype.equals("Clerk")) {
-				id = "C"+id;
-			}
-			if (jobtype.equals("ICTOfficer")) {
-				id = "IT"+id;
-			}
+			if (jobtype.equals("Nurse")) {id = "N"+id;}
+			if (jobtype.equals("Doctor")) {id = "D"+id;}
+			if (jobtype.equals("Clerk")) {id = "C"+id;}
+			if (jobtype.equals("ICTOfficer")) {id = "IT"+id;}
 			
 			person.setID(id);
 			person.setJobType(jobtype);
-		
 			
 			return "The "+jobtype+" has been registered succesfully!";
 			} else {return "Invalid job type!";}
@@ -251,7 +274,8 @@ public class API {
 				person.setTribe(tribe);
 				
 				/* write to log file */
-//				log.write(userID,"STAFF DATA CHANGED",person.toString());
+				log.write(userID,"STAFF DATA CHANGED",person.toString());
+
 				
 				return "Staff information has been changed successfully!";
 			}
@@ -260,7 +284,11 @@ public class API {
 	}
 	
 	//STAFF SEARCH
-	public String staffSearcher(String staffID, String firstName, String lastName, String birthday, String email) {
+	public String staffSearcher(String password, String userID, String staffID, String firstName, String lastName, String birthday, String email) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Person> persons = searcher.staffSearch(staffID,firstName, lastName, birthday, email);
 		String message = "ID\tJob\tDepartment\tSurname\tName";
 		while (!persons.isEmpty()) {
@@ -275,7 +303,11 @@ public class API {
 	/* _____________ HEALTH FACILITY MANAGMENT for M3 ______________ */
 	
 	//GET ALL DEPARTMENTS
-	public String getDepartments() {
+	public String getDepartments(String password, String userID) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> ds = new LinkedList<Department>(h.getDepartSet());
 		String res = "";
 		while (!ds.isEmpty()) {
@@ -285,7 +317,11 @@ public class API {
 	}
 	
 	//GET STAFF LIST OF GIVEN DEPARTMETN
-	public String getDeparmentStaff(String departmentName) {
+	public String getDeparmentStaff(String password, String userID, String departmentName) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
 		String res = "ID\tJob\tDepartment\tSurname\tName";
 		if (resList.size()==1) {
@@ -298,7 +334,11 @@ public class API {
 	}
 	
 	//ALLOCATE EXSISTING PATIENT TO BED
-	public String allocateToBed(String departmentName, String patientID) {
+	public String allocateToBed(String password, String userID, String departmentName, String patientID) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		LinkedList<Person> patientRes = searcher.patientSearch(patientID,"","","");
 		if (departmentRes.size()!=1) {
@@ -316,17 +356,22 @@ public class API {
 			return "No beds available in department: " + departmentName;
 		}
 		
-		discharge(patientRes.getFirst().getID());
-		patientAdmission("", departmentName, patientID);
+		discharge("I","I",patientRes.getFirst().getID());
+		patientAdmission("I","I","", departmentName, patientID);
 		
 		/* write to log file */
-//		log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
+		log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
+
 		
 		return p+" was added to bed: "+p.getBedLocation();
 	}
 	
 	//BEDS AVAILABLE IN GIVEN DEPARTMENT (Y/N)
-	public String bedsAvailable(String departmentName) {
+	public String bedsAvailable(String password, String userID, String departmentName) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
 			return "No or multiple department(s) match your search criterion";
@@ -343,7 +388,11 @@ public class API {
 	}
 	
 	//HOW MANY BEDS IN USE IN GIVEN DEPARTMENT
-	public String bedsInUse(String departmentName) {
+	public String bedsInUse(String password, String userID, String departmentName) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (departmentRes.size()!=1) {
 			return "No or multiple department(s) match your search criterion";
@@ -360,8 +409,12 @@ public class API {
 	/* _____________ PATIENT ADMISSION for M4 ______________ */
 	
 	//ADMIT EXSISTING PATIENT TO DEPARTMENT
-	public String patientAdmission(String trilvl, String departmentName, String patientId) {
-		  //CHECK TRIAGE LEVEL
+	public String patientAdmission(String password, String userID, String trilvl, String departmentName, String patientId) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}  
+		
+		//CHECK TRIAGE LEVEL
 		  int triagelvl = 1;
 		  try {
 		   if (!trilvl.equals("")) {triagelvl = Integer.parseInt(trilvl);}
@@ -379,7 +432,7 @@ public class API {
 		  if (d instanceof framework.Departments.AdminDepart) {
 		   return "The department is an administrativ department";
 		  }
-		  discharge(p.getID());
+		  discharge(password,userID,p.getID());
 		  if (d instanceof InPatientDepart) {
 		   InPatientDepart inDepart = (InPatientDepart) d;
 		   R.add(inDepart, p);
@@ -390,14 +443,19 @@ public class API {
 		  }
 		  
 		  /* write to log file */
-		//  log.write(userID,"PATITENT ADMITTED",p.toString());
+		  log.write(userID,"PATITENT ADMITTED",p.toString());
+		
 		  
 		  return "The patient has been registered succesfully to " + departmentName +  "!";
 		 }
 	
 	// The input to this function should be specified in the GUI so when
 	// I search for the patient and click remove this function is given the patient ID
-	public String discharge(String ID) {
+	public String discharge(String password, String userID, String ID) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		Patient p;
 		if (searcher.patientSearch(ID, "", "", "").size() != 1) {
 			return "The patient ID's isn't uniqe";
@@ -407,26 +465,31 @@ public class API {
 		Department d = dSearch.getFirst();
 		
 		/* write to log file */
-//		log.write(userID,"PATIENT DISCHARGED",p.toString());
+		log.write(userID,"PATIENT DISCHARGED",p.toString());
+
 		
 		R.remove(d, p);
 		return p + ", has been removed succesfully from " + d;
 	}
 	
 	//MOVE PATIENT FROM DEPARTMENT TO DEPARTMENT
-	public String movePatientDepart(String ID, String departmentName, String trilvl) {
-		if (patientAdmission(trilvl,departmentName,ID).contains("succesfully")) {
-			
-			/* write to log file */
-//			log.write(userID,"PATIENT MOVED DEPARTMENT",p.toString());
-			
+	public String movePatientDepart(String password, String userID, String ID, String departmentName, String trilvl) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
+		if (patientAdmission(password,userID,trilvl,departmentName,ID).contains("succesfully")) {
 			return "The patient was moved successfully!";
 		}
 		return "The patient wasn't moved";
 	}
 	
 	//MOVE A PATIENT TO A NEW BED
-	public String movePatientBed(String ID, String newBed) {
+	public String movePatientBed(String password, String userID, String ID, String newBed) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		InPatientDepart Department;
 		Patient p;
 		String message;
@@ -451,7 +514,8 @@ public class API {
 				Department.beds.Discharge(p);
 				
 				/* write to log file */
-//				log.write(userID,"PATIENT MOVED BED",p.toString());
+				log.write(userID,"PATIENT MOVED BED",p.toString());
+			
 				
 				return "The patient was moved succesfully";
 			}
@@ -470,17 +534,24 @@ public class API {
 	}
 	
 	//ADDS NEW PASSWORD
-	public String AddPassword(String newPassword1, String newPassword2, String staffID) {
-		Password Pass = Password.getInstance();
+	public String AddPassword(String password, String userID, String newPassword1, String newPassword2, String staffID) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
 		
-		if (Pass.checkUniqueID(staffID)) {
+		if (newPassword1.equals("") || staffID.equals("")) {
+			return "ID and password cannot be empty!";
+		}
+		
+		if (Pas.checkUniqueID(staffID)) {
 			return "Password already created for this staff!";
 		}
+		
 		if (newPassword1.equals(newPassword2) ) {
-			Pass.addPassToMap(newPassword1, staffID);
+			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
-//			log.write(userID,"NEW USER ADDED",staffID);
+			log.write(userID,"NEW USER ADDED",staffID);
 			
 			return "Password created";
 		} else{
@@ -489,25 +560,32 @@ public class API {
 	}
 	
 	//CHANGE PASSWORD FROM KNOWN PASSWORD
-	public String ChangePassword(String oldPassword , String newPassword1, String newPassword2, String staffID) {
-		Password Pass = Password.getInstance();
-		if (!Pass.checkUniqueID(staffID)) {
-			System.out.println("fuck");
-			return "Staff ID does not exist";
-			
+	public String ChangePassword(String password, String userID, String oldPassword , String newPassword1, String newPassword2, String staffID) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
 		}
-		if (Pass.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
-			Pass.addPassToMap(newPassword1, staffID);
+		
+		if (!Pas.checkUniqueID(staffID)) {
+			return "Staff ID does not exist";
+		}
+		
+		if (newPassword1.equals("")) {
+			return "Password cannot be empty!";
+		}
+		
+		if (Pas.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
+			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
-//			log.write(userID,"PASSWORD CHANGED",staffID);
+			log.write(userID,"PASSWORD CHANGED",staffID);
+
 			
 			return "Password changed";
 		}
-		if (!Pass.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2)  ) {
+		if (!Pas.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2)  ) {
 			return "Wrong old password";
 		}
-		if (Pass.checkPassword(oldPassword, staffID) && !newPassword1.equals(newPassword2) ) {
+		if (Pas.checkPassword(oldPassword, staffID) && !newPassword1.equals(newPassword2) ) {
 			return "The 2 new passwords are not equal";
 		}
 		return "Something went wrong";
@@ -517,7 +595,11 @@ public class API {
 	/* _____________ PATIENT WAITING O3 ______________ */
 	
 	//GET WAITING QUEUE OF GIVEN DEPARTMENT
-	public String getQueue(String departmentName) {
+	public String getQueue(String password, String userID, String departmentName) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		OutPatientDepart outDepart;
 		if (departmentRes.size() != 1) {
@@ -528,16 +610,15 @@ public class API {
 		} catch (ClassCastException e) {
 			return "Warning, could not retrieve queue of given department.";
 		}
-		ArrayList<Person> queue = outDepart.PrintQueue();
-		String res = "";
-		for (int i = 0; i<queue.size(); i++) {
-			res += (queue.get(i).toString())+"\n";
-		}
-		return res;
+		return outDepart.PrintQueue();
 	}
 	
 	//GET NEXT IN QUEUE (METHOD DEQUEUES PATIENT!)
-	public String getNextInQueue(String departmentName) {
+	public String getNextInQueue(String password, String userID, String departmentName) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		OutPatientDepart outDepart;
 		if (departmentRes.size() != 1) {
@@ -553,7 +634,7 @@ public class API {
 		}
 		
 		/* write to log file */
-//		log.write(userID,"PATIENT DEQUEUED",p.toString());
+		log.write(userID,"PATIENT DEQUEUED",next.toString());
 		
 		return "ID\tDepartment\tSurname\tName\tBedNo/Triage\n"+next.toString();
 	}
@@ -570,18 +651,22 @@ public class API {
 	
 	/* ______________  PARTICIPATION LIST for O5 ________________    */
 	
-	//CREATES A .csv FILE CONTAINING ALL PATIENTS
-	public String getParticipationList(boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
-		new ParticipationList(new LinkedList<Person>(h.getAllAdmittedPatients()), department, birthday, address, tribe);
-		return "Participation list was created successfully.";
-	}
-	
-	//CREATES A .csv FILE CONTAINING ALL PATIENTS OF GIVEN DEPARTMENT
-	public String getParticipationList(String departmentName, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
+	//CREATES A csv FILE CONTAINING ALL PATIENTS OF GIVEN DEPARTMENT
+	public String getParticipationList(String password, String userID, String departmentName, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
+		if (departmentName.equals("")) {
+			new ParticipationList(new LinkedList<Person>(h.getAllAdmittedPatients()), department, birthday, address, tribe);
+			return "Participation list was created successfully.";
+		}
+		
 		LinkedList<Department> dList = searcher.departmentSearch(departmentName);
 		if (dList.size() != 1 || !(dList.getFirst() instanceof HCDepart)) {
 			return "Warning, an error occured, no list was created.";
 		}
+		
 		new ParticipationList(new LinkedList<Person>(dList.getFirst().getPatient()), department, birthday, address, tribe);
 		return "Participation list was created successfully.";
 	}
@@ -590,7 +675,12 @@ public class API {
 	
 	/* ______________  EXTRA FEATURES for O7 ________________    */
 	
-	public String addDepartment(String type, String departmentName, String maxBed) {
+	//ADD DEPARTMENT
+	public String addDepartment(String password, String userID, String type, String departmentName, String maxBed) {
+		if (Pas.getClearence(password,userID) < 1) {
+			return "You do not have the clearency to do this, contact system admin!";
+		}
+		
 		LinkedList<Department> dList =new LinkedList<Department>(h.getDepartSet());
 		while (!dList.isEmpty()) {
 			Department d = dList.removeFirst();
@@ -610,6 +700,11 @@ public class API {
 			R.add(this.h, new OutPatientDepart(departmentName));
 		}
 		else {return "Invalid department type. It must be admin, inPatient, or outPatient!";}
+		
+		/* write to log file */
+		log.write(userID,"DEPARTMENT ADDED",departmentName);
+		
+		
 		return "The department was added!";
 	}
 }

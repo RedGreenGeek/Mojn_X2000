@@ -36,7 +36,7 @@ public class M2_assignStaffDepartment {
 
 	@Then("^I get a message that the staff was added sucessfully$")
 	public void i_get_a_message_that_the_staff_was_added_sucessfully()  {
-	    message = api.assignStaffDepartment(departmentName, "", firstName, lastName, "", "");
+	    message = api.assignStaffDepartment("I","I", departmentName, "", firstName, lastName, "", "");
 	    assertEquals(message,"Staff added successfully to department");
 	}
 
@@ -47,7 +47,7 @@ public class M2_assignStaffDepartment {
 
 	@Then("^I recieve an error message$")
 	public void i_recieve_an_error_message()  {
-		message = api.assignStaffDepartment(departmentName, "", firstName, lastName, "", "");
+		message = api.assignStaffDepartment("I","I", departmentName, "", firstName, lastName, "", "");
 	    assertEquals(message,"Warning, invalid person info or department name");
 	}
 

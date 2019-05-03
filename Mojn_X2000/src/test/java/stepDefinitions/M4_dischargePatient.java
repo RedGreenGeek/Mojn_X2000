@@ -18,7 +18,7 @@ public class M4_dischargePatient {
 	@When("^I am entering an unique patient ID$")
 	public void i_am_entering_an_unique_patient_ID() {
 		// This can only be true hence the way the system is designed
-		message = api.discharge("6");
+		message = api.discharge("I","I","6");
 		
 	}
 
@@ -37,7 +37,7 @@ public class M4_dischargePatient {
 
 	@When("^I am entering a wrong ID$")
 	public void i_am_entering_a_wrong_ID() {
-		message = api.discharge("23423sdfs");
+		message = api.discharge("I","I","23423sdfs");
 	}
 
 	@Then("^I get an error message ID$")

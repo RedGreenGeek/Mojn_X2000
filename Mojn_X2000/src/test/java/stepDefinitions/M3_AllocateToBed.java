@@ -29,7 +29,7 @@ public class M3_AllocateToBed {
 
 	@When("^I allocate patient to bed$")
 	public void i_allocate_patient_to_bed()  {
-	    message = api.allocateToBed(departmentName, patientID);
+	    message = api.allocateToBed("I","I", departmentName, patientID);
 	}
 
 	@Then("^I get a message saying the patient was allocated to bed no x$")
@@ -39,13 +39,13 @@ public class M3_AllocateToBed {
 
 	@Then("^I get a message that no beds are currently available$")
 	public void i_get_a_message_that_no_beds_are_currently_available()  {
-	    message = api.allocateToBed("Pediatric", patientID);
+	    message = api.allocateToBed("I","I", "Pediatric", patientID);
 		assertEquals(message,"No beds available in department: Pediatric");
 	}
 
 	@Then("^I get a message that no patient with given ID at department$")
 	public void i_get_a_message_that_no_patient_with_given_ID_at_department()  {
-		message = api.allocateToBed(departmentName, "53");
+		message = api.allocateToBed("I","I", departmentName, "53");
 		assertEquals(message,"No patient with given ID in department: ER");
 	}
 }
