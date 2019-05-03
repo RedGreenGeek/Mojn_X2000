@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.Date;
 
 public class Logger {
-	private File file = null;
 	private static Logger instance = null;
+	private String filePath = "ParticipationLists"+System.getProperty("file.separator")+"log.csv";
 	public static synchronized Logger getInstance() {
 		if (instance==null) {
 			instance = new Logger();
@@ -16,9 +16,7 @@ public class Logger {
 	}
 	
 	private Logger() {
-		String fileSeparator = System.getProperty("file.separator");
-		String filePath = "ParticipationLists"+fileSeparator+"log.csv";
-        this.file = new File(filePath);
+		File file = new File(filePath);
         if (!file.exists()) { 
         	try {
 				file.createNewFile();
@@ -33,9 +31,9 @@ public class Logger {
 	
 	protected void write(String user, String operation, String target) {
 		Date date = new Date();
-		FileWriter fw = null;
+		File file = new File(filePath);
 		try {
-			fw = new FileWriter(this.file, true);
+			FileWriter fw = new FileWriter(file,true);
 			fw.append("\n"+date+";"+user+";"+operation+";"+target);
 			fw.close();
 		} catch (IOException e) {
