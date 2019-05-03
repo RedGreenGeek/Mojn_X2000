@@ -87,7 +87,6 @@ public class HospitalView extends JFrame {
 		JButton btnBack = new JButton("Back");
 		btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnBack.setHorizontalTextPosition(SwingConstants.CENTER);
-
 		
 		buttonsPanel.add(btnQueue, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnFreeBeds, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
