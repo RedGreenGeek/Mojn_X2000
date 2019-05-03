@@ -84,7 +84,7 @@ public class HospitalController  extends Controller{
 	}
 	
 	public void ToAddDepart() {
-		AddDepartController SC = new AddDepartController(session);
+		AddDepartController SC = new AddDepartController(sessionModel);
 		AddDepartView SView = new AddDepartView(SC);
 		SC.setView(SView);
 
