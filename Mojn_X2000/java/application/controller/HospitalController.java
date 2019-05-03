@@ -1,12 +1,14 @@
 package application.controller;
 
 import application.model.Session;
+import application.view.AddDepartView;
 import application.view.AddPasswordView;
 import application.view.ChangePasswordView;
 import application.view.FreeBedsHospitalView;
 import application.view.GetDepartmentView;
 import application.view.GetQueueView;
 import application.view.HospitalView;
+import application.view.NextInQueueView;
 import application.view.ParticipationListView;
 import application.view.StaffDepartView;
 
@@ -78,6 +80,20 @@ public class HospitalController  extends Controller{
 	public void ToParticipationList() {
 		ParticipationListController SC = new ParticipationListController(sessionModel);
 		ParticipationListView SView = new ParticipationListView(SC);
+		SC.setView(SView);
+		SC.display();
+	}
+	
+	public void ToAddDepart() {
+		AddDepartController SC = new AddDepartController(sessionModel);
+		AddDepartView SView = new AddDepartView(SC);
+		SC.setView(SView);
+		SC.display();
+	}
+	
+	public void ToNextInQueue() {
+		NextInQueueController SC = new NextInQueueController(sessionModel);
+		NextInQueueView SView = new NextInQueueView(SC);
 		SC.setView(SView);
 		SC.display();
 	}

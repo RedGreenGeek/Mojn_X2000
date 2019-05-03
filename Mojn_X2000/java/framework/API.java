@@ -629,12 +629,14 @@ public class API {
 		}
 		outDepart = (OutPatientDepart) departmentRes.getFirst();
 		Person next = outDepart.DeQueue();
+		
 		if (next == null) {
 			return "Warning, could not retrieve next in line.";
 		}
-		
+		discharge(password, userID, next.getID());
 		/* write to log file */
 		log.write(userID,"PATIENT DEQUEUED",next.toString());
+		
 		
 		return "ID\tDepartment\tSurname\tName\tBedNo/Triage\n"+next.toString();
 	}

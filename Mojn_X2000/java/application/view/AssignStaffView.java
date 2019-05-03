@@ -14,13 +14,14 @@ import application.controller.AssignStaffController;
 import application.utils.GridBagLayoutUtils;
 
 public class AssignStaffView extends JFrame{
-	private static final long serialVersionUID = 989075282041120552L;
+	private static final long serialVersionUID = 13420552L;
 	private JLabel firstNameLabel;
 	private JLabel surnameLabel;
 	private JLabel staffIDLabel;
 	private JLabel departmentNameLabel;
 	private JLabel birthdayLabel;
 	private JLabel emailLabel;
+	
 	private JTextField firstNameField;
 	private JTextField surnameField;
 	private JTextField staffIDField;
@@ -30,18 +31,15 @@ public class AssignStaffView extends JFrame{
 	private JTextField yearField;
 	private JTextField emailField;
 
-	
 	private JButton okBtn;
 	private JPanel inputArea;
-	private AssignStaffController controller;
 	private MenuTopView menuTop = new MenuTopView("Assign Staff", "Back");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
+	private AssignStaffController controller;
 	
-	
-
-	
+	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public AssignStaffView(AssignStaffController controller) {
 		this.controller = controller;
 		initGUI();
@@ -49,6 +47,7 @@ public class AssignStaffView extends JFrame{
 	
 	
 	private void initGUI() {
+		// All components of the window are defined
 		setTitle("Assign staff to department");
 		setPreferredSize(new Dimension(800, 700));
 		
@@ -61,6 +60,7 @@ public class AssignStaffView extends JFrame{
 		departmentNameLabel = new JLabel("Department Name: ");
 		birthdayLabel = new JLabel("Birthday: ");
 		emailLabel = new JLabel("email: ");
+		
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
 		staffIDField = new JTextField(11);
@@ -70,12 +70,18 @@ public class AssignStaffView extends JFrame{
 		yearField = new JTextField(4);
 		emailField = new JTextField(11);
 		
-
+		menuTop.setSession(controller.getSession());
+		
+		// Listeners to the buttons are defined
+		menuTop.backBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.Back2Main();
+			}
+		});
 		
 		okBtn = new JButton("OK");
-		
 		okBtn.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent event) {
 				String firstName = firstNameField.getText();
 				String surname = surnameField.getText();
@@ -94,113 +100,69 @@ public class AssignStaffView extends JFrame{
 				departmentNameField.setText("");
 				staffIDField.setText("");
 				msg = controller.AssignStaffAPI(firstName , surname, departmentName, day, month, year, staffID, email);
-				
-
-
 				textPanel.textArea.append(msg);
 				textPanel.textArea.append("\n");
-
-				
-
-;			}
-			
+			}
 		});
-		
-
-		
 		layoutComponents();
-
-		
-	} // her ender constructoren
+	} 
 	
-	
+	// All the components are organized by use of a grid layout and a border layout
 	public void layoutComponents() {
 		setLayout(new GridBagLayout());
 		
-		
-		/////////////////////////////////// 1. linje
+		/////////////////////////////////// 1. line
 		int y = 0;
 
 		inputArea.add(firstNameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
-		
 		inputArea.add(firstNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		///////////////////////////// 2. linje
-		
-		
+		///////////////////////////// 2. line
 		y = y+1;
 		
 		inputArea.add(surnameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-		
 		inputArea.add(surnameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		/////////////////////////// 3. linje
-		
+		/////////////////////////// 3. line
 		y = y + 1;
 		
 		inputArea.add(staffIDLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-		
-		
 		inputArea.add(staffIDField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		/////////////////////////// 4. linje
-		
+		/////////////////////////// 4. line
 		y = y + 1;
 		
 		inputArea.add(departmentNameLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-
-		
 		inputArea.add(departmentNameField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
-		/////////////////////////// 5. linje
 		
+		/////////////////////////// 5. line
 		y = y+1;
 		
 		inputArea.add(birthdayLabel, GridBagLayoutUtils.constraint(0, y, 0.1, 0.1, 0, 0, 0, 5, GridBagConstraints.LINE_END));
-		
 		inputArea.add(dayField, GridBagLayoutUtils.constraint(1, y, 0.1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
-		
 		inputArea.add(monthField, GridBagLayoutUtils.constraint(1, y, 0.1, 0.1, 0, 38, 0, 0, GridBagConstraints.LINE_START));
-		
 		inputArea.add(yearField, GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 76, 0, 0, GridBagConstraints.LINE_START));
 		
-		/////////////////////////// 6. linje
-		
+		/////////////////////////// 6. line
 		y = y + 1;
 		
 		inputArea.add(emailLabel, GridBagLayoutUtils.constraint(0, y, 1, 0.1, 0, 0, 0, 5,  GridBagConstraints.LINE_END));
-		
 		inputArea.add(emailField,  GridBagLayoutUtils.constraint(1, y, 1, 0.1, 0, 0, 0, 0, GridBagConstraints.LINE_START));
 		
-		
-		
-		/////////////////////////// 7. linje
-		
+		/////////////////////////// 7. line
 		y = y+1;
 		
 		inputArea.add(okBtn, GridBagLayoutUtils.constraint(1, y, 1, 1, 0, 0, 0, 0, GridBagConstraints.FIRST_LINE_START));
 		inputArea.setBorder(new EmptyBorder(10,10,10,10));
 		
-		
-		//////////////////////////// TEXT AREA //////////////////////////////7
+		// All components are added to the frame
 		setLayout(new BorderLayout());
-		
 		add(inputArea, BorderLayout.WEST);
 		add(textPanel, BorderLayout.CENTER);
 		add(menuTop, BorderLayout.NORTH);
 	
 		pack();
 		setLocationRelativeTo(null);
-		
-		menuTop.setSession(controller.getSession());
-		
-//		menuTop.backBtn.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				controller.Back2Main();
-//			}
-//		});
-		
 	}
-	
 
 }

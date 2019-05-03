@@ -17,24 +17,23 @@ import application.controller.MainMenuController;
 import application.utils.GridBagLayoutUtils;
 
 public class MainMenuView extends JFrame {
-
-	private static final long serialVersionUID = 989075282041187452L;
+	private static final long serialVersionUID = 98907522357896452L;
 	private MainMenuController controller;
 	private MenuTopView menuTop = new MenuTopView("Main Menu");
 	
+	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public MainMenuView(MainMenuController controller) {
 		this.controller = controller;
 		initGUI();
 	}
 	
+	// All components of the window are defined
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Main Menu");
 		setPreferredSize(new Dimension(800, 700));
 		
-		
-		// buttons
-		
+		// A panel for the buttons are defined
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new GridBagLayout());
 		
@@ -60,15 +59,7 @@ public class MainMenuView extends JFrame {
 		buttonsPanel.add(btnStaff, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,100,10));
 		buttonsPanel.add(btnPatient, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,100,10));
 		
-		// toolbar
-		add(buttonsPanel, BorderLayout.CENTER);
-		add(menuTop, BorderLayout.NORTH);
-		menuTop.setSession(controller.getSession());
-	
-		pack();
-		setLocationRelativeTo(null);
-	
-		
+		// Listeners are defined
 		btnStaff.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -107,6 +98,12 @@ public class MainMenuView extends JFrame {
 			}
 		});
 		
+		// All components are added to the frame
+		add(buttonsPanel, BorderLayout.CENTER);
+		add(menuTop, BorderLayout.NORTH);
+		menuTop.setSession(controller.getSession());
+	
+		pack();
+		setLocationRelativeTo(null);
 	}
-
 }
