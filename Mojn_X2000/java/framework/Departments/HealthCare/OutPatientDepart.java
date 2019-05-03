@@ -58,6 +58,7 @@ public class OutPatientDepart extends HCDepart {
 			HashSet<Person> patientSet = super.getPatient();
 			patientSet.remove(p);
 			super.setPatient(patientSet);
+			((Patient) p).setTriage(null);
 			return p;
 		}
 		return null;
