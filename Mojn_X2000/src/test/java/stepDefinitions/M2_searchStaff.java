@@ -12,7 +12,7 @@ public class M2_searchStaff {
 	@When("^I am entering search data matching staff$")
 	public void i_am_entering_search_data_matching_staff() {
 		String lastName = "Nielsen";
-		message = api.staffSearcher("", "", lastName, "", "");
+		message = api.staffSearcher("I","I", "", "", lastName, "", "");
 		
 	}
 
@@ -24,7 +24,7 @@ public class M2_searchStaff {
 	@When("^I am entering search data not matching staff$")
 	public void i_am_entering_search_data_not_matching_staff() {
 		String firstName = "Anders";
-		message = api.staffSearcher("", firstName, "", "", "");
+		message = api.staffSearcher("I","I", "", firstName, "", "", "");
 	}
 
 	@Then("^I recieve a message that the employee does not exist$")

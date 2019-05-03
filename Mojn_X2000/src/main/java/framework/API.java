@@ -1,7 +1,7 @@
 package framework;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.LinkedList;
 
 import framework.Departments.AdminDepart;
 import framework.Departments.HCDepart;
@@ -20,7 +20,7 @@ public class API {
 	private ChangeReg R;
 	private Database DB;
 	private Password Pas;
-//	private Logger log;
+	private Logger log;
 	
 	public static synchronized API getInstance() {
 		if (instance == null) {
@@ -36,10 +36,10 @@ public class API {
 		searcher = new Searcher(h);
 		R = new ChangeReg();
 		Pas.addPassToMap("I", "I");
-//		try {
-//			log = new Logger();
-//			log.write("SYSTEM","REBOOT","NONE");
-//		} catch (IOException e) {e.printStackTrace();}
+		try {
+			log = new Logger();
+			log.write("SYSTEM","REBOOT","NONE");
+		} catch (IOException e) {e.printStackTrace();}
 		
 		//LOAD ARTIFICIAL HOSPITAL
 		
@@ -74,7 +74,11 @@ public class API {
 			R.add(h, p); // Adding patient through changereg
 			
 			/* write to log file */
-//			log.write(userID,"REGISTERED PATIENT",p.toString());
+			try {
+				log.write(userID,"REGISTERED PATIENT",p.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			return "Patient registered succesfully.";
 		} else {return "Additional information is needed.";}
@@ -103,7 +107,11 @@ public class API {
 			//Write to database 
 			DB.writePatient(p);
 			/* write to log file */
-//			log.write(userID,"PATIENT DATA CHANGED",p.toString());
+			try {
+				log.write(userID,"PATIENT DATA CHANGED",p.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			return "Patient information has been changed successfully.";
 		} else {return "Illegal information changes.";}
@@ -182,7 +190,11 @@ public class API {
 			R.add(h, p);
 			
 			/* write to log file */
-//			log.write(userID,"STAFF REGISTERED",p.toString());
+			try {
+				log.write(userID,"STAFF REGISTERED",p.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			return "The " + jobtype + " has been registered succesfully!";
 		}else {return "Unsuccesful registration!";}
@@ -207,7 +219,11 @@ public class API {
 		staffRes.getFirst().setDepartment(departmentName);
 		
 		/* write to log file */
-//		log.write(userID,"ASSIGNED DEPARTMENT",staffRes.getFirst().toString());
+		try {
+			log.write(userID,"ASSIGNED DEPARTMENT",staffRes.getFirst().toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		return "Staff added successfully to department";
 	}
@@ -252,22 +268,13 @@ public class API {
 			String id = person.getJobType();
 			id.replaceAll("N", "").replaceAll("D", "").replaceAll("IT", "").replaceAll("C", "");
 			
-			if (jobtype.equals("Nurse")) {
-				id = "N"+id;
-			}
-			if (jobtype.equals("Doctor")) {
-				id = "D"+id;
-			}
-			if (jobtype.equals("Clerk")) {
-				id = "C"+id;
-			}
-			if (jobtype.equals("ICTOfficer")) {
-				id = "IT"+id;
-			}
+			if (jobtype.equals("Nurse")) {id = "N"+id;}
+			if (jobtype.equals("Doctor")) {id = "D"+id;}
+			if (jobtype.equals("Clerk")) {id = "C"+id;}
+			if (jobtype.equals("ICTOfficer")) {id = "IT"+id;}
 			
 			person.setID(id);
 			person.setJobType(jobtype);
-		
 			
 			return "The "+jobtype+" has been registered succesfully!";
 			} else {return "Invalid job type!";}
@@ -281,7 +288,11 @@ public class API {
 				person.setTribe(tribe);
 				
 				/* write to log file */
-//				log.write(userID,"STAFF DATA CHANGED",person.toString());
+				try {
+					log.write(userID,"STAFF DATA CHANGED",person.toString());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				
 				return "Staff information has been changed successfully!";
 			}
@@ -366,7 +377,11 @@ public class API {
 		patientAdmission("I","I","", departmentName, patientID);
 		
 		/* write to log file */
-//		log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
+		try {
+			log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		return p+" was added to bed: "+p.getBedLocation();
 	}
@@ -437,7 +452,7 @@ public class API {
 		  if (d instanceof framework.Departments.AdminDepart) {
 		   return "The department is an administrativ department";
 		  }
-		  discharge("I","I",p.getID());
+		  discharge(password,userID,p.getID());
 		  if (d instanceof InPatientDepart) {
 		   InPatientDepart inDepart = (InPatientDepart) d;
 		   R.add(inDepart, p);
@@ -448,7 +463,11 @@ public class API {
 		  }
 		  
 		  /* write to log file */
-		//  log.write(userID,"PATITENT ADMITTED",p.toString());
+		  try {
+			log.write(userID,"PATITENT ADMITTED",p.toString());
+		  } catch (IOException e) {
+			e.printStackTrace();
+		  }
 		  
 		  return "The patient has been registered succesfully to " + departmentName +  "!";
 		 }
@@ -469,7 +488,11 @@ public class API {
 		Department d = dSearch.getFirst();
 		
 		/* write to log file */
-//		log.write(userID,"PATIENT DISCHARGED",p.toString());
+		try {
+			log.write(userID,"PATIENT DISCHARGED",p.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		R.remove(d, p);
 		return p + ", has been removed succesfully from " + d;
@@ -481,11 +504,7 @@ public class API {
 			return "You do not have the clearency to do this, contact system admin!";
 		}
 		
-		if (patientAdmission("I","I",trilvl,departmentName,ID).contains("succesfully")) {
-			
-			/* write to log file */
-//			log.write(userID,"PATIENT MOVED DEPARTMENT",p.toString());
-			
+		if (patientAdmission(password,userID,trilvl,departmentName,ID).contains("succesfully")) {
 			return "The patient was moved successfully!";
 		}
 		return "The patient wasn't moved";
@@ -521,7 +540,11 @@ public class API {
 				Department.beds.Discharge(p);
 				
 				/* write to log file */
-//				log.write(userID,"PATIENT MOVED BED",p.toString());
+				try {
+					log.write(userID,"PATIENT MOVED BED",p.toString());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				
 				return "The patient was moved succesfully";
 			}
@@ -545,15 +568,23 @@ public class API {
 			return "You do not have the clearency to do this, contact system admin!";
 		}
 		
+		if (newPassword1.equals("") || staffID.equals("")) {
+			return "ID and password cannot be empty!";
+		}
 		
 		if (Pas.checkUniqueID(staffID)) {
 			return "Password already created for this staff!";
 		}
+		
 		if (newPassword1.equals(newPassword2) ) {
 			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
-//			log.write(userID,"NEW USER ADDED",staffID);
+			try {
+				log.write(userID,"NEW USER ADDED",staffID);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			return "Password created";
 		} else{
@@ -568,15 +599,22 @@ public class API {
 		}
 		
 		if (!Pas.checkUniqueID(staffID)) {
-			System.out.println("fuck");
 			return "Staff ID does not exist";
-			
 		}
+		
+		if (newPassword1.equals("")) {
+			return "Password cannot be empty!";
+		}
+		
 		if (Pas.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
 			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
-//			log.write(userID,"PASSWORD CHANGED",staffID);
+			try {
+				log.write(userID,"PASSWORD CHANGED",staffID);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			return "Password changed";
 		}
@@ -608,12 +646,7 @@ public class API {
 		} catch (ClassCastException e) {
 			return "Warning, could not retrieve queue of given department.";
 		}
-		ArrayList<Person> queue = outDepart.PrintQueue();
-		String res = "";
-		for (int i = 0; i<queue.size(); i++) {
-			res += (queue.get(i).toString())+"\n";
-		}
-		return res;
+		return outDepart.PrintQueue();
 	}
 	
 	//GET NEXT IN QUEUE (METHOD DEQUEUES PATIENT!)
@@ -637,7 +670,11 @@ public class API {
 		}
 		
 		/* write to log file */
-//		log.write(userID,"PATIENT DEQUEUED",p.toString());
+		try {
+			log.write(userID,"PATIENT DEQUEUED",next.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		return "ID\tDepartment\tSurname\tName\tBedNo/Triage\n"+next.toString();
 	}
@@ -654,7 +691,7 @@ public class API {
 	
 	/* ______________  PARTICIPATION LIST for O5 ________________    */
 	
-	//CREATES A .csv FILE CONTAINING ALL PATIENTS
+	//CREATES A csv FILE CONTAINING ALL PATIENTS
 	public String getParticipationList(String password, String userID, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
 		if (Pas.getClearence(password,userID) < 1) {
 			return "You do not have the clearency to do this, contact system admin!";
@@ -664,7 +701,7 @@ public class API {
 		return "Participation list was created successfully.";
 	}
 	
-	//CREATES A .csv FILE CONTAINING ALL PATIENTS OF GIVEN DEPARTMENT
+	//CREATES A csv FILE CONTAINING ALL PATIENTS OF GIVEN DEPARTMENT
 	public String getParticipationList(String password, String userID, String departmentName, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
 		if (Pas.getClearence(password,userID) < 1) {
 			return "You do not have the clearency to do this, contact system admin!";
@@ -682,6 +719,7 @@ public class API {
 	
 	/* ______________  EXTRA FEATURES for O7 ________________    */
 	
+	//ADD DEPARTMENT
 	public String addDepartment(String password, String userID, String type, String departmentName, String maxBed) {
 		if (Pas.getClearence(password,userID) < 1) {
 			return "You do not have the clearency to do this, contact system admin!";
@@ -706,6 +744,14 @@ public class API {
 			R.add(this.h, new OutPatientDepart(departmentName));
 		}
 		else {return "Invalid department type. It must be admin, inPatient, or outPatient!";}
+		
+		/* write to log file */
+		try {
+			log.write(userID,"DEPARTMENT ADDED",departmentName);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		return "The department was added!";
 	}
 }

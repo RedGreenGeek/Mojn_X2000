@@ -18,7 +18,7 @@ public class O2_AddPassword {
 
 	@When("^I am entering the staff-ID and wanted password twice$")
 	public void i_am_entering_the_staff_ID_and_wanted_password_twice(){
-		message = api.AddPassword("1234a", "1234a","D1234" );
+		message = api.AddPassword("I","I","1234a", "1234a","D1234" );
 	}
 
 	@Then("^I get a message that my password was correctly added to the system$")
@@ -28,7 +28,7 @@ public class O2_AddPassword {
 
 	@When("^I am entering the staff-ID, wanted password and a wrong wanted password$")
 	public void i_am_entering_the_staff_ID_wanted_password_and_a_wrong_wanted_password() throws Throwable {
-		message = api.AddPassword("asd2", "asd1", "D11234");
+		message = api.AddPassword("I","I","asd2", "asd1", "D11234");
 	}
 
 	@Then("^I get a message that my password was not added, as I did not repeat my password correctly$")
@@ -38,7 +38,7 @@ public class O2_AddPassword {
 	
 	@When("^I am entering the staff id and wanted password twice$")
 	public void i_am_entering_the_staff_id_and_wanted_password_twice() {
-		message = api.AddPassword("asd1", "asd1", "N3");
+		message = api.AddPassword("I","I","asd1", "asd1", "N3");
 	}
 
 	@Then("^I get a message that my password was not added, as the Staff already has a password$")

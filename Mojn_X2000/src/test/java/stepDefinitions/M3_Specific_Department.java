@@ -20,7 +20,7 @@ public class M3_Specific_Department {
 
 	@Given("^with departments$")
 	public void with_departments()  {
-	    departments = api.getDepartments();
+	    departments = api.getDepartments("I","I");
 	    LinkedList<String> dTest = new LinkedList<String>();
 	    dTest.add("IT");
 	    dTest.add("ER");
@@ -32,7 +32,7 @@ public class M3_Specific_Department {
 
 	@Given("^I want to see who is working in a specific department$")
 	public void i_want_to_see_who_is_working_in_a_specific_department()  {
-	    ERStaff = api.getDeparmentStaff("ER");
+	    ERStaff = api.getDeparmentStaff("I","I","ER");
 	}
 
 	@When("^I am entering a correct department name\\.$")
@@ -47,7 +47,7 @@ public class M3_Specific_Department {
 
 	@When("^I am entering a incorrect department name\\.$")
 	public void i_am_entering_a_incorrect_department_name()  {
-	    ERStaff = api.getDeparmentStaff("E213");
+	    ERStaff = api.getDeparmentStaff("I","I","E213");
 	}
 
 	@Then("^I get a message that the department is not found$")

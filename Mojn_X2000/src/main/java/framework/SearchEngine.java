@@ -8,6 +8,7 @@ public class SearchEngine {
 	
 	protected LinkedList<Department> department(String departmentName, LinkedList<Department> ds){
 		LinkedList<Department> res = new LinkedList<Department>();
+		@SuppressWarnings("unchecked")
 		LinkedList<Department> dList = (LinkedList<Department>) ds.clone();
 		while (!dList.isEmpty()) {
 			if (dList.getFirst().getName().toLowerCase().startsWith(departmentName.toLowerCase())){
