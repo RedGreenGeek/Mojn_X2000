@@ -73,6 +73,10 @@ public class HospitalView extends JFrame {
 		btnQueue.setHorizontalTextPosition(SwingConstants.CENTER); 
 		
 		JButton btnParticipationList = new JButton("Get participation list");
+		Image addListImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/list.png")).getImage();
+		btnParticipationList.setIcon(new ImageIcon(addListImg));
+		btnParticipationList.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnParticipationList.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnAddDepart = new JButton("Add department");
 		Image addDepartImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Hospital structur/add.png")).getImage();
