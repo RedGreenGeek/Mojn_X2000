@@ -17,12 +17,15 @@
 //import framework.person.Staff;
 //import framework.person.staff.Clerk;
 //import framework.person.staff.Doctor;
+//import framework.person.staff.ICTOfficer;
 //import framework.person.staff.Nurse;
 //
 //class DatabaseTest {
 //	
 //	ChangeReg R = new ChangeReg();
 //	Database DB = Database.getInstance(Database.DEFAULT);
+//	
+//	
 //	
 //	@Test
 //	void Can_I_connect_to_database() {
@@ -101,10 +104,8 @@
 //	@Test
 //	void Update_and_read_counters() throws Throwable {
 //		
-//		DB.writeCounters(33, 99);
-//		
-//		assertEquals(33, DB.loadStaffCounter());
-//		assertEquals(99, DB.loadPatientCounter());
+//		assertEquals(6, DB.loadStaffCounter());
+//		assertEquals(6, DB.loadPatientCounter());
 //		
 //		
 //	}
@@ -237,7 +238,8 @@
 //		
 //		// Adding staff to admin-depart
 //		Staff s5 = new Clerk("C5", "Computer","Bug","Cyborg","TechRoad32",8,4,1586,"AD1");
-//		staffset.add(s5); DB.writeStaff(s5);
+//		Staff s6 = new ICTOfficer("C6", "El-giganten","Power","Transistor","TechRoad345",8,4,1776,"AD1");
+//		staffset.add(s5); DB.writeStaff(s5); staffset.add(s6); DB.writeStaff(s6); 
 //		
 //		// Adding the three departments
 //		AdminDepart d1 = new AdminDepart("AD1");
@@ -246,11 +248,6 @@
 //		departmentset.add(d1); DB.writeDepartment(d1);
 //		departmentset.add(d2); DB.writeDepartment(d2);
 //		departmentset.add(d3); DB.writeDepartment(d3);
-//		
-//		// Writing counters
-//		DB.writeCounters(5, 5);
-//		
-//		System.out.println(departmentset);
 //
 //		Hospital h = DB.buildHospital(5,5,departmentset, staffset, patientset);
 //
@@ -260,7 +257,7 @@
 //		assertFalse(h_res.getAllStaff().isEmpty());
 //		assertFalse(h_res.getDepartSet().isEmpty());
 //		assertEquals(Patient.counter, 5);
-//		assertEquals(Staff.counter, 5);
+//		assertEquals(Staff.counter, 6);
 //		
 //		System.out.println("BUILD D 1: " + h.getDepartSet() + "\n" + h.getAllPatientSet() + "\n" + h.getAllStaff());
 //		System.out.println("BOOT D 1: " + h_res.getDepartSet() + "\n" + h_res.getAllPatientSet() + "\n" + h_res.getAllStaff());
