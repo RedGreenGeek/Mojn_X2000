@@ -13,7 +13,7 @@ public class ParticipationList {
 		String s = this.makeString(ll,department, birthday, address, tribe);
 		DateFormat dateFormat = new SimpleDateFormat("dd_MM_yy_HH_mm");
 		Date date = new Date();
-        String absoluteFilePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "ParticipationLists"+System.getProperty("file.separator")+dateFormat.format(date)+".csv";
+        String absoluteFilePath = System.getProperty("user.home") + System.getProperty("file.separator") + "ParticipationLists"+System.getProperty("file.separator")+dateFormat.format(date)+".csv";
         File file = new File(absoluteFilePath);
         file.delete();
         file.createNewFile();
