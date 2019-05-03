@@ -31,7 +31,7 @@ public class O5_participationList {
 
 	@Then("^I get a csv containing information of all patients$")
 	public void i_get_a_csv_containing_information_of_all_patients() throws IOException {
-	    message = api.getParticipationList("I","I",departmentName,birthday,address,tribe);
+	    message = api.getParticipationList("I","I","", departmentName,birthday,address,tribe);
 	    
 	    assertEquals(message,"Participation list was created successfully.");
 	}

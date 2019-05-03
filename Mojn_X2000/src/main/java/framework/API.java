@@ -55,7 +55,7 @@ public class API {
 		//LOADING COMPLETE
 	}
 	
-
+	
 	
 	/* _____________ PATIENT REGISTRATION for M1 ______________ */
 	
@@ -651,26 +651,22 @@ public class API {
 	
 	/* ______________  PARTICIPATION LIST for O5 ________________    */
 	
-	//CREATES A csv FILE CONTAINING ALL PATIENTS
-	public String getParticipationList(String password, String userID, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
-		if (Pas.getClearence(password,userID) < 1) {
-			return "You do not have the clearency to do this, contact system admin!";
-		}
-		
-		new ParticipationList(new LinkedList<Person>(h.getAllAdmittedPatients()), department, birthday, address, tribe);
-		return "Participation list was created successfully.";
-	}
-	
 	//CREATES A csv FILE CONTAINING ALL PATIENTS OF GIVEN DEPARTMENT
 	public String getParticipationList(String password, String userID, String departmentName, boolean department, boolean birthday, boolean address, boolean tribe) throws IOException {
 		if (Pas.getClearence(password,userID) < 1) {
 			return "You do not have the clearency to do this, contact system admin!";
 		}
 		
+		if (departmentName.equals("")) {
+			new ParticipationList(new LinkedList<Person>(h.getAllAdmittedPatients()), department, birthday, address, tribe);
+			return "Participation list was created successfully.";
+		}
+		
 		LinkedList<Department> dList = searcher.departmentSearch(departmentName);
 		if (dList.size() != 1 || !(dList.getFirst() instanceof HCDepart)) {
 			return "Warning, an error occured, no list was created.";
 		}
+		
 		new ParticipationList(new LinkedList<Person>(dList.getFirst().getPatient()), department, birthday, address, tribe);
 		return "Participation list was created successfully.";
 	}
