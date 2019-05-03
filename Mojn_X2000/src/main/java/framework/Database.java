@@ -547,11 +547,12 @@ public class Database {
 			
 			Patient patient = patientList.removeFirst();
 			System.out.println(patient);
-			LinkedList<Department> d = s.departmentSearch(patient.getDepartment());
-			
+
 			// If patient does not belong to a department, we should not search for a department. Thus skip and add to hospital.
 			if (!(patient.getDepartment() == null)) {
-			
+				
+				LinkedList<Department> d = s.departmentSearch(patient.getDepartment());
+				
 				if (!d.isEmpty()) {
 					Department d_res = d.getFirst();
 					R.add(d_res, patient);
