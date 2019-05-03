@@ -4,6 +4,7 @@ import java.util.Random;
 import framework.Person;
 import framework.Password.Password;
 
+// This abstract class takes care of all the functionalities that has something to do with a staff member
 public abstract class Staff extends Person{
 private String email;
 private String serialID;
@@ -15,6 +16,7 @@ private String Password;
 	public String toString() {
 		return this.getID() + "\t" + this.getJobType() + "\t" + this.getDepartment() + "\t" + this.getLastName() + "\t" + this.getFirstName();
 	}
+	
 	
 	protected void setPassword(Password P) {
 		Random r = new Random();
@@ -32,7 +34,6 @@ private String Password;
 		this.Password = Pass;
 		P.addPassToMap(Pass, this.getID());
 		System.out.println("Your password has been created, it is: " + Pass);
-		
 	}
 	
 	protected void setPassword(Password P, String Pass) {

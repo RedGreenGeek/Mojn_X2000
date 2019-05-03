@@ -3,12 +3,16 @@ package framework.person;
 import framework.Person;
 
 public class Patient extends Person {
-	
 	private int patientID;
 	public static int counter;
 	private Integer triage = null;
 	private Integer bed_location = null;
 	
+	@Override
+	public String toString() {
+		return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+this.getBedLocation()+"/"+this.getTriage();
+	}
+	// This constructor creates a patient if the patient haven't been admitted to the hospital before
 	public Patient(String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department) {
 	    this.setFirstName(firstName);
 	    this.setLastName(lastName);
@@ -21,7 +25,7 @@ public class Patient extends Person {
 	    this.triage = null;
 	    this.bed_location = null;
 	}
-	
+	// This constructor is used if the patient has been registered in the system before but needs to be changed in some way
 	public Patient(int PatientID, String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department, Integer triage, Integer bed) {
 		this.setPatientID(PatientID);
 		this.setFirstName(firstName);
@@ -32,11 +36,9 @@ public class Patient extends Person {
 	    this.setAdress(address);
 	    this.setPatientID(PatientID);
 	    this.setDepartment(department);	   
- 
 	    if (bed != null) {
 	    	this.setBedLocation(bed);
 	    }
-	    
 	    if (triage != null) {
 		    this.setTriage(triage);
 	    }
@@ -69,10 +71,5 @@ public class Patient extends Person {
 	
 	public Integer getBedLocation() {
 		return bed_location;
-	}
-
-	@Override
-	public String toString() {
-		return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+this.getBedLocation()+"/"+this.getTriage();
 	}
 }
