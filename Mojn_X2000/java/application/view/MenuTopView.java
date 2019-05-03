@@ -9,8 +9,8 @@ import application.model.Session.JobTypes;
 public class MenuTopView extends JMenuBar {
     private static final long serialVersionUID = 1234324324L;
     protected JButton backBtn;
-    protected JButton btnAdd = new JButton("Add Password");;
-    protected JButton btnChange = new JButton("Change Password");;
+    protected JMenuItem btnAdd = new JMenuItem("Add Password");;
+    protected JMenuItem btnChange = new JMenuItem("Change Password");;
     private JLabel lblTitle;
     private JLabel lblUser;
     private JMenu mnPassword;
