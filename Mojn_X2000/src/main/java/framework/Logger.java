@@ -9,7 +9,7 @@ public class Logger {
 	private File file;
 	Logger() throws IOException{
 		String fileSeparator = System.getProperty("file.separator");
-		String filePath = "SystemLog"+fileSeparator+"log.csv";
+		String filePath = "ParticipationLists"+fileSeparator+"log.csv";
         this.file = new File(filePath);
         if (!file.exists()) { 
         	file.createNewFile();
