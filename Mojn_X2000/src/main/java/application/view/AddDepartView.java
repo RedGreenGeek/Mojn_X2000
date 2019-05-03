@@ -57,6 +57,7 @@ public class AddDepartView extends JFrame {
 		maxBedField = new JTextField(11);
 		DepartNameField = new JTextField(11);
 		Indepart = new JRadioButton("Indepart");
+		Indepart.setSelected(true);
 		Outdepart = new JRadioButton("Outdepart");
 		Admindepart = new JRadioButton("Admindepart");
 		bg = new ButtonGroup();
