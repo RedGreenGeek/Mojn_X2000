@@ -3,16 +3,13 @@ package application.view;
 import java.awt.*;
 import java.awt.event.*;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import application.controller.AddDepartController;
 import application.controller.NextInQueueController;
 import application.utils.GridBagLayoutUtils;
 
