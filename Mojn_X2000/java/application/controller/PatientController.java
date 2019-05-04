@@ -3,7 +3,6 @@ package application.controller;
 import application.model.Session;
 import application.view.AddPasswordView;
 import application.view.AdmitPatientView;
-import application.view.AllocatePatientView;
 import application.view.ChangePasswordView;
 import application.view.DepartmentMovePatientView;
 import application.view.DischargePatientView;
@@ -38,13 +37,6 @@ public class PatientController extends Controller{
 	}
 	
 	// all the following methods sets up the view of all the functions that the buttons represents 
-	public void ToAllocate() {
-		AllocatePatientController SC = new AllocatePatientController(sessionModel);
-		AllocatePatientView SView = new AllocatePatientView(SC);
-		SC.setView(SView);
-		SC.display();
-	}
-	
 	public void ToAdmit() {
 		AdmitPatientController SC = new AdmitPatientController(sessionModel);
 		AdmitPatientView SView = new AdmitPatientView(SC);

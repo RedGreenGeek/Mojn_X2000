@@ -71,7 +71,7 @@ public class OutPatientDepart extends HCDepart {
 		@SuppressWarnings("unchecked")
 		LinkedList<Patient> clone = (LinkedList<Patient>) this.queue.clone();
 		
-		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
+		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress";
 		while (!clone.isEmpty()) {
 			res += "\n"+clone.removeLast().toString();
 		}

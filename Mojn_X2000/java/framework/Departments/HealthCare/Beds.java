@@ -5,44 +5,43 @@ import framework.person.*;
 
 public class Beds {
 	protected Person[] beds;
-	protected int bedsInUse;
 	
 	public Beds(int maxBeds) {
 		this.beds = new Person[maxBeds];
-		this.bedsInUse = 0;
 	}
 
 	public String AllocateBed(Person patient) {
 	    String message = "-1";
-
+	    Patient p1 = ((Patient) patient);
+	    if (beds[p1.getBedLocation()-1].equals(p1)) {
+	    	beds[p1.getBedLocation()-1] = null;
+	    	p1.setBedLocation(null);
+  	  	}
+	    
 	    for (int i=0; i<beds.length; i++) {
-	      if (beds[i] == null) {
-	        beds[i] = patient;
-	        bedsInUse++;
-	        message = beds.toString();
-	        ((Patient) patient).setBedLocation(i+1); 
-	        beds[i]=patient;
-	        break;
-	      }
+	    	if (beds[i] == null) {
+	    		((Patient) patient).setBedLocation(i+1); 
+	    		beds[i]=patient;
+	    		return i+"";
+	    	}	
 	    }
 	    return message;
 	}
 	
 	public String AllocateBed(Person patient, int bedNo) {
 		int index = bedNo-1;
-		System.out.println("Number of beds: " + beds.length);
-		System.out.println("Bed number: " + index);
 		 
 		if (patient.equals(beds[index])) {
 			return "Same bed";
 		}
+		
 		if (beds[index] == null) {
+			beds[((Patient) patient).getBedLocation()-1] = null;
 			beds[index] = patient;
-			bedsInUse++;
-			System.out.println("BEDS IN USE: " + bedsInUse);
 			((Patient) patient).setBedLocation(bedNo); 
 			return "Ok";
 		}
+		
 		else {return "Error";}
 	}
 	
@@ -50,15 +49,9 @@ public class Beds {
 		for (Person p: beds) {
 			if (p == patient) {
 				p = null;
-				bedsInUse--;
 				break;
 			}
 		}
-	}
-	
-	public void Discharge(int bedNo) {
-		beds[bedNo] = null;
-		bedsInUse--;
 	}
 	
 	public int getMaxBeds() {
@@ -66,15 +59,17 @@ public class Beds {
 	}
 
 	public int getBedsInUse() {
-		return bedsInUse;
-	}
-
-	public void setBedsInUse(int bedsInUse) {
-		this.bedsInUse = bedsInUse;
+		int inUse=0;
+		for (int i=0; i<beds.length; i++) {
+			if (beds[i]!=null) {
+				inUse++;
+			}
+		}
+		return inUse;
 	}
 	
 	public boolean getBedsAvailable() {	 
-		boolean Beds = bedsInUse<beds.length;
+		boolean Beds = this.getBedsInUse()<beds.length;
 		return Beds;
 	}
 }

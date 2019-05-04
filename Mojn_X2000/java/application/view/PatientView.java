@@ -91,11 +91,6 @@ public class PatientView extends JFrame {
 		btnMoveBed.setVerticalTextPosition(SwingConstants.BOTTOM);
 		btnMoveBed.setHorizontalTextPosition(SwingConstants.CENTER);
 		
-		JButton btnAllocate = new JButton("Allocate Patient To Bed");
-		Image allocateImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/Patient menu/allocatebed.png")).getImage();
-		btnAllocate.setIcon(new ImageIcon(allocateImg));
-		btnAllocate.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnAllocate.setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -106,12 +101,6 @@ public class PatientView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.Back2Main();
-			}
-		});
-		btnAllocate.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				controller.ToAllocate();
 			}
 		});
 		btnAdmit.addActionListener(new ActionListener() {
@@ -188,7 +177,7 @@ public class PatientView extends JFrame {
 		buttonsPanel.add(btnMove, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnDischarge, GridBagLayoutUtils.constraint(1, 2, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnMoveBed, GridBagLayoutUtils.constraint(3, 2, 0, 0, 0,10,50,10));	
-		buttonsPanel.add(btnAllocate, GridBagLayoutUtils.constraint(4, 2, 0, 0, 0,10,50,10));}
+		}
 		
 		
 		// all the components are added to the frame
