@@ -28,5 +28,6 @@ public class ChangePasswordController extends Controller {
 	// This function closes the page and returns to the menu page.
 	public void Back2Main() {
 		view.setVisible(false);
+		
 	}
 }
