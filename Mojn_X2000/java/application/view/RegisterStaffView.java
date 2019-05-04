@@ -3,6 +3,7 @@ package application.view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,7 +29,8 @@ public class RegisterStaffView extends JFrame {
 	private JTextField dayField;
 	private JTextField monthField;
 	private JTextField yearField;
-	private JTextField jobField;
+	private JComboBox jobField;
+	private String[] jobtypes = {"Nurse", "Clerk", "Doctor", "ICT Officer"};
 
 	private JButton okBtn;
 	private JPanel inputArea;
@@ -57,7 +59,7 @@ public class RegisterStaffView extends JFrame {
 		adressLabel = new JLabel("Adress: ");
 		tribeLabel = new JLabel("Tribe: ");
 		birthdayLabel = new JLabel("Birthday: ");
-		jobLabel = new JLabel("job: ");
+		jobLabel = new JLabel("Job: ");
 		firstNameField = new JTextField(11);
 		surnameField = new JTextField(11);
 		adressField = new JTextField(11);
@@ -65,7 +67,7 @@ public class RegisterStaffView extends JFrame {
 		dayField = new JTextField(3);
 		monthField = new JTextField(3);
 		yearField = new JTextField(4);
-		jobField = new JTextField(11);
+		jobField = new JComboBox(jobtypes);
 		
 
 		
@@ -81,18 +83,17 @@ public class RegisterStaffView extends JFrame {
 				String day = dayField.getText();
 				String month = monthField.getText();
 				String year = yearField.getText();
-				String job = jobField.getText();
+				String job = (String) jobField.getSelectedItem();
+				job = job.replace(" ", "");
 				firstNameField.setText("");
 				surnameField.setText("");
 				dayField.setText("");
 				monthField.setText("");
 				yearField.setText("");
-				jobField.setText("");
 				tribeField.setText("");
 				adressField.setText("");
 				msg = controller.RegisterAPI(job,firstName, surname, adress, day, month, year, tribe);
 				
-
 
 				textPanel.textArea.append(msg);
 				textPanel.textArea.append("\n");

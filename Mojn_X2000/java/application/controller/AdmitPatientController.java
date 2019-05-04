@@ -22,8 +22,6 @@ public class AdmitPatientController extends Controller{
 	// Calls the api that handles the functionality of the page
 	public String AdmitAPI(String triLvl, String departmentName, String patientId) {
 		API api =  API.getInstance();
-		String  birthday = "";
-		System.out.println(birthday);
 		String a = api.patientAdmission(this.sessionModel.getPassword(),this.sessionModel.getUsername(), triLvl,  departmentName,  patientId);
 		return a;
 	}

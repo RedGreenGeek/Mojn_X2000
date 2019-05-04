@@ -20,17 +20,10 @@ public class AssignStaffController  extends Controller{
 		this.view = view;
 	}
 	// Calls the api that handles the functionality of the page
-	public String AssignStaffAPI(String firstName, String lastName,String departmentName ,String day, String month, String year, String staffID, String email) {
+	public String AssignStaffAPI(String departmentName , String staffID) {
 		API api =  API.getInstance();
-		String  birthday = "";
-		if (day.equals("") || month.equals("") || year.equals("")){
-			return "Invalid Birthdate";
-		}
-		if (!(day.equals(""))) {
-			  birthday = day+"-"+month+"-"+year;
-		}
-		System.out.println(birthday);
-		String a = api.assignStaffDepartment(this.sessionModel.getPassword(),this.sessionModel.getUsername(), departmentName,  staffID,  firstName,  lastName,  birthday,  email);
+		
+		String a = api.assignStaffDepartment(this.sessionModel.getPassword(),this.sessionModel.getUsername(), departmentName,  staffID);
 		return a;
 	}
 	// This function closes the page and returns to the menu page.

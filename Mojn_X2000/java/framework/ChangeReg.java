@@ -68,7 +68,7 @@ public class ChangeReg {
 		d.setStaff(staffSet);
 		
 		//Changing attribute department for the specific staff and writing changes to database
-		s.setDepartment(d.getName());
+		s.setDepartment(null);
 		DB.writeStaff(s);
 		
 	}

@@ -177,15 +177,15 @@ public class PatientView extends JFrame {
 		// Buttons are added to the button panel and the users clearance is checked
 		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));
 		
-		if(session.getRole() == JobTypes.Nurse || session.getRole() == JobTypes.ICTOfficer ) {
+		if(session.getRole() == JobTypes.Nurse || session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Clerk ) {
 		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));}
 		
 		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
-		buttonsPanel.add(btnSearch, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnAdmit, GridBagLayoutUtils.constraint(2, 2, 0, 0, 0,10,50,10));}
 
 		if(session.getRole() == JobTypes.Doctor || session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Nurse ) {
 		buttonsPanel.add(btnMove, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
+		buttonsPanel.add(btnSearch, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnDischarge, GridBagLayoutUtils.constraint(1, 2, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnMoveBed, GridBagLayoutUtils.constraint(3, 2, 0, 0, 0,10,50,10));	
 		buttonsPanel.add(btnAllocate, GridBagLayoutUtils.constraint(4, 2, 0, 0, 0,10,50,10));}
