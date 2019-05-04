@@ -31,7 +31,7 @@ public class API {
 	
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
-		DB = Database.getInstance(Database.REMOTE);
+		DB = Database.getInstance(Database.DEFAULT);
 		Pas = Password.getInstance();
 		searcher = new Searcher(h);
 		R = new ChangeReg();
@@ -313,6 +313,7 @@ public class API {
 		}
 		
 		LinkedList<Department> ds = searcher.departmentSearch("");
+		System.err.println(ds);
 		String res = "";
 		while (!ds.isEmpty()) {
 			res += ds.removeFirst().toString()+"\n";

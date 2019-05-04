@@ -85,7 +85,7 @@ public class M2_changeStaffInfo {
 
 	@Then("^I recieve a message saying that the change has been Done$")
 	public void i_recieve_a_message_saying_that_the_change_has_been_Done()  {
-		assertEquals(message, "The Doctor has been registered succesfully!");
+		assertEquals("The Doctor has been registered succesfully with ID D3!", message);
 	}
 
 

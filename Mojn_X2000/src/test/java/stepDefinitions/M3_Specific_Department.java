@@ -21,11 +21,6 @@ public class M3_Specific_Department {
 	@Given("^with departments$")
 	public void with_departments()  {
 	    departments = api.getDepartments("I","I");
-	    LinkedList<String> dTest = new LinkedList<String>();
-	    dTest.add("IT");
-	    dTest.add("ER");
-	    dTest.add("Pediatric");
-	    dTest.add("Cardio");
 	    
 	    assertTrue(departments.contains("IT") && departments.contains("ER") && departments.contains("Pediatric") && departments.contains("Cardio"));
 	}

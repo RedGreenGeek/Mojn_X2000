@@ -11,7 +11,7 @@ public class SearchEngine {
 		@SuppressWarnings("unchecked")
 		LinkedList<Department> dList = (LinkedList<Department>) ds.clone();
 		while (!dList.isEmpty()) {
-			if (dList.getFirst().getName().toLowerCase().startsWith(departmentName.toLowerCase())){
+			if (dList.getFirst().getName() != null && dList.getFirst().getName().toLowerCase().startsWith(departmentName.toLowerCase())){
 				res.add(dList.removeFirst());
 			}
 			else {
