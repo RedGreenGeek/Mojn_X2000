@@ -221,7 +221,6 @@ public class Database {
 	   
 	   query = query1 + query2;
 	   
-	  // When both triage and bed are null, the following query will be send
 	  } else {
 	   
 	   String query1 = String.format("INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage, bed) VALUES (\"%s\",\"%s\",\"%s\",\"%s\", %b, \"%s\",\"%s\",\"%s\", null, null) ",
@@ -286,11 +285,12 @@ public class Database {
 	 
 	 // writeDepartment() contains a if-statement for each department type. 
 	 
+	 
 	 public String writeDepartment(Department department) {
 	  
 	  String name = department.getName();
 	  
-	  if (department instanceof InPatientDepart ) {
+	  if (department instanceof InPatientDepart) {
 	   
 	   int max = ((InPatientDepart) department).get_max_beds();
 	   
@@ -306,7 +306,7 @@ public class Database {
 	   
 	  }
 	  
-	  else if (department instanceof AdminDepart ) {
+	  else if (department instanceof AdminDepart) {
 	   
 	   String query = String.format("INSERT IGNORE INTO Department (name, type) VALUES (\"%s\", \"%s\")", name, "AMD");
 	   
@@ -314,7 +314,7 @@ public class Database {
 	   
 	  }
 	  
-	  else if (department instanceof OutPatientDepart ) {
+	  else if (department instanceof OutPatientDepart) {
 	   
 	   String query = String.format("INSERT IGNORE INTO Department (name, type) VALUES (\"%s\", \"%s\")", name, "OPD");
 	   

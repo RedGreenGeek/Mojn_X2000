@@ -50,7 +50,7 @@
 //	void Write_at_indepart_to_database() {
 //
 //		Patient p = new Patient("Hans","Hansen","Masai","Tagensvej 101",24,12,2000,true,"ER");
-//		InPatientDepart d = new InPatientDepart("Trauma Department", 200); // why is it not recognized by changereg?
+//		InPatientDepart d = new InPatientDepart("Trauma Department", 200); //
 //		p.setBedLocation(32);
 //		R.add(d, p);
 //		String message = DB.writePatient(p);
