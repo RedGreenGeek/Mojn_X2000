@@ -42,24 +42,24 @@ public class Database {
  // In this way multiple connections to the database are avoided. 
  // The input to the constructor is given in order to distinguish between the local and the remote database. 
  
- private Database(String name_of_database) {
+ public Database(String name_of_database, String host, String database, String username, String password) {
   
   if (name_of_database.equals("local")) {
 
-	   this.driver_host = "jdbc:mysql://localhost:3306/";
-	   this.database = "mydb";
-	   this.username = "root";
-	   this.password = "AGILE2019";
+	   this.driver_host = host;
+	   this.database = database;
+	   this.username = username;
+	   this.password = password;
 	   this.URL = driver_host + database;
  
    EstablishConnection();
    
   } else if (name_of_database.equals("remote")) {
    
-	   this.database = "0S1l397yKA";
-	   this.username = "0S1l397yKA";
-	   this.password = "ceoLj1fgBZ";
-	   this.driver_host = "jdbc:mysql://www.remotemysql.com:3306/";
+	   this.driver_host = host;
+	   this.database = database;
+	   this.username = username;
+	   this.password = password;
 	   this.URL = driver_host + database;
 	   this.driver = "com.mysql.cj.jdbc.Driver";
  
@@ -69,24 +69,12 @@ public class Database {
    
  }
  
- // The method getInstance ensures that only 1 instance of the database is created.
- // It can be called statically, which is needed since the constructor cannot be accessed outside of the class.
- 
- public static synchronized Database getInstance(String name_of_database) {
-  
-  if (instance==null) {
-   instance = new Database(name_of_database);
-   return instance;
-  }
-  else {
-   return instance;
-  }
- }
  
  // Establish connection is the method that is called upon construction of the instance. 
  // In case of errors with driver or port connected, the exception is thrown, and the stack trace is printed. 
  
- private void EstablishConnection() {
+
+private void EstablishConnection() {
 
   try {
 
@@ -558,7 +546,7 @@ public class Database {
 	  }
 	  
 	  Searcher s = new Searcher(hospital);
-	  ChangeReg R = new ChangeReg();
+	  ChangeReg R = new ChangeReg(this);
 	  
 	  LinkedList<Staff> staffList = new LinkedList<Staff>(staffset);
 	  

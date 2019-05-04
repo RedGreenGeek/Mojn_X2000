@@ -8,9 +8,13 @@ import framework.person.Patient;
 import framework.person.Staff;
 
 public class ChangeReg {
-	
 	// Adding database connection
-	private Database DB = Database.getInstance(Database.DEFAULT);
+	private Database DB;
+	
+	public ChangeReg (Database db) {
+		this.DB = db;
+	}
+	
 	
 	// Method has been overloaded to accept a person and the only instance of our hospital,
 	// such that a person can be added to the overall organization. 

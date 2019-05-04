@@ -31,12 +31,13 @@ public class API {
 	
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
-		DB = Database.getInstance(Database.REMOTE);
-		Pas = Password.getInstance();
-		searcher = new Searcher(h);
-		R = new ChangeReg();
+//		DB = new Database(Database.DEFAULT,"jdbc:mysql://localhost:3306/","mydb","root","AGILE2019");
+		DB = new Database(Database.REMOTE,"jdbc:mysql://www.remotemysql.com:3306/","0S1l397yKA","0S1l397yKA","ceoLj1fgBZ");
+		Pas = new Password();
+		R = new ChangeReg(this.DB);
+		log = new Logger("ParticipationLists");
 		Pas.addPassToMap("I", "I");
-		log = Logger.getInstance();
+		
 		log.write("SYSTEM","REBOOT","NONE");
 		
 		//LOAD ARTIFICIAL HOSPITAL
@@ -46,6 +47,8 @@ public class API {
 		} catch(Throwable t){
 			System.out.println("System was not able to boot. Contact System Administrator!");
 		}
+		
+		searcher = new Searcher(h);
 		
 		Pas.addPassToMap("password", "IT4");
 		Pas.addPassToMap("I", "I");

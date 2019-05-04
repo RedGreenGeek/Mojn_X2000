@@ -5,18 +5,8 @@ public class Password {
 	//Create private variables to store password values in
 	private HashMap<String, String> PassMap;
 	private long hashValue;
-	private static Password self;
 	
-	//Create the password as static synchronized, so the same instance can be passed around
-	public static synchronized Password getInstance() {
-		if (self == null){
-			self = new Password();
-		}
-		return self; 
-	}
-	
-	//Hardcode some Admin users into the password storage
-	private Password() {
+	public Password() {
 		this.PassMap = new HashMap<String,String>();
 	}
 	
