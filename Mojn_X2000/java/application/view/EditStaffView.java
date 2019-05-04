@@ -4,6 +4,7 @@ package application.view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,7 +27,8 @@ public class EditStaffView extends JFrame {
     private JTextField surnameField;
     private JTextField adressField;
     private JTextField tribeField;
-    private JTextField jobField;
+	private JComboBox jobField;
+	private String[] jobtypes = {"","Nurse", "Clerk", "Doctor", "ICT Officer"};
     private JTextField IDField;
 
     private JButton okBtn;
@@ -62,7 +64,7 @@ public class EditStaffView extends JFrame {
         surnameField = new JTextField(11);
         adressField = new JTextField(11);
         tribeField = new JTextField(11);
-        jobField = new JTextField(11);
+        jobField = new JComboBox(jobtypes);
         IDField = new JTextField(11);
         
         menuTop.setSession(controller.getSession());
@@ -82,11 +84,11 @@ public class EditStaffView extends JFrame {
                 String surname = surnameField.getText();
                 String adress = adressField.getText();
                 String tribe = tribeField.getText();
-                String job = jobField.getText();
+                String job = (String) jobField.getSelectedItem();
+                job = job.replace(" ", "");
                 String ID = IDField.getText();
                 firstNameField.setText("");
                 surnameField.setText("");
-                jobField.setText("");
                 IDField.setText("");
                 tribeField.setText("");
                 adressField.setText("");

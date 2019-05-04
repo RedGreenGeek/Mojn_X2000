@@ -56,6 +56,9 @@ private String Password;
 		this.serialID = jobTypeID + Staff.counter;
 		Staff.counter +=1; 
 	}
+	public void setIDstatic(String jobTypeID) {
+		this.serialID = jobTypeID; 
+	}
 	//Set ID if a new ID is wanted, without incrementing the counter
 	protected void setID_reload(String jobTypeID) {
 		this.serialID = jobTypeID;

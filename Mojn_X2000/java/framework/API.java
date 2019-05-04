@@ -48,6 +48,7 @@ public class API {
 		}
 		
 		Pas.addPassToMap("password", "IT4");
+		Pas.addPassToMap("I", "I");
 		Pas.addPassToMap("password", "C5");
 		Pas.addPassToMap("password", "D2");
 		Pas.addPassToMap("password", "N3");
@@ -191,19 +192,23 @@ public class API {
 	
 	
 	//ASSIGN STAFF TO DEPARTMENT
-	public String assignStaffDepartment(String password, String userID, String departmentName, String staffID, String firstName, String lastName, String birthday, String email) {
+	public String assignStaffDepartment(String password, String userID, String departmentName, String staffID) {
 		if (Pas.getClearence(password,userID) < 1) {
 			return "You do not have the clearency to do this, contact system admin!";
 		}
 		
-		LinkedList<Person> staffRes = searcher.staffSearch(staffID, firstName, lastName, birthday, email);
+		LinkedList<Person> staffRes = searcher.staffSearch(staffID, "", "", "", "");
 		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
 		if (staffRes.size()!=1 || departmentRes.size()!=1) {
 			return "Warning, invalid person info or department name";
 		}
+		if ((staffRes.getFirst() instanceof Doctor || staffRes.getFirst() instanceof Nurse) && departmentRes.getFirst() instanceof AdminDepart) {
+			return "The staff member isn't an adminstative staff member";
+		}
 		if (staffRes.getFirst().getDepartment() != null) {
 			R.remove(searcher.departmentSearch(staffRes.getFirst().getDepartment()).getFirst(),(Staff) staffRes.getFirst());
 		}
+
 		R.add(departmentRes.getFirst(), (Staff) staffRes.getFirst());
 		staffRes.getFirst().setDepartment(departmentName);
 		
@@ -225,17 +230,16 @@ public class API {
 		}
 		Staff person = (Staff) searcher.staffSearch(StaffID, "", "", "", "").get(0);
 		if (person==null) {return "The ID does not match an employee!";}
-		if (firstName == "") {firstName = person.getFirstName();}
-		if (lastName == "") {lastName = person.getLastName();}
-		if (adress == "") {adress = person.getAdress();}
-		if (tribe == "") {tribe = person.getTribe();}
+		if (firstName.equals("")) {firstName = person.getFirstName();}
+		if (lastName.equals("")) {lastName = person.getLastName();}
+		if (adress.equals("")) {adress = person.getAdress();}
+		if (tribe.equals("")) {tribe = person.getTribe();}
 		if (day == 0 || month == 0 || year == 0) {
 			String[] birthday = person.getBirthday().split("-");
 			day = Integer.parseInt(birthday[0]);
 			month = Integer.parseInt(birthday[1]);
 			year = Integer.parseInt(birthday[2]);
 		}
-		
 		// special: Job type is wanted changed
 		if (jobtype != "") {
 			if(jobtype.equals("Nurse") ||jobtype.equals("Doctor") ||jobtype.equals("Clerk") ||jobtype.equals("ICTOfficer")) {
@@ -243,44 +247,44 @@ public class API {
 			Department dd = searcher.departmentSearch(d).peek();
 			// removed from the specific department
 			R.remove(dd, person);
-			// removed from the overall set
-			h.getStaffSet().remove(person);
+
 			// registered as with new job type.
 			person.setFirstName(firstName);
 			person.setLastName(lastName);
 			person.setTribe(tribe);
 			person.setAdress(adress);
 			person.setBirthDay(day, month, year);
-			String id = person.getJobType();
-			id.replaceAll("N", "").replaceAll("D", "").replaceAll("IT", "").replaceAll("C", "");
+			String id = person.getID();
+			id = id.replaceAll("N", "").replaceAll("D", "").replaceAll("IT", "").replaceAll("C", "");
 			
 			if (jobtype.equals("Nurse")) {id = "N"+id;}
 			if (jobtype.equals("Doctor")) {id = "D"+id;}
 			if (jobtype.equals("Clerk")) {id = "C"+id;}
 			if (jobtype.equals("ICTOfficer")) {id = "IT"+id;}
 			
-			person.setID(id);
+			person.setIDstatic(id);
 			person.setJobType(jobtype);
 			
-			return "The "+jobtype+" has been registered succesfully!";
-			} else {return "Invalid job type!";}
-		}
-		else {
-			if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
-				person.setFirstName(firstName);
-				person.setLastName(lastName);
-				person.setBirthDay(day, month, year);
-				person.setAdress(adress);
-				person.setTribe(tribe);
-				
-				/* write to log file */
-				log.write(userID,"STAFF DATA CHANGED",person.toString());
-
-				
-				return "Staff information has been changed successfully!";
+			return "The "+jobtype+" has been registered succesfully with ID " + person.getID()  +"!";
 			}
-			else {return "Illegal changes to patient. Please check that the information is correct!";}
+		
 		}
+		if (jobtype.equals("")) {jobtype = person.getJobType();}
+		if (Person.isValidPersonData(firstName, lastName, day, month, year, adress, tribe, true)) {
+			person.setFirstName(firstName);
+			person.setLastName(lastName);
+			person.setBirthDay(day, month, year);
+			person.setAdress(adress);
+			person.setTribe(tribe);
+			
+			/* write to log file */
+			log.write(userID,"STAFF DATA CHANGED",person.toString());
+
+			
+			return "Staff information has been changed successfully!";
+		}	
+		else {return "Illegal changes to patient. Please check that the information is correct!";}
+		
 	}
 	
 	//STAFF SEARCH
@@ -469,7 +473,7 @@ public class API {
 
 		
 		R.remove(d, p);
-		return p + ", has been removed succesfully from " + d;
+		return p.getFirstName() + " " + p.getLastName() + ", has been removed succesfully from " + d;
 	}
 	
 	//MOVE PATIENT FROM DEPARTMENT TO DEPARTMENT
