@@ -65,7 +65,7 @@ public class Database {
  
 	   EstablishConnection();
 
-  } else {System.out.println("Database connection not recognized!");};
+  } else {System.err.println("Database connection not recognized!");};
    
  }
  
@@ -101,7 +101,7 @@ public class Database {
   }
 
   catch (Exception e) {
-   System.out.println("Connecting to database failed!");
+   System.err.println("Connecting to database failed!");
   }
  }
  
@@ -124,7 +124,7 @@ public class Database {
    Statement st = myConnection.createStatement(); 
    return st.executeQuery(query);
   } catch(Exception e) {
-   System.out.println("Could not load from database. Please see the stack trace below ..");
+   System.err.println("Could not load from database. Please see the stack trace below ..");
    e.printStackTrace();
   }
   
@@ -327,7 +327,7 @@ public class Database {
 	  
 	  else {
 	   
-	   System.out.println("Something went wrong when trying to write a department!");
+	   System.err.println("Something went wrong when trying to write a department!");
 	   return "ERROR";
 	   
 	  }
@@ -359,7 +359,7 @@ public class Database {
 	   
 	  } catch (Exception e) {
 	   
-	   System.out.println("Something went wrong when trying to read patient from database!");
+	   System.err.println("Something went wrong when trying to read patient from database!");
 	   e.printStackTrace();
 	   
 	   return null;
@@ -381,9 +381,6 @@ public class Database {
 	   String department = rs.getString("Department_name"); // We need to put that employee back into an department
 	   Staff employee;
 	   
-	   if (department == null) {
-	    System.out.println("DEPARTMENT IS NULL!");
-	   }
 
 	   if (jobtype == 'C') {
 	    
@@ -417,7 +414,7 @@ public class Database {
 	   
 	  } catch (Exception e) {
 	   
-	   System.out.println("Something went wrong when reading staff from database!");
+	   System.err.println("Something went wrong when reading staff from database!");
 	   e.printStackTrace();
 	   
 	   return null;
@@ -455,7 +452,7 @@ public class Database {
 	  
 	  else {
 	   
-	   System.out.println("Something went wrong when trying to create a department!");
+	   System.err.println("Something went wrong when trying to create a department!");
 	   return null;
 	   
 	  }
@@ -540,7 +537,6 @@ public class Database {
 	 Hospital buildHospital(int staff_counter, int patient_counter, HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
 
 	  
-	  System.out.println(staffset);
 	  Hospital hospital = new Hospital();
 	  
 	  Patient.counter = patient_counter;
@@ -552,14 +548,11 @@ public class Database {
 	  
 	  Iterator<Department> I_d = departmentset.iterator();
 	  
-	  System.out.println("STATUS OF DEPARTMENTS BEFORE BUILT!!!!");
 	  
 	  while (I_d.hasNext()) {
 	   
 	   Department d = I_d.next();
 	   
-	   System.out.println(d.getName() + " with patients: " + d.getPatient());
-	   System.out.println(d.getName() + " with staff: " + d.getStaff());
 	   
 	   
 	  }
@@ -584,7 +577,7 @@ public class Database {
 	    }
 	    
 	    else {
-	     System.out.println("ERROR: No matches on department: " + staff.getDepartment() + " with staff id  " + staff.getID());
+	     System.err.println("ERROR: No matches on department: " + staff.getDepartment() + " with staff id  " + staff.getID());
 	    }
 	   }  
 	  }
@@ -594,7 +587,6 @@ public class Database {
 	  while (!patientList.isEmpty()) {
 	   
 	   Patient patient = patientList.removeFirst();
-	   System.out.println(patient);
 
 	   // If patient does not belong to a department, we should not search for a department. Thus skip and add to hospital.
 	   if (!(patient.getDepartment() == null)) {
@@ -604,27 +596,22 @@ public class Database {
 	    if (!d.isEmpty()) {
 	     Department d_res = d.getFirst();
 	     R.add(d_res, patient);
-	     System.out.println(d_res.getPatient());
 	    }
 	    
 	    else {
-	     System.out.println("ERROR: No matches on department: " + patient.getDepartment() + " with staff id  " + patient.getID());
+	     System.err.println("ERROR: No matches on department: " + patient.getDepartment() + " with staff id  " + patient.getID());
 	    }
 	   }
 	  }
 	  
-	  System.out.println("Built succesfully!");
 	  
 	  Iterator<Department> iter = departmentset.iterator();
 	  
-	  System.out.println("STATUS OF DEPARTMENTS AFTER BUILT!!!!");
 	  
 	  while (iter.hasNext()) {
 	   
 	   Department d = iter.next();
 	   
-	   System.out.println(d.getName() + " with patients: " + d.getPatient());
-	   System.out.println(d.getName() + " with staff: " + d.getStaff());
 	   
 	   
 	  }
@@ -652,7 +639,7 @@ public class Database {
 
 	  } catch (Throwable e) {
 	   // TODO Auto-generated catch block
-	   System.out.println("System could not boot. Please see stack trace to find error!");
+	   System.err.println("System could not boot. Please see stack trace to find error!");
 	   e.printStackTrace();
 	   return null;
 	  }

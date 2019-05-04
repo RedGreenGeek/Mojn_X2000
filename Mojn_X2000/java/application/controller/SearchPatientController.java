@@ -27,7 +27,6 @@ public class SearchPatientController  extends Controller{
 		if (!(day.equals(""))) {
 			  birthday = day+"-"+month+"-"+year;
 		}
-		System.out.println(birthday);
 		String a = api.patientSearcher(this.sessionModel.getPassword(),this.sessionModel.getUsername(), id, firstName, surname, birthday, depart);
 		return a;
 	}
