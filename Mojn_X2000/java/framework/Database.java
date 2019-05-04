@@ -23,7 +23,6 @@ import framework.person.staff.Nurse;
 
 public class Database {
  
- private static Database instance;
  public static String DEFAULT = "local";
  public static String REMOTE = "remote";
  private String driver_host;
