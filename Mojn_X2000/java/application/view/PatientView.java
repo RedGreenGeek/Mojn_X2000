@@ -33,8 +33,8 @@ public class PatientView extends JFrame {
 	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public PatientView(PatientController controller) {
 		this.controller = controller;
-		this.clear = controller.getSession().getRole();
-		this.setTop(controller.getSession().getRole());
+		this.clear = controller.getRole();
+		this.setTop(controller.getRole());
 		initGUI();
 	}
 	

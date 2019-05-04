@@ -185,7 +185,6 @@ public class RegisterStaffView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		
-		menuTop.setSession(controller.getSession());
 		
 		menuTop.backBtn.addActionListener(new ActionListener() {
 			@Override

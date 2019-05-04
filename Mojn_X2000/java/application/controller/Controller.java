@@ -8,8 +8,8 @@ public abstract class Controller {
 	protected Session sessionModel;
 	protected MenuTopView menutop;
 	
-	public Session getSession() {
-		return this.sessionModel;
+	public JobTypes getRole() {
+		return this.sessionModel.getRole();
 	}
 	
 	// Here we define the different job types the users can have and these are used to handle clearances  
