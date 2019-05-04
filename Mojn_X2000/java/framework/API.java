@@ -43,7 +43,8 @@ public class API {
 		//LOAD ARTIFICIAL HOSPITAL
 		
 		try {
-		h = DB.boot();
+			Pas = DB.loadLogin();
+			h = DB.boot();
 		} catch(Throwable t){
 			System.out.println("System was not able to boot. Contact System Administrator!");
 		}
@@ -504,6 +505,9 @@ public class API {
 		if (newPassword1.equals(newPassword2) ) {
 			Pas.addPassToMap(newPassword1, staffID);
 			
+			/* Writing the new password to the database */
+			DB.writePassword(staffID, newPassword1);
+			
 			/* write to log file */
 			log.write(userID,"NEW USER ADDED",staffID);
 			
@@ -529,6 +533,9 @@ public class API {
 		
 		if (Pas.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
 			Pas.addPassToMap(newPassword1, staffID);
+			
+			/* Writing the updates to the database */
+			DB.writePassword(staffID, newPassword1);
 			
 			/* write to log file */
 			log.write(userID,"PASSWORD CHANGED",staffID);

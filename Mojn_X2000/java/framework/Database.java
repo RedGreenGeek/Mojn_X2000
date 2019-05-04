@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -12,6 +13,7 @@ import java.util.LinkedList;
 import framework.Departments.AdminDepart;
 import framework.Departments.HealthCare.InPatientDepart;
 import framework.Departments.HealthCare.OutPatientDepart;
+import framework.Password.Password;
 import framework.person.Patient;
 import framework.person.Staff;
 import framework.person.staff.Clerk;
@@ -21,7 +23,6 @@ import framework.person.staff.Nurse;
 
 public class Database {
  
- private static Database instance;
  public static String DEFAULT = "local";
  public static String REMOTE = "remote";
  private String driver_host;
@@ -143,13 +144,22 @@ private void EstablishConnection() {
 	 // writePatient() takes a patient as input, dissembles the patient into simple data structures, and writes the data to the database.
 	 // In case a patient with same primary key (i.e. 'id') exists in the database, all data is updated.
 	 // This is needed when patient information is edited. 
+ 
+ 	 protected String writePassword(String username, String hashvalue) {
+ 		 
+ 		 String query1 = String.format("INSERT INTO Login (Username, Hashvalue) VALUES (\"%s\", \"%s\")", username, hashvalue);
+ 		 String query2 = String.format(" ON DUPLICATE KEY UPDATE Username = \"%s\", Hashvalue = \"%s\"", username, hashvalue);
+ 		 String query = query1 + query2;
+ 		 
+ 		 return INSERT(query);
+ 	 }
 	 
 	 protected String writePatient(Patient p) {
 	  
 	  String firstName = p.getFirstName();
 	  String lastName = p.getLastName();
 	  String birthday = p.getBirthday();
-	     String address = p.getAdress();
+	  String address = p.getAdress();
 	  String tribe = p.getTribe();
 	  boolean alive = p.isAlive();
 	  String department = p.getDepartment();
@@ -325,6 +335,7 @@ private void EstablishConnection() {
 	 /* ######################################################################### */
 	 /* ___________ SECTION 4: Construction of objects  _________________ */
 	 /* ######################################################################### */
+
 	 
 	 public Patient makePatient(ResultSet rs) {
 	  
@@ -450,6 +461,39 @@ private void EstablishConnection() {
 	 /* ######################################################################### */
 	 /* ___________ SECTION 5: Loading objects  _________________________ */
 	 /* ######################################################################### */
+	 
+	 
+	 public Password loadLogin() {
+		 
+		 try {
+			 
+			 String query = "SELECT * FROM Login";
+			 ResultSet rs = GET(query);
+			 String username;
+			 String hashvalue;
+			 HashMap<String,String> hashmap = new HashMap<String,String>();
+			 
+			 while (rs.next()) {
+				 
+				 username = rs.getString("Username");
+				 hashvalue = rs.getString("Hashvalue");
+				 
+				 if (username != null && hashvalue != null) {
+					 hashmap.put(username, hashvalue);
+				 }
+				 
+			 }
+			 
+			 if (!hashmap.isEmpty()) {
+				 return new Password(hashmap);
+			 } else {return new Password();}
+
+		 } catch (Exception e) {
+			 System.err.println("Login informations could not be retrieved. Please contact system administrator!");
+			 return null;
+		 }
+		 
+	 }
 	 
 	 public int loadStaffCounter() throws Throwable {
 	  
