@@ -13,7 +13,7 @@ public class Beds {
 	public String AllocateBed(Person patient) {
 	    String message = "-1";
 	    Patient p1 = ((Patient) patient);
-	    if (beds[p1.getBedLocation()-1].equals(p1)) {
+	    if (p1.getBedLocation()!=null && p1.getBedLocation()!=0 && p1.equals(beds[p1.getBedLocation()-1])) {
 	    	beds[p1.getBedLocation()-1] = null;
 	    	p1.setBedLocation(null);
   	  	}
