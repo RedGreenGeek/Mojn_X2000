@@ -31,7 +31,7 @@ public class API {
 	
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
-		DB = Database.getInstance(Database.DEFAULT);
+		DB = Database.getInstance(Database.REMOTE);
 		Pas = Password.getInstance();
 		searcher = new Searcher(h);
 		R = new ChangeReg();
