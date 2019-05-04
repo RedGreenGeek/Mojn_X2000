@@ -12,11 +12,18 @@ public class Searcher {
 	}
 	
 	protected LinkedList<Department> departmentSearch(String departmentName){
+		if (h==null || h.getDepartSet().isEmpty()){
+			return new LinkedList<Department>();
+		}
+		
 		LinkedList<Department> dList = new LinkedList<Department>(h.getDepartSet());
 		return se.department(departmentName, dList);
 	}
 	
 	protected LinkedList<Person> patientSearch(String id, String firstName, String lastName, String birthday) {
+		if (h==null || h.getAllPatientSet().isEmpty()){
+			return new LinkedList<Person>();
+		}
 		LinkedList<Person> pList = new LinkedList<Person>(h.getAllPatientSet());
 		if (!id.equals("")) {
 			pList = se.id(id, pList);
@@ -34,6 +41,10 @@ public class Searcher {
 	}
 	
 	protected LinkedList<Person> staffSearch(String staffId, String firstName, String lastName, String birthday,String email) {
+		if (h==null || h.getAllStaff().isEmpty()){
+			return new LinkedList<Person>();
+		}
+		
 		LinkedList<Person> pList = new LinkedList<Person>(h.getStaffSet());
 		if (!staffId.equals("")) {
 			pList = se.id(staffId, pList);

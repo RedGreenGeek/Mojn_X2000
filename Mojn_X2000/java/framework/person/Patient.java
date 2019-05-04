@@ -10,8 +10,9 @@ public class Patient extends Person {
 	
 	@Override
 	public String toString() {
-		return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+this.getBedLocation()+"/"+this.getTriage();
+		return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+this.getBedLocation()+"/"+this.getTriage()+"\t"+this.getAdress();
 	}
+	
 	// This constructor creates a patient if the patient haven't been admitted to the hospital before
 	public Patient(String firstName, String lastName, String address, String tribe, int day, int month, int year, boolean alive, String department) {
 	    this.setFirstName(firstName);

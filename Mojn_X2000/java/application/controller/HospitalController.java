@@ -50,7 +50,7 @@ public class HospitalController  extends Controller{
 	}
 
 	public void ToFreeBeds() {
-		FreeBedsHospitalController SC = new FreeBedsHospitalController(sessionModel);
+		BedsInUseHospitalController SC = new BedsInUseHospitalController(sessionModel);
 		FreeBedsHospitalView SView = new FreeBedsHospitalView(SC);
 		SC.setView(SView);
 		SC.display();		

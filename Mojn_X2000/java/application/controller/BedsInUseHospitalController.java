@@ -1,14 +1,14 @@
 package application.controller;
 
 import application.model.Session;
-import application.view.AllocatePatientView;
+import application.view.FreeBedsHospitalView;
 import framework.API;
 
-public class AllocatePatientController  extends Controller{
-	private AllocatePatientView view;
+public class BedsInUseHospitalController  extends Controller{
+	private FreeBedsHospitalView view;
 
 	// This constructor takes the singleton session so the controller has all the user info 
-	public AllocatePatientController(Session session) {
+	public BedsInUseHospitalController(Session session) {
 		this.sessionModel = session;
 	}
 	
@@ -16,13 +16,13 @@ public class AllocatePatientController  extends Controller{
 		view.setVisible(true);
 	}
 	// boots up the view of this function
-	public void setView(AllocatePatientView view) {
-		this.view = view;
+	public void setView(FreeBedsHospitalView sView) {
+		this.view = sView;
 	}
 	// Calls the api that handles the functionality of the page
-	public String AllocateToBedAPI( String patientId, String departmentName) {
+	public String FreeBedsAPI(String departmentName) {
 		API api =  API.getInstance();
-		String a = api.allocateToBed(this.sessionModel.getPassword(),this.sessionModel.getUsername(), departmentName,  patientId);
+		String a = api.bedsInUse(this.sessionModel.getPassword(),this.sessionModel.getUsername(), departmentName);
 		return a;
 	}
 	// This function closes the page and returns to the menu page.

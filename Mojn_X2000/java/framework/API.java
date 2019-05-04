@@ -189,14 +189,14 @@ public class API {
 				}
 			}
 		}
-		String message = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
+		String message = "ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress";
 		while (!persons.isEmpty()) {
 			message += "\n"+persons.removeFirst().toString();
 		}
-		if (message.equals("ID\tDepartment\tSurname\tName\tBedNo/Triage")) {
+		if (message.equals("ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress")) {
 			return "No match to search parameters!";
 		} else {return message; }
-		}
+	}
 	
 	
 	//GET PATIENT LIST OF GIVEN DEPARTMETN
@@ -206,7 +206,7 @@ public class API {
 		}
 		
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
-		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage";
+		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress";
 		if (resList.size()==1) {
 			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getPatient());
 			while (!sList.isEmpty()) {
@@ -355,11 +355,11 @@ public class API {
 		}
 		
 		LinkedList<Person> persons = searcher.staffSearch(staffID,firstName, lastName, birthday, email);
-		String message = "ID\tJob\tDepartment\tSurname\tName";
+		String message = "ID\tJob\tDepartment\tSurname\tName\tEmail";
 		while (!persons.isEmpty()) {
 			message += "\n"+persons.removeFirst().toString();
 		}
-		if (message.equals("ID\tJob\tDepartment\tSurname\tName")) {
+		if (message.equals("ID\tJob\tDepartment\tSurname\tName\tEmail")) {
 			return "No match to search parameters!";
 		} else {return message; }
 	}
@@ -373,7 +373,7 @@ public class API {
 			return "You do not have the clearency to do this, contact system admin!";
 		}
 		
-		LinkedList<Department> ds = new LinkedList<Department>(h.getDepartSet());
+		LinkedList<Department> ds = searcher.departmentSearch("");
 		String res = "";
 		while (!ds.isEmpty()) {
 			res += ds.removeFirst().toString()+"\n";
@@ -388,7 +388,7 @@ public class API {
 		}
 		
 		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
-		String res = "ID\tJob\tDepartment\tSurname\tName";
+		String res = "ID\tJob\tDepartment\tSurname\tName\tEmail";
 		if (resList.size()==1) {
 			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getStaff());
 			while (!sList.isEmpty()) {
@@ -398,59 +398,6 @@ public class API {
 		return res;
 	}
 	
-	//ALLOCATE EXSISTING PATIENT TO BED
-	public String allocateToBed(String password, String userID, String departmentName, String patientID) {
-		if (Pas.getClearence(password,userID) < 1) {
-			return "You do not have the clearency to do this, contact system admin!";
-		}
-		
-		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
-		LinkedList<Person> patientRes = searcher.patientSearch(patientID,"","","");
-		if (departmentRes.size()!=1) {
-			return "No or multiple department(s) match your search criterion";
-		}
-		if (patientRes.size()!=1) {
-			return ("No patient with given ID in department: " + departmentName); 
-		}
-		Patient p = (Patient) patientRes.getFirst();
-		if (!(departmentRes.getFirst() instanceof InPatientDepart)) {
-			return "Department "+departmentName+" does not contain any beds.";
-		}
-		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
-		if (!depart.beds.getBedsAvailable()) {
-			return "No beds available in department: " + departmentName;
-		}
-		
-		discharge("I","I",patientRes.getFirst().getID());
-		patientAdmission("I","I","", departmentName, patientID);
-		
-		/* write to log file */
-		log.write(userID,"ALLOCATED PATIENT TO BED",p.toString());
-
-		
-		return p+" was added to bed: "+p.getBedLocation();
-	}
-	
-	//BEDS AVAILABLE IN GIVEN DEPARTMENT (Y/N)
-	public String bedsAvailable(String password, String userID, String departmentName) {
-		if (Pas.getClearence(password,userID) < 1) {
-			return "You do not have the clearency to do this, contact system admin!";
-		}
-		
-		LinkedList<Department> departmentRes = searcher.departmentSearch(departmentName);
-		if (departmentRes.size()!=1) {
-			return "No or multiple department(s) match your search criterion";
-		}
-		if (!(departmentRes.getFirst() instanceof InPatientDepart)) {
-			return "Department "+departmentName+" does not contain any beds.";
-		}
-		InPatientDepart depart = (InPatientDepart) departmentRes.getFirst();
-		
-		if (!depart.beds.getBedsAvailable()) {
-			return "No beds available in department: " + departmentName;
-		}
-		return "Beds available in department: " + departmentName;
-	}
 	
 	//HOW MANY BEDS IN USE IN GIVEN DEPARTMENT
 	public String bedsInUse(String password, String userID, String departmentName) {
@@ -534,7 +481,7 @@ public class API {
 
 		
 		R.remove(d, p);
-		return p.getFirstName() + " " + p.getLastName() + ", has been removed succesfully from " + d;
+		return "Patient ID: "+p.getID() + ", has been removed succesfully from " + d;
 	}
 	
 	//MOVE PATIENT FROM DEPARTMENT TO DEPARTMENT
@@ -574,14 +521,13 @@ public class API {
 			if (Department.beds.getMaxBeds() < bedNo) {
 				return "There aren't that many beds in the department";
 			}
+			
 			message = Department.beds.AllocateBed(p, bedNo);	
 			if (message.equals("Ok")) {
-				Department.beds.Discharge(p);
 				
 				/* write to log file */
 				log.write(userID,"PATIENT MOVED BED",p.toString());
 			
-				
 				return "The patient was moved succesfully";
 			}
 			if (message.equals("Same bed")) {
@@ -703,7 +649,7 @@ public class API {
 		log.write(userID,"PATIENT DEQUEUED",next.toString());
 		
 		
-		return "ID\tDepartment\tSurname\tName\tBedNo/Triage\n"+next.toString();
+		return "ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress\n"+next.toString();
 	}
 	
 	
@@ -725,7 +671,7 @@ public class API {
 		}
 		
 		if (departmentName.equals("")) {
-			new ParticipationList(new LinkedList<Person>(h.getAllAdmittedPatients()), department, birthday, address, tribe);
+			new ParticipationList(searcher.patientSearch("","","",""), department, birthday, address, tribe);
 			return "Participation list was created successfully.";
 		}
 		
@@ -747,13 +693,18 @@ public class API {
 			return "You do not have the clearency to do this, contact system admin!";
 		}
 		
-		LinkedList<Department> dList =new LinkedList<Department>(h.getDepartSet());
+		if (departmentName.isEmpty()) {
+			return "Department name cannot be empty!";
+		}
+		
+		LinkedList<Department> dList = searcher.departmentSearch("");
 		while (!dList.isEmpty()) {
 			Department d = dList.removeFirst();
 			if (d.getName()!=null && d.getName().toLowerCase().equals(departmentName.toLowerCase())) {
 				return "Department name must be unique!";
 			}
 		}
+		
 		if (type.toLowerCase().equals("admin")) {
 			R.add(this.h,new AdminDepart(departmentName));
 		}
@@ -769,7 +720,6 @@ public class API {
 		
 		/* write to log file */
 		log.write(userID,"DEPARTMENT ADDED",departmentName);
-		
 		
 		return "The department was added!";
 	}

@@ -29,9 +29,7 @@ public class InPatientDepart extends HCDepart{
 	}
 	
 	public int get_beds_in_use() {
-		System.out.println("RETURNING: " + beds.bedsInUse);
-		return beds.bedsInUse;
-		
+		return beds.getBedsInUse();
 	}
 }
 

@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.io.IOException;
+
 import application.model.Session;
 import application.model.User;
 import application.view.LoginView;
@@ -20,10 +22,14 @@ public class LoginController {
 	
 	// checks if the login matches a known login in the system
 	public void validateCredentials(String username, String password) {
-		session.setRole(username);
-		User user = new User();
-		user.setUsername(username);
-		if ((!username.isEmpty()) && API.getInstance().passwordMatch(password,user.getUsername())) {
+		API api = API.getInstance();
+		
+		if ((!username.isEmpty()) && (!password.isEmpty()) && api.passwordMatch(password,username)) {
+			session.setRole(username);
+			User user = new User();
+			user.setUsername(username);
+			user.setPassword(password);
+			
 			session.setUser(user);
 			session.setPassword(password);
 			view.setVisible(false);

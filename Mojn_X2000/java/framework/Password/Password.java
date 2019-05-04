@@ -18,8 +18,6 @@ public class Password {
 	//Hardcode some Admin users into the password storage
 	private Password() {
 		this.PassMap = new HashMap<String,String>();
-		PassMap.put("I", "I");
-		PassMap.put("I", "admin");
 	}
 	
 	//Public method that adds a hashed password to a map
@@ -48,7 +46,7 @@ public class Password {
 		HashPassword(EnterPass);
 		String key = String.valueOf(this.hashValue);
 		//Checks if the value in the password storage is equal to the hashed entered password
-		if (this.PassMap.get(StaffId).equals( key)) {
+		if (this.PassMap.containsKey(StaffId) && this.PassMap.get(StaffId).equals(key)) {
 			return true;
 		}
 		else {return false;}

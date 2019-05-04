@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import application.controller.FreeBedsHospitalController;
+import application.controller.BedsInUseHospitalController;
 import application.utils.GridBagLayoutUtils;
 
 public class FreeBedsHospitalView extends JFrame {
@@ -24,10 +24,10 @@ public class FreeBedsHospitalView extends JFrame {
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
-	private FreeBedsHospitalController controller;
+	private BedsInUseHospitalController controller;
 
 	// The constructor for the class is defined with the method initGUI that sets up the view of the class
-	public FreeBedsHospitalView(FreeBedsHospitalController controller) {
+	public FreeBedsHospitalView(BedsInUseHospitalController controller) {
 		this.controller = controller;
 		initGUI();
 	}

@@ -64,4 +64,9 @@ public class LoginView extends JFrame {
     public void showError() {
         JOptionPane.showMessageDialog(this, "Wrong username/password combination", "Login error", JOptionPane.ERROR_MESSAGE);
     }
+    
+    public void showError2() {
+        JOptionPane.showMessageDialog(this, "Not able to establish connection to server, please try again.", "Connection error", JOptionPane.ERROR_MESSAGE);
+    }
+    
 }
