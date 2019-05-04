@@ -1,11 +1,11 @@
 package application.controller;
 
 import application.model.Session;
-import application.view.FreeBedsHospitalView;
+import application.view.BedsInUseHospitalView;
 import framework.API;
 
 public class BedsInUseHospitalController  extends Controller{
-	private FreeBedsHospitalView view;
+	private BedsInUseHospitalView view;
 
 	// This constructor takes the singleton session so the controller has all the user info 
 	public BedsInUseHospitalController(Session session) {
@@ -16,7 +16,7 @@ public class BedsInUseHospitalController  extends Controller{
 		view.setVisible(true);
 	}
 	// boots up the view of this function
-	public void setView(FreeBedsHospitalView sView) {
+	public void setView(BedsInUseHospitalView sView) {
 		this.view = sView;
 	}
 	// Calls the api that handles the functionality of the page

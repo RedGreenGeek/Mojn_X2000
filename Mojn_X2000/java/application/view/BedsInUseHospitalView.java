@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import application.controller.BedsInUseHospitalController;
 import application.utils.GridBagLayoutUtils;
 
-public class FreeBedsHospitalView extends JFrame {
+public class BedsInUseHospitalView extends JFrame {
 	private static final long serialVersionUID = 9891852L;
 	private JLabel departNameLabel;
 
@@ -27,7 +27,7 @@ public class FreeBedsHospitalView extends JFrame {
 	private BedsInUseHospitalController controller;
 
 	// The constructor for the class is defined with the method initGUI that sets up the view of the class
-	public FreeBedsHospitalView(BedsInUseHospitalController controller) {
+	public BedsInUseHospitalView(BedsInUseHospitalController controller) {
 		this.controller = controller;
 		initGUI();
 	}

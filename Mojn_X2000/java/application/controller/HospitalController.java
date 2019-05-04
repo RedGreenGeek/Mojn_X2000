@@ -3,8 +3,8 @@ package application.controller;
 import application.model.Session;
 import application.view.AddDepartView;
 import application.view.AddPasswordView;
+import application.view.BedsInUseHospitalView;
 import application.view.ChangePasswordView;
-import application.view.FreeBedsHospitalView;
 import application.view.GetDepartmentView;
 import application.view.GetQueueView;
 import application.view.HospitalView;
@@ -51,7 +51,7 @@ public class HospitalController  extends Controller{
 
 	public void ToFreeBeds() {
 		BedsInUseHospitalController SC = new BedsInUseHospitalController(sessionModel);
-		FreeBedsHospitalView SView = new FreeBedsHospitalView(SC);
+		BedsInUseHospitalView SView = new BedsInUseHospitalView(SC);
 		SC.setView(SView);
 		SC.display();		
 	}
