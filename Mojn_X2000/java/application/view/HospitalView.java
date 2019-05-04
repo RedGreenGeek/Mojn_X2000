@@ -16,14 +16,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import application.controller.HospitalController;
-import application.model.Session;
 import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
 public class HospitalView extends JFrame {
 	private static final long serialVersionUID = 12347L;
 	private HospitalController controller;
-	private Session session;
 	private MenuTopView menuTop = new MenuTopView("Hospital Menu");
 	
 	private JLabel lblHospital;
@@ -35,7 +33,6 @@ public class HospitalView extends JFrame {
 	}
 	// All components of the window are defined
 	private void initGUI() {
-		this.session = Session.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Hospital Structur Menu");
 		setPreferredSize(new Dimension(800, 700));
@@ -98,15 +95,15 @@ public class HospitalView extends JFrame {
 		buttonsPanel.add(btnFreeBeds, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnParticipationList, GridBagLayoutUtils.constraint(1, 2, 0, 0, 0,10,50,10));
 
-		if(session.getRole()==JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
+		if(controller.getRole()==JobTypes.Clerk || controller.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnStaffInDepart, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnGetDepart, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));}
 		
-		if ( session.getRole() == JobTypes.ICTOfficer) {
+		if ( controller.getRole() == JobTypes.ICTOfficer) {
 			buttonsPanel.add(btnAddDepart, GridBagLayoutUtils.constraint(2, 2, 0, 0, 0,10,50,10));
 		}
 		
-		if(session.getRole() == JobTypes.Doctor || session.getRole() == JobTypes.ICTOfficer) {
+		if(controller.getRole() == JobTypes.Doctor || controller.getRole() == JobTypes.ICTOfficer) {
 			buttonsPanel.add(btnNextInQueue, GridBagLayoutUtils.constraint(3, 2, 0, 0, 0,10,50,10));
 		}
 		

@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.Session;
+import application.model.Session.JobTypes;
 import application.view.StaffView;
 import application.view.AddPasswordView;
 import application.view.AssignStaffView;
@@ -30,6 +31,10 @@ public class StaffController  extends Controller{
 	public void Back2Main() {
 		view.setVisible(false);
 		application.manageMainMenu(sessionModel);
+	}
+	
+	public JobTypes getRole() {
+		return sessionModel.getRole();
 	}
 
 	public void ToSearch() {

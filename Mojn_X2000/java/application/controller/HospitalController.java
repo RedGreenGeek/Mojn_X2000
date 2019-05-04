@@ -1,6 +1,7 @@
 package application.controller;
 
 import application.model.Session;
+import application.model.Session.JobTypes;
 import application.view.AddDepartView;
 import application.view.AddPasswordView;
 import application.view.ChangePasswordView;
@@ -33,6 +34,10 @@ public class HospitalController  extends Controller{
 	public void Back2Main() {
 		view.setVisible(false);
 		application.manageMainMenu(sessionModel);
+	}
+	
+	public JobTypes getRole() {
+		return sessionModel.getRole();
 	}
 	// all the following methods sets up the view of all the functions that the buttons represents 
 	public void ToStaffInDepart() {

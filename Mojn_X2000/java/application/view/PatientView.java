@@ -17,14 +17,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import application.controller.PatientController;
-import application.model.Session;
 import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
 public class PatientView extends JFrame {
 	private static final long serialVersionUID = 1233547847L;
 	private PatientController controller;
-	private Session session;
 	private MenuTopView menuTop = new MenuTopView("Patient menu");
 	private JLabel lblPatient;
 	
@@ -36,7 +34,6 @@ public class PatientView extends JFrame {
 	
 	// All components of the window are defined
 	private void initGUI() {
-		this.session = Session.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Patient Menu");
 		setPreferredSize(new Dimension(800, 800));
@@ -166,13 +163,13 @@ public class PatientView extends JFrame {
 		// Buttons are added to the button panel and the users clearance is checked
 		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));
 		
-		if(session.getRole() == JobTypes.Nurse || session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Clerk ) {
+		if(controller.getRole() == JobTypes.Nurse || controller.getRole() == JobTypes.ICTOfficer || controller.getRole() == JobTypes.Clerk ) {
 		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));}
 		
-		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
+		if(controller.getRole() == JobTypes.Clerk || controller.getRole() == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnAdmit, GridBagLayoutUtils.constraint(2, 2, 0, 0, 0,10,50,10));}
 
-		if(session.getRole() == JobTypes.Doctor || session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Nurse ) {
+		if(controller.getRole() == JobTypes.Doctor || controller.getRole() == JobTypes.ICTOfficer || controller.getRole() == JobTypes.Nurse ) {
 		buttonsPanel.add(btnMove, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnSearch, GridBagLayoutUtils.constraint(3, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnDischarge, GridBagLayoutUtils.constraint(1, 2, 0, 0, 0,10,50,10));

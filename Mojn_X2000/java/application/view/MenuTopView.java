@@ -3,6 +3,8 @@ package application.view;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import application.controller.MenuTopController;
 import application.model.Session;
 import application.model.Session.JobTypes;
 
@@ -13,13 +15,24 @@ public class MenuTopView extends JMenuBar {
     protected JMenuItem btnChange = new JMenuItem("Change Password");;
     private JLabel lblTitle;
     private JLabel lblUser;
+    private MenuTopController controller;
     private JMenu mnPassword;
-    private Session session;
+    
     
     // This constructor is used for the menus
     public MenuTopView(String title) {
+    	
+    	this.controller = controller;
+    	initTop(title);
+    }
+    
+    public MenuTopView(String title, String back) {
+    	this.controller = controller;
+    	initTop(title, back);
+    }
+    private void initTop(String title) {
         // sets up the components
-        this.session = Session.getInstance();
+        Session session = Session.getInstance();
         setLayout(new BorderLayout(0, 0));
         
         lblTitle = new JLabel();
@@ -47,10 +60,10 @@ public class MenuTopView extends JMenuBar {
         add(lblTitle, BorderLayout.CENTER);
         add(lblUser, BorderLayout.EAST);
         setBorder(new EtchedBorder(10));
-    }
+    	}
     
     // This constructor is used for the functional views
-    public MenuTopView(String title, String back) {
+    public void initTop(String title, String back) {
         // sets up the components
         setLayout(new BorderLayout(0, 0));
 
@@ -70,6 +83,7 @@ public class MenuTopView extends JMenuBar {
         add(lblUser, BorderLayout.EAST);
         add(lblTitle, BorderLayout.CENTER);
         add(backBtn, BorderLayout.WEST);
+      
         
     }
     

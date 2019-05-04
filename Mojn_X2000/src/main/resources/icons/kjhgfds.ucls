@@ -3,8 +3,8 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="application.controller.RegisterPatientController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/RegisterPatientController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="536" x="6582" y="1797"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="176" width="401" x="6193" y="732"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="application.controller.LoginController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/LoginController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="136" width="289" x="13114" y="1797"/>    
+    <position height="-1" width="-1" x="13394" y="810"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="application.controller.MainMenuController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/MainMenuController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="236" width="232" x="5665" y="1797"/>    
+    <position height="-1" width="-1" x="13267" y="2087"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="application.view.SearchPatientView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/SearchPatientView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="456" width="336" x="10138" y="1051"/>    
+    <position height="-1" width="-1" x="10199" y="1254"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="application.controller.StaffDepartController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/StaffDepartController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="252" x="11509" y="1797"/>    
+    <position height="-1" width="-1" x="12430" y="835"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,23 +111,14 @@
   </class>  
   <class id="13" language="java" name="application.view.ChangePasswordView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/ChangePasswordView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="376" width="388" x="10514" y="1051"/>    
+    <position height="-1" width="-1" x="10665" y="1216"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="application.view.AllocatePatientView" project="Mojn_X2000" 
-    file="/Mojn_X2000/java/application/view/AllocatePatientView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="296" width="348" x="8150" y="1051"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="15" language="java" name="application.view.ParticipationListView" project="Mojn_X2000" 
+  <class id="14" language="java" name="application.view.ParticipationListView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/ParticipationListView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="416" width="364" x="7746" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="application.view.SearchStaffView" project="Mojn_X2000" 
+  <class id="15" language="java" name="application.view.SearchStaffView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/SearchStaffView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="456" width="302" x="10942" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="framework.person.staff.ICTOfficer" project="Mojn_X2000" 
+  <class id="16" language="java" name="framework.person.staff.ICTOfficer" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/person/staff/ICTOfficer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="116" width="432" x="4302" y="4135"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,16 +145,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="application.controller.PatientController" project="Mojn_X2000" 
+  <class id="17" language="java" name="application.controller.PatientController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/PatientController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="356" width="210" x="13443" y="1797"/>    
+    <position height="-1" width="-1" x="13778" y="820"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="application.view.MenuTopView" project="Mojn_X2000" 
+  <class id="18" language="java" name="application.view.MenuTopView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/MenuTopView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="276" width="220" x="9806" y="2389"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -172,16 +163,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="application.view.MainMenuView" project="Mojn_X2000" 
+  <class id="19" language="java" name="application.view.MainMenuView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/MainMenuView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="136" width="282" x="5526" y="1051"/>    
+    <position height="-1" width="-1" x="13340" y="2379"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="framework.Searcher" project="Mojn_X2000" 
+  <class id="20" language="java" name="framework.Searcher" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Searcher.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="156" width="480" x="3634" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -190,16 +181,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="application.view.DepartmentMovePatientView" project="Mojn_X2000" 
+  <class id="21" language="java" name="application.view.DepartmentMovePatientView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/DepartmentMovePatientView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="336" width="476" x="8898" y="1051"/>    
+    <position height="-1" width="-1" x="8911" y="1200"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="framework.Password.Password" project="Mojn_X2000" 
+  <class id="22" language="java" name="framework.Password.Password" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Password/Password.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="256" width="293" x="3008" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -208,16 +199,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="application.view.RegisterStaffView" project="Mojn_X2000" 
+  <class id="23" language="java" name="application.view.RegisterStaffView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/RegisterStaffView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="496" width="320" x="8538" y="1051"/>    
+    <position height="-1" width="-1" x="8401" y="1274"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="framework.Departments.HealthCare.OutPatientDepart" project="Mojn_X2000" 
+  <class id="24" language="java" name="framework.Departments.HealthCare.OutPatientDepart" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Departments/HealthCare/OutPatientDepart.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="216" width="462" x="3378" y="2389"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -226,7 +217,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="application.model.Session" project="Mojn_X2000" 
+  <class id="25" language="java" name="application.model.Session" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/model/Session.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="236" width="201" x="12857" y="2705"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -235,7 +226,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="application.view.AddPasswordView" project="Mojn_X2000" 
+  <class id="26" language="java" name="application.view.AddPasswordView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/AddPasswordView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="336" width="336" x="7370" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -244,25 +235,25 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="application.view.GetDepartmentView" project="Mojn_X2000" 
+  <class id="27" language="java" name="application.view.GetDepartmentView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/GetDepartmentView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="216" width="352" x="9414" y="1051"/>    
+    <position height="-1" width="-1" x="9381" y="1141"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="application.controller.AssignStaffController" project="Mojn_X2000" 
+  <class id="28" language="java" name="application.controller.AssignStaffController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/AssignStaffController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="542" x="5979" y="1797"/>    
+    <position height="-1" width="-1" x="5998" y="831"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="application.controller.ParticipationListController" project="Mojn_X2000" 
+  <class id="29" language="java" name="application.controller.ParticipationListController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/ParticipationListController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="176" width="500" x="7654" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -271,16 +262,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="31" language="java" name="application.controller.FreeBedsHospitalController" project="Mojn_X2000" 
-    file="/Mojn_X2000/java/application/controller/FreeBedsHospitalController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="287" x="13756" y="1797"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="32" language="java" name="framework.Database" project="Mojn_X2000" 
+  <class id="30" language="java" name="framework.Database" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Database.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="696" width="632" x="4470" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -289,7 +271,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="33" language="java" name="application.model.User" project="Mojn_X2000" 
+  <class id="31" language="java" name="application.model.User" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/model/User.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="216" width="203" x="12614" y="3021"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -298,7 +280,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="34" language="java" name="framework.API" project="Mojn_X2000" file="/Mojn_X2000/java/framework/API.java" 
+  <class id="32" language="java" name="framework.API" project="Mojn_X2000" file="/Mojn_X2000/java/framework/API.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="616" width="597" x="4145" y="69"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -307,16 +289,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="35" language="java" name="application.controller.AdmitPatientController" project="Mojn_X2000" 
+  <class id="33" language="java" name="application.controller.AdmitPatientController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/AdmitPatientController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="278" x="11170" y="1797"/>    
+    <position height="-1" width="-1" x="12084" y="814"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="36" language="java" name="application.model.Session.JobTypes" project="Mojn_X2000" 
+  <enumeration id="34" language="java" name="application.model.Session.JobTypes" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/model/Session.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="176" width="171" x="12857" y="3021"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -325,7 +307,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="37" language="java" name="application.controller.AddPasswordController" project="Mojn_X2000" 
+  <class id="35" language="java" name="application.controller.AddPasswordController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/AddPasswordController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="176" width="336" x="7278" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -334,7 +316,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="38" language="java" name="application.view.StaffView" project="Mojn_X2000" 
+  <class id="36" language="java" name="application.view.StaffView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/StaffView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="156" width="202" x="12817" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -343,7 +325,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="39" language="java" name="framework.Hospital" project="Mojn_X2000" 
+  <class id="37" language="java" name="framework.Hospital" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Hospital.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="256" width="327" x="4103" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -352,7 +334,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="40" language="java" name="framework.person.staff.Nurse" project="Mojn_X2000" 
+  <class id="38" language="java" name="framework.person.staff.Nurse" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/person/staff/Nurse.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="116" width="403" x="4774" y="4135"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -361,16 +343,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="41" language="java" name="application.controller.AddDepartController" project="Mojn_X2000" 
+  <class id="39" language="java" name="application.controller.AddDepartController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/AddDepartController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="314" x="5153" y="1797"/>    
+    <position height="-1" width="-1" x="5627" y="829"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="42" language="java" name="framework.Test" project="Mojn_X2000" file="/Mojn_X2000/java/framework/Test.java" 
+  <class id="40" language="java" name="framework.Test" project="Mojn_X2000" file="/Mojn_X2000/java/framework/Test.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2809" y="246"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -379,7 +361,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="43" language="java" name="application.controller.MovedBedPatientController" project="Mojn_X2000" 
+  <class id="41" language="java" name="application.controller.MovedBedPatientController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/MovedBedPatientController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="176" width="285" x="6942" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -388,7 +370,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="44" language="java" name="application.view.HospitalView" project="Mojn_X2000" 
+  <class id="42" language="java" name="application.view.HospitalView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/HospitalView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="156" width="252" x="12857" y="2193"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -397,7 +379,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="45" language="java" name="framework.Departments.HCDepart" project="Mojn_X2000" 
+  <class id="43" language="java" name="framework.Departments.HCDepart" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Departments/HCDepart.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="136" width="267" x="4103" y="2193"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -406,25 +388,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="46" language="java" name="application.controller.AllocatePatientController" project="Mojn_X2000" 
-    file="/Mojn_X2000/java/application/controller/AllocatePatientController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="293" x="8194" y="735"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="47" language="java" name="application.view.AddDepartView" project="Mojn_X2000" 
+  <class id="44" language="java" name="application.view.AddDepartView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/AddDepartView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="396" width="292" x="5173" y="1051"/>    
+    <position height="-1" width="-1" x="5644" y="1285"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="48" language="java" name="application.view.AssignStaffView" project="Mojn_X2000" 
+  <class id="45" language="java" name="application.view.AssignStaffView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/AssignStaffView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="496" width="298" x="5848" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -433,7 +406,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="49" language="java" name="application.view.LoginView" project="Mojn_X2000" 
+  <class id="46" language="java" name="application.view.LoginView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/LoginView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="216" width="216" x="13394" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -442,7 +415,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="50" language="java" name="framework.Department" project="Mojn_X2000" 
+  <class id="47" language="java" name="framework.Department" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Department.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="256" width="267" x="4103" y="1797"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -451,7 +424,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="51" language="java" name="application.controller.HospitalController" project="Mojn_X2000" 
+  <class id="48" language="java" name="application.controller.HospitalController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/HospitalController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="336" width="217" x="12857" y="1797"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -460,7 +433,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="52" language="java" name="framework.person.staff.Clerk" project="Mojn_X2000" 
+  <class id="49" language="java" name="framework.person.staff.Clerk" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/person/staff/Clerk.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="116" width="399" x="5217" y="4135"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -469,7 +442,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="53" language="java" name="application.controller.Controller" project="Mojn_X2000" 
+  <class id="50" language="java" name="application.controller.Controller" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/Controller.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="116" width="176" x="10754" y="69"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -478,7 +451,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="54" language="java" name="application.view.RegisterPatientView" project="Mojn_X2000" 
+  <class id="51" language="java" name="application.view.RegisterPatientView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/RegisterPatientView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="496" width="354" x="6207" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -487,7 +460,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="55" language="java" name="application.view.TextPanelView" project="Mojn_X2000" 
+  <class id="52" language="java" name="application.view.TextPanelView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/TextPanelView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="136" width="180" x="9454" y="1797"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -496,7 +469,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="56" language="java" name="application.view.AdmitPatientView" project="Mojn_X2000" 
+  <class id="53" language="java" name="application.view.AdmitPatientView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/AdmitPatientView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="336" width="318" x="11638" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -505,7 +478,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="57" language="java" name="application.utils.GridBagLayoutUtils" project="Mojn_X2000" 
+  <class id="54" language="java" name="application.utils.GridBagLayoutUtils" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/utils/GridBagLayoutUtils.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3539" y="117"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -514,7 +487,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="58" language="java" name="framework.Departments.AdminDepart" project="Mojn_X2000" 
+  <class id="55" language="java" name="framework.Departments.AdminDepart" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Departments/AdminDepart.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="136" width="302" x="3761" y="2193"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -523,7 +496,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="59" language="java" name="framework.Departments.HealthCare.InPatientDepart" project="Mojn_X2000" 
+  <class id="56" language="java" name="framework.Departments.HealthCare.InPatientDepart" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Departments/HealthCare/InPatientDepart.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="176" width="469" x="3880" y="2389"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -532,16 +505,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="60" language="java" name="application.controller.RegisterStaffController" project="Mojn_X2000" 
+  <class id="57" language="java" name="application.controller.RegisterStaffController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/RegisterStaffController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="521" x="8527" y="735"/>    
+    <position height="-1" width="-1" x="8484" y="816"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="61" language="java" name="framework.Departments.HealthCare.Beds" project="Mojn_X2000" 
+  <class id="58" language="java" name="framework.Departments.HealthCare.Beds" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Departments/HealthCare/Beds.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="276" width="236" x="3936" y="2705"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -550,7 +523,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="62" language="java" name="framework.person.Patient" project="Mojn_X2000" 
+  <class id="59" language="java" name="framework.person.Patient" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/person/Patient.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="356" width="547" x="3378" y="3679"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -559,16 +532,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="63" language="java" name="application.controller.DischargePatientController" project="Mojn_X2000" 
+  <class id="60" language="java" name="application.controller.DischargePatientController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/DischargePatientController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="281" x="11822" y="1797"/>    
+    <position height="-1" width="-1" x="12758" y="836"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="64" language="java" name="application.view.StaffDepartView" project="Mojn_X2000" 
+  <class id="61" language="java" name="application.view.StaffDepartView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/StaffDepartView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="256" width="298" x="12017" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -577,7 +550,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="65" language="java" name="application.view.PatientView" project="Mojn_X2000" 
+  <class id="62" language="java" name="application.view.PatientView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/PatientView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="156" width="236" x="13671" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -586,17 +559,17 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="66" language="java" name="application.controller.DepartmentMovePatientController" project="Mojn_X2000" 
+  <class id="63" language="java" name="application.controller.DepartmentMovePatientController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/DepartmentMovePatientController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="176" width="357" x="9088" y="735"/>    
+    <position height="-1" width="-1" x="8990" y="813"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="67" language="java" name="framework.Person" project="Mojn_X2000" 
+  <class id="64" language="java" name="framework.Person" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Person.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="618" width="523" x="3993" y="3021"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -605,25 +578,25 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="68" language="java" name="application.controller.GetDepartmentController" project="Mojn_X2000" 
+  <class id="65" language="java" name="application.controller.GetDepartmentController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/GetDepartmentController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="267" x="9485" y="735"/>    
+    <position height="-1" width="-1" x="9387" y="806"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="69" language="java" name="application.controller.SearchPatientController" project="Mojn_X2000" 
+  <class id="66" language="java" name="application.controller.SearchPatientController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/SearchPatientController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="467" x="10247" y="735"/>    
+    <position height="-1" width="-1" x="10297" y="798"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="70" language="java" name="framework.Logger" project="Mojn_X2000" 
+  <class id="67" language="java" name="framework.Logger" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/Logger.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="156" width="233" x="3351" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -632,7 +605,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="71" language="java" name="application.controller.ApplicationController" project="Mojn_X2000" 
+  <class id="68" language="java" name="application.controller.ApplicationController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/ApplicationController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="236" width="264" x="13080" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -641,7 +614,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="72" language="java" name="application.view.DischargePatientView" project="Mojn_X2000" 
+  <class id="69" language="java" name="application.view.DischargePatientView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/DischargePatientView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="256" width="380" x="12376" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -650,34 +623,34 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="73" language="java" name="application.controller.StaffController" project="Mojn_X2000" 
+  <class id="70" language="java" name="application.controller.StaffController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/StaffController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="276" width="210" x="13080" y="735"/>    
+    <position height="-1" width="-1" x="13090" y="862"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="74" language="java" name="application.view.EditPatientView" project="Mojn_X2000" 
+  <class id="71" language="java" name="application.view.EditPatientView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/EditPatientView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="456" width="292" x="9806" y="1051"/>    
+    <position height="-1" width="-1" x="9776" y="1249"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="75" language="java" name="application.controller.EditStaffController" project="Mojn_X2000" 
+  <class id="72" language="java" name="application.controller.EditStaffController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/EditStaffController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="400" x="14279" y="1797"/>    
+    <position height="-1" width="-1" x="14486" y="891"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="76" language="java" name="application.view.FreeBedsHospitalView" project="Mojn_X2000" 
+  <class id="73" language="java" name="application.view.FreeBedsHospitalView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/FreeBedsHospitalView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="256" width="392" x="13947" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -686,7 +659,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="77" language="java" name="framework.ChangeReg" project="Mojn_X2000" 
+  <class id="74" language="java" name="framework.ChangeReg" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/ChangeReg.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="276" width="264" x="4185" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -695,25 +668,25 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="78" language="java" name="application.controller.EditPatientController" project="Mojn_X2000" 
+  <class id="75" language="java" name="application.controller.EditPatientController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/EditPatientController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="415" x="9792" y="735"/>    
+    <position height="-1" width="-1" x="9806" y="800"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="79" language="java" name="application.controller.NextInQueueController" project="Mojn_X2000" 
+  <class id="76" language="java" name="application.controller.NextInQueueController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/NextInQueueController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="248" x="11708" y="735"/>    
+    <position height="-1" width="-1" x="11749" y="804"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="80" language="java" name="framework.person.Staff" project="Mojn_X2000" 
+  <class id="77" language="java" name="framework.person.Staff" project="Mojn_X2000" 
     file="/Mojn_X2000/java/framework/person/Staff.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="416" width="275" x="4537" y="3679"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -722,16 +695,16 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="81" language="java" name="application.controller.SearchStaffController" project="Mojn_X2000" 
+  <class id="78" language="java" name="application.controller.SearchStaffController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/SearchStaffController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="467" x="11201" y="735"/>    
+    <position height="-1" width="-1" x="11306" y="800"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="82" language="java" name="application.view.EditStaffView" project="Mojn_X2000" 
+  <class id="79" language="java" name="application.view.EditStaffView" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/view/EditStaffView.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="456" width="258" x="14400" y="1051"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -740,1390 +713,1794 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="83" language="java" name="application.controller.ChangePasswordController" project="Mojn_X2000" 
+  <class id="80" language="java" name="application.controller.ChangePasswordController" project="Mojn_X2000" 
     file="/Mojn_X2000/java/application/controller/ChangePasswordController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="176" width="407" x="10754" y="735"/>    
+    <position height="-1" width="-1" x="10793" y="803"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
+  <association id="81">    
+    <bendpoint x="10554" y="1797"/>    
+    <bendpoint x="10554" y="2193"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="82" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="83" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="84">    
-    <end type="SOURCE" refId="30" navigable="false">      
-      <attribute id="85" name="view"/>      
-      <multiplicity id="86" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="85" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="86" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="79" navigable="false">      
+      <attribute id="88" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="89" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="72" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="91" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="92" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <bendpoint x="8383" y="1797"/>    
+    <bendpoint x="8383" y="2193"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="94" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="95" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="96">    
+    <bendpoint x="13049" y="1051"/>    
+    <bendpoint x="13049" y="735"/>    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <generalization id="97">    
+    <end type="SOURCE" refId="77"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <association id="98">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="99" name="view">        
+        <position height="0" width="0" x="-297" y="-25"/>      
+      </attribute>      
+      <multiplicity id="100" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-297" y="-25"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="101">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="102">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="103" name="application">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="104" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="105">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="106" name="controller">        
+        <position height="0" width="0" x="-183" y="-25"/>      
+      </attribute>      
+      <multiplicity id="107" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-183" y="-25"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="66" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="109" name="controller">        
+        <position height="0" width="0" x="-53" y="-14"/>      
+      </attribute>      
+      <multiplicity id="110" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-53" y="-14"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="111">    
+    <bendpoint x="12800" y="759"/>    
+    <end type="SOURCE" refId="60"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="112">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="113" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="114" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="115">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="34"/>  
+  </nesting>  
+  <generalization id="116">    
+    <end type="SOURCE" refId="76"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="117">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="118" name="se">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="119" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="120">    
+    <end type="SOURCE" refId="65"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="121">    
+    <end type="SOURCE" refId="70" navigable="false">      
+      <attribute id="122" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="123" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="78" navigable="false">      
+      <attribute id="125" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="126" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="87">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="88" name="view"/>      
-      <multiplicity id="89" minimum="0" maximum="1"/>    
+  <association id="127">    
+    <end type="SOURCE" refId="73" navigable="false">      
+      <attribute id="128" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="129" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
+    <end type="TARGET" refId="52" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="90">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="91" name="controller"/>      
-      <multiplicity id="92" minimum="0" maximum="1"/>    
+  <association id="130">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="131" name="user">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="132" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="30" navigable="true"/>    
+    <end type="TARGET" refId="31" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="93">    
-    <end type="SOURCE" refId="60"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <generalization id="94">    
-    <end type="SOURCE" refId="73"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="95">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="96" name="textPanel"/>      
-      <multiplicity id="97" minimum="0" maximum="1"/>    
+  <association id="133">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="134" name="controller">        
+        <position height="0" width="0" x="-95" y="-11"/>      
+      </attribute>      
+      <multiplicity id="135" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-95" y="-11"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
+    <end type="TARGET" refId="70" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="98">    
-    <end type="SOURCE" refId="68"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <generalization id="99">    
-    <end type="SOURCE" refId="81"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="100">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="101" name="controller"/>      
-      <multiplicity id="102" minimum="0" maximum="1"/>    
+  <association id="136">    
+    <bendpoint x="3387" y="2705"/>    
+    <bendpoint x="3387" y="3021"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="137" name="queue">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="138" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="59" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="103">    
-    <bendpoint x="13725" y="1797"/>    
-    <bendpoint x="13725" y="2193"/>    
-    <end type="SOURCE" refId="76" navigable="false">      
-      <attribute id="104" name="menuTop"/>      
-      <multiplicity id="105" minimum="0" maximum="1"/>    
+  <association id="139">    
+    <bendpoint x="8785" y="1797"/>    
+    <bendpoint x="8785" y="2193"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="140" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="141" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="106">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="107" name="controller"/>      
-      <multiplicity id="108" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="37" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="109">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="110" name="view"/>      
-      <multiplicity id="111" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="112">    
-    <end type="SOURCE" refId="54" navigable="false">      
-      <attribute id="113" name="textPanel"/>      
-      <multiplicity id="114" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="115">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="116" name="controller"/>      
-      <multiplicity id="117" minimum="0" maximum="1"/>    
+  <association id="142">    
+    <end type="SOURCE" refId="60" navigable="false">      
+      <attribute id="143" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="144" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="69" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="118">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="119" name="controller"/>      
-      <multiplicity id="120" minimum="0" maximum="1"/>    
+  <generalization id="145">    
+    <bendpoint x="6591" y="735"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <generalization id="146">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="147">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="148" name="controller">        
+        <position height="0" width="0" x="-164" y="-20"/>      
+      </attribute>      
+      <multiplicity id="149" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-164" y="-20"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="60" navigable="true"/>    
+    <end type="TARGET" refId="80" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="121">    
-    <bendpoint x="12826" y="1797"/>    
-    <bendpoint x="12826" y="2193"/>    
-    <bendpoint x="12826" y="2389"/>    
-    <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="122" name="session"/>      
-      <multiplicity id="123" minimum="0" maximum="1"/>    
+  <association id="150">    
+    <bendpoint x="9423" y="1797"/>    
+    <bendpoint x="9423" y="2193"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="151" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="152" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="153">    
+    <bendpoint x="6551" y="1797"/>    
+    <bendpoint x="6551" y="2193"/>    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="154" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="155" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="156">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="157" name="role">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="158" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="159">    
+    <end type="SOURCE" refId="75" navigable="false">      
+      <attribute id="160" name="view">        
+        <position height="0" width="0" x="-176" y="-30"/>      
+      </attribute>      
+      <multiplicity id="161" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-176" y="-30"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="71" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <bendpoint x="8597" y="1797"/>    
+    <bendpoint x="8597" y="2193"/>    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="163" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="164" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="165">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="166" name="self">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="167" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="168">    
+    <bendpoint x="4379" y="2389"/>    
+    <bendpoint x="4379" y="2705"/>    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="169" name="patientSet">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="170" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="64" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="171">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="172" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="173" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="174">    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="175" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="176" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="177">    
+    <end type="SOURCE" refId="76" navigable="false">      
+      <attribute id="178" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="179" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="180">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="181" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="182" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="183">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="184" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="185" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="62" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="186">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="187" name="session">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="188" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="189">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="190" name="MainMenuController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="191" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="192">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="77"/>  
+  </generalization>  
+  <association id="193">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="194" name="h">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="195" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="196">    
+    <end type="SOURCE" refId="78"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="197">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="198" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="199" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="200">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="201" name="s">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="202" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="203">    
+    <end type="SOURCE" refId="62" navigable="false">      
+      <attribute id="204" name="controller">        
+        <position height="0" width="0" x="230" y="-1155"/>      
+      </attribute>      
+      <multiplicity id="205" minimum="0" maximum="1">        
+        <position height="0" width="0" x="230" y="-1155"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="206">    
+    <bendpoint x="11791" y="1797"/>    
+    <bendpoint x="11791" y="2193"/>    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="207" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="208" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="209">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <association id="210">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="211" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="212" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="26" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="124">    
-    <end type="SOURCE" refId="77" navigable="false">      
-      <attribute id="125" name="DB"/>      
-      <multiplicity id="126" minimum="0" maximum="1"/>    
+  <association id="213">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="214" name="controller">        
+        <position height="0" width="0" x="136" y="-1055"/>      
+      </attribute>      
+      <multiplicity id="215" minimum="0" maximum="1">        
+        <position height="0" width="0" x="136" y="-1055"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="32" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="127">    
-    <end type="SOURCE" refId="48" navigable="false">      
-      <attribute id="128" name="textPanel"/>      
-      <multiplicity id="129" minimum="0" maximum="1"/>    
+  <association id="216">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="217" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="218" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
+    <end type="TARGET" refId="52" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="130">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="131" name="textPanel"/>      
-      <multiplicity id="132" minimum="0" maximum="1"/>    
+  <association id="219">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="220" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="221" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
+    <end type="TARGET" refId="61" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="133">    
-    <end type="SOURCE" refId="40"/>    
-    <end type="TARGET" refId="80"/>  
+  <association id="222">    
+    <end type="SOURCE" refId="51" navigable="false">      
+      <attribute id="223" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="224" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="225">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="226" name="log">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="227" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="67" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="228">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="229" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="230" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="231">    
+    <end type="SOURCE" refId="57"/>    
+    <end type="TARGET" refId="50"/>  
   </generalization>  
-  <association id="134">    
-    <end type="SOURCE" refId="82" navigable="false">      
-      <attribute id="135" name="textPanel"/>      
-      <multiplicity id="136" minimum="0" maximum="1"/>    
+  <association id="232">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="233" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="234" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
+    <end type="TARGET" refId="29" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="137">    
+  <association id="235">    
+    <bendpoint x="4479" y="735"/>    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="236" name="DB">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="237" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="238">    
+    <end type="SOURCE" refId="75"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="239">    
+    <end type="SOURCE" refId="79" navigable="false">      
+      <attribute id="240" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="241" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="242">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="243" name="beds">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="244" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="245">    
+    <end type="SOURCE" refId="63"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="246">    
+    <bendpoint x="4154" y="735"/>    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="247" name="h">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="248" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="249">    
+    <bendpoint x="12133" y="1797"/>    
+    <bendpoint x="12133" y="2193"/>    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="250" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="251" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="252">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="253" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="254" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="255">    
+    <bendpoint x="5629" y="639"/>    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <generalization id="256">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="77"/>  
+  </generalization>  
+  <association id="257">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="258" name="application">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="259" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="260">    
+    <bendpoint x="4400" y="2193"/>    
+    <bendpoint x="4400" y="2389"/>    
+    <bendpoint x="4400" y="2705"/>    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="261" name="staffSet">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="262" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="64" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="263">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="264" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="265" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="266">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="267" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="268" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="269">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="270" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="271" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="272">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="273" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="274" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="275">    
+    <bendpoint x="10169" y="1797"/>    
+    <bendpoint x="10169" y="2193"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="276" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="277" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="278">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="279" name="beds">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="280" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="64" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="281">    
+    <bendpoint x="13704" y="2193"/>    
+    <bendpoint x="13704" y="2389"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="282" name="session">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="283" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="284">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="285" name="controller">        
+        <position height="0" width="0" x="-303" y="-7"/>      
+      </attribute>      
+      <multiplicity id="286" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-303" y="-7"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="287">    
+    <bendpoint x="5948" y="1797"/>    
+    <bendpoint x="5948" y="2193"/>    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="288" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="289" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="290">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="64"/>  
+  </generalization>  
+  <association id="291">    
+    <bendpoint x="9815" y="1797"/>    
+    <bendpoint x="9815" y="2193"/>    
+    <end type="SOURCE" refId="71" navigable="false">      
+      <attribute id="292" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="293" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="294">    
+    <end type="SOURCE" refId="56"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <association id="295">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="296" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="297" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="298">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="299" name="PatientController">        
+        <position height="0" width="0" x="230" y="-1155"/>      
+      </attribute>      
+      <multiplicity id="300" minimum="0" maximum="1">        
+        <position height="0" width="0" x="230" y="-1155"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="301">    
+    <end type="SOURCE" refId="74" navigable="false">      
+      <attribute id="302" name="DB">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="303" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="304">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="305" name="searcher">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="306" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="307">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="308" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="309" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="310">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="311" name="HospitalController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="312" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="313">    
+    <end type="SOURCE" refId="72" navigable="false">      
+      <attribute id="314" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="315" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="79" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="316">    
+    <bendpoint x="11986" y="735"/>    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <generalization id="317">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <generalization id="318">    
+    <bendpoint x="13640" y="1051"/>    
+    <bendpoint x="13640" y="735"/>    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="319">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="320" name="StaffController">        
+        <position height="0" width="0" x="-95" y="-11"/>      
+      </attribute>      
+      <multiplicity id="321" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-95" y="-11"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="70" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="322">    
+    <end type="SOURCE" refId="69" navigable="false">      
+      <attribute id="323" name="controller">        
+        <position height="0" width="0" x="-51" y="-9"/>      
+      </attribute>      
+      <multiplicity id="324" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-51" y="-9"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="325">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="326">    
+    <bendpoint x="8223" y="1797"/>    
+    <bendpoint x="8223" y="2193"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="327" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="328" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="329">    
+    <end type="SOURCE" refId="73" navigable="false">      
+      <attribute id="330" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="331" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="332">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="333" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="334" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="335">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="77"/>  
+  </generalization>  
+  <association id="336">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="337" name="controller">        
+        <position height="0" width="0" x="-128" y="-23"/>      
+      </attribute>      
+      <multiplicity id="338" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-128" y="-23"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="78" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="339">    
+    <end type="SOURCE" refId="66" navigable="false">      
+      <attribute id="340" name="view">        
+        <position height="0" width="0" x="-107" y="-25"/>      
+      </attribute>      
+      <multiplicity id="341" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-107" y="-25"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="342">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="343" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="344" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="345">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="346">    
+    <end type="SOURCE" refId="79" navigable="false">      
+      <attribute id="347" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="348" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="349">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="350" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="351" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="352">    
+    <bendpoint x="5634" y="1797"/>    
+    <bendpoint x="5634" y="2193"/>    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="353" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="354" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="355">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="356" name="R">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="357" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="74" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="358">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="359" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="360" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="361">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="362" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="363" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="364">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="365">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="366" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="367" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="368">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="369" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="370" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="371">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="372" name="controller">        
+        <position height="0" width="0" x="-83" y="-19"/>      
+      </attribute>      
+      <multiplicity id="373" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-83" y="-19"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="76" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="374">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="375" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="376" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="377">    
+    <end type="SOURCE" refId="80"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="378">    
+    <bendpoint x="10383" y="1797"/>    
+    <bendpoint x="10383" y="2193"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="379" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="380" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="381">    
+    <end type="SOURCE" refId="71" navigable="false">      
+      <attribute id="382" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="383" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="384">    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="385" name="controller">        
+        <position height="0" width="0" x="482" y="-1058"/>      
+      </attribute>      
+      <multiplicity id="386" minimum="0" maximum="1">        
+        <position height="0" width="0" x="482" y="-1058"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="387">    
+    <end type="SOURCE" refId="62" navigable="false">      
+      <attribute id="388" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="389" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="390">    
+    <end type="SOURCE" refId="72"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="391">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="392" name="controller">        
+        <position height="0" width="0" x="326" y="-17"/>      
+      </attribute>      
+      <multiplicity id="393" minimum="0" maximum="1">        
+        <position height="0" width="0" x="326" y="-17"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="394">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="395" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="396" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="397">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="398">    
+    <bendpoint x="9181" y="1797"/>    
+    <bendpoint x="9181" y="2193"/>    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="399" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="400" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="401">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="402" name="controller">        
+        <position height="0" width="0" x="-231" y="-17"/>      
+      </attribute>      
+      <multiplicity id="403" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-231" y="-17"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="65" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="404">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="405" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="406" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="407">    
+    <bendpoint x="6048" y="706"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="50"/>  
+  </generalization>  
+  <association id="408">    
     <bendpoint x="14709" y="735"/>    
     <bendpoint x="14709" y="1051"/>    
     <bendpoint x="14709" y="1797"/>    
     <bendpoint x="14709" y="2193"/>    
     <bendpoint x="14709" y="2389"/>    
-    <end type="SOURCE" refId="53" navigable="false">      
-      <attribute id="138" name="sessionModel"/>      
-      <multiplicity id="139" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="50" navigable="false">      
+      <attribute id="409" name="sessionModel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="410" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
+    <end type="TARGET" refId="25" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="140">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="141" name="view"/>      
-      <multiplicity id="142" minimum="0" maximum="1"/>    
+  <association id="411">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="412" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="413" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="65" navigable="true"/>    
+    <end type="TARGET" refId="51" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="143">    
-    <bendpoint x="8987" y="1797"/>    
-    <bendpoint x="8987" y="2193"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="144" name="menuTop"/>      
-      <multiplicity id="145" minimum="0" maximum="1"/>    
+  <association id="414">    
+    <end type="SOURCE" refId="70" navigable="false">      
+      <attribute id="415" name="application">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="416" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="68" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="146">    
-    <bendpoint x="14073" y="1797"/>    
-    <bendpoint x="13746" y="2193"/>    
-    <end type="SOURCE" refId="82" navigable="false">      
-      <attribute id="147" name="menuTop"/>      
-      <multiplicity id="148" minimum="0" maximum="1"/>    
+  <association id="417">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="418" name="self">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="419" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="25" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="149">    
-    <end type="SOURCE" refId="76" navigable="false">      
-      <attribute id="150" name="controller"/>      
-      <multiplicity id="151" minimum="0" maximum="1"/>    
+  <association id="420">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="421" name="application">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="422" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="31" navigable="true"/>    
+    <end type="TARGET" refId="68" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="152">    
-    <end type="SOURCE" refId="44" navigable="false">      
-      <attribute id="153" name="menuTop"/>      
-      <multiplicity id="154" minimum="0" maximum="1"/>    
+  <association id="423">    
+    <end type="SOURCE" refId="67" navigable="false">      
+      <attribute id="424" name="instance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="425" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="67" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="155">    
-    <end type="SOURCE" refId="46"/>    
-    <end type="TARGET" refId="53"/>  
+  <association id="426">    
+    <end type="SOURCE" refId="71" navigable="false">      
+      <attribute id="427" name="controller">        
+        <position height="0" width="0" x="-193" y="-23"/>      
+      </attribute>      
+      <multiplicity id="428" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-193" y="-23"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="75" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="429">    
+    <bendpoint x="11478" y="1797"/>    
+    <bendpoint x="11478" y="2193"/>    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="430" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="431" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="432">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="433" name="textPanel">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="434" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="435">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="77"/>  
   </generalization>  
-  <association id="156">    
+  <association id="436">    
     <end type="SOURCE" refId="68" navigable="false">      
-      <attribute id="157" name="view"/>      
-      <multiplicity id="158" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="159">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="160" name="se"/>      
-      <multiplicity id="161" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="162">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="163" name="textPanel"/>      
-      <multiplicity id="164" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="165">    
-    <end type="SOURCE" refId="56" navigable="false">      
-      <attribute id="166" name="controller"/>      
-      <multiplicity id="167" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="35" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="168">    
-    <end type="SOURCE" refId="74" navigable="false">      
-      <attribute id="169" name="textPanel"/>      
-      <multiplicity id="170" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="171">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="172" name="self"/>      
-      <multiplicity id="173" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="174">    
-    <end type="SOURCE" refId="47" navigable="false">      
-      <attribute id="175" name="controller"/>      
-      <multiplicity id="176" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="41" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="177">    
-    <end type="SOURCE" refId="71" navigable="false">      
-      <attribute id="178" name="self"/>      
-      <multiplicity id="179" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="71" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="180">    
-    <end type="SOURCE" refId="83"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="181">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="182" name="application"/>      
-      <multiplicity id="183" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="71" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="184">    
-    <bendpoint x="12345" y="1051"/>    
-    <bendpoint x="12345" y="735"/>    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="185">    
-    <bendpoint x="4479" y="735"/>    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="186" name="DB"/>      
-      <multiplicity id="187" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="32" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="188">    
-    <end type="SOURCE" refId="71" navigable="false">      
-      <attribute id="189" name="loginController"/>      
-      <multiplicity id="190" minimum="0" maximum="1"/>    
+      <attribute id="437" name="loginController">        
+        <position height="0" width="0" x="136" y="-1055"/>      
+      </attribute>      
+      <multiplicity id="438" minimum="0" maximum="1">        
+        <position height="0" width="0" x="136" y="-1055"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="191">    
-    <bendpoint x="9181" y="1797"/>    
-    <bendpoint x="9181" y="2193"/>    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="192" name="menuTop"/>      
-      <multiplicity id="193" minimum="0" maximum="1"/>    
+  <association id="439">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="440" name="Pas">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="441" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="442">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="443" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="444" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="445">    
+    <bendpoint x="9361" y="1797"/>    
+    <bendpoint x="9361" y="2193"/>    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="446" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="447" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="448">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="449" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="450" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="451">    
+    <bendpoint x="10731" y="1797"/>    
+    <bendpoint x="10731" y="2193"/>    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="452" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="453" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="454">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="455" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="456" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="194">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="195" name="textPanel"/>      
-      <multiplicity id="196" minimum="0" maximum="1"/>    
+  <association id="457">    
+    <end type="SOURCE" refId="80" navigable="false">      
+      <attribute id="458" name="view">        
+        <position height="0" width="0" x="-43" y="-23"/>      
+      </attribute>      
+      <multiplicity id="459" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-43" y="-23"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="197">    
-    <bendpoint x="5906" y="2193"/>    
-    <bendpoint x="5906" y="2389"/>    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="198" name="session"/>      
-      <multiplicity id="199" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="200">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="201" name="instance"/>      
-      <multiplicity id="202" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="34" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="203">    
-    <end type="SOURCE" refId="80"/>    
-    <end type="TARGET" refId="67"/>  
-  </generalization>  
-  <association id="204">    
-    <bendpoint x="3387" y="2705"/>    
-    <bendpoint x="3387" y="3021"/>    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="205" name="queue"/>      
-      <multiplicity id="206" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="62" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="207">    
+  <association id="460">    
     <bendpoint x="3347" y="1797"/>    
     <bendpoint x="3347" y="2193"/>    
     <bendpoint x="3347" y="2389"/>    
     <bendpoint x="3347" y="2705"/>    
     <bendpoint x="3347" y="3021"/>    
-    <end type="SOURCE" refId="39" navigable="false">      
-      <attribute id="208" name="allPatientSet"/>      
-      <multiplicity id="209" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="62" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="210">    
-    <end type="SOURCE" refId="43"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <generalization id="211">    
-    <end type="SOURCE" refId="79"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="212">    
-    <bendpoint x="11791" y="1797"/>    
-    <bendpoint x="11791" y="2193"/>    
-    <end type="SOURCE" refId="72" navigable="false">      
-      <attribute id="213" name="menuTop"/>      
-      <multiplicity id="214" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="215">    
-    <end type="SOURCE" refId="72" navigable="false">      
-      <attribute id="216" name="textPanel"/>      
-      <multiplicity id="217" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="218">    
-    <bendpoint x="9423" y="1797"/>    
-    <bendpoint x="9423" y="2193"/>    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="219" name="menuTop"/>      
-      <multiplicity id="220" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="221">    
-    <end type="SOURCE" refId="71" navigable="false">      
-      <attribute id="222" name="PatientController"/>      
-      <multiplicity id="223" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="224">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="225" name="textPanel"/>      
-      <multiplicity id="226" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="227">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="228">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="229" name="application"/>      
-      <multiplicity id="230" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="71" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="231">    
-    <end type="SOURCE" refId="37"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <generalization id="232">    
-    <end type="SOURCE" refId="52"/>    
-    <end type="TARGET" refId="80"/>  
-  </generalization>  
-  <association id="233">    
-    <bendpoint x="13683" y="1797"/>    
-    <bendpoint x="13683" y="2193"/>    
-    <end type="SOURCE" refId="65" navigable="false">      
-      <attribute id="234" name="menuTop"/>      
-      <multiplicity id="235" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="236">    
-    <bendpoint x="11478" y="1797"/>    
-    <bendpoint x="11478" y="2193"/>    
-    <end type="SOURCE" refId="64" navigable="false">      
-      <attribute id="237" name="menuTop"/>      
-      <multiplicity id="238" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="239">    
-    <bendpoint x="4379" y="2389"/>    
-    <bendpoint x="4379" y="2705"/>    
-    <end type="SOURCE" refId="45" navigable="false">      
-      <attribute id="240" name="patientSet"/>      
-      <multiplicity id="241" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="67" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="242">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="243" name="controller"/>      
-      <multiplicity id="244" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="83" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="245">    
-    <end type="SOURCE" refId="75" navigable="false">      
-      <attribute id="246" name="view"/>      
-      <multiplicity id="247" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="82" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="248">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="249" name="view"/>      
-      <multiplicity id="250" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="49" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="251">    
-    <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="252" name="controller"/>      
-      <multiplicity id="253" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="73" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="254">    
-    <end type="SOURCE" refId="59"/>    
-    <end type="TARGET" refId="45"/>  
-  </generalization>  
-  <association id="255">    
-    <bendpoint x="8383" y="1797"/>    
-    <bendpoint x="8383" y="2193"/>    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="256" name="menuTop"/>      
-      <multiplicity id="257" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="258">    
-    <end type="SOURCE" refId="71" navigable="false">      
-      <attribute id="259" name="StaffController"/>      
-      <multiplicity id="260" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="73" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="261">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="262" name="self"/>      
-      <multiplicity id="263" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="264">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="265" name="controller"/>      
-      <multiplicity id="266" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="79" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="267">    
-    <end type="SOURCE" refId="81" navigable="false">      
-      <attribute id="268" name="view"/>      
-      <multiplicity id="269" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="270">    
-    <bendpoint x="13640" y="1051"/>    
-    <bendpoint x="13640" y="735"/>    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="271">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="272" name="textPanel"/>      
-      <multiplicity id="273" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="274">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="275" name="R"/>      
-      <multiplicity id="276" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="77" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="277">    
-    <end type="SOURCE" refId="35" navigable="false">      
-      <attribute id="278" name="view"/>      
-      <multiplicity id="279" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="56" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="280">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="281" name="textPanel"/>      
-      <multiplicity id="282" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="283">    
     <end type="SOURCE" refId="37" navigable="false">      
-      <attribute id="284" name="view"/>      
-      <multiplicity id="285" minimum="0" maximum="1"/>    
+      <attribute id="461" name="allPatientSet">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="462" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
+    <end type="TARGET" refId="59" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="286">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="287" name="view"/>      
-      <multiplicity id="288" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="48" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="289">    
-    <bendpoint x="6551" y="1797"/>    
-    <bendpoint x="6551" y="2193"/>    
-    <end type="SOURCE" refId="54" navigable="false">      
-      <attribute id="290" name="menuTop"/>      
-      <multiplicity id="291" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="292">    
+  <association id="463">    
     <end type="SOURCE" refId="51" navigable="false">      
-      <attribute id="293" name="view"/>      
-      <multiplicity id="294" minimum="0" maximum="1"/>    
+      <attribute id="464" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="465" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="44" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="295">    
-    <bendpoint x="10731" y="1797"/>    
-    <bendpoint x="10731" y="2193"/>    
-    <end type="SOURCE" refId="56" navigable="false">      
-      <attribute id="296" name="menuTop"/>      
-      <multiplicity id="297" minimum="0" maximum="1"/>    
+  <association id="466">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="467" name="controller">        
+        <position height="0" width="0" x="-276" y="-10"/>      
+      </attribute>      
+      <multiplicity id="468" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-276" y="-10"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="63" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="298">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="299" name="controller"/>      
-      <multiplicity id="300" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="68" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="301">    
-    <end type="SOURCE" refId="73" navigable="false">      
-      <attribute id="302" name="application"/>      
-      <multiplicity id="303" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="71" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="304">    
-    <end type="SOURCE" refId="65" navigable="false">      
-      <attribute id="305" name="controller"/>      
-      <multiplicity id="306" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="307">    
-    <bendpoint x="12866" y="2389"/>    
-    <end type="SOURCE" refId="44" navigable="false">      
-      <attribute id="308" name="session"/>      
-      <multiplicity id="309" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="310">    
-    <end type="SOURCE" refId="56" navigable="false">      
-      <attribute id="311" name="textPanel"/>      
-      <multiplicity id="312" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="313">    
-    <bendpoint x="13049" y="1051"/>    
-    <bendpoint x="13049" y="735"/>    
-    <end type="SOURCE" refId="51"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <generalization id="314">    
-    <bendpoint x="14688" y="1051"/>    
-    <bendpoint x="14688" y="735"/>    
-    <end type="SOURCE" refId="75"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <generalization id="315">    
-    <bendpoint x="11986" y="1051"/>    
-    <bendpoint x="11986" y="735"/>    
-    <end type="SOURCE" refId="35"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="316">    
-    <end type="SOURCE" refId="73" navigable="false">      
-      <attribute id="317" name="view"/>      
-      <multiplicity id="318" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="38" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="319">    
-    <end type="SOURCE" refId="71" navigable="false">      
-      <attribute id="320" name="MainMenuController"/>      
-      <multiplicity id="321" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="322">    
-    <end type="SOURCE" refId="51" navigable="false">      
-      <attribute id="323" name="application"/>      
-      <multiplicity id="324" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="71" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="325">    
-    <end type="SOURCE" refId="46" navigable="false">      
-      <attribute id="326" name="view"/>      
-      <multiplicity id="327" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="328">    
-    <bendpoint x="8785" y="1797"/>    
-    <bendpoint x="8785" y="2193"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="329" name="menuTop"/>      
-      <multiplicity id="330" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="331">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="332" name="Pas"/>      
-      <multiplicity id="333" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="334">    
-    <end type="SOURCE" refId="39" navigable="false">      
-      <attribute id="335" name="departSet"/>      
-      <multiplicity id="336" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="50" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="337">    
-    <bendpoint x="10554" y="1797"/>    
-    <bendpoint x="10554" y="2193"/>    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="338" name="menuTop"/>      
-      <multiplicity id="339" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="340">    
+  <association id="469">    
     <end type="SOURCE" refId="32" navigable="false">      
-      <attribute id="341" name="instance"/>      
-      <multiplicity id="342" minimum="0" maximum="1"/>    
+      <attribute id="470" name="instance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="471" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="32" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="343">    
-    <bendpoint x="9981" y="1797"/>    
-    <bendpoint x="9981" y="2193"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="344" name="menuTop"/>      
-      <multiplicity id="345" minimum="0" maximum="1"/>    
+  <association id="472">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="473" name="view">        
+        <position height="0" width="0" x="325" y="36"/>      
+      </attribute>      
+      <multiplicity id="474" minimum="0" maximum="1">        
+        <position height="0" width="0" x="325" y="36"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="44" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="346">    
-    <end type="SOURCE" refId="74" navigable="false">      
-      <attribute id="347" name="controller"/>      
-      <multiplicity id="348" minimum="0" maximum="1"/>    
+  <association id="475">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="476" name="instance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="477" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="78" navigable="true"/>    
+    <end type="TARGET" refId="30" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="349">    
-    <end type="SOURCE" refId="49" navigable="false">      
-      <attribute id="350" name="controller"/>      
-      <multiplicity id="351" minimum="0" maximum="1"/>    
+  <association id="478">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="479" name="application">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="480" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="68" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="352">    
-    <bendpoint x="13704" y="1797"/>    
-    <bendpoint x="13767" y="2193"/>    
-    <bendpoint x="13767" y="2389"/>    
-    <end type="SOURCE" refId="65" navigable="false">      
-      <attribute id="353" name="session"/>      
-      <multiplicity id="354" minimum="0" maximum="1"/>    
+  <association id="481">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="482" name="controller">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="483" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="355">    
-    <bendpoint x="6176" y="1051"/>    
-    <bendpoint x="6176" y="735"/>    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="53"/>  
+  <generalization id="484">    
+    <end type="SOURCE" refId="70"/>    
+    <end type="TARGET" refId="50"/>  
   </generalization>  
-  <association id="356">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="357" name="textPanel"/>      
-      <multiplicity id="358" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="359">    
+  <association id="485">    
     <bendpoint x="4546" y="1797"/>    
     <bendpoint x="4546" y="2193"/>    
     <bendpoint x="4546" y="2389"/>    
     <bendpoint x="4546" y="2705"/>    
     <bendpoint x="4546" y="3021"/>    
-    <end type="SOURCE" refId="39" navigable="false">      
-      <attribute id="360" name="allStaffSet"/>      
-      <multiplicity id="361" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="486" name="allStaffSet">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="487" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="80" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="362">    
-    <bendpoint x="5927" y="1797"/>    
-    <bendpoint x="5927" y="2193"/>    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="363" name="menuTop"/>      
-      <multiplicity id="364" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="365">    
-    <end type="SOURCE" refId="48" navigable="false">      
-      <attribute id="366" name="controller"/>      
-      <multiplicity id="367" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="368">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="369" name="h"/>      
-      <multiplicity id="370" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="39" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="371">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="372" name="s"/>      
-      <multiplicity id="373" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="374">    
-    <end type="SOURCE" refId="66" navigable="false">      
-      <attribute id="375" name="view"/>      
-      <multiplicity id="376" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="377">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="378">    
-    <end type="SOURCE" refId="61" navigable="false">      
-      <attribute id="379" name="beds"/>      
-      <multiplicity id="380" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="67" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="381">    
-    <bendpoint x="6591" y="1051"/>    
-    <bendpoint x="6591" y="735"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="382">    
-    <end type="SOURCE" refId="41" navigable="false">      
-      <attribute id="383" name="view"/>      
-      <multiplicity id="384" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="47" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="385">    
-    <bendpoint x="12786" y="1051"/>    
-    <bendpoint x="12786" y="735"/>    
-    <end type="SOURCE" refId="63"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="386">    
-    <end type="SOURCE" refId="44" navigable="false">      
-      <attribute id="387" name="controller"/>      
-      <multiplicity id="388" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="51" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="389">    
-    <end type="SOURCE" refId="79" navigable="false">      
-      <attribute id="390" name="view"/>      
-      <multiplicity id="391" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="392">    
-    <end type="SOURCE" refId="78"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="393">    
-    <end type="SOURCE" refId="64" navigable="false">      
-      <attribute id="394" name="controller"/>      
-      <multiplicity id="395" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="396">    
-    <end type="SOURCE" refId="70" navigable="false">      
-      <attribute id="397" name="instance"/>      
-      <multiplicity id="398" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="70" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="399">    
-    <end type="SOURCE" refId="82" navigable="false">      
-      <attribute id="400" name="controller"/>      
-      <multiplicity id="401" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="75" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="402">    
-    <end type="SOURCE" refId="59" navigable="false">      
-      <attribute id="403" name="beds"/>      
-      <multiplicity id="404" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="61" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="405">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="406" name="user"/>      
-      <multiplicity id="407" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="33" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="408">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="36"/>  
-  </nesting>  
-  <association id="409">    
-    <end type="SOURCE" refId="54" navigable="false">      
-      <attribute id="410" name="controller"/>      
-      <multiplicity id="411" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="412">    
-    <end type="SOURCE" refId="62"/>    
-    <end type="TARGET" refId="67"/>  
-  </generalization>  
-  <association id="413">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="414" name="session"/>      
-      <multiplicity id="415" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="416">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="417" name="controller"/>      
-      <multiplicity id="418" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="46" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="419">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="80"/>  
-  </generalization>  
-  <association id="420">    
-    <bendpoint x="9361" y="1797"/>    
-    <bendpoint x="9361" y="2193"/>    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="421" name="menuTop"/>      
-      <multiplicity id="422" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="423">    
-    <end type="SOURCE" refId="64" navigable="false">      
-      <attribute id="424" name="textPanel"/>      
-      <multiplicity id="425" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="426">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="427" name="textPanel"/>      
-      <multiplicity id="428" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="429">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="430" name="role"/>      
-      <multiplicity id="431" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="36" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="432">    
-    <bendpoint x="4154" y="735"/>    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="433" name="h"/>      
-      <multiplicity id="434" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="39" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="435">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="436" name="textPanel"/>      
-      <multiplicity id="437" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="438">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="439" name="textPanel"/>      
-      <multiplicity id="440" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="441">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="442" name="controller"/>      
-      <multiplicity id="443" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="81" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="444">    
-    <end type="SOURCE" refId="83" navigable="false">      
-      <attribute id="445" name="view"/>      
-      <multiplicity id="446" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="447">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="448" name="application"/>      
-      <multiplicity id="449" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="71" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="450">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="451" name="controller"/>      
-      <multiplicity id="452" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="43" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="453">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="454" name="controller"/>      
-      <multiplicity id="455" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="66" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="456">    
-    <bendpoint x="10169" y="1797"/>    
-    <bendpoint x="10169" y="2193"/>    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="457" name="menuTop"/>      
-      <multiplicity id="458" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="459">    
-    <end type="SOURCE" refId="69"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <generalization id="460">    
-    <bendpoint x="5142" y="1051"/>    
-    <bendpoint x="5142" y="735"/>    
-    <end type="SOURCE" refId="41"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="461">    
-    <bendpoint x="4400" y="2193"/>    
-    <bendpoint x="4400" y="2389"/>    
-    <bendpoint x="4400" y="2705"/>    
-    <end type="SOURCE" refId="50" navigable="false">      
-      <attribute id="462" name="staffSet"/>      
-      <multiplicity id="463" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="67" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="464">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="465" name="view"/>      
-      <multiplicity id="466" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="54" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="467">    
-    <end type="SOURCE" refId="69" navigable="false">      
-      <attribute id="468" name="view"/>      
-      <multiplicity id="469" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="470">    
-    <end type="SOURCE" refId="76" navigable="false">      
-      <attribute id="471" name="textPanel"/>      
-      <multiplicity id="472" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="473">    
-    <bendpoint x="8597" y="1797"/>    
-    <bendpoint x="8597" y="2193"/>    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="474" name="menuTop"/>      
-      <multiplicity id="475" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="476">    
-    <end type="SOURCE" refId="47" navigable="false">      
-      <attribute id="477" name="textPanel"/>      
-      <multiplicity id="478" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="479">    
-    <bendpoint x="10383" y="1797"/>    
-    <bendpoint x="10383" y="2193"/>    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="480" name="menuTop"/>      
-      <multiplicity id="481" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="482">    
-    <end type="SOURCE" refId="60" navigable="false">      
-      <attribute id="483" name="view"/>      
-      <multiplicity id="484" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="485">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="486" name="controller"/>      
-      <multiplicity id="487" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="77" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <generalization id="488">    
-    <bendpoint x="14369" y="1051"/>    
-    <bendpoint x="14369" y="735"/>    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="53"/>  
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="47"/>  
   </generalization>  
   <association id="489">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="490" name="textPanel"/>      
-      <multiplicity id="491" minimum="0" maximum="1"/>    
+    <bendpoint x="9981" y="1797"/>    
+    <bendpoint x="9981" y="2193"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="490" name="menuTop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="491" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="55" navigable="true"/>    
+    <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="492">    
-    <end type="SOURCE" refId="66"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="493">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="494" name="log"/>      
-      <multiplicity id="495" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="70" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="496">    
-    <end type="SOURCE" refId="71" navigable="false">      
-      <attribute id="497" name="HospitalController"/>      
-      <multiplicity id="498" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="51" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="499">    
-    <bendpoint x="13704" y="2193"/>    
-    <bendpoint x="13704" y="2389"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="500" name="session"/>      
-      <multiplicity id="501" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="502">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="45"/>  
-  </generalization>  
-  <association id="503">    
-    <end type="SOURCE" refId="72" navigable="false">      
-      <attribute id="504" name="controller"/>      
-      <multiplicity id="505" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="63" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="506">    
-    <bendpoint x="5634" y="1797"/>    
-    <bendpoint x="5634" y="2193"/>    
-    <end type="SOURCE" refId="47" navigable="false">      
-      <attribute id="507" name="menuTop"/>      
-      <multiplicity id="508" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="509">    
-    <end type="SOURCE" refId="45"/>    
-    <end type="TARGET" refId="50"/>  
-  </generalization>  
-  <generalization id="510">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="80"/>  
-  </generalization>  
-  <association id="511">    
-    <bendpoint x="9815" y="1797"/>    
-    <bendpoint x="9815" y="2193"/>    
-    <end type="SOURCE" refId="74" navigable="false">      
-      <attribute id="512" name="menuTop"/>      
-      <multiplicity id="513" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="514">    
-    <bendpoint x="5948" y="1797"/>    
-    <bendpoint x="5948" y="2193"/>    
-    <end type="SOURCE" refId="48" navigable="false">      
-      <attribute id="515" name="menuTop"/>      
-      <multiplicity id="516" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="517">    
-    <bendpoint x="8223" y="1797"/>    
-    <bendpoint x="8223" y="2193"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="518" name="menuTop"/>      
-      <multiplicity id="519" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="520">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="521" name="view"/>      
-      <multiplicity id="522" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="76" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="523">    
-    <end type="SOURCE" refId="43" navigable="false">      
-      <attribute id="524" name="view"/>      
-      <multiplicity id="525" minimum="0" maximum="1"/>    
+  <association id="492">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="493" name="view">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="494" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="526">    
-    <bendpoint x="5495" y="1051"/>    
-    <bendpoint x="5495" y="735"/>    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="53"/>  
-  </generalization>  
-  <association id="527">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="528" name="view"/>      
-      <multiplicity id="529" minimum="0" maximum="1"/>    
+  <association id="495">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="496" name="self">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="497" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="64" navigable="true"/>    
+    <end type="TARGET" refId="68" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="530">    
-    <bendpoint x="12133" y="1797"/>    
-    <bendpoint x="12133" y="2193"/>    
-    <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="531" name="menuTop"/>      
-      <multiplicity id="532" minimum="0" maximum="1"/>    
+  <association id="498">    
+    <end type="SOURCE" refId="65" navigable="false">      
+      <attribute id="499" name="view">        
+        <position height="0" width="0" x="-209" y="-18"/>      
+      </attribute>      
+      <multiplicity id="500" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-209" y="-18"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="27" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="533">    
-    <end type="SOURCE" refId="63" navigable="false">      
-      <attribute id="534" name="view"/>      
-      <multiplicity id="535" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="72" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="536">    
-    <end type="SOURCE" refId="58"/>    
+  <generalization id="501">    
+    <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="50"/>  
   </generalization>  
-  <association id="537">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="538" name="searcher"/>      
-      <multiplicity id="539" minimum="0" maximum="1"/>    
+  <association id="502">    
+    <end type="SOURCE" refId="63" navigable="false">      
+      <attribute id="503" name="view">        
+        <position height="0" width="0" x="-225" y="-19"/>      
+      </attribute>      
+      <multiplicity id="504" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-225" y="-19"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="540">    
-    <end type="SOURCE" refId="78" navigable="false">      
-      <attribute id="541" name="view"/>      
-      <multiplicity id="542" minimum="0" maximum="1"/>    
+  <association id="505">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="506" name="departSet">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="507" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="74" navigable="true"/>    
+    <end type="TARGET" refId="47" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
