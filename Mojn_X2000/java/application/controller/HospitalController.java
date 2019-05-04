@@ -39,6 +39,7 @@ public class HospitalController  extends Controller{
 		StaffDepartController SC = new StaffDepartController(sessionModel);
 		StaffDepartView SView = new StaffDepartView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 
@@ -46,6 +47,7 @@ public class HospitalController  extends Controller{
 		GetDepartmentController SC = new GetDepartmentController(sessionModel);
 		GetDepartmentView SView = new GetDepartmentView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 
@@ -53,6 +55,7 @@ public class HospitalController  extends Controller{
 		BedsInUseHospitalController SC = new BedsInUseHospitalController(sessionModel);
 		BedsInUseHospitalView SView = new BedsInUseHospitalView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();		
 	}
 
@@ -60,6 +63,7 @@ public class HospitalController  extends Controller{
 		GetQueueController SC = new GetQueueController(sessionModel);
 		GetQueueView SView = new GetQueueView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();		
 	}
 	
@@ -67,6 +71,7 @@ public class HospitalController  extends Controller{
 		AddPasswordController SC = new AddPasswordController(sessionModel);
 		AddPasswordView SView = new AddPasswordView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -74,6 +79,7 @@ public class HospitalController  extends Controller{
 		ChangePasswordController SC = new ChangePasswordController(sessionModel);
 		ChangePasswordView SView = new ChangePasswordView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -81,6 +87,7 @@ public class HospitalController  extends Controller{
 		ParticipationListController SC = new ParticipationListController(sessionModel);
 		ParticipationListView SView = new ParticipationListView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -88,6 +95,7 @@ public class HospitalController  extends Controller{
 		AddDepartController SC = new AddDepartController(sessionModel);
 		AddDepartView SView = new AddDepartView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -95,6 +103,7 @@ public class HospitalController  extends Controller{
 		NextInQueueController SC = new NextInQueueController(sessionModel);
 		NextInQueueView SView = new NextInQueueView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 }

@@ -20,7 +20,7 @@ public class DischargePatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Discharge a patient", "back");
+	private MenuTopView menuTop = new MenuTopView("Discharge a patient");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -35,7 +35,7 @@ public class DischargePatientView extends JFrame {
 	private void initGUI() {
 		// All components of the window are defined
 		setTitle("Discharge Patients");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -44,7 +44,6 @@ public class DischargePatientView extends JFrame {
 
 		idField = new JTextField(11);
 		
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -94,5 +93,7 @@ public class DischargePatientView extends JFrame {
 		setLocationRelativeTo(null);
 
 	}
-
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

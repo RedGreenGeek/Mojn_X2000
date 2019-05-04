@@ -36,6 +36,7 @@ public class StaffController  extends Controller{
 		SearchStaffController SS = new SearchStaffController(sessionModel);
 		SearchStaffView SView = new SearchStaffView(SS);
 		SS.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SS.display();	
 	}
 
@@ -43,6 +44,7 @@ public class StaffController  extends Controller{
 		EditStaffController SC = new EditStaffController(sessionModel);
 		EditStaffView SView = new EditStaffView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();		
 	}
 
@@ -50,6 +52,7 @@ public class StaffController  extends Controller{
 		RegisterStaffController SC = new RegisterStaffController(sessionModel);
 		RegisterStaffView SView = new RegisterStaffView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 
@@ -57,6 +60,7 @@ public class StaffController  extends Controller{
 		AssignStaffController SC = new AssignStaffController(sessionModel);
 		AssignStaffView SView = new AssignStaffView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -64,6 +68,7 @@ public class StaffController  extends Controller{
 		AddPasswordController SC = new AddPasswordController(sessionModel);
 		AddPasswordView SView = new AddPasswordView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 		}
 	
@@ -71,6 +76,7 @@ public class StaffController  extends Controller{
 		ChangePasswordController SC = new ChangePasswordController(sessionModel);
 		ChangePasswordView SView = new ChangePasswordView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 		}
 }

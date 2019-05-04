@@ -3,8 +3,9 @@ package application.view;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
+
+import application.controller.Controller.JobTypes;
 import application.model.Session;
-import application.model.Session.JobTypes;
 
 public class MenuTopView extends JMenuBar {
     private static final long serialVersionUID = 1234324324L;
@@ -14,12 +15,12 @@ public class MenuTopView extends JMenuBar {
     private JLabel lblTitle;
     private JLabel lblUser;
     private JMenu mnPassword;
-    private Session session;
+    private JobTypes clear;
     
     // This constructor is used for the menus
-    public MenuTopView(String title) {
+    public MenuTopView(String title, JobTypes clear) {
         // sets up the components
-        this.session = Session.getInstance();
+    	this.clear = clear;
         setLayout(new BorderLayout(0, 0));
         
         lblTitle = new JLabel();
@@ -27,14 +28,13 @@ public class MenuTopView extends JMenuBar {
         lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 20));
         
-        
         // Checks the clearance of the user
-        if (session.getRole() == JobTypes.ICTOfficer || session.getRole() == JobTypes.Clerk ) {
+        if (this.clear == JobTypes.ICTOfficer || this.clear == JobTypes.Clerk ) {
             mnPassword = new JMenu();
             Image featureImg = new ImageIcon(this.getClass().getClassLoader().getResource("icons/feature.png")).getImage();
             mnPassword.setIcon(new ImageIcon(featureImg));
             add(mnPassword, BorderLayout.WEST);
-                if (session.getRole() == JobTypes.ICTOfficer){
+                if (this.clear == JobTypes.ICTOfficer){
                     mnPassword.add(btnChange);
                 }
             mnPassword.add(btnAdd);                
@@ -50,7 +50,7 @@ public class MenuTopView extends JMenuBar {
     }
     
     // This constructor is used for the functional views
-    public MenuTopView(String title, String back) {
+    public MenuTopView(String title) {
         // sets up the components
         setLayout(new BorderLayout(0, 0));
 
@@ -75,7 +75,7 @@ public class MenuTopView extends JMenuBar {
     
     // This method is used to set the users ID and role in right corner
     public void setSession(Session sessionModel) {
-        lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
+        this.lblUser.setText("ID: "+ sessionModel.getUsername() + "            "+ "Role: " + sessionModel.getRole() );
     }
 
     

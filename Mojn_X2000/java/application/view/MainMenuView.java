@@ -13,17 +13,24 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import application.controller.Controller.JobTypes;
 import application.controller.MainMenuController;
 import application.utils.GridBagLayoutUtils;
 
 public class MainMenuView extends JFrame {
 	private static final long serialVersionUID = 98907522357896452L;
 	private MainMenuController controller;
-	private MenuTopView menuTop = new MenuTopView("Main Menu");
+	private JobTypes clear;
+	private MenuTopView menuTop;
+	private void setTop(JobTypes clear) {
+		this.menuTop = new MenuTopView("Main Menu", this.clear);
+	}
 	
 	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public MainMenuView(MainMenuController controller) {
 		this.controller = controller;
+		this.clear = controller.getSession().getRole();
+		this.setTop(controller.getSession().getRole());
 		initGUI();
 	}
 	
@@ -101,9 +108,11 @@ public class MainMenuView extends JFrame {
 		// All components are added to the frame
 		add(buttonsPanel, BorderLayout.CENTER);
 		add(menuTop, BorderLayout.NORTH);
-		menuTop.setSession(controller.getSession());
 	
 		pack();
 		setLocationRelativeTo(null);
 	}
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }
