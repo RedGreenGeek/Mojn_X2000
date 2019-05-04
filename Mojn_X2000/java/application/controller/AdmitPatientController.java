@@ -10,6 +10,7 @@ public class AdmitPatientController extends Controller{
 	// This constructor takes the singleton session so the controller has all the user info 
 	public AdmitPatientController(Session session) {
 		this.sessionModel = session;
+		
 	}
 	
 	public void display() {

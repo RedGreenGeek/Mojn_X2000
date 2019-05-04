@@ -20,19 +20,20 @@ public class MenuTopView extends JMenuBar {
     
     
     // This constructor is used for the menus
-    public MenuTopView(String title) {
+    public MenuTopView(String title, MenuTopController controller) {
     	
     	this.controller = controller;
     	initTop(title);
     }
     
-    public MenuTopView(String title, String back) {
+    public MenuTopView(String title, String back, MenuTopController controller) {
     	this.controller = controller;
     	initTop(title, back);
+    	
     }
-    private void initTop(String title) {
+    private void initTop(String title, MenuTopController controller) {
         // sets up the components
-        Session session = Session.getInstance();
+        Session session = controller.getSession();
         setLayout(new BorderLayout(0, 0));
         
         lblTitle = new JLabel();
@@ -63,7 +64,7 @@ public class MenuTopView extends JMenuBar {
     	}
     
     // This constructor is used for the functional views
-    public void initTop(String title, String back) {
+    public void initTop(String title, String back, MenuTopController controller) {
         // sets up the components
         setLayout(new BorderLayout(0, 0));
 

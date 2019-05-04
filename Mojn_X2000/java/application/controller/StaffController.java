@@ -36,6 +36,7 @@ public class StaffController  extends Controller{
 	public JobTypes getRole() {
 		return sessionModel.getRole();
 	}
+	
 
 	public void ToSearch() {
 		SearchStaffController SS = new SearchStaffController(sessionModel);
