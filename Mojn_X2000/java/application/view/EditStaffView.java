@@ -53,9 +53,9 @@ public class EditStaffView extends JFrame {
         
         firstNameLabel = new JLabel("First name: ");
         surnameLabel = new JLabel("Surname: ");
-        adressLabel = new JLabel("Adress: ");
+        adressLabel = new JLabel("Address: ");
         tribeLabel = new JLabel("Tribe: ");
-        jobLabel = new JLabel("job: ");
+        jobLabel = new JLabel("Job: ");
         IDLabel = new JLabel("ID: ");
         
         firstNameField = new JTextField(11);

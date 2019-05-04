@@ -54,9 +54,9 @@ public class EditPatientView extends JFrame {
 		
 		firstNameLabel = new JLabel("First name: ");
 		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
+		adressLabel = new JLabel("Address: ");
 		tribeLabel = new JLabel("Tribe: ");
-		aliveLabel = new JLabel("alive: ");
+		aliveLabel = new JLabel("Alive: ");
 		IDLabel = new JLabel("ID: ");
 		
 		firstNameField = new JTextField(11);
