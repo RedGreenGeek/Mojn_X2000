@@ -10,6 +10,10 @@ public class Password {
 		this.PassMap = new HashMap<String,String>();
 	}
 	
+	public Password(HashMap<String,String> hashmap) {
+		this.PassMap = hashmap;
+	}
+	
 	//Public method that adds a hashed password to a map
 	public void addPassToMap(String Pass, String StaffId) {
 		HashPassword(Pass);
