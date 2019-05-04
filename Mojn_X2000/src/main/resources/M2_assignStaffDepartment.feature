@@ -36,8 +36,8 @@ Feature: Assign Staff Department
     When I am entering invalid department name
     Then I recieve an error message
     
-  @tag2
+  @tag3
   Scenario: Invalid info
     When I am entering invalid info
-    Then I recieve an error message
+    Then I recieve a error message
 

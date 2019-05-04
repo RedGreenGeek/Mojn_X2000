@@ -54,6 +54,67 @@ public class API {
 		Pas.addPassToMap("password", "N3");
 		
 		//LOADING COMPLETE
+		h = new Hospital();
+		searcher = new Searcher(h);
+		R = new ChangeReg();
+		
+		//------
+		InPatientDepart In = new InPatientDepart("ER",7);
+		InPatientDepart In2 = new InPatientDepart("Pediatric",2);
+		OutPatientDepart Out = new OutPatientDepart("Cardio");
+		AdminDepart A = new AdminDepart("IT");
+		
+		R.add(h, In);
+		R.add(h, In2);
+		R.add(h, Out);
+		R.add(h, A);
+		
+		
+		//------
+		this.registerPatient("I", "I","Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true);
+		this.patientAdmission("I", "I","", "ER", "1");
+		
+		this.registerPatient("I", "I","Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true);
+		this.patientAdmission("I", "I","", "ER", "2");
+		
+		
+		this.registerStaff("I", "I","Doctor", "Svend","Nielsen","Doktorvej","Dansk",01,01,1901);
+		this.assignStaffDepartment("I", "I","ER", "D0");
+		
+		this.registerStaff("I", "I","Nurse", "Jonna","Nielsen","Ikke-doktorvej","Tysk",02,02,1902);
+		this.assignStaffDepartment("I", "I","ER", "N1");
+		
+
+		//------
+		
+		//
+		this.registerPatient("I", "I","Søren","Sørensen","Hellerup","Ventre",24,9,97,true);
+		this.patientAdmission("I", "I","", "Cardio", "3");
+		
+		this.registerPatient("I", "I","Lars","Larsen","Nordvestjylland","Jysk",20,12,1950,true);
+		this.patientAdmission("I", "I","", "Cardio", "4");
+		
+		this.registerStaff("I", "I","Doctor", "Lars","Løkke","Græsted","Ventre",01,01,1950);
+		this.assignStaffDepartment("I", "I","Cardio", "D2");
+		
+		this.registerStaff("I", "I","Nurse", "Helle","Thorning","Herlev","Gucci",02,02,1960);
+		this.assignStaffDepartment("I", "I","Cardio", "N3");
+		
+		
+		//------
+		this.registerStaff("I", "I","ICTOfficer", "Jens","Hansen","Norway","Indian",29,2,1996);
+		this.assignStaffDepartment("I", "I","IT", "IT4");
+		
+		this.registerStaff("I", "I","Clerk", "Mads", "Hansen", "Uganda","Black-rocks Clan",23,4,2000);
+		this.assignStaffDepartment("I", "I","IT", "C5");
+		
+		
+		//------
+		this.registerPatient("I", "I","Jens","Jensen","Jagtvej 69","Zulu",24,9,97,true);
+		this.patientAdmission("I", "I","", "Pediatric", "5");
+		
+		this.registerPatient("I", "I","Hans","Hansen","Tagensvej 101","Masai",24,12,2000,true);
+		this.patientAdmission("I", "I","", "Pediatric", "6");
 	}
 	
 

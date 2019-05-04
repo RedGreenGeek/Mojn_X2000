@@ -8,8 +8,7 @@ import framework.API;
 public class M2_assignStaffDepartment {
 	API api = API.getInstance();
 	String departmentName;
-	String firstName;
-	String lastName;
+	String ID;
 	String message;
 	
 	@Given("^given a department name$")
@@ -19,8 +18,7 @@ public class M2_assignStaffDepartment {
 
 	@Given("^given staff info$")
 	public void given_staff_info()  {
-	    firstName = "Jonna";
-	    lastName = "Nielsen";
+		ID = "N1";
 	    
 	}
 
@@ -36,7 +34,7 @@ public class M2_assignStaffDepartment {
 
 	@Then("^I get a message that the staff was added sucessfully$")
 	public void i_get_a_message_that_the_staff_was_added_sucessfully()  {
-	    message = api.assignStaffDepartment("I","I", departmentName, "", firstName, lastName, "", "");
+	    message = api.assignStaffDepartment("I","I", departmentName, ID);
 	    assertEquals(message,"Staff added successfully to department");
 	}
 
@@ -47,13 +45,17 @@ public class M2_assignStaffDepartment {
 
 	@Then("^I recieve an error message$")
 	public void i_recieve_an_error_message()  {
-		message = api.assignStaffDepartment("I","I", departmentName, "", firstName, lastName, "", "");
+		message = api.assignStaffDepartment("I","I", departmentName, ID);
 	    assertEquals(message,"Warning, invalid person info or department name");
 	}
 
 	@When("^I am entering invalid info$")
 	public void i_am_entering_invalid_staffID()  {
-	    firstName = "Svend";
-	    lastName = "Henningsen";
+	    ID = "hgffasdfj";
+	}
+	@Then("^I recieve a error message$")
+	public void i_recieve_a_error_message()  {
+		message = api.assignStaffDepartment("I","I", departmentName, ID);
+	    assertEquals(message,"Warning, invalid person info or department name");
 	}
 }
