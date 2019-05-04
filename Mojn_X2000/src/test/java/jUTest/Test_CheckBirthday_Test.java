@@ -17,11 +17,12 @@ public class Test_CheckBirthday_Test {
 		  api.registerPatient("I", "I", "B", "B", "B", "B", 30, 4, 1996,false);
 		assertTrue(api.patientSearcher("I", "I", "", "B", "", "", "").contains("B"));
 		assertEquals("Additional information is needed.", api.registerPatient("I", "I", "C", "C", "C", "C", 32, 4, 1996,false));  
-		  api.registerPatient("I", "I", "D", "D", "D", "D", 31, 3, 1996,false);
+		  api.registerPatient("I", "I", "D", "D", "D", "D", 15, 3, 1996,false);
 		assertTrue(api.patientSearcher("I", "I", "", "D", "", "", "").contains("D"));
 		assertEquals("Additional information is needed.", api.registerPatient("I", "I", "E", "E", "E", "E", 32, 3, 1996,false)) ;
-		assertEquals("Additional information is needed.", api.registerPatient("I", "I", "F", "F", "F", "F", 31, 3, 1996,false)) ;
+		api.registerPatient("I", "I", "F", "F", "F", "F", 30, 4, 1997,false);
 		assertTrue(api.patientSearcher("I", "I", "", "F", "", "", "").contains("F"));
+		assertEquals("Additional information is needed.", api.registerPatient("I", "I", "F", "F", "F", "F", 31, 4, 1997,false)) ;
 	    System.err.println("Palle er gud");
 	  }
 
