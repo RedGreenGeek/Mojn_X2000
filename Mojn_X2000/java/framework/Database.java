@@ -29,6 +29,7 @@ public class Database {
  private String database;
  private String username;
  private String password;
+ private String driver;
  
  
  private Connection myConnection;
@@ -45,23 +46,24 @@ public class Database {
   
   if (name_of_database.equals("local")) {
 
-   this.driver_host = "jdbc:mysql://localhost:3306/";
-   this.database = "mydb";
-   this.username = "root";
-   this.password = "AGILE2019";
-   this.URL = driver_host + database;
+	   this.driver_host = "jdbc:mysql://localhost:3306/";
+	   this.database = "mydb";
+	   this.username = "root";
+	   this.password = "AGILE2019";
+	   this.URL = driver_host + database;
  
    EstablishConnection();
    
   } else if (name_of_database.equals("remote")) {
    
-   this.driver_host = "jdbc:mysql://remotemysql.com:3306/";
-   this.database = "NgJ59PJEgK ";
-   this.username = "NgJ59PJEgK ";
-   this.password = "k0LOT2B4MF";
-   this.URL = driver_host + database;
+	   this.database = "0S1l397yKA";
+	   this.username = "0S1l397yKA";
+	   this.password = "ceoLj1fgBZ";
+	   this.driver_host = "jdbc:mysql://www.remotemysql.com:3306/";
+	   this.URL = driver_host + database;
+	   this.driver = "com.mysql.cj.jdbc.Driver";
  
-   EstablishConnection();
+	   EstablishConnection();
 
   } else {System.out.println("Database connection not recognized!");};
    
@@ -88,12 +90,13 @@ public class Database {
 
   try {
 
-   myConnection = DriverManager.getConnection(URL, username, password);
+	   Class.forName(driver);
+	   myConnection = DriverManager.getConnection(URL, username, password);
 
-   Statement myStatement = myConnection.createStatement();
-   myStatement.executeUpdate("USE " + database + ";");
+	   Statement myStatement = myConnection.createStatement();
+	   myStatement.executeUpdate("USE " + database + ";");
 
-   myStatement.close();
+	   myStatement.close();
 
   }
 
