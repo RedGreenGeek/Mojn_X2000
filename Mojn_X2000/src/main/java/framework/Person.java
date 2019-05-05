@@ -142,7 +142,7 @@ protected static boolean checkBirthDay(int day, int month, int year) {
 
 protected static boolean checkString(String string) {
   
-  return string.replaceAll(" ", "") != "";
+  return (!string.replaceAll(" ", "").isEmpty());
   
  }
 

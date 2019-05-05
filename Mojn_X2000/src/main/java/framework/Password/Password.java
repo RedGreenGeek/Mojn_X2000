@@ -55,7 +55,7 @@ public class Password {
 		for (int i = 0; i < Pass.length(); i++){
 		    char c = Pass.charAt(i);   
 		    int charVal = (int) c;
-		    	this.hashValue = (hashValue+(charVal * i * 8191 ) * prime);  	
+		    	this.hashValue = (hashValue+(charVal * (i+1) * 8191 ) * prime);  	
 		}
 	}
 	//Simple clearance function mapping StaffID (called userID) to different integer values representing clearance.

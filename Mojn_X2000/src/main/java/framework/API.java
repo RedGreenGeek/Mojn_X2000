@@ -143,21 +143,21 @@ public class API {
 	
 	
 	//GET PATIENT LIST OF GIVEN DEPARTMETN
-	public String getDeparmentPatient(String password, String userID, String departmentName) {
-		if (Pas.getClearence(password,userID) < 1) {
-			return "You do not have the clearency to do this, contact system admin!";
-		}
-		
-		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
-		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress";
-		if (resList.size()==1) {
-			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getPatient());
-			while (!sList.isEmpty()) {
-				res += "\n"+sList.removeFirst().toString();
-			}
-		} else {res = "No or multiple department(s) match your search criterion";}
-		return res;
-	}
+//	public String getDeparmentPatient(String password, String userID, String departmentName) {
+//		if (Pas.getClearence(password,userID) < 1) {
+//			return "You do not have the clearency to do this, contact system admin!";
+//		}
+//		
+//		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
+//		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress";
+//		if (resList.size()==1) {
+//			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getPatient());
+//			while (!sList.isEmpty()) {
+//				res += "\n"+sList.removeFirst().toString();
+//			}
+//		} else {res = "No or multiple department(s) match your search criterion";}
+//		return res;
+//	}
 
 	
 	
