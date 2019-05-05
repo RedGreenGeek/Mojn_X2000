@@ -21,7 +21,7 @@ public class GetQueueView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Get a queue of a department", "back");
+	private MenuTopView menuTop = new MenuTopView("Get a queue of a department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -35,7 +35,7 @@ public class GetQueueView extends JFrame {
 	// All components of the window are defined
 	private void initGUI() {
 		setTitle("Get queue from department");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -44,7 +44,6 @@ public class GetQueueView extends JFrame {
 
 		departmentNameField = new JTextField(11);
 		
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -93,4 +92,7 @@ public class GetQueueView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

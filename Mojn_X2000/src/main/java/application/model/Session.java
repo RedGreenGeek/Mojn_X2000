@@ -1,5 +1,7 @@
 package application.model;
 
+import application.controller.Controller.JobTypes;
+
 public final class Session {
 
 	private User user;
@@ -14,10 +16,6 @@ public final class Session {
 		return self; 
 	}
 
-	// Here we define the different job types the users can have and these are used to handle clearances  
-	public enum JobTypes{
-		Doctor,Clerk, ICTOfficer , Nurse;
-	}
 
 	// ID of the user is mapped to a clearance
 	public void setRole(String Role) {

@@ -34,7 +34,7 @@ public class RegisterStaffView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Register a staff", "back");
+	private MenuTopView menuTop = new MenuTopView("Register a staff");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -49,7 +49,7 @@ public class RegisterStaffView extends JFrame {
 	
 	private void initGUI() {
 		setTitle("Register Staff");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -185,7 +185,6 @@ public class RegisterStaffView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 		
-		menuTop.setSession(controller.getSession());
 		
 		menuTop.backBtn.addActionListener(new ActionListener() {
 			@Override
@@ -194,6 +193,8 @@ public class RegisterStaffView extends JFrame {
 			}
 		});
 	}
-
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 
 }

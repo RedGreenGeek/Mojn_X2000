@@ -23,7 +23,7 @@ public class AssignStaffView extends JFrame{
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Assign Staff", "Back");
+	private MenuTopView menuTop = new MenuTopView("Assign Staff");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -39,7 +39,7 @@ public class AssignStaffView extends JFrame{
 	private void initGUI() {
 		// All components of the window are defined
 		setTitle("Assign staff to department");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -50,7 +50,6 @@ public class AssignStaffView extends JFrame{
 		staffIDField = new JTextField(11);
 		departmentNameField = new JTextField(11);
 		
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -106,5 +105,7 @@ public class AssignStaffView extends JFrame{
 		pack();
 		setLocationRelativeTo(null);
 	}
-
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

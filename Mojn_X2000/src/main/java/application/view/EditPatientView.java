@@ -32,7 +32,7 @@ public class EditPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Edit a patient information", "back");
+	private MenuTopView menuTop = new MenuTopView("Edit a patient information");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -47,7 +47,7 @@ public class EditPatientView extends JFrame {
 	private void initGUI() {
 		// All components of the window are defined
 		setTitle("Edit Patients");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -67,7 +67,6 @@ public class EditPatientView extends JFrame {
 		aliveBox.setSelected(true);
 		IDField = new JTextField(11);
 
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -155,5 +154,7 @@ public class EditPatientView extends JFrame {
 		setLocationRelativeTo(null);
 		
 	}
-
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

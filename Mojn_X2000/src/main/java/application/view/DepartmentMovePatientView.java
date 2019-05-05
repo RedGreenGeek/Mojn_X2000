@@ -24,7 +24,7 @@ public class DepartmentMovePatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department", "back");
+	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -39,7 +39,7 @@ public class DepartmentMovePatientView extends JFrame {
 	private void initGUI() {
 		// All components of the window are defined
 		setTitle("Move patients between departments");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -52,7 +52,6 @@ public class DepartmentMovePatientView extends JFrame {
 		departNameField = new JTextField(11);
 		triField = new JTextField(11);
 
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -116,4 +115,7 @@ public class DepartmentMovePatientView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

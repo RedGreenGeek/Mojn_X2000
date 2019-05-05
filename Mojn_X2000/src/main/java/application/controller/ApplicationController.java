@@ -27,6 +27,7 @@ public class ApplicationController {
 		MainMenuController = new MainMenuController( session);
 		MainMenuView invView = new MainMenuView(MainMenuController);
 		MainMenuController.setView(invView);
+		invView.getMenuTop().setSession(session);
 		MainMenuController.display();
 	}
 	
@@ -34,6 +35,7 @@ public class ApplicationController {
 		StaffController = new StaffController(session);
 		StaffView CSView = new StaffView(StaffController);
 		StaffController.setView(CSView);
+		CSView.getMenuTop().setSession(session);
 		StaffController.display();
 	}
 	
@@ -41,6 +43,7 @@ public class ApplicationController {
 		HospitalController = new HospitalController(session);
 		HospitalView HView = new HospitalView(HospitalController);
 		HospitalController.setView(HView);
+		HView.getMenuTop().setSession(session);
 		HospitalController.display();
 	}
 	
@@ -48,6 +51,7 @@ public class ApplicationController {
 		PatientController = new PatientController(session);
 		PatientView PView = new PatientView(PatientController);
 		PatientController.setView(PView);
+		PView.getMenuTop().setSession(session);
 		PatientController.display();
 	}
 	

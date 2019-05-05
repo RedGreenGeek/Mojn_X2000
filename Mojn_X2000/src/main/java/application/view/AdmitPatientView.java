@@ -22,7 +22,7 @@ public class AdmitPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department", "back");
+	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	private AdmitPatientController controller;
@@ -36,7 +36,7 @@ public class AdmitPatientView extends JFrame {
 	private void initGUI() {
 		// All components of the window are defined
 		setTitle("Admit Patients");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -49,7 +49,6 @@ public class AdmitPatientView extends JFrame {
 		departmentNameField = new JTextField(11);
 		idField = new JTextField(11);
 		
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -119,5 +118,8 @@ public class AdmitPatientView extends JFrame {
 		setLocationRelativeTo(null);
 	
 	}
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 
 }

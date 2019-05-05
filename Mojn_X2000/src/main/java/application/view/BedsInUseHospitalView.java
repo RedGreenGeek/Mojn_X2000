@@ -20,7 +20,7 @@ public class BedsInUseHospitalView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Check available beds in Department", "back");
+	private MenuTopView menuTop = new MenuTopView("Check available beds in Department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -35,7 +35,7 @@ public class BedsInUseHospitalView extends JFrame {
 	private void initGUI() {
 		// All components of the window are defined
 		setTitle("Check available beds in Department");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -44,7 +44,6 @@ public class BedsInUseHospitalView extends JFrame {
 
 		departNameField = new JTextField(11);
 
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -92,4 +91,7 @@ public class BedsInUseHospitalView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

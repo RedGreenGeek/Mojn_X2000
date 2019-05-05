@@ -31,7 +31,7 @@ public class SearchStaffView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Search for a staff member", "back");
+	private MenuTopView menuTop = new MenuTopView("Search for a staff member");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -46,7 +46,7 @@ public class SearchStaffView extends JFrame {
 	// All components of window are defined
 	private void initGUI() {
 		setTitle("Search Staff");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -64,7 +64,6 @@ public class SearchStaffView extends JFrame {
 		yearField = new JTextField(4);
 		idField = new JTextField(11);
 	
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -152,5 +151,7 @@ public class SearchStaffView extends JFrame {
 		setLocationRelativeTo(null);
 		
 	}
-
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

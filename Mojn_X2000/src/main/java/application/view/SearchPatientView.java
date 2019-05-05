@@ -31,7 +31,7 @@ public class SearchPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Search after a patient", "back");
+	private MenuTopView menuTop = new MenuTopView("Search after a patient");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -46,7 +46,7 @@ public class SearchPatientView extends JFrame {
 	// All components of window are defined
 	private void initGUI() {
 		setTitle("Search Patients");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
 		
@@ -63,7 +63,6 @@ public class SearchPatientView extends JFrame {
 		idField = new JTextField(11);
 		departField = new JTextField(11);
 		
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -151,5 +150,7 @@ public class SearchPatientView extends JFrame {
 		setLocationRelativeTo(null);
 		
 	}
-
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

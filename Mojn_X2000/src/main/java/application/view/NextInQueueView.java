@@ -21,7 +21,7 @@ public class NextInQueueView extends JFrame {
 	
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Next in queue", "back");
+	private MenuTopView menuTop = new MenuTopView("Next in queue");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	private NextInQueueController controller;
@@ -35,7 +35,7 @@ public class NextInQueueView extends JFrame {
 	private void initGUI() {
 		// All components of the add are defined
 		setTitle("Next in queue");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -45,7 +45,6 @@ public class NextInQueueView extends JFrame {
 		DepartNameField = new JTextField(11);
 
 		
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		
@@ -94,4 +93,7 @@ public class NextInQueueView extends JFrame {
 
 	}
 
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

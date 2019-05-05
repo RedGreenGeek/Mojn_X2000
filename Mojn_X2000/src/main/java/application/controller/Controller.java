@@ -6,7 +6,13 @@ public abstract class Controller {
 	
 	protected Session sessionModel;
 	
-	public Session getSession() {
-		return this.sessionModel;
+	public JobTypes getRole() {
+		return this.sessionModel.getRole();
 	}
+	
+	// Here we define the different job types the users can have and these are used to handle clearances  
+	public enum JobTypes{
+		Doctor,Clerk, ICTOfficer , Nurse;
+	}
+
 }

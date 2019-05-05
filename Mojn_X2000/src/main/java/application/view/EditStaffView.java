@@ -33,7 +33,7 @@ public class EditStaffView extends JFrame {
 
     private JButton okBtn;
     private JPanel inputArea;
-    private MenuTopView menuTop = new MenuTopView("Edit Staff information", "back");
+    private MenuTopView menuTop = new MenuTopView("Edit Staff information");
     private TextPanelView textPanel = new TextPanelView();
     private String msg;
     
@@ -48,7 +48,7 @@ public class EditStaffView extends JFrame {
     private void initGUI() {
         // All components of the window are defined
         setTitle("Edit Staff");
-        setPreferredSize(new Dimension(800, 700));
+        setPreferredSize(new Dimension(900, 700));
         
         inputArea = new JPanel();
         inputArea.setLayout(new GridBagLayout());
@@ -67,7 +67,6 @@ public class EditStaffView extends JFrame {
         jobField = new JComboBox(jobtypes);
         IDField = new JTextField(11);
         
-        menuTop.setSession(controller.getSession());
         
         // Listeners to the buttons are defined
         menuTop.backBtn.addActionListener(new ActionListener() {
@@ -154,5 +153,8 @@ public class EditStaffView extends JFrame {
     
         pack();
         setLocationRelativeTo(null);
+    }
+    public MenuTopView getMenuTop() {
+   	 return this.menuTop;
     }
 }

@@ -41,6 +41,7 @@ public class PatientController extends Controller{
 		AdmitPatientController SC = new AdmitPatientController(sessionModel);
 		AdmitPatientView SView = new AdmitPatientView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -48,6 +49,7 @@ public class PatientController extends Controller{
 		MovedBedPatientController SC = new MovedBedPatientController(sessionModel);
 		MovedBedPatientView SView = new MovedBedPatientView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -55,6 +57,7 @@ public class PatientController extends Controller{
 		DischargePatientController SC = new DischargePatientController(sessionModel);
 		DischargePatientView SView = new DischargePatientView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -62,6 +65,7 @@ public class PatientController extends Controller{
 		EditPatientController SC = new EditPatientController(sessionModel);
 		EditPatientView SView = new EditPatientView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -69,6 +73,7 @@ public class PatientController extends Controller{
 		RegisterPatientController SC = new RegisterPatientController(sessionModel);
 		RegisterPatientView SView = new RegisterPatientView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -76,6 +81,7 @@ public class PatientController extends Controller{
 		SearchPatientController SC = new SearchPatientController(sessionModel);
 		SearchPatientView SView = new SearchPatientView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -83,6 +89,7 @@ public class PatientController extends Controller{
 		DepartmentMovePatientController SC = new DepartmentMovePatientController(sessionModel);
 		DepartmentMovePatientView SView = new DepartmentMovePatientView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -90,6 +97,7 @@ public class PatientController extends Controller{
 		AddPasswordController SC = new AddPasswordController(sessionModel);
 		AddPasswordView SView = new AddPasswordView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 	
@@ -97,6 +105,7 @@ public class PatientController extends Controller{
 		ChangePasswordController SC = new ChangePasswordController(sessionModel);
 		ChangePasswordView SView = new ChangePasswordView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 	}
 }

@@ -21,7 +21,7 @@ public class StaffDepartView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Get all staff in a department", "back");
+	private MenuTopView menuTop = new MenuTopView("Get all staff in a department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -36,13 +36,12 @@ public class StaffDepartView extends JFrame {
 	// All components of window are defined
 	private void initGUI() {
 		setTitle("Get staff in department");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
 		departmentNameLabel = new JLabel("Department Name: ");
 		departmentNameField = new JTextField(11);
 
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -92,5 +91,7 @@ public class StaffDepartView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
-
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

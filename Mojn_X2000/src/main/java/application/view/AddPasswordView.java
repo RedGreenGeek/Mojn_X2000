@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import application.controller.AddPasswordController;
+import application.model.Session;
 import application.utils.GridBagLayoutUtils;
 
 public class AddPasswordView extends JFrame {
@@ -23,7 +24,7 @@ public class AddPasswordView extends JFrame {
 
     private JButton okBtn;
     private JPanel inputArea;
-    private MenuTopView menuTop = new MenuTopView("Add password to a staff", "back");
+    private MenuTopView menuTop = new MenuTopView("Add password to a staff");
     private TextPanelView textPanel = new TextPanelView();
     private String msg;
     private AddPasswordController controller;
@@ -37,7 +38,7 @@ public class AddPasswordView extends JFrame {
     private void initGUI() {
         // All components of the add are defined
         setTitle("Add password to staff");
-        setPreferredSize(new Dimension(800, 700));
+        setPreferredSize(new Dimension(900, 700));
         
         inputArea = new JPanel();
         inputArea.setLayout(new GridBagLayout());
@@ -50,7 +51,6 @@ public class AddPasswordView extends JFrame {
         NewPass2Field = new JTextField(11);
         IDField = new JTextField(11);
         
-        menuTop.setSession(controller.getSession());
         
         // Listeners to the buttons are defined
         okBtn = new JButton("OK");
@@ -118,6 +118,9 @@ public class AddPasswordView extends JFrame {
         setLocationRelativeTo(null);
         
 
+    }
+    public MenuTopView getMenuTop() {
+   	 return this.menuTop;
     }
 
 }
