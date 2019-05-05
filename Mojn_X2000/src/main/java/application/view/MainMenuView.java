@@ -1,15 +1,24 @@
 package application.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -34,12 +43,16 @@ public class MainMenuView extends JFrame {
 		initGUI();
 	}
 	
+
+	
+	
 	// All components of the window are defined
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Main Menu");
 		setPreferredSize(new Dimension(800, 700));
 		
+
 		// A panel for the buttons are defined
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new GridBagLayout());
@@ -108,7 +121,7 @@ public class MainMenuView extends JFrame {
 		// All components are added to the frame
 		add(buttonsPanel, BorderLayout.CENTER);
 		add(menuTop, BorderLayout.NORTH);
-	
+		
 		pack();
 		setLocationRelativeTo(null);
 	}
