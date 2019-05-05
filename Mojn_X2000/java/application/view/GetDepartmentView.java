@@ -14,7 +14,7 @@ public class GetDepartmentView extends JFrame {
 	private static final long serialVersionUID = 43556572341L;
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Get all departments", "back");
+	private MenuTopView menuTop = new MenuTopView("Get all departments");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -28,12 +28,11 @@ public class GetDepartmentView extends JFrame {
 	// All components of the window are defined
 	private void initGUI() {
 		setTitle("Get Departments");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
 
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -74,5 +73,8 @@ public class GetDepartmentView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 
 }

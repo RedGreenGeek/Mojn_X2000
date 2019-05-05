@@ -16,30 +16,32 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import application.controller.Controller.JobTypes;
 import application.controller.StaffController;
-import application.model.Session;
-import application.model.Session.JobTypes;
 import application.utils.GridBagLayoutUtils;
 
 public class StaffView extends JFrame {
 
 	private static final long serialVersionUID = 1023456780L;
 	private StaffController controller;
-
-	private Session session;
-	private MenuTopView menuTop = new MenuTopView("Staff Menu");
-
+	private JobTypes clear;
+	private MenuTopView menuTop;
 	private JLabel lblStaff;
+	
+	private void setTop(JobTypes clear) {
+		this.menuTop = new MenuTopView("Staff Menu", this.clear);
+	}
 	
 	// The constructor for the class is defined with the method initGUI that sets up the view of the class
 	public StaffView(StaffController controller) {
 		this.controller = controller;
+		this.clear = controller.getRole();
+		this.setTop(controller.getRole());
 		initGUI();
 	}
 	
 	// All components of the window are defined
 	private void initGUI() {
-		this.session = Session.getInstance();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Staff Menu");
 		setPreferredSize(new Dimension(800, 700));
@@ -132,10 +134,10 @@ public class StaffView extends JFrame {
 		});
 		
 		// Buttons are added to the button panel and the users clearance is checked
-		if(session.getRole() == JobTypes.ICTOfficer ) {
+		if(clear == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnEdit, GridBagLayoutUtils.constraint(1, 1, 0, 0, 0,10,50,10));}
 		
-		if(session.getRole() == JobTypes.Clerk || session.getRole() == JobTypes.ICTOfficer ) {
+		if(clear == JobTypes.Clerk || clear == JobTypes.ICTOfficer ) {
 		buttonsPanel.add(btnRegister, GridBagLayoutUtils.constraint(2, 1, 0, 0, 0,10,50,10));
 		buttonsPanel.add(btnAssign, GridBagLayoutUtils.constraint(4, 1, 0, 0, 0,10,50,10));
 	}
@@ -146,12 +148,14 @@ public class StaffView extends JFrame {
 		// all the components are added to the frame
 		add(buttonsPanel, BorderLayout.CENTER);
 		add(menuTop, BorderLayout.NORTH);
-		menuTop.setSession(controller.getSession());
 		add(btnBack, BorderLayout.SOUTH);
 	
 		pack();
 		setLocationRelativeTo(null);
 		
 	}
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 	
 }

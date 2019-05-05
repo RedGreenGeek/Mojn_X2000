@@ -33,7 +33,7 @@ public class RegisterPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Register a patient", "back");
+	private MenuTopView menuTop = new MenuTopView("Register a patient");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -48,7 +48,7 @@ public class RegisterPatientView extends JFrame {
 	// All components of the window are defined
 	private void initGUI() {
 		setTitle("Register Patients");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -70,7 +70,6 @@ public class RegisterPatientView extends JFrame {
 		aliveBox = new JCheckBox();
 		aliveBox.setSelected(true);
 		
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -165,5 +164,8 @@ public class RegisterPatientView extends JFrame {
 		setLocationRelativeTo(null);
 		
 	}
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 
 }
