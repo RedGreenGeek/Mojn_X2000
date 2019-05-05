@@ -6,16 +6,10 @@ import java.io.IOException;
 import java.util.Date;
 
 public class Logger {
-	private static Logger instance = null;
-	private String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "ParticipationLists"+System.getProperty("file.separator")+"log.csv";
-	public static synchronized Logger getInstance() {
-		if (instance==null) {
-			instance = new Logger();
-		}
-		return instance;
-	}
+	private String filePath;
 	
-	private Logger() {
+	public Logger(String folder) {
+		this.filePath = System.getProperty("user.home") + System.getProperty("file.separator") +folder+System.getProperty("file.separator")+"log.csv";
 		File file = new File(filePath);
         if (!file.exists()) { 
         	try {
