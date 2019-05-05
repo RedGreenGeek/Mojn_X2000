@@ -1,17 +1,22 @@
 package framework.Password;
 import java.util.HashMap;
 
+import framework.Database;
+
 public class Password {
 	//Create private variables to store password values in
 	private HashMap<String, String> PassMap;
 	private long hashValue;
+	private Database DB;
 	
-	public Password() {
+	public Password(Database DB) {
 		this.PassMap = new HashMap<String,String>();
+		this.DB = DB;
 	}
 	
-	public Password(HashMap<String,String> hashmap) {
+	public Password(Database DB, HashMap<String,String> hashmap) {
 		this.PassMap = hashmap;
+		this.DB = DB;
 	}
 	
 	//Public method that adds a hashed password to a map
@@ -19,6 +24,7 @@ public class Password {
 		HashPassword(Pass);
 		String key = String.valueOf(this.hashValue);
 		this.PassMap.put(StaffId, key);
+		DB.writePassword(StaffId, key);
 	}
 	
 	//method to check if a StaffId exists in the password storage
@@ -55,7 +61,7 @@ public class Password {
 		for (int i = 0; i < Pass.length(); i++){
 		    char c = Pass.charAt(i);   
 		    int charVal = (int) c;
-		    	this.hashValue = (hashValue+(charVal * i * 8191 ) * prime);  	
+		    	this.hashValue = (hashValue+(charVal * (i+1) * 8191 ) * prime);  	
 		}
 	}
 	//Simple clearance function mapping StaffID (called userID) to different integer values representing clearance.

@@ -33,7 +33,7 @@ public class API {
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 //		DB = new Database(Database.DEFAULT,"jdbc:mysql://localhost:3306/","mydb","root","AGILE2019");
 		DB = new Database(Database.REMOTE,"jdbc:mysql://www.remotemysql.com:3306/","0S1l397yKA","0S1l397yKA","ceoLj1fgBZ");
-		Pas = new Password();
+		Pas = new Password(this.DB);
 		R = new ChangeReg(this.DB);
 		log = new Logger("ParticipationLists");
 		Pas.addPassToMap("I", "I");
@@ -503,10 +503,9 @@ public class API {
 		}
 		
 		if (newPassword1.equals(newPassword2) ) {
-			Pas.addPassToMap(newPassword1, staffID);
 			
-			/* Writing the new password to the database */
-			DB.writePassword(staffID, newPassword1);
+			/* Writing the new password to the database in the method */
+			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 			log.write(userID,"NEW USER ADDED",staffID);
@@ -532,10 +531,9 @@ public class API {
 		}
 		
 		if (Pas.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
-			Pas.addPassToMap(newPassword1, staffID);
 			
-			/* Writing the updates to the database */
-			DB.writePassword(staffID, newPassword1);
+			/* Writing the updates to the database in the method */
+			Pas.addPassToMap(newPassword1, staffID);
 			
 			/* write to log file */
 			log.write(userID,"PASSWORD CHANGED",staffID);
