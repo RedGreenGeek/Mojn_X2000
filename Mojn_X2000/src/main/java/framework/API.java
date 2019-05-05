@@ -127,7 +127,7 @@ public class API {
 			persons.clear();
 				while (!p2.isEmpty()) {
 				Person p = p2.removeFirst();
-				if (p.getDepartment().equals(department)) {
+				if (department.equalsIgnoreCase(p.getDepartment())) {
 					persons.add(p);
 				}
 			}
