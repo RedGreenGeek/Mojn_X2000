@@ -79,6 +79,7 @@ public class ChangeReg {
 	
 	public void add(Department d, Patient p) {
 		
+	
 	  HashSet<Person> patientSet = d.getPatient();
 	  p.setDepartment(d.getName());
 	  patientSet.add(p);
@@ -86,6 +87,9 @@ public class ChangeReg {
 	  
 	  if (d instanceof InPatientDepart) {
 	   ((InPatientDepart) d).beds.AllocateBed(p);
+	   
+	   // Triage to away issue of having it set to zero by default
+	   p.setTriage(null);
 	   
 	   // Writing patient to update information in database.
 	   DB.writePatient(p);

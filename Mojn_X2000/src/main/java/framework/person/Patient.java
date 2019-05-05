@@ -10,7 +10,24 @@ public class Patient extends Person {
 	
 	@Override
 	public String toString() {
-		return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+this.getBedLocation()+"/"+this.getTriage()+"\t"+this.getAdress();
+		
+		if (this.getDepartment() == null) {
+			return patientID+"\t"+""+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+" "+"\t"+this.getAdress();
+		}
+		
+		else if (this.getTriage() == null) {
+			return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t    "+this.getBedLocation()+" /"+""+"\t"+this.getAdress();
+		}
+		
+		else if (this.getBedLocation() == null) {
+			return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+"      "+"/  "+this.getTriage()+"\t"+this.getAdress();
+		}
+		
+		else {
+			return "ERROR";
+		}
+		
+		
 	}
 	
 	// This constructor creates a patient if the patient haven't been admitted to the hospital before
@@ -36,13 +53,22 @@ public class Patient extends Person {
 	    this.setTribe(tribe);
 	    this.setAdress(address);
 	    this.setPatientID(PatientID);
-	    this.setDepartment(department);	   
+	    this.setDepartment(department);
+	    
 	    if (bed != null) {
 	    	this.setBedLocation(bed);
+	    	this.setTriage(null);
 	    }
 	    if (triage != null) {
 		    this.setTriage(triage);
+		    this.setBedLocation(null);
 	    }
+	    
+	    if (department == null) {
+	    	this.setTriage(null);
+	    	this.setBedLocation(null);	
+	    } 
+	    	    
 	}
 
 	@Override
