@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import application.controller.AddDepartController;
+import application.model.Session;
 import application.utils.GridBagLayoutUtils;
 
 public class AddDepartView extends JFrame {
@@ -31,7 +32,7 @@ public class AddDepartView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Add Department", "back");
+	private MenuTopView menuTop = new MenuTopView("Add Department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	private AddDepartController controller;
@@ -45,7 +46,7 @@ public class AddDepartView extends JFrame {
 	private void initGUI() {
 		// All components of the add are defined
 		setTitle("Add Department");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -65,7 +66,6 @@ public class AddDepartView extends JFrame {
 		bg.add(Outdepart);
 		bg.add(Admindepart);
 		
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		Indepart.addActionListener(new ActionListener() {
@@ -170,5 +170,12 @@ public class AddDepartView extends JFrame {
 		setLocationRelativeTo(null);
 
 	}
+
+
+ public MenuTopView getMenuTop() {
+	 return this.menuTop;
+ }
+	
+
 
 }

@@ -30,7 +30,7 @@ public class ParticipationListView extends JFrame {
 
     private JButton okBtn;
     private JPanel inputArea;
-    private MenuTopView menuTop = new MenuTopView("Save participation list", "back");
+    private MenuTopView menuTop = new MenuTopView("Save participation list");
     private TextPanelView textPanel = new TextPanelView();
     private String msg;
     
@@ -44,7 +44,7 @@ public class ParticipationListView extends JFrame {
     // All components of window are defined
     private void initGUI() {
         setTitle("Participation list");
-        setPreferredSize(new Dimension(800, 700));
+        setPreferredSize(new Dimension(900, 700));
         
         inputArea = new JPanel();
         inputArea.setLayout(new GridBagLayout());
@@ -61,7 +61,6 @@ public class ParticipationListView extends JFrame {
         addressBox = new JCheckBox();
         tribeBox = new JCheckBox();
         
-        menuTop.setSession(controller.getSession());
         
         // Listeners to the buttons are defined
         menuTop.backBtn.addActionListener(new ActionListener() {
@@ -144,4 +143,7 @@ public class ParticipationListView extends JFrame {
         setLocationRelativeTo(null);
         
     }
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }

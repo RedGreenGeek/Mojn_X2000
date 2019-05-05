@@ -44,6 +44,7 @@ public class MainMenuController extends Controller{
 		AddPasswordController SC = new AddPasswordController(session);
 		AddPasswordView SView = new AddPasswordView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 		}
 	
@@ -51,6 +52,7 @@ public class MainMenuController extends Controller{
 		ChangePasswordController SC = new ChangePasswordController(session);
 		ChangePasswordView SView = new ChangePasswordView(SC);
 		SC.setView(SView);
+		SView.getMenuTop().setSession(sessionModel);
 		SC.display();
 		}
 }

@@ -22,7 +22,7 @@ public class MovedBedPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Move a patient to another bed", "back");
+	private MenuTopView menuTop = new MenuTopView("Move a patient to another bed");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -36,7 +36,7 @@ public class MovedBedPatientView extends JFrame {
 	// All components of the window are defined
 	private void initGUI() {
 		setTitle("Move a patient to new bed");
-		setPreferredSize(new Dimension(800, 700));
+		setPreferredSize(new Dimension(900, 700));
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
@@ -47,7 +47,6 @@ public class MovedBedPatientView extends JFrame {
 		idField = new JTextField(11);
 		newBedField = new JTextField(11);
 
-		menuTop.setSession(controller.getSession());
 		
 		// Listeners to the buttons are defined
 		menuTop.backBtn.addActionListener(new ActionListener() {
@@ -105,4 +104,8 @@ public class MovedBedPatientView extends JFrame {
 		setLocationRelativeTo(null);
 
 	}
+
+	 public MenuTopView getMenuTop() {
+		 return this.menuTop;
+	 }
 }
