@@ -22,7 +22,7 @@ public class AdmitPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Admit a patient to a department");
+	private MenuTopView menuTop = new MenuTopView("Admit Patient to Department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	private AdmitPatientController controller;

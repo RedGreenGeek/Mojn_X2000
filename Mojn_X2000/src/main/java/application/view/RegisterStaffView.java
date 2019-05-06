@@ -34,7 +34,7 @@ public class RegisterStaffView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Register a staff");
+	private MenuTopView menuTop = new MenuTopView("Register Staff");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -56,7 +56,7 @@ public class RegisterStaffView extends JFrame {
 		
 		firstNameLabel = new JLabel("First name: ");
 		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
+		adressLabel = new JLabel("Address: ");
 		tribeLabel = new JLabel("Tribe: ");
 		birthdayLabel = new JLabel("Birthday: ");
 		jobLabel = new JLabel("Job: ");

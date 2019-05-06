@@ -20,7 +20,7 @@ public class BedsInUseHospitalView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Check available beds in Department");
+	private MenuTopView menuTop = new MenuTopView("Check Available Beds in Department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

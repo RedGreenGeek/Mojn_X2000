@@ -2,8 +2,6 @@ package stepDefinitions;
 
 import static org.junit.Assert.*;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.*;
 import framework.API;
 
@@ -11,15 +9,6 @@ public class M1_changePatientInfo {
 	String patientID;
 	String message;
 	API ui = API.getInstance();
-	
-	@Before
-	public void before(Scenario scenario) {
-		
-		if (!API.cucumber) {
-			ui.DB.restore_for_testing_mode();
-		}
-		API.cucumber = true;
-	}
 	
 	@Given("^I have a patientID of a patient and I want to change their personal info$")
 	public void i_have_a_patientID_of_a_patient_and_I_want_to_change_their_personal_info() {

@@ -31,7 +31,7 @@ public class SearchStaffView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Search for a staff member");
+	private MenuTopView menuTop = new MenuTopView("Searching for Staff Members");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

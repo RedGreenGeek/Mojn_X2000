@@ -26,7 +26,7 @@ public class ChangePasswordView extends JFrame {
 
     private JButton okBtn;
     private JPanel inputArea;
-    private MenuTopView menuTop = new MenuTopView("Change password of a staff");
+    private MenuTopView menuTop = new MenuTopView("Change Password");
     private TextPanelView textPanel = new TextPanelView();
     private String msg;
     

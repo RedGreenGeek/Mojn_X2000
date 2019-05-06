@@ -14,7 +14,7 @@ public class GetDepartmentView extends JFrame {
 	private static final long serialVersionUID = 43556572341L;
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Get all departments");
+	private MenuTopView menuTop = new MenuTopView("Getting List of Departments");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

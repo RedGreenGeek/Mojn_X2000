@@ -13,19 +13,14 @@ import framework.Password.*;
 import framework.person.staff.*;
 
 public class API {
-	// INIT ATTRIBUTES  
+
 	private static API instance;
 	public Hospital h;
 	private Searcher searcher;
 	private ChangeReg R;
-	public Database DB; // should be private, but public is needed for the testing
+	private Database DB;
 	private Password Pas;
 	private Logger log;
-	
-	// For testing purposes. Ensures that database is booted ONCE only. See method
-	// before() in M1_changePatientInfo.java. 
-	
-	public static Boolean cucumber;
 	
 	
 	public static synchronized API getInstance() {
@@ -43,7 +38,6 @@ public class API {
 		R = new ChangeReg(this.DB);
 		log = new Logger("ParticipationLists");
 		Pas.addPassToMap("I", "I");
-		cucumber = false;
 		
 		log.write("SYSTEM","REBOOT","NONE");
 		
@@ -139,11 +133,11 @@ public class API {
 				}
 			}
 		}
-		String message = "ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress";
+		String message = "ID\tDepartment\tSurname\tName\tBedNo/Triage\tTribe\tAddress";
 		while (!persons.isEmpty()) {
 			message += "\n"+persons.removeFirst().toString();
 		}
-		if (message.equals("ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress")) {
+		if (message.equals("ID\tDepartment\tSurname\tName\tBedNo/Triage\tTribe\tAddress")) {
 			return "No match to search parameters!";
 		} else {return message; }
 	}
@@ -305,11 +299,11 @@ public class API {
 		}
 		
 		LinkedList<Person> persons = searcher.staffSearch(staffID,firstName, lastName, birthday, email);
-		String message = "ID\tJob\tDepartment\tSurname\tName\tEmail";
+		String message = "ID\tJob\tDepartment\tSurname\tName\tTribe\tEmail";
 		while (!persons.isEmpty()) {
 			message += "\n"+persons.removeFirst().toString();
 		}
-		if (message.equals("ID\tJob\tDepartment\tSurname\tName\tEmail")) {
+		if (message.equals("ID\tJob\tDepartment\tSurname\tName\tTribe\tEmail")) {
 			return "No match to search parameters!";
 		} else {return message; }
 	}

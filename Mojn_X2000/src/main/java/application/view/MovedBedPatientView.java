@@ -22,7 +22,7 @@ public class MovedBedPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Move a patient to another bed");
+	private MenuTopView menuTop = new MenuTopView("Move Patient to Another Bed");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

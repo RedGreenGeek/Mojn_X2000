@@ -30,7 +30,7 @@ public class ParticipationListView extends JFrame {
 
     private JButton okBtn;
     private JPanel inputArea;
-    private MenuTopView menuTop = new MenuTopView("Save participation list");
+    private MenuTopView menuTop = new MenuTopView("Create Participation List");
     private TextPanelView textPanel = new TextPanelView();
     private String msg;
     
