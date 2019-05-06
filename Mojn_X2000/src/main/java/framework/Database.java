@@ -36,11 +36,9 @@ public class Database {
  private Connection myConnection;
  
  /* ######################################################################### */
- /* __________ SECTION 1: Connection and singleton-creation _________ */
+ /* __________ SECTION 1: Connection                                _________ */
  /* ######################################################################### */
 
- // The constructor has been made private in order to make the singleton design-pattern. 
- // In this way multiple connections to the database are avoided. 
  // The input to the constructor is given in order to distinguish between the local and the remote database. 
  
  public Database(String name_of_database, String host, String database, String username, String password) {
@@ -71,7 +69,7 @@ public class Database {
  }
  
  
- // Establish connection is the method that is called upon construction of the instance. 
+ // Establish connection is the method that is called upon construction of the database. 
  // In case of errors with driver or port connected, the exception is thrown, and the stack trace is printed. 
  
 
@@ -94,7 +92,8 @@ private void EstablishConnection() {
   }
  }
  
- // If the getInstance() has been called, and the connection has been established, the isConnected() will return true. 
+ // If the database has been created, and the connection has been established, the isConnected() will return true in the case
+// where the connection is successfully established. 
  
  public boolean isConnected() {
   return myConnection != null;
@@ -251,7 +250,7 @@ private void EstablishConnection() {
 	  String lastName = s.getLastName();
 	  String birthday = s.getBirthday();
 	  String department = s.getDepartment();
-	     String address = s.getAdress();
+	  String address = s.getAdress();
 	  String tribe = s.getTribe();
 	  boolean alive = s.isAlive();
 	  
@@ -286,6 +285,7 @@ private void EstablishConnection() {
 	 }
 	 
 	 // writeDepartment() contains a if-statement for each department type. 
+	 // In that right amount of information will be written to the database. 
 	 
 	 public String writeDepartment(Department department) {
 	  
@@ -336,6 +336,9 @@ private void EstablishConnection() {
 	 /* ___________ SECTION 4: Construction of objects  _________________ */
 	 /* ######################################################################### */
 
+	 // This sections deal with methods that are able to read the result of the queries 
+	 // such that the objects are constructed correctly. All the make-methods follow the same principles.
+	 // 1. Retrieve information 2. Call constructor of object. 
 	 
 	 public Patient makePatient(ResultSet rs) {
 	  
@@ -365,6 +368,9 @@ private void EstablishConnection() {
 	   
 	  }
 	 }
+	 
+	 // Using that the staff ID starts with a letter depending on which staff type it is
+	 // the makeStaff() knows which object to create. 
 	 
 	 public Staff makeStaff(ResultSet rs) {
 	  
@@ -422,6 +428,8 @@ private void EstablishConnection() {
 	  }
 	 }
 	 
+	 // Using the type of department, the right object will be constructed. 
+	 
 	 public Department makeDepartment(ResultSet rs) throws SQLException {
 	  
 	  String type = rs.getString("type");
@@ -461,6 +469,13 @@ private void EstablishConnection() {
 	 /* ######################################################################### */
 	 /* ___________ SECTION 5: Loading objects  _________________________ */
 	 /* ######################################################################### */
+	 
+	 // This section deals with the methods needed to retrieve information from the database
+	 // The methods are distinct in the sense that they take care of one small task each. 
+	 // This improves readability, especially when these are combined in the boot-method. 
+	 
+	 // Basically a while-loop is made to iterate over the result set return from the query. 
+	 // For each iteration as check if made such that the correct object is made. 
 	 
 	 
 	 public Password loadLogin() {
@@ -563,7 +578,7 @@ private void EstablishConnection() {
 	 }
 	 
 	 /* ######################################################################### */
-	 /* ___________ SECTION 6: Connector  _______________________________ */
+	 /* ____SECTION 6: Assemble hospital based on all information retrieved______ */
 	 /* ######################################################################### */
 	 
 	 Hospital buildHospital(int staff_counter, int patient_counter, HashSet<Department> departmentset, HashSet<Staff> staffset, HashSet<Patient> patientset) {
@@ -571,23 +586,18 @@ private void EstablishConnection() {
 	  
 	  Hospital hospital = new Hospital();
 	  
+	  // The counters are set to make sure that creation of staff and patient will result in 
+	  // person with different identification numbers. 
+	  
 	  Patient.counter = patient_counter;
 	  Staff.counter = staff_counter;
+	  
+	  // Setting the hospital to have all information at a high level.
+	  // In that way it is easy to make an overview of what the hospital contains. 
 	  
 	  hospital.setDepartSet(departmentset);
 	  hospital.setAllPatientSet(patientset);
 	  hospital.setAllStaff(staffset);
-	  
-	  Iterator<Department> I_d = departmentset.iterator();
-	  
-	  
-	  while (I_d.hasNext()) {
-	   
-	   Department d = I_d.next();
-	   
-	   
-	   
-	  }
 	  
 	  Searcher s = new Searcher(hospital);
 	  ChangeReg R = new ChangeReg(this);
@@ -601,6 +611,11 @@ private void EstablishConnection() {
 	   if (!(staff.getDepartment() == null)) {
 	    LinkedList<Department> d_list = new LinkedList<Department>();
 	 
+	    // Searching for the specific department.
+	    // In the way we construct staff and patients we make sure that 
+	    // they can only contain a department name if it exists. 
+	    // In that way the searcher WILL find a unique department. 
+	    
 	    d_list = s.departmentSearch(staff.getDepartment());
 	 
 	    if (!d_list.isEmpty()) {
@@ -610,12 +625,13 @@ private void EstablishConnection() {
 	    
 	    else {
 	     System.err.println("ERROR: No matches on department: " + staff.getDepartment() + " with staff id  " + staff.getID());
-	    }
-	   }  
-	  }
+	    } // ending else
+	   } // ending if  
+	  } // ending while-loop
 	  
 	  LinkedList<Patient> patientList = new LinkedList<Patient>(patientset);
 	  
+	  // The same procedure is repeated for patients. 
 	  while (!patientList.isEmpty()) {
 	   
 	   Patient patient = patientList.removeFirst();
@@ -632,22 +648,9 @@ private void EstablishConnection() {
 	    
 	    else {
 	     System.err.println("ERROR: No matches on department: " + patient.getDepartment() + " with staff id  " + patient.getID());
-	    }
-	   }
-	  }
-	  
-	  
-	  Iterator<Department> iter = departmentset.iterator();
-	  
-	  
-	  while (iter.hasNext()) {
-	   
-	   Department d = iter.next();
-	   
-	   
-	   
-	  }
-	  
+	    } // ending else
+	   } // ending if
+	  } // ending while-loop	  
 	  
 	  return hospital;
 
@@ -657,6 +660,9 @@ private void EstablishConnection() {
 	 /* ######################################################################### */
 	 /* ___________ SECTION 7: Rebooting hospital _______________________ */
 	 /* ######################################################################### */
+	 
+	 // This section is the key component. Booting the hospital means restoring the previous state.
+	 // It combines all the loading methods and used the buildHospital() to insert the patients correctly. 
 	 
 	 Hospital boot() {
 	  
@@ -682,12 +688,62 @@ private void EstablishConnection() {
 	 /* ___________ SECTION 8: Cleaning hospital _______________________ */
 	 /* ######################################################################### */
 	 
-	 void clean() throws Throwable {
+	 // Restoring testing data before built. 
+	 // In that case all tests will be consistent with data loaded from database. 
+	 // It is used in test M1_changePatientInfo
+	 
+	 public void restore_for_testing_mode()  {
+
+	  String query1 = "USE 0S1l397yKA";
+	  String query18 ="TRUNCATE Login";
+	  String query19 = "TRUNCATE Department";
+	  String query20 = "TRUNCATE Staff";
+	  String query21 = "TRUNCATE Patient"; 
+	  String query2 = "INSERT INTO Department (name, beds_max, type) VALUES (\"ER\", 7, \"IPD\")";
+	  String query3	= "INSERT INTO Department (name, beds_max, type) VALUES (\"Pediatric\", 2, \"IPD\")";
+	  String query4 = "INSERT INTO Department (name, type) VALUES (\"Cardio\", \"OPD\")";
+	  String query5 = "INSERT INTO Department (name, type) VALUES (\"IT\", \"AMD\")";
 	  
-	  INSERT("TRUNCATE Patient");
-	  INSERT("TRUNCATE Staff");
-	  INSERT("TRUNCATE Department");
+	  String query6 = "INSERT INTO Patient (id, first_name, last_name, birthday, bed, alive, Department_name, address, tribe) VALUES (1, \"Jens\", \"Jensen\", \"24-09-1997\", 1, true, \"ER\", \"Jagtvej 69\", \"Zulu\")"; 
+	  String query7 = "INSERT INTO Patient (id, first_name, last_name, birthday, bed, alive, Department_name, address, tribe) VALUES (2, \"Hans\", \"Hansen\", \"24-12-2000\", 2, true, \"ER\", \"Tagensvej 101\", \"Masai\")"; 
+	  String query8 = "INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage) VALUES (3, \"Søren\", \"Sørensen\", \"24-09-1997\", true, \"Cardio\", \"Hellerup\", \"Venstre\", 1)"; 
+	  String query9 = "INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage) VALUES (4, \"Lars\", \"Larsen\", \"20-12-1950\", true, \"Cardio\", \"Nordvestjylland\", \"Jysk\", 1)"; 
+	  String query10 = "INSERT INTO Patient (id, first_name, last_name, birthday, bed, alive, Department_name, address, tribe) VALUES (5, \"Jens\", \"Jensen\", \"24-09-1997\", 1, true, \"Pediatric\", \"Jagtvej 69\", \"Zulu\")"; 
+	  String query11 = "INSERT INTO Patient (id, first_name, last_name, birthday, bed, alive, Department_name, address, tribe) VALUES (6, \"Hans\", \"Hansen\", \"24-12-2000\", 2, true, \"Pediatric\", \"Tagensvej 101\", \"Masai\")"; 
+
+	  String query12 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"C5\", \"Mads\", \"Hansen\", \"23-04-2000\", \"IT\", \"Uganda\", \"Black-rocks Clan\", true)"; 
+	  String query13 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"D0\", \"Svend\", \"Nielsen\", \"01-01-1901\", \"ER\", \"Doktorvej\", \"Dansk\", true)"; 
+	  String query14 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"D2\", \"Lars\", \"Løkke\", \"01-01-1950\", \"Cardio\", \"Græsted\", \"Venstre\", true)"; 
+	  String query15 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"IT4\", \"Jens\", \"Hansen\", \"29-02-1996\", \"IT\", \"Norway\", \"Indian\", true)"; 
+	  String query16 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"N1\", \"Jonna\", \"Nielsen\", \"02-02-1902\", \"ER\", \"Ikke-doktorvej\", \"Tysk\", true)";
+	  String query17 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"N3\", \"Helle\", \"Thorning\", \"02-02-1960\", \"Cardio\", \"Herlev\", \"Gucci\", true)";
 	  
+	  try {
+		  INSERT(query18);
+		  INSERT(query19);
+		  INSERT(query20);
+		  INSERT(query21);
+		  INSERT(query1);
+		  INSERT(query2);
+		  INSERT(query3);
+		  INSERT(query4);
+		  INSERT(query5);
+		  INSERT(query6);
+		  INSERT(query7);
+		  INSERT(query8);
+		  INSERT(query9);
+		  INSERT(query10);
+		  INSERT(query11);
+		  INSERT(query12);
+		  INSERT(query13);
+		  INSERT(query14);
+		  INSERT(query15);
+		  INSERT(query16);
+		  INSERT(query17);
+		  
+	  } catch (Exception e) {
+		  e.printStackTrace();
+	  }
 
 	 }
 	 
@@ -695,29 +751,8 @@ private void EstablishConnection() {
 	 /* ___________ SECTION 9: Deleting data      _______________________ */
 	 /* ######################################################################### */
 	 
-	 
-	 // Deletes the patient from the database utilizing that id's are unique
-	 
-	 void deletePatient(Patient patient) {
-	  
-	  String id = patient.getID();
-	  String query = String.format("DELETE FROM Patient WHERE id = %s", id);
-	  INSERT(query);
-	  
-	 }
-	 
-	 // Deletes the patient from the database utilizing that id's are unique
-	 
-	 void deleteStaff(Staff staff) {
-	  
-	  String id = staff.getID();
-	  String query = String.format("DELETE FROM Staff WHERE id = %s", id);
-	  INSERT(query);
-	  
-	  
-	 }
-	 
-	 // Deletes the department from the database utilizing that the names are unique
+	 // In case a department needs to be removed from the system
+	 // it is also deleted from the database
 	 
 	 void deleteDepartment(Department department) {
 	  

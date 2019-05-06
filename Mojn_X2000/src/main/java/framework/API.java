@@ -18,9 +18,15 @@ public class API {
 	public Hospital h;
 	private Searcher searcher;
 	private ChangeReg R;
-	private Database DB;
+	public Database DB; // should be private, but public is needed for the testing
 	private Password Pas;
 	private Logger log;
+	
+	// For testing purposes. Ensures that database is booted ONCE only. See method
+	// before() in M1_changePatientInfo.java. 
+	
+	public static Boolean cucumber;
+	
 	
 	public static synchronized API getInstance() {
 		if (instance == null) {
@@ -37,6 +43,7 @@ public class API {
 		R = new ChangeReg(this.DB);
 		log = new Logger("ParticipationLists");
 		Pas.addPassToMap("I", "I");
+		cucumber = false;
 		
 		log.write("SYSTEM","REBOOT","NONE");
 		
@@ -422,7 +429,8 @@ public class API {
 		
 		/* write to log file */
 		log.write(userID,"PATIENT DISCHARGED",p.toString());
-
+		
+		/* setting bed and triage to null */
 		
 		R.remove(d, p);
 		return "Patient ID: "+p.getID() + ", has been removed succesfully from " + d;

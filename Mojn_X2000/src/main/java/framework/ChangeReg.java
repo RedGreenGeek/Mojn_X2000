@@ -79,6 +79,7 @@ public class ChangeReg {
 	
 	public void add(Department d, Patient p) {
 		
+	
 	  HashSet<Person> patientSet = d.getPatient();
 	  p.setDepartment(d.getName());
 	  patientSet.add(p);
@@ -87,8 +88,10 @@ public class ChangeReg {
 	  if (d instanceof InPatientDepart) {
 	   ((InPatientDepart) d).beds.AllocateBed(p);
 	   
-	   // Deleting patient to ensure that the patients triage level is set to null in case he/she is moved from an out patient department. 
-	   DB.deletePatient(p);
+	   // Triage to away issue of having it set to zero by default
+	   p.setTriage(null);
+	   
+	   // Writing patient to update information in database.
 	   DB.writePatient(p);
 	   
 	   // Writing department to update beds in use. Will update all values. 
@@ -98,8 +101,6 @@ public class ChangeReg {
 	  else if(d instanceof OutPatientDepart) {
 	   ((OutPatientDepart) d).EnQueue(p,p.getTriage());
 	   
-	   // Deleting patient to ensure that the bed number is set to null in case the patient was moved from an in patient department. 
-	   DB.deletePatient(p);
 	   // Writing patient to get all values updated. 
 	   DB.writePatient(p);
 	   
@@ -117,9 +118,9 @@ public class ChangeReg {
 			patientSet.add(p);
 			d.setPatient(patientSet);
 			p.setBedLocation(null);
-			
-			// Deleting patient to update columns that should be null
-			DB.deletePatient(p);
+
+			// Writing patient to update database with department name and - if specified -
+			// triage level
 			DB.writePatient(p);
 			
 		}
@@ -143,7 +144,7 @@ public class ChangeReg {
 		
 		
 		// To insert the value null in department_name column, delete the patient and write the patient again
-		DB.deletePatient(p);
+		//DB.deletePatient(p);
 		DB.writePatient(p);
 	}
 }
