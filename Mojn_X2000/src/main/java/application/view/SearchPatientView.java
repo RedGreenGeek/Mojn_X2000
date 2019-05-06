@@ -31,7 +31,7 @@ public class SearchPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Search after a patient");
+	private MenuTopView menuTop = new MenuTopView("Searching for Patients");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

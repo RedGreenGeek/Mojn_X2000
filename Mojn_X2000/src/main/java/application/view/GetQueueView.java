@@ -21,7 +21,7 @@ public class GetQueueView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Get a queue of a department");
+	private MenuTopView menuTop = new MenuTopView("Getting Queue from a Department");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

@@ -20,7 +20,7 @@ public class DischargePatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Discharge a patient");
+	private MenuTopView menuTop = new MenuTopView("Discharge Patient");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

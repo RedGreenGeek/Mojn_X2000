@@ -24,7 +24,7 @@ public class AddPasswordView extends JFrame {
 
     private JButton okBtn;
     private JPanel inputArea;
-    private MenuTopView menuTop = new MenuTopView("Add password to a staff");
+    private MenuTopView menuTop = new MenuTopView("Add Password");
     private TextPanelView textPanel = new TextPanelView();
     private String msg;
     private AddPasswordController controller;

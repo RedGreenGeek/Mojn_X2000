@@ -683,72 +683,10 @@ private void EstablishConnection() {
 	  }
 	  
 	 }
+
 	 
 	 /* ######################################################################### */
-	 /* ___________ SECTION 8: Cleaning hospital _______________________ */
-	 /* ######################################################################### */
-	 
-	 // Restoring testing data before built. 
-	 // In that case all tests will be consistent with data loaded from database. 
-	 // It is used in test M1_changePatientInfo
-	 
-	 public void restore_for_testing_mode()  {
-
-	  String query1 = "USE 0S1l397yKA";
-	  String query18 ="TRUNCATE Login";
-	  String query19 = "TRUNCATE Department";
-	  String query20 = "TRUNCATE Staff";
-	  String query21 = "TRUNCATE Patient"; 
-	  String query2 = "INSERT INTO Department (name, beds_max, type) VALUES (\"ER\", 7, \"IPD\")";
-	  String query3	= "INSERT INTO Department (name, beds_max, type) VALUES (\"Pediatric\", 2, \"IPD\")";
-	  String query4 = "INSERT INTO Department (name, type) VALUES (\"Cardio\", \"OPD\")";
-	  String query5 = "INSERT INTO Department (name, type) VALUES (\"IT\", \"AMD\")";
-	  
-	  String query6 = "INSERT INTO Patient (id, first_name, last_name, birthday, bed, alive, Department_name, address, tribe) VALUES (1, \"Jens\", \"Jensen\", \"24-09-1997\", 1, true, \"ER\", \"Jagtvej 69\", \"Zulu\")"; 
-	  String query7 = "INSERT INTO Patient (id, first_name, last_name, birthday, bed, alive, Department_name, address, tribe) VALUES (2, \"Hans\", \"Hansen\", \"24-12-2000\", 2, true, \"ER\", \"Tagensvej 101\", \"Masai\")"; 
-	  String query8 = "INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage) VALUES (3, \"Søren\", \"Sørensen\", \"24-09-1997\", true, \"Cardio\", \"Hellerup\", \"Venstre\", 1)"; 
-	  String query9 = "INSERT INTO Patient (id, first_name, last_name, birthday, alive, Department_name, address, tribe, triage) VALUES (4, \"Lars\", \"Larsen\", \"20-12-1950\", true, \"Cardio\", \"Nordvestjylland\", \"Jysk\", 1)"; 
-	  String query10 = "INSERT INTO Patient (id, first_name, last_name, birthday, bed, alive, Department_name, address, tribe) VALUES (5, \"Jens\", \"Jensen\", \"24-09-1997\", 1, true, \"Pediatric\", \"Jagtvej 69\", \"Zulu\")"; 
-	  String query11 = "INSERT INTO Patient (id, first_name, last_name, birthday, bed, alive, Department_name, address, tribe) VALUES (6, \"Hans\", \"Hansen\", \"24-12-2000\", 2, true, \"Pediatric\", \"Tagensvej 101\", \"Masai\")"; 
-
-	  String query12 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"C5\", \"Mads\", \"Hansen\", \"23-04-2000\", \"IT\", \"Uganda\", \"Black-rocks Clan\", true)"; 
-	  String query13 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"D0\", \"Svend\", \"Nielsen\", \"01-01-1901\", \"ER\", \"Doktorvej\", \"Dansk\", true)"; 
-	  String query14 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"D2\", \"Lars\", \"Løkke\", \"01-01-1950\", \"Cardio\", \"Græsted\", \"Venstre\", true)"; 
-	  String query15 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"IT4\", \"Jens\", \"Hansen\", \"29-02-1996\", \"IT\", \"Norway\", \"Indian\", true)"; 
-	  String query16 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"N1\", \"Jonna\", \"Nielsen\", \"02-02-1902\", \"ER\", \"Ikke-doktorvej\", \"Tysk\", true)";
-	  String query17 =	"INSERT INTO Staff (id, first_name, last_name, birthday, Department_name, address, tribe, alive) VALUES (\"N3\", \"Helle\", \"Thorning\", \"02-02-1960\", \"Cardio\", \"Herlev\", \"Gucci\", true)";
-	  
-	  try {
-		  INSERT(query18);
-		  INSERT(query19);
-		  INSERT(query20);
-		  INSERT(query21);
-		  INSERT(query1);
-		  INSERT(query2);
-		  INSERT(query3);
-		  INSERT(query4);
-		  INSERT(query5);
-		  INSERT(query6);
-		  INSERT(query7);
-		  INSERT(query8);
-		  INSERT(query9);
-		  INSERT(query10);
-		  INSERT(query11);
-		  INSERT(query12);
-		  INSERT(query13);
-		  INSERT(query14);
-		  INSERT(query15);
-		  INSERT(query16);
-		  INSERT(query17);
-		  
-	  } catch (Exception e) {
-		  e.printStackTrace();
-	  }
-
-	 }
-	 
-	 /* ######################################################################### */
-	 /* ___________ SECTION 9: Deleting data      _______________________ */
+	 /* ___________ SECTION 8: Deleting data      _______________________ */
 	 /* ######################################################################### */
 	 
 	 // In case a department needs to be removed from the system

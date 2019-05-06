@@ -33,7 +33,7 @@ public class RegisterPatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Register a patient");
+	private MenuTopView menuTop = new MenuTopView("Register Patient");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	
@@ -55,7 +55,7 @@ public class RegisterPatientView extends JFrame {
 		
 		firstNameLabel = new JLabel("First name: ");
 		surnameLabel = new JLabel("Surname: ");
-		adressLabel = new JLabel("Adress: ");
+		adressLabel = new JLabel("Address: ");
 		tribeLabel = new JLabel("Tribe: ");
 		birthdayLabel = new JLabel("Birthday: ");
 		aliveLabel = new JLabel("alive: ");

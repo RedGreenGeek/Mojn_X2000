@@ -12,15 +12,15 @@ public class Patient extends Person {
 	public String toString() {
 		
 		if (this.getDepartment() == null) {
-			return patientID+"\t"+""+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+" "+"\t"+this.getAdress();
+			return patientID+"\t"+""+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+" "+"\t" + this.getTribe() +"\t"+this.getAdress();
 		}
 		
 		else if (this.getTriage() == null) {
-			return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t    "+this.getBedLocation()+" /"+""+"\t"+this.getAdress();
+			return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t    "+this.getBedLocation()+" /"+""+"\t" + this.getTribe() +"\t"+this.getAdress();
 		}
 		
 		else if (this.getBedLocation() == null) {
-			return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+"      "+"/  "+this.getTriage()+"\t"+this.getAdress();
+			return patientID+"\t"+this.getDepartment()+"\t"+this.getLastName()+"\t"+this.getFirstName()+"\t"+"      "+"/  "+this.getTriage()+"\t" + this.getTribe() +"\t"+this.getAdress();
 		}
 		
 		else {

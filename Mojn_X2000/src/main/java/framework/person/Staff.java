@@ -15,10 +15,10 @@ public static int counter;
 	//Override toString method, so we can print the properties of the staff
 	public String toString() {
 		if (this.getDepartment() != null) {
-			return this.getID() + "\t" + this.getJobType() + "\t" + this.getDepartment() + "\t" + this.getLastName() + "\t" + this.getFirstName() + "\t" + this.getEmail();
+			return this.getID() + "\t" + this.getJobType() + "\t" + this.getDepartment() + "\t" + this.getLastName() + "\t" + this.getFirstName() + "\t" + this.getTribe() +"\t" + this.getEmail();
 		}
 		else {
-			return this.getID() + "\t" + this.getJobType() + "\t" + " " + "\t" + this.getLastName() + "\t" + this.getFirstName() + "\t" + this.getEmail();
+			return this.getID() + "\t" + this.getJobType() + "\t" + " " + "\t" + this.getLastName() + "\t" + this.getFirstName() + "\t" + this.getTribe() +"\t" + this.getEmail();
 		}
 	}
 	

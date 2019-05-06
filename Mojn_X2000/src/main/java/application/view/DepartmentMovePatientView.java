@@ -24,7 +24,7 @@ public class DepartmentMovePatientView extends JFrame {
 
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Move patients between departments");
+	private MenuTopView menuTop = new MenuTopView("Move Patient between Departments");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	

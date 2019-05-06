@@ -21,7 +21,7 @@ public class NextInQueueView extends JFrame {
 	
 	private JButton okBtn;
 	private JPanel inputArea;
-	private MenuTopView menuTop = new MenuTopView("Next in queue");
+	private MenuTopView menuTop = new MenuTopView("Retrieve Next Patient in Queue");
 	private TextPanelView textPanel = new TextPanelView();
 	private String msg;
 	private NextInQueueController controller;
