@@ -517,9 +517,6 @@ public class API {
 		if (Pas.checkPassword(oldPassword, staffID) && newPassword1.equals(newPassword2) ) {
 			Pas.addPassToMap(newPassword1, staffID);
 			
-			/* Writing the updates to the database */
-			DB.writePassword(staffID, newPassword1);
-			
 			/* write to log file */
 			log.write(userID,"PASSWORD CHANGED",staffID);
 
