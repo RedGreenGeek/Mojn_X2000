@@ -27,6 +27,7 @@ public class Password {
 		String key = String.valueOf(this.hashValue);
 		this.PassMap.put(StaffId, key);
 		DB.writePassword(StaffId, key);
+		
 	}
 	
 	//method to check if a StaffId exists in the password storage
