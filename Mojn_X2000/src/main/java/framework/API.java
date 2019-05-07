@@ -32,7 +32,6 @@ public class API {
 	
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
-//		DB = new Database(Database.DEFAULT,"jdbc:mysql://localhost:3306/","mydb","root","AGILE2019");
 		DB = new Database(Database.REMOTE,"jdbc:mysql://www.remotemysql.com:3306/","0S1l397yKA","0S1l397yKA","ceoLj1fgBZ");
 		Pas = new Password();
 		R = new ChangeReg(this.DB);
@@ -143,22 +142,7 @@ public class API {
 	}
 	
 	
-	//GET PATIENT LIST OF GIVEN DEPARTMETN
-//	public String getDeparmentPatient(String password, String userID, String departmentName) {
-//		if (Pas.getClearence(password,userID) < 1) {
-//			return "You do not have the clearency to do this, contact system admin!";
-//		}
-//		
-//		LinkedList<Department> resList = searcher.departmentSearch(departmentName);
-//		String res = "ID\tDepartment\tSurname\tName\tBedNo/Triage\tAddress";
-//		if (resList.size()==1) {
-//			LinkedList<Person> sList = new LinkedList<Person>(resList.removeFirst().getPatient());
-//			while (!sList.isEmpty()) {
-//				res += "\n"+sList.removeFirst().toString();
-//			}
-//		} else {res = "No or multiple department(s) match your search criterion";}
-//		return res;
-//	}
+
 
 	
 	
