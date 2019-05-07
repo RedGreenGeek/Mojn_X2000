@@ -144,7 +144,6 @@ public class ChangeReg {
 		
 		
 		// To insert the value null in department_name column, delete the patient and write the patient again
-		//DB.deletePatient(p);
 		DB.writePatient(p);
 	}
 }
