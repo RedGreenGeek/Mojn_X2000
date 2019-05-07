@@ -2,6 +2,8 @@ package application.view;
 
 import java.awt.*;
 import java.awt.event.*;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -50,6 +52,7 @@ public class RegisterStaffView extends JFrame {
 	private void initGUI() {
 		setTitle("Register Staff");
 		setPreferredSize(new Dimension(900, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());

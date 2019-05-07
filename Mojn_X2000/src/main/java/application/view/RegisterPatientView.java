@@ -2,6 +2,8 @@ package application.view;
 
 import java.awt.*;
 import java.awt.event.*;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -49,6 +51,7 @@ public class RegisterPatientView extends JFrame {
 	private void initGUI() {
 		setTitle("Register Patients");
 		setPreferredSize(new Dimension(900, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());

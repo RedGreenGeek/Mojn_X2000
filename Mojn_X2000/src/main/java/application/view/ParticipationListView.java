@@ -3,6 +3,8 @@ package application.view;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -45,6 +47,7 @@ public class ParticipationListView extends JFrame {
     private void initGUI() {
         setTitle("Participation list");
         setPreferredSize(new Dimension(900, 700));
+        setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
         
         inputArea = new JPanel();
         inputArea.setLayout(new GridBagLayout());

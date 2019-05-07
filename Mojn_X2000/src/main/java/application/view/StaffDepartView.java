@@ -2,6 +2,8 @@ package application.view;
 
 import java.awt.*;
 import java.awt.event.*;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,10 +39,12 @@ public class StaffDepartView extends JFrame {
 	private void initGUI() {
 		setTitle("Get staff in department");
 		setPreferredSize(new Dimension(900, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
 		departmentNameLabel = new JLabel("Department Name: ");
 		departmentNameField = new JTextField(11);
+		
 
 		
 		// Listeners to the buttons are defined

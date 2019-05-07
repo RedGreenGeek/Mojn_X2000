@@ -2,6 +2,8 @@ package application.view;
 
 import java.awt.*;
 import java.awt.event.*;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +31,7 @@ public class GetDepartmentView extends JFrame {
 	private void initGUI() {
 		setTitle("Get Departments");
 		setPreferredSize(new Dimension(900, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());

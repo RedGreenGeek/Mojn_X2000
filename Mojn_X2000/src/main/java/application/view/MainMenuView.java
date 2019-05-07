@@ -51,6 +51,7 @@ public class MainMenuView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Main Menu");
 		setPreferredSize(new Dimension(800, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		
 
 		// A panel for the buttons are defined

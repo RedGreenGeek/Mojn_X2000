@@ -45,6 +45,7 @@ public class StaffView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Staff Menu");
 		setPreferredSize(new Dimension(800, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		
 		
 		lblStaff = new JLabel("Staff Menu");

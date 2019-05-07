@@ -42,7 +42,8 @@ public class PatientView extends JFrame {
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Patient Menu");
-		setPreferredSize(new Dimension(800, 800));
+		setPreferredSize(new Dimension(800, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		
 		lblPatient = new JLabel("Patient Menu");
 		lblPatient.setFont(new Font("Tahoma", Font.PLAIN, 40));

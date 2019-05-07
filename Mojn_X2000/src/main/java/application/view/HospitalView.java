@@ -41,6 +41,7 @@ public class HospitalView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Hospital Structur Menu");
 		setPreferredSize(new Dimension(800, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		
 		lblHospital = new JLabel("Hospital Structur Menu");
 		lblHospital.setFont(new Font("Tahoma", Font.PLAIN, 40));

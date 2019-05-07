@@ -47,6 +47,7 @@ public class AddDepartView extends JFrame {
 		// All components of the add are defined
 		setTitle("Add Department");
 		setPreferredSize(new Dimension(900, 700));
+		this.se
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());

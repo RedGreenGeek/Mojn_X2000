@@ -2,6 +2,8 @@ package application.view;
 
 import java.awt.*;
 import java.awt.event.*;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,6 +38,7 @@ public class DischargePatientView extends JFrame {
 		// All components of the window are defined
 		setTitle("Discharge Patients");
 		setPreferredSize(new Dimension(900, 700));
+		setIconImage(new ImageIcon(this.getClass().getClassLoader().getResource("icons/heisenbug.png")).getImage());
 		
 		inputArea = new JPanel();
 		inputArea.setLayout(new GridBagLayout());
