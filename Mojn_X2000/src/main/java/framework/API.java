@@ -33,7 +33,7 @@ public class API {
 	private API (){
 		// CONNECTION TO DATABASE TO ENSURE CONNECTION
 		DB = new Database(Database.REMOTE,"jdbc:mysql://www.remotemysql.com:3306/","0S1l397yKA","0S1l397yKA","ceoLj1fgBZ");
-		Pas = new Password();
+		Pas = new Password(this.DB);
 		R = new ChangeReg(this.DB);
 		log = new Logger("ParticipationLists");
 		Pas.addPassToMap("I", "I");
@@ -490,10 +490,7 @@ public class API {
 		
 		if (newPassword1.equals(newPassword2) ) {
 			Pas.addPassToMap(newPassword1, staffID);
-			
-			/* Writing the new password to the database */
-			DB.writePassword(staffID, newPassword1);
-			
+
 			/* write to log file */
 			log.write(userID,"NEW USER ADDED",staffID);
 			

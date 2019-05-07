@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import framework.Departments.AdminDepart;
@@ -144,7 +143,7 @@ private void EstablishConnection() {
 	 // In case a patient with same primary key (i.e. 'id') exists in the database, all data is updated.
 	 // This is needed when patient information is edited. 
  
- 	 protected String writePassword(String username, String hashvalue) {
+ 	 public String writePassword(String username, String hashvalue) {
  		 
  		 String query1 = String.format("INSERT INTO Login (Username, Hashvalue) VALUES (\"%s\", \"%s\")", username, hashvalue);
  		 String query2 = String.format(" ON DUPLICATE KEY UPDATE Username = \"%s\", Hashvalue = \"%s\"", username, hashvalue);
@@ -500,8 +499,8 @@ private void EstablishConnection() {
 			 }
 			 
 			 if (!hashmap.isEmpty()) {
-				 return new Password(hashmap);
-			 } else {return new Password();}
+				 return new Password(hashmap,this);
+			 } else {return new Password(this);}
 
 		 } catch (Exception e) {
 			 System.err.println("Login informations could not be retrieved. Please contact system administrator!");

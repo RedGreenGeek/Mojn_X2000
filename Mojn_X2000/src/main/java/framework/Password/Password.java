@@ -1,17 +1,24 @@
 package framework.Password;
 import java.util.HashMap;
 
+import framework.Database;
+
 public class Password {
+	
 	//Create private variables to store password values in
 	private HashMap<String, String> PassMap;
 	private long hashValue;
+    Database DB;
 	
-	public Password() {
+	public Password(Database DB) {
 		this.PassMap = new HashMap<String,String>();
+		this.DB = DB;
+		
 	}
 	
-	public Password(HashMap<String,String> hashmap) {
+	public Password(HashMap<String,String> hashmap, Database DB) {
 		this.PassMap = hashmap;
+		this.DB = DB;
 	}
 	
 	//Public method that adds a hashed password to a map
@@ -19,6 +26,7 @@ public class Password {
 		HashPassword(Pass);
 		String key = String.valueOf(this.hashValue);
 		this.PassMap.put(StaffId, key);
+		DB.writePassword(StaffId, key);
 	}
 	
 	//method to check if a StaffId exists in the password storage
