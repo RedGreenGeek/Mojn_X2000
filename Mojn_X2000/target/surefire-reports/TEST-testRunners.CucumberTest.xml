@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="349" failures="0" name="testRunners.CucumberTest" time="0.011" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_201\jre\bin"/>
+    <property name="java.vm.version" value="25.201-b09"/>
+    <property name="user.country.format" value="DK"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Google Drive\EDU\AgileOO\git\Mojn_X2000\Mojn_X2000"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="E:\Google Drive\EDU\AgileOO\git\Mojn_X2000\Mojn_X2000"/>
+    <property name="java.runtime.version" value="1.8.0_201-b09"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_201\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Kalle\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="E:\Google Drive\EDU\AgileOO\Mojn_X2000\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3591070145483800922.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_201\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:/Program Files/Java/jre1.8.0_211/bin/server;C:/Program Files/Java/jre1.8.0_211/bin;C:/Program Files/Java/jre1.8.0_211/lib/amd64;C:\windows;C:\windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Java\jdk1.8.0_201\bin;E:\Google Drive\EDU\CSM\HW1\CSM\packages\FsLexYacc.7.0.6\build;C:\Users\Kalle\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\Kalle\AppData\Local\Programs\Python\Python37\;C:\Users\Kalle\AppData\Local\Microsoft\WindowsApps;C:\Users\Kalle\AppData\Local\atom\bin;C:\texlive\2018\bin\win32;C:\Program Files\Java\jdk1.8.0_201\bin;;C:\windows\system32;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Kalle"/>
+    <property name="user.timezone" value="Europe/Paris"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="Kalle"/>
+    <property name="java.class.path" value="C:\Users\Kalle\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_1.10.0.20181127-2120\jars\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_201\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B clean compile assembly:single test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_201"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_201\jre\lib\ext;C:\windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_201\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_201\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_201\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="E:\Google Drive\EDU\AgileOO\git\Mojn_X2000\Mojn_X2000\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="Scenario: Succesful Registration" name="Given I have a patient I want to register" time="0.002"/>
+  <testcase classname="Scenario: Succesful Registration" name="When I am entering sufficient patient data" time="0"/>
+  <testcase classname="Scenario: Succesful Registration" name="Then I get a message that the patient was registered succesfully" time="0"/>
+  <testcase classname="Scenario: Succesful Registration" name="Scenario: Succesful Registration" time="0.001"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Given I have a patient I want to register" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="When I am not entering lastname" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Then I get a message that additional information is needed" time="0.001"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Scenario: Insufficient Data Provided" time="0.001"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Given I have a patient I want to register" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="When I am not entering first name" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Then I get a message that additional information is needed" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Scenario: Insufficient Data Provided" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Given I have a patient I want to register" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="When I am not entering adress" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Then I get a message that additional information is needed" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Scenario: Insufficient Data Provided" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Given I have a patient I want to register" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="When I am not entering tribe" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Then I get a message that additional information is needed" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Scenario: Insufficient Data Provided" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Given I have a patient I want to register" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="When I am entering birthday wrongly" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Then I get a message that additional information is needed" time="0"/>
+  <testcase classname="Scenario: Insufficient Data Provided" name="Scenario: Insufficient Data Provided" time="0"/>
+  <testcase classname="Scenario: Succesful Change" name="Given I have a patientID of a patient and I want to change their personal info" time="0"/>
+  <testcase classname="Scenario: Succesful Change" name="When I am entering a valid patientID" time="0"/>
+  <testcase classname="Scenario: Succesful Change" name="And I am changing the given info to something valid" time="0"/>
+  <testcase classname="Scenario: Succesful Change" name="Then I get a message that the change was succesful" time="0"/>
+  <testcase classname="Scenario: Succesful Change" name="Scenario: Succesful Change" time="0"/>
+  <testcase classname="Scenario: Invalid patientID" name="Given I have a patientID of a patient and I want to change their personal info" time="0"/>
+  <testcase classname="Scenario: Invalid patientID" name="When I am entering invalid patientID" time="0"/>
+  <testcase classname="Scenario: Invalid patientID" name="Then I get a message that the patient does not exist" time="0"/>
+  <testcase classname="Scenario: Invalid patientID" name="Scenario: Invalid patientID" time="0"/>
+  <testcase classname="Scenario: Illegal info change" name="Given I have a patientID of a patient and I want to change their personal info" time="0"/>
+  <testcase classname="Scenario: Illegal info change" name="When I am entering a valid patientID" time="0"/>
+  <testcase classname="Scenario: Illegal info change" name="And I am changing the info to something illegal" time="0.001"/>
+  <testcase classname="Scenario: Illegal info change" name="Then I get a message that information entered was illegal" time="0"/>
+  <testcase classname="Scenario: Illegal info change" name="Scenario: Illegal info change" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="And there is registered patients" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="When I am entering search data matching patient" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="Then I get a list the patients maching my search data" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="Scenario: Search for staff members succesfully" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="And there is registered patients" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="When I am entering search data not matching patient" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Then I recieve a message that no patients are maching the data" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Scenario: Invalid search" time="0"/>
+  <testcase classname="Scenario: Add staff to department successfully" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Add staff to department successfully" name="And given a department name" time="0"/>
+  <testcase classname="Scenario: Add staff to department successfully" name="And given staff info" time="0"/>
+  <testcase classname="Scenario: Add staff to department successfully" name="When I am entering correct info" time="0"/>
+  <testcase classname="Scenario: Add staff to department successfully" name="And I am entered a correct department name" time="0"/>
+  <testcase classname="Scenario: Add staff to department successfully" name="Then I get a message that the staff was added sucessfully" time="0"/>
+  <testcase classname="Scenario: Add staff to department successfully" name="Scenario: Add staff to department successfully" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="And given a department name" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="And given staff info" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="When I am entering invalid department name" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Then I recieve an error message" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Scenario: Invalid department name" time="0"/>
+  <testcase classname="Scenario: Invalid info" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Invalid info" name="And given a department name" time="0"/>
+  <testcase classname="Scenario: Invalid info" name="And given staff info" time="0"/>
+  <testcase classname="Scenario: Invalid info" name="When I am entering invalid info" time="0"/>
+  <testcase classname="Scenario: Invalid info" name="Then I recieve a error message" time="0"/>
+  <testcase classname="Scenario: Invalid info" name="Scenario: Invalid info" time="0.001"/>
+  <testcase classname="Scenario: Change a staff member succesfully" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully" name="And there is registered staff" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully" name="And I am an ICT officer" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully" name="When I am entering sufficient search data" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully" name="Then I can change the wanted parameters to something valid" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully" name="And Load the staff member back into the database" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully" name="Scenario: Change a staff member succesfully" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="And there is registered staff" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="And I am an ICT officer" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="When I am entering insufficient search data" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Then I recieve an error message that the employee does not exist" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Scenario: Invalid search" time="0"/>
+  <testcase classname="Scenario: Invalid changed parameters" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Invalid changed parameters" name="And there is registered staff" time="0"/>
+  <testcase classname="Scenario: Invalid changed parameters" name="And I am an ICT officer" time="0"/>
+  <testcase classname="Scenario: Invalid changed parameters" name="When I try invalid changes on a staff" time="0"/>
+  <testcase classname="Scenario: Invalid changed parameters" name="Then I recieve an error message saying that it is invalid" time="0"/>
+  <testcase classname="Scenario: Invalid changed parameters" name="Scenario: Invalid changed parameters" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with no jobtype given" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with no jobtype given" name="And there is registered staff" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with no jobtype given" name="And I am an ICT officer" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with no jobtype given" name="When I am entering sufficient data, but no job type" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with no jobtype given" name="Then I recieve a message saying that the change has been done" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with no jobtype given" name="Scenario: Change a staff member succesfully with no jobtype given" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with jobtype given" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with jobtype given" name="And there is registered staff" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with jobtype given" name="And I am an ICT officer" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with jobtype given" name="When I am entering sufficient data, with jobtype" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with jobtype given" name="Then I recieve a message saying that the change has been Done" time="0"/>
+  <testcase classname="Scenario: Change a staff member succesfully with jobtype given" name="Scenario: Change a staff member succesfully with jobtype given" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="And there is registered staff" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="When I am entering search data matching staff" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="Then I get a list over my search results" time="0"/>
+  <testcase classname="Scenario: Search for staff members succesfully" name="Scenario: Search for staff members succesfully" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="And there is registered staff" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="When I am entering search data not matching staff" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Then I recieve a message that the employee does not exist" time="0"/>
+  <testcase classname="Scenario: Invalid search" name="Scenario: Invalid search" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Clerk" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Clerk" name="And the hospital contain staff in departments" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Clerk" name="When I am entering sufficient clerk data" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Clerk" name="Then I get a message that the clerk was registered succesfully" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Clerk" name="Scenario: Succesful Registration of Clerk" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Nurse" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Nurse" name="And the hospital contain staff in departments" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Nurse" name="When I am entering sufficient nurse data" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Nurse" name="Then I get a message that the nurse was registered succesfully" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Nurse" name="Scenario: Succesful Registration of Nurse" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Doctor" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Doctor" name="And the hospital contain staff in departments" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Doctor" name="When I am entering sufficient doctor data" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Doctor" name="Then I get a message that the doctor was registered succesfully" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of Doctor" name="Scenario: Succesful Registration of Doctor" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of ICTOfficer" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of ICTOfficer" name="And the hospital contain staff in departments" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of ICTOfficer" name="When I am entering sufficient ictofficer data" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of ICTOfficer" name="Then I get a message that the ictofficer was registered succesfully" time="0"/>
+  <testcase classname="Scenario: Succesful Registration of ICTOfficer" name="Scenario: Succesful Registration of ICTOfficer" time="0.001"/>
+  <testcase classname="Scenario: Staff Registered Unsuccessfully" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Staff Registered Unsuccessfully" name="And the hospital contain staff in departments" time="0"/>
+  <testcase classname="Scenario: Staff Registered Unsuccessfully" name="When I am entering insufficient staff data" time="0"/>
+  <testcase classname="Scenario: Staff Registered Unsuccessfully" name="Then I get a message" time="0"/>
+  <testcase classname="Scenario: Staff Registered Unsuccessfully" name="Scenario: Staff Registered Unsuccessfully" time="0"/>
+  <testcase classname="Scenario: Beds in use checked" name="Given that we are on a department" time="0"/>
+  <testcase classname="Scenario: Beds in use checked" name="And with a unique department name" time="0"/>
+  <testcase classname="Scenario: Beds in use checked" name="When I am entering the request" time="0"/>
+  <testcase classname="Scenario: Beds in use checked" name="Then I get a message with a statement about beds in use" time="0"/>
+  <testcase classname="Scenario: Beds in use checked" name="Scenario: Beds in use checked" time="0"/>
+  <testcase classname="Scenario: Staff list Succesful." name="Given that we are on a Hospital" time="0"/>
+  <testcase classname="Scenario: Staff list Succesful." name="And with departments" time="0"/>
+  <testcase classname="Scenario: Staff list Succesful." name="And I want to see who is working in a specific department" time="0"/>
+  <testcase classname="Scenario: Staff list Succesful." name="When I am entering a correct department name." time="0"/>
+  <testcase classname="Scenario: Staff list Succesful." name="Then I get a list of staff member for the specific department." time="0"/>
+  <testcase classname="Scenario: Staff list Succesful." name="Scenario: Staff list Succesful." time="0"/>
+  <testcase classname="Scenario: Staff list unsuccessfully" name="Given that we are on a Hospital" time="0"/>
+  <testcase classname="Scenario: Staff list unsuccessfully" name="And with departments" time="0"/>
+  <testcase classname="Scenario: Staff list unsuccessfully" name="And I want to see who is working in a specific department" time="0"/>
+  <testcase classname="Scenario: Staff list unsuccessfully" name="When I am entering a incorrect department name." time="0"/>
+  <testcase classname="Scenario: Staff list unsuccessfully" name="Then I get a message that the department is not found" time="0"/>
+  <testcase classname="Scenario: Staff list unsuccessfully" name="Scenario: Staff list unsuccessfully" time="0"/>
+  <testcase classname="| In depart | In feed |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| In depart | In feed |" name="And with a unique department names" time="0"/>
+  <testcase classname="| In depart | In feed |" name="When I am entering valid patient data" time="0"/>
+  <testcase classname="| In depart | In feed |" name="And I am entering a existing In depart" time="0"/>
+  <testcase classname="| In depart | In feed |" name="Then I get a message with a positiv In feed" time="0"/>
+  <testcase classname="| In depart | In feed |" name="| In depart | In feed |" time="0.001"/>
+  <testcase classname="| Out depart | Out feed |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| Out depart | Out feed |" name="And with a unique department names" time="0"/>
+  <testcase classname="| Out depart | Out feed |" name="When I am entering valid patient data" time="0"/>
+  <testcase classname="| Out depart | Out feed |" name="And I am entering a existing Out depart" time="0"/>
+  <testcase classname="| Out depart | Out feed |" name="Then I get a message with a positiv Out feed" time="0"/>
+  <testcase classname="| Out depart | Out feed |" name="| Out depart | Out feed |" time="0"/>
+  <testcase classname="| ID | ID |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| ID | ID |" name="And with a unique department names" time="0"/>
+  <testcase classname="| ID | ID |" name="When I am entering a wrong ID" time="0"/>
+  <testcase classname="| ID | ID |" name="Then I get an error message ID" time="0"/>
+  <testcase classname="| ID | ID |" name="| ID | ID |" time="0"/>
+  <testcase classname="| Admin depart | Admin depart |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| Admin depart | Admin depart |" name="And with a unique department names" time="0"/>
+  <testcase classname="| Admin depart | Admin depart |" name="When I am entering a wrong Admin depart" time="0"/>
+  <testcase classname="| Admin depart | Admin depart |" name="Then I get an error message Admin depart" time="0"/>
+  <testcase classname="| Admin depart | Admin depart |" name="| Admin depart | Admin depart |" time="0"/>
+  <testcase classname="| trilvl | trilvl |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| trilvl | trilvl |" name="And with a unique department names" time="0"/>
+  <testcase classname="| trilvl | trilvl |" name="When I am entering a wrong trilvl" time="0"/>
+  <testcase classname="| trilvl | trilvl |" name="Then I get an error message trilvl" time="0"/>
+  <testcase classname="| trilvl | trilvl |" name="| trilvl | trilvl |" time="0"/>
+  <testcase classname="| Person value | invalid data |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| Person value | invalid data |" name="And with a unique department names" time="0"/>
+  <testcase classname="| Person value | invalid data |" name="When I am entering a wrong Person value" time="0"/>
+  <testcase classname="| Person value | invalid data |" name="Then I get an error message invalid data" time="0"/>
+  <testcase classname="| Person value | invalid data |" name="| Person value | invalid data |" time="0"/>
+  <testcase classname="| invalid depart | invalid depart |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| invalid depart | invalid depart |" name="And with a unique department names" time="0"/>
+  <testcase classname="| invalid depart | invalid depart |" name="When I am entering a wrong invalid depart" time="0"/>
+  <testcase classname="| invalid depart | invalid depart |" name="Then I get an error message invalid depart" time="0"/>
+  <testcase classname="| invalid depart | invalid depart |" name="| invalid depart | invalid depart |" time="0"/>
+  <testcase classname="Scenario: removing a patient succesfully" name="Given that we have a hospital with patients" time="0"/>
+  <testcase classname="Scenario: removing a patient succesfully" name="When I am entering an unique patient ID" time="0"/>
+  <testcase classname="Scenario: removing a patient succesfully" name="And The patient belongs to an unique department" time="0"/>
+  <testcase classname="Scenario: removing a patient succesfully" name="Then I get a message with a statement that the patient has been removed succesfully" time="0"/>
+  <testcase classname="Scenario: removing a patient succesfully" name="Scenario: removing a patient succesfully" time="0"/>
+  <testcase classname="| ID | ID |" name="Given that we have a hospital with patients" time="0"/>
+  <testcase classname="| ID | ID |" name="When I am entering a wrong ID" time="0"/>
+  <testcase classname="| ID | ID |" name="Then I get an error message ID" time="0"/>
+  <testcase classname="| ID | ID |" name="| ID | ID |" time="0"/>
+  <testcase classname="| Diffrent bed no | Moved to diffrent bed |" name="Given that we have a hospital with indepartments" time="0"/>
+  <testcase classname="| Diffrent bed no | Moved to diffrent bed |" name="And with a unique department names" time="0"/>
+  <testcase classname="| Diffrent bed no | Moved to diffrent bed |" name="When I am writing a valid patient ID" time="0"/>
+  <testcase classname="| Diffrent bed no | Moved to diffrent bed |" name="And I am entering a Diffrent bed no" time="0"/>
+  <testcase classname="| Diffrent bed no | Moved to diffrent bed |" name="Then I get a good Moved to diffrent bed" time="0"/>
+  <testcase classname="| Diffrent bed no | Moved to diffrent bed |" name="| Diffrent bed no | Moved to diffrent bed |" time="0"/>
+  <testcase classname="| Same bed no | Moved to same bed |" name="Given that we have a hospital with indepartments" time="0"/>
+  <testcase classname="| Same bed no | Moved to same bed |" name="And with a unique department names" time="0"/>
+  <testcase classname="| Same bed no | Moved to same bed |" name="When I am writing a valid patient ID" time="0"/>
+  <testcase classname="| Same bed no | Moved to same bed |" name="And I am entering a Same bed no" time="0"/>
+  <testcase classname="| Same bed no | Moved to same bed |" name="Then I get a good Moved to same bed" time="0"/>
+  <testcase classname="| Same bed no | Moved to same bed |" name="| Same bed no | Moved to same bed |" time="0"/>
+  <testcase classname="| not int bed | not int error |" name="Given that we have a hospital with indepartments" time="0"/>
+  <testcase classname="| not int bed | not int error |" name="And with a unique department names" time="0"/>
+  <testcase classname="| not int bed | not int error |" name="When I am writing an not int bed" time="0"/>
+  <testcase classname="| not int bed | not int error |" name="Then I get an not int error" time="0"/>
+  <testcase classname="| not int bed | not int error |" name="| not int bed | not int error |" time="0"/>
+  <testcase classname="| Out patient | Out patient error |" name="Given that we have a hospital with indepartments" time="0.001"/>
+  <testcase classname="| Out patient | Out patient error |" name="And with a unique department names" time="0"/>
+  <testcase classname="| Out patient | Out patient error |" name="When I am writing an Out patient" time="0"/>
+  <testcase classname="| Out patient | Out patient error |" name="Then I get an Out patient error" time="0"/>
+  <testcase classname="| Out patient | Out patient error |" name="| Out patient | Out patient error |" time="0"/>
+  <testcase classname="| Wrong ID | Wrong ID error |" name="Given that we have a hospital with indepartments" time="0"/>
+  <testcase classname="| Wrong ID | Wrong ID error |" name="And with a unique department names" time="0"/>
+  <testcase classname="| Wrong ID | Wrong ID error |" name="When I am writing an Wrong ID" time="0"/>
+  <testcase classname="| Wrong ID | Wrong ID error |" name="Then I get an Wrong ID error" time="0"/>
+  <testcase classname="| Wrong ID | Wrong ID error |" name="| Wrong ID | Wrong ID error |" time="0"/>
+  <testcase classname="| bed over max | bed max error |" name="Given that we have a hospital with indepartments" time="0"/>
+  <testcase classname="| bed over max | bed max error |" name="And with a unique department names" time="0"/>
+  <testcase classname="| bed over max | bed max error |" name="When I am writing an bed over max" time="0"/>
+  <testcase classname="| bed over max | bed max error |" name="Then I get an bed max error" time="0"/>
+  <testcase classname="| bed over max | bed max error |" name="| bed over max | bed max error |" time="0"/>
+  <testcase classname="Scenario: moving a patient succesfully" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: moving a patient succesfully" name="And with a unique department names" time="0"/>
+  <testcase classname="Scenario: moving a patient succesfully" name="When I am entering a valid patient ID" time="0"/>
+  <testcase classname="Scenario: moving a patient succesfully" name="And I am entering an existing health care department" time="0"/>
+  <testcase classname="Scenario: moving a patient succesfully" name="Then I get a message with a statement that the patient has been moved succesfully" time="0"/>
+  <testcase classname="Scenario: moving a patient succesfully" name="Scenario: moving a patient succesfully" time="0"/>
+  <testcase classname="| patient ID | ID error |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| patient ID | ID error |" name="And with a unique department names" time="0"/>
+  <testcase classname="| patient ID | ID error |" name="When I am entering a wrong patient ID" time="0"/>
+  <testcase classname="| patient ID | ID error |" name="Then I get an ID error" time="0"/>
+  <testcase classname="| patient ID | ID error |" name="| patient ID | ID error |" time="0"/>
+  <testcase classname="| patient admission | admit error |" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="| patient admission | admit error |" name="And with a unique department names" time="0"/>
+  <testcase classname="| patient admission | admit error |" name="When I am entering a wrong patient admission" time="0"/>
+  <testcase classname="| patient admission | admit error |" name="Then I get an admit error" time="0"/>
+  <testcase classname="| patient admission | admit error |" name="| patient admission | admit error |" time="0"/>
+  <testcase classname="Scenario: Password added succuesfully" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Password added succuesfully" name="And with a staff ID &amp; a password" time="0"/>
+  <testcase classname="Scenario: Password added succuesfully" name="When I am entering the staff-ID and wanted password twice" time="0"/>
+  <testcase classname="Scenario: Password added succuesfully" name="Then I get a message that my password was correctly added to the system" time="0"/>
+  <testcase classname="Scenario: Password added succuesfully" name="Scenario: Password added succuesfully" time="0"/>
+  <testcase classname="Scenario: Password not added, repeated password wrong" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Password not added, repeated password wrong" name="And with a staff ID &amp; a password" time="0"/>
+  <testcase classname="Scenario: Password not added, repeated password wrong" name="When I am entering the staff-ID, wanted password and a wrong wanted password" time="0"/>
+  <testcase classname="Scenario: Password not added, repeated password wrong" name="Then I get a message that my password was not added, as I did not repeat my password correctly" time="0"/>
+  <testcase classname="Scenario: Password not added, repeated password wrong" name="Scenario: Password not added, repeated password wrong" time="0"/>
+  <testcase classname="Scenario: Password not added, a password for that Staff already exists" name="Given that we are on a hospital" time="0"/>
+  <testcase classname="Scenario: Password not added, a password for that Staff already exists" name="And with a staff ID &amp; a password" time="0"/>
+  <testcase classname="Scenario: Password not added, a password for that Staff already exists" name="When I am entering the staff id and wanted password twice" time="0"/>
+  <testcase classname="Scenario: Password not added, a password for that Staff already exists" name="Then I get a message that my password was not added, as the Staff already has a password" time="0"/>
+  <testcase classname="Scenario: Password not added, a password for that Staff already exists" name="Scenario: Password not added, a password for that Staff already exists" time="0"/>
+  <testcase classname="Scenario: Password changed succuesfully" name="Given that we are on a Hospital" time="0"/>
+  <testcase classname="Scenario: Password changed succuesfully" name="And with a staff ID &amp; a Password" time="0"/>
+  <testcase classname="Scenario: Password changed succuesfully" name="When I am entering the staff-ID, old password and new wanted password twice" time="0"/>
+  <testcase classname="Scenario: Password changed succuesfully" name="Then I get a message that my password was correctly changed" time="0"/>
+  <testcase classname="Scenario: Password changed succuesfully" name="Scenario: Password changed succuesfully" time="0"/>
+  <testcase classname="Scenario: Password not changed as old password was not known" name="Given that we are on a Hospital" time="0"/>
+  <testcase classname="Scenario: Password not changed as old password was not known" name="And with a staff ID &amp; a Password" time="0"/>
+  <testcase classname="Scenario: Password not changed as old password was not known" name="When I am entering the staff-ID, wrong old password and new wanted password twice" time="0"/>
+  <testcase classname="Scenario: Password not changed as old password was not known" name="Then I get a message that my password has not been changed, as I did not know my old password" time="0"/>
+  <testcase classname="Scenario: Password not changed as old password was not known" name="Scenario: Password not changed as old password was not known" time="0"/>
+  <testcase classname="Scenario: Password not changed as new password not correctly repeated" name="Given that we are on a Hospital" time="0"/>
+  <testcase classname="Scenario: Password not changed as new password not correctly repeated" name="And with a staff ID &amp; a Password" time="0"/>
+  <testcase classname="Scenario: Password not changed as new password not correctly repeated" name="When I am entering the staff-ID, old password, new wanted password and a wrong new wanted password" time="0"/>
+  <testcase classname="Scenario: Password not changed as new password not correctly repeated" name="Then I get a message that my password has not been changed, as I did not repeat my new password correctly" time="0"/>
+  <testcase classname="Scenario: Password not changed as new password not correctly repeated" name="Scenario: Password not changed as new password not correctly repeated" time="0"/>
+  <testcase classname="Scenario: Password not added, staff ID does not exist" name="Given that we are on a Hospital" time="0"/>
+  <testcase classname="Scenario: Password not added, staff ID does not exist" name="And with a staff ID &amp; a Password" time="0"/>
+  <testcase classname="Scenario: Password not added, staff ID does not exist" name="When I am entering a wrong staff id, wanted password twice and old password" time="0"/>
+  <testcase classname="Scenario: Password not added, staff ID does not exist" name="Then I get a message that my password was not added, as the Staff does not exist" time="0"/>
+  <testcase classname="Scenario: Password not added, staff ID does not exist" name="Scenario: Password not added, staff ID does not exist" time="0"/>
+  <testcase classname="Scenario: Getting a queue list successfully" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Getting a queue list successfully" name="And with a unique out patient department name" time="0"/>
+  <testcase classname="Scenario: Getting a queue list successfully" name="When I am entering unique department name of a out patient department" time="0"/>
+  <testcase classname="Scenario: Getting a queue list successfully" name="Then I get a list of the current queue" time="0"/>
+  <testcase classname="Scenario: Getting a queue list successfully" name="Scenario: Getting a queue list successfully" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="And with a unique out patient department name" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="When I am entering non unique department name" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Then I get a error message" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Scenario: Invalid department name" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="And with a unique out patient department name" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="When I am entering unique department name of non out patient department" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="Then I get a error message" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="Scenario: Invalid department type" time="0"/>
+  <testcase classname="Scenario: Getting a patient successfully" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Getting a patient successfully" name="And with a unique out patient department name" time="0.001"/>
+  <testcase classname="Scenario: Getting a patient successfully" name="And we ask for next person in queue" time="0"/>
+  <testcase classname="Scenario: Getting a patient successfully" name="When I am entering unique department name of a out patient department" time="0"/>
+  <testcase classname="Scenario: Getting a patient successfully" name="Then I get the next patient in queue" time="0"/>
+  <testcase classname="Scenario: Getting a patient successfully" name="Scenario: Getting a patient successfully" time="0"/>
+  <testcase classname="Scenario: Invalid department names" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Invalid department names" name="And with a unique out patient department name" time="0"/>
+  <testcase classname="Scenario: Invalid department names" name="And we ask for next person in queue" time="0"/>
+  <testcase classname="Scenario: Invalid department names" name="When I am entering non unique department names" time="0"/>
+  <testcase classname="Scenario: Invalid department names" name="Then I get an error message" time="0"/>
+  <testcase classname="Scenario: Invalid department names" name="Scenario: Invalid department names" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="And with a unique out patient department name" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="And we ask for next person in queue" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="When I am entering a unique department name of non out patient department" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="Then I get an error message" time="0"/>
+  <testcase classname="Scenario: Invalid department type" name="Scenario: Invalid department type" time="0"/>
+  <testcase classname="Scenario: Getting a participation list of entire hospital" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Getting a participation list of entire hospital" name="When I am requesting a partipation list of entire hospital" time="0"/>
+  <testcase classname="Scenario: Getting a participation list of entire hospital" name="And I choose what data I would like to receive" time="0"/>
+  <testcase classname="Scenario: Getting a participation list of entire hospital" name="Then I get a csv containing information of all patients" time="0"/>
+  <testcase classname="Scenario: Getting a participation list of entire hospital" name="Scenario: Getting a participation list of entire hospital" time="0"/>
+  <testcase classname="Scenario: Getting participation list of certain department" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Getting participation list of certain department" name="When I am requesting a partipation list of a given department" time="0"/>
+  <testcase classname="Scenario: Getting participation list of certain department" name="Then I get a csv containing information of patients from that department" time="0"/>
+  <testcase classname="Scenario: Getting participation list of certain department" name="Scenario: Getting participation list of certain department" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Given that we have a hospital with departments" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="When I am entering a non unique department name" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Then I get message saying there was an error" time="0"/>
+  <testcase classname="Scenario: Invalid department name" name="Scenario: Invalid department name" time="0"/>
+  <testcase classname="Scenario: Add a outPatient department" name="Given that we have a hospital" time="0"/>
+  <testcase classname="Scenario: Add a outPatient department" name="When a new outPatient department" time="0"/>
+  <testcase classname="Scenario: Add a outPatient department" name="Then I get message that the department was added" time="0"/>
+  <testcase classname="Scenario: Add a outPatient department" name="Scenario: Add a outPatient department" time="0"/>
+  <testcase classname="Scenario: Add a inPatient department" name="Given that we have a hospital" time="0"/>
+  <testcase classname="Scenario: Add a inPatient department" name="When a new inPatient department" time="0"/>
+  <testcase classname="Scenario: Add a inPatient department" name="Then I get message that the department was added" time="0"/>
+  <testcase classname="Scenario: Add a inPatient department" name="Scenario: Add a inPatient department" time="0"/>
+  <testcase classname="Scenario: Add a admin department" name="Given that we have a hospital" time="0"/>
+  <testcase classname="Scenario: Add a admin department" name="When a new admin department" time="0"/>
+  <testcase classname="Scenario: Add a admin department" name="Then I get message that the department was added" time="0"/>
+  <testcase classname="Scenario: Add a admin department" name="Scenario: Add a admin department" time="0"/>
+  <testcase classname="Scenario: Invalid department type." name="Given that we have a hospital" time="0"/>
+  <testcase classname="Scenario: Invalid department type." name="When I try to add an invalid department type" time="0"/>
+  <testcase classname="Scenario: Invalid department type." name="Then I get message that no department was added" time="0"/>
+  <testcase classname="Scenario: Invalid department type." name="Scenario: Invalid department type." time="0"/>
+  <testcase classname="Scenario: Not an integer as maxBed" name="Given that we have a hospital" time="0"/>
+  <testcase classname="Scenario: Not an integer as maxBed" name="When I try to add a inPatient but maxBed is not an integer" time="0"/>
+  <testcase classname="Scenario: Not an integer as maxBed" name="Then I get a message that maxBeds must be an integer" time="0"/>
+  <testcase classname="Scenario: Not an integer as maxBed" name="Scenario: Not an integer as maxBed" time="0"/>
+  <testcase classname="Scenario: Name already in use" name="Given that we have a hospital" time="0"/>
+  <testcase classname="Scenario: Name already in use" name="When I try to add a department with a name already in use" time="0"/>
+  <testcase classname="Scenario: Name already in use" name="Then I get a message that the name must be unique" time="0"/>
+  <testcase classname="Scenario: Name already in use" name="Scenario: Name already in use" time="0"/>
+</testsuite>
