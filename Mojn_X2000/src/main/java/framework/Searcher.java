@@ -41,7 +41,7 @@ public class Searcher {
 	}
 	
 	protected LinkedList<Person> staffSearch(String staffId, String firstName, String lastName, String birthday,String email) {
-		if (h==null || h.getAllStaff().isEmpty()){
+		if (h==null || h.getStaffSet().isEmpty()){
 			return new LinkedList<Person>();
 		}
 		
