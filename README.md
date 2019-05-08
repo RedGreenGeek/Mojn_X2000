@@ -5,6 +5,3 @@ Hello reader of our project. This is a project in agile object oriented software
 Edit:
 Login to the program: username: I
                       password: I
-
-
-Have fun -> nice bruh
